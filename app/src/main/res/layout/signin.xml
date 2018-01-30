@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/img_signin_logo"
+        android:id="@+id/signin_img_logo"
         android:layout_width="155dp"
         android:layout_height="155dp"
         android:layout_marginTop="10dp"
@@ -14,17 +14,17 @@
         android:scaleType="fitXY"/>
 
     <TextView
-        android:id="@+id/txt_signin_infos"
+        android:id="@+id/signin_txt_infos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
         android:textSize="20sp"
-        android:layout_marginDown="10dp"
         android:layout_marginLeft="20dp"
         android:text="Enter your information :" />
 
     <EditText
-        android:id="@+id/edt_signin_name"
+        android:id="@+id/signin_edt_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -34,7 +34,7 @@
         android:text="Name" />
 
     <EditText
-        android:id="@+id/edt_signin_password"
+        android:id="@+id/signin_edt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -44,7 +44,7 @@
         android:text="Password" />
 
     <Button
-        android:id="@+id/button_signin_login"
+        android:id="@+id/signin_btn_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -60,19 +60,19 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txt_signin_noaccount"
+            android:id="@+id/signin_txt_noaccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:layout_marginDown="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
             android:text="No account ?" />
 
         <Button
-            android:id="@+id/button_signin_signup"
+            android:id="@+id/signin_btn_signup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -85,7 +85,7 @@
         </LinearLayout>
 
     <Button
-        android:id="@+id/button_signin_playnoaccount"
+        android:id="@+id/signin_btn_playnoaccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Play without account" />

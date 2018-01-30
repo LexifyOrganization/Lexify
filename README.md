@@ -1,5 +1,5 @@
 # Lexify
 
-##Lexify, le jeu mobile qui lexify ton vocabulaire.
+**Lexify**, le jeu mobile qui lexify ton vocabulaire.
 
-git clone https://github.com/LexifyOrganization/Lexify.git
+* Pour cloner le projet: git clone https://github.com/LexifyOrganization/Lexify.git

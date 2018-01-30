@@ -1,1 +1,4 @@
-1 - git clone https://github.com/LexifyOrganization/Lexify.git
+Lexify
+
+
+git clone https://github.com/LexifyOrganization/Lexify.git

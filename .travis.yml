@@ -6,12 +6,6 @@ notifications:
     email:
         - lexifyapp@gmail.com
 
-env:
-    matrix:
-        - ANDROID_TARGET=android-19 ANDROID_ABI=armeabi-v7a
-        - ANDROID_TARGET=android-21 ANDROID_ABI=armeabi-v7a
-    global:
-        - ADB_INSTALL_TIMEOUT=10    #Time out to 10 mins
 before_cache:
     - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 

@@ -5,6 +5,13 @@ sudo: false
 notifications:
     email:
         - lexifyapp@gmail.com
+        
+env:
+ global:
+ - ANDROID_API=24
+ - EMULATOR_API=21
+ - ANDROID_BUILD_TOOLS=24.0.2
+ - ADB_INSTALL_TIMEOUT=5 # minutes
 
 before_cache:
     - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock

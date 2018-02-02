@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/LexifyOrganization/Lexify.svg?branch=master)](https://travis-ci.org/LexifyOrganization/Lexify)
+
 # Lexify
 
 **Lexify**, le jeu mobile qui lexify ton vocabulaire. 

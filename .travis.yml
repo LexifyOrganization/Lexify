@@ -1,5 +1,7 @@
 language: android
 
+
+
 android:
   components:
     - tools                             # Tools
@@ -7,36 +9,31 @@ android:
     - build-tools-25.0.2                # Build tools version
     - android-25                        # Target SDK version
     - extra-android-m2repository        # Support repo
-    - sys-img-armeabi-v7a-android-18    # Emulator
-
-jdk:
-  - oraclejdk8
+    - sys-img-armeabi-v7a-android-25    # Emulator
 
 script:
-  - ./gradlew check jacocoTestReport coveralls sendCoverageToCodacy
-  - ./gradlew build
-
+    - ./gradlew assembleDebug
 env:
-  global:
-    - secure: "SONATYPE_NEXUS_USERNAME TODO"
-
-branches:
-  except:
-    - gh-pages
+  matrix:
+    - ANDROID_TARGET=android-25 ANDROID_ABI=armeabi-v7a
+    
+before_script:
+    - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+    - emulator -avd test -no-skin -no-audio -no-window &
+    - android-wait-for-emulator
+    - adb shell input keyevent 82 &
+    
+script:
+    - ./gradlew connectedAndroidTest coveralls
 
 notifications:
   email: lexfiapp@gmail.com
-
-sudo: false
+  
+script:
+    - echo "Travis branch is $TRAVIS_BRANCH"
+    - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
 
 cache:
   directories:
     - $HOME/.gradle
 
-
-before_install:
-    - pip install --user codecov    #Install codecov
-after_success:
-    - codecov                       #Run codecov
-
-after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"

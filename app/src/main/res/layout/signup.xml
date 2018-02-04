@@ -20,6 +20,13 @@
         android:layout_height="wrap_content"
         android:text="Enter information" />
 
+    <TextView
+        android:id="@+id/signup_txt_errors"
+        android:textColor="#F00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
     <EditText
         android:id="@+id/signup_edt_pseudo"
         android:layout_width="match_parent"
@@ -28,7 +35,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:inputType="textPersonName"
-        android:text="Pseudo" />
+        android:hint="Pseudo" />
 
     <EditText
         android:id="@+id/signup_edt_email"
@@ -38,7 +45,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:inputType="textPersonName"
-        android:text="Email" />
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/signup_edt_password"
@@ -47,8 +54,8 @@
         android:ems="10"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:inputType="textPersonName"
-        android:text="Password" />
+        android:inputType="textPassword"
+        android:hint="Password" />
 
     <EditText
         android:id="@+id/signup_edt_confirmpassword"
@@ -57,8 +64,8 @@
         android:ems="10"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:inputType="textPersonName"
-        android:text="Confirm Password" />
+        android:inputType="textPassword"
+        android:hint="Confirm Password" />
 
     <Button
         android:id="@+id/signup_btn_signup"

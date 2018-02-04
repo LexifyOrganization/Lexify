@@ -5,13 +5,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import parisnanterre.fr.lexify.database.User;
 
 public class MainActivity extends Activity {
+
+    User currentUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
+
+        Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
+        final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
+
+        Bundle b = this.getIntent().getExtras();
+        if (b != null)
+           currentUser = b.getParcelable("Current user");
+
+        if(currentUser!=null) {
+            txt_welcome.setText("Welcome " + currentUser.get_pseudo() + " !");
+            lil_user.setVisibility(View.VISIBLE);
+        }
+        else{
+            lil_user.setVisibility(View.GONE);
+        }
 
         Button button = (Button) findViewById(R.id.button);
         //test
@@ -21,8 +44,24 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(),SignUpActivity.class);
-                startActivity(i);
+                if(currentUser!=null) {
+                    //go pour le jeu
+                }else {
+                    Intent i = new Intent(getApplicationContext(),SignInActivity.class);
+                    startActivity(i);
+                }
+
+            }
+        });
+
+        btn_disconnect.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                currentUser = null;
+                lil_user.setVisibility(View.GONE);
+
             }
         });
 

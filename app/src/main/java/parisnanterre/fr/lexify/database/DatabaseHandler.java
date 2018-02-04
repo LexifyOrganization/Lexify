@@ -67,7 +67,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public List<User> getAllContacts() {
+    public List<User> getAllUsers() {
         List<User> contactList = new ArrayList<User>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_USERS;

@@ -1,10 +1,13 @@
 package parisnanterre.fr.lexify.database;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by piotn_000 on 30/01/2018.
  */
 
-public class User {
+public class User implements Parcelable{
 
     int _id;
     String _pseudo;
@@ -21,6 +24,25 @@ public class User {
         this._email = _email;
         this._pass = _pass;
     }
+
+    protected User(Parcel in) {
+        _id = in.readInt();
+        _pseudo = in.readString();
+        _email = in.readString();
+        _pass = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String get_pseudo() {
         return _pseudo;
@@ -52,5 +74,18 @@ public class User {
 
     public void set_id(int _id) {
         this._id = _id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeInt(_id);
+        out.writeString(_pseudo);
+        out.writeString(_email);
+        out.writeString(_pass);
     }
 }

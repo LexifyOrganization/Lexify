@@ -31,6 +31,12 @@ allprojects {
     }
 }
 
+buildTypes {
+     debug {
+         testCoverageEnabled true
+     }
+ }
+    
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

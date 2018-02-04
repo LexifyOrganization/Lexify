@@ -1,8 +1,6 @@
 language: android
 jdk: oraclejdk8
 
-
- 
 before_cache:
     - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
  
@@ -59,9 +57,6 @@ after_success:
  
 after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
 
-script:
-    - ./gradlew assembleDebug
-    - ./gradlew connectedAndroidTest coveralls
 
 notifications:
   email: lexfiapp@gmail.com

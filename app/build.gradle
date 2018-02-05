@@ -26,5 +26,10 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.android:android:4.1.1.4'
+    compile 'com.google.code.gson:gson:2.2.4'
+
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+    testCompile 'org.robolectric:robolectric:2.1.1'
 }

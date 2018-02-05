@@ -40,11 +40,7 @@ licenses:
     - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
-    
-after_success:
-- ./gradlew jacocoTestReport coveralls
-    
- 
+     
 script:
     - echo "Travis branch is $TRAVIS_BRANCH"
     - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
@@ -54,5 +50,3 @@ after_success:
 
 notifications:
   email: lexfiapp@gmail.com
-
-

@@ -4,14 +4,11 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0'
 
     }
 }
 
-plugins {
-    id 'jacoco'
-    id 'com.github.kt3k.coveralls' version '2.6.3'
-}
 
 allprojects {
     repositories {
@@ -23,15 +20,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-
-dependencies {
-    compile 'com.google.android:android:4.1.1.4'
-    compile 'com.google.code.gson:gson:2.2.4'
-
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-all:1.9.5'
-    testCompile 'org.robolectric:robolectric:2.1.1'
-}
-
-cobertura.coverageFormats = ['html', 'xml']

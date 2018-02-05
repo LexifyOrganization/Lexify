@@ -48,8 +48,6 @@ script:
 before_install:
  - chmod +x gradlew
  
-script:
- - chmod +x ./gradlew build connectedCheck
 
 after_success:
 - ./gradlew cobertura coveralls

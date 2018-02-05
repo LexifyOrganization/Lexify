@@ -13,7 +13,7 @@ import java.util.List;
  * Created by piotn_000 on 30/01/2018.
  */
 
-public class DatabaseHandler extends SQLiteOpenHelper {
+public class DatabaseUser extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
@@ -31,7 +31,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_PASS = "pass";
     private static final String KEY_EMAIL = "email";
 
-    public DatabaseHandler(Context context) {
+    public DatabaseUser(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import parisnanterre.fr.lexify.database.DatabaseHandler;
+import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 
 /**
@@ -36,7 +36,7 @@ public class SignUpActivity extends Activity {
 
         final TextView txt_errors = (TextView) findViewById(R.id.signup_txt_errors);
 
-        final DatabaseHandler db = new DatabaseHandler(this);
+        final DatabaseUser db = new DatabaseUser(this);
 
 
         btn_signup.setOnClickListener(new View.OnClickListener() {

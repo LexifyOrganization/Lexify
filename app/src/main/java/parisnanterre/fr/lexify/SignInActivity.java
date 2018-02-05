@@ -3,27 +3,19 @@ package parisnanterre.fr.lexify;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
-import parisnanterre.fr.lexify.database.DatabaseHandler;
+import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 
 /**
@@ -33,7 +25,7 @@ import parisnanterre.fr.lexify.database.User;
 public class SignInActivity extends Activity {
 
     User currentUser = null;
-    final DatabaseHandler db = new DatabaseHandler(this);
+    final DatabaseUser db = new DatabaseUser(this);
 
     Button btn_signin;
     Button btn_playnoaccount;

@@ -44,10 +44,13 @@ licenses:
     - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
+    - 'android-sdk-license-.+'
      
 script:
     - echo "Travis branch is $TRAVIS_BRANCH"
     - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+    - echo y | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta4"
+    - echo y | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta"
     
 before_install:
  - chmod +x gradlew

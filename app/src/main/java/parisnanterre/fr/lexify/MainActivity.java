@@ -83,20 +83,6 @@ public class MainActivity extends Activity {
             lil_user.setVisibility(View.GONE);
         }
 
-        Button button2 = (Button) findViewById(R.id.buttongen);
-        final TextView txt = (TextView) findViewById(R.id.wooord);
-
-        button2.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                DatabaseWord db = new DatabaseWord(getApplicationContext());
-                Word random = db.getRandomWord();
-                txt.setText(random.getWord());
-
-            }
-        });
-
 
 
         Button button = (Button) findViewById(R.id.button);

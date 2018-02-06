@@ -33,18 +33,6 @@
         android:layout_gravity="center"
         android:text="play the game" />
 
-    <TextView
-        android:id="@+id/wooord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="" />
-
-    <Button
-        android:id="@+id/buttongen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="random gen test" />
 
 
 

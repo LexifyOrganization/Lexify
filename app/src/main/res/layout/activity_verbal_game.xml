@@ -41,7 +41,11 @@
         android:layout_height="wrap_content"
         android:text="False" />
 
-
+    <Button
+        android:id="@+id/activity_verbal_game_btn_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pass" />
 
 
 </LinearLayout>

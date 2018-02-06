@@ -1,4 +1,4 @@
-package parisnanterre.fr.lexify;
+package parisnanterre.fr.lexify.connection;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
+import parisnanterre.fr.lexify.application.MainActivity;
+import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.application.VerbalGameActivity;
 import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 

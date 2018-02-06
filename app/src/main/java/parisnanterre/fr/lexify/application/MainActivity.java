@@ -1,14 +1,11 @@
-package parisnanterre.fr.lexify;
+package parisnanterre.fr.lexify.application;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,6 +20,8 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 
+import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;

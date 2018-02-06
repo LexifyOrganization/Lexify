@@ -1,4 +1,4 @@
-package parisnanterre.fr.lexify;
+package parisnanterre.fr.lexify.application;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 

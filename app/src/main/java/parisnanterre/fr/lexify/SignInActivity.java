@@ -60,6 +60,15 @@ public class SignInActivity extends Activity {
             }
         });
 
+        btn_playnoaccount.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(getApplicationContext(),VerbalGameActivity.class);
+                startActivity(i);
+            }
+        });
 
 
     }

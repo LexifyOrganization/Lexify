@@ -85,16 +85,20 @@ public class MainActivity extends Activity {
 
 
 
-        Button button = (Button) findViewById(R.id.button);
+        Button play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
         //test
 
-        button.setOnClickListener(new View.OnClickListener() {
+        play_game.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 if(currentUser!=null) {
                     //go pour le jeu
+
+                    Intent i = new Intent(getApplicationContext(),VerbalGameActivity.class);
+                    startActivity(i);
+
                 }else {
                     Intent i = new Intent(getApplicationContext(),SignInActivity.class);
                     startActivity(i);

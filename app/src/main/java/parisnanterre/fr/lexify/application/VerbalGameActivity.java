@@ -45,6 +45,7 @@ public class VerbalGameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(cpt==4) {
+                    score = score -5;
                     finishGame();
                 }
                 else{
@@ -79,6 +80,7 @@ public class VerbalGameActivity extends AppCompatActivity {
 
                 if(cpt==4)
                 {
+                    score++;
                     finishGame();
                 }
                 else {

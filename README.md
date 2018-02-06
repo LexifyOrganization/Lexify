@@ -3,7 +3,6 @@
 [![GitHub license](https://img.shields.io/github/license/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/issues)
 [![GitHub forks](https://img.shields.io/github/forks/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/network)
-[![GitHub stars](https://img.shields.io/github/stars/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/stargazers)
 
 # Lexify
 

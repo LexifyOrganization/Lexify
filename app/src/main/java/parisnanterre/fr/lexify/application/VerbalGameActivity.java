@@ -29,25 +29,37 @@ public class VerbalGameActivity extends AppCompatActivity {
         //final Button btn_play_game = (Button) findViewById(R.id.activity_verbal_game_btn_round);
         final Button btn_true = (Button) findViewById(R.id.activity_verbal_game_btn_true);
         final Button btn_false = (Button) findViewById(R.id.activity_verbal_game_btn_false);
-        //final Button btn_pass = (Button) findViewById(R.id.activity_verbal_game_btn_pass);
+        final Button btn_pass = (Button) findViewById(R.id.activity_verbal_game_btn_pass);
         final TextView txt_nbmanche = (TextView) findViewById(R.id.activity_verbal_game_txt_manche);
         final TextView txt_word = (TextView) findViewById(R.id.activity_verbal_game_txt_word);
         final TextView txt_score = (TextView) findViewById(R.id.activity_verbal_game_txt_score);
 
-        txt_nbmanche.setText("Round 1");
+        txt_nbmanche.setText("Round 1/4");
         txt_score.setText("Score :" + score);
         txt_word.setText(db.getRandomWord().getWord());
 
 
-        /*btn_pass.setOnClickListener(new View.OnClickListener() {
+        btn_pass.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                //plus tard
+                if(cpt==4) {
+                    score = score -5;
+                    finishGame();
+                }
+                else{
+                    score= score - 5;
+                    cpt++;
+                    txt_score.setText("Score :" + score);
+
+                    Word random = db.getRandomWord();
+                    txt_word.setText(random.getWord());
+                    txt_nbmanche.setText("Round " + cpt +"/4");
+                }
 
             }
-        });*/
+        });
 
         btn_false.setOnClickListener(new View.OnClickListener() {
 
@@ -66,18 +78,10 @@ public class VerbalGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(btn_true.getText().toString().equals("Finish game"))
+                if(cpt==4)
                 {
-
-                    Context context = getApplicationContext();
-                    CharSequence text = "Finished ! Final score : " + score;
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-
-                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(i);
+                    score++;
+                    finishGame();
                 }
                 else {
                     cpt++;
@@ -87,10 +91,9 @@ public class VerbalGameActivity extends AppCompatActivity {
 
                     Word random = db.getRandomWord();
                     txt_word.setText(random.getWord());
-                    txt_nbmanche.setText("Round " + cpt);
+                    txt_nbmanche.setText("Round " + cpt +"/4");
 
-                    if(cpt==4)
-                        btn_true.setText("Finish game");
+
                 }
 
 
@@ -99,5 +102,17 @@ public class VerbalGameActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void finishGame() {
+        Context context = getApplicationContext();
+        CharSequence text = "Finished ! Final score : " + score;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
     }
 }

@@ -62,7 +62,7 @@ before_install:
  
 
 after_success:
-- ./gradlew cobertura coveralls
+    - ./gradlew jacocoTestReport coveralls
 
 notifications:
   email: lexfiapp@gmail.com

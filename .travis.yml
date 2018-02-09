@@ -10,6 +10,11 @@ cache:
     - $HOME/.gradle/native      #Cache library downloaded from the gradle dependency
     - $HOME/.gradle/wrapper     #Cache the gradle
 
+  before_install:
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55\n\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+
 android:
   components:
     # Uncomment the lines below if you want to
@@ -49,17 +54,18 @@ licenses:
     - 'google-gdk-license-.+'
     - 'android-sdk-license-.+'
     - 'intel-android-extra-license-.+'
-    - 'mips-android-sysimage-license-.+'    -
+    - 'mips-android-sysimage-license-.+'
 
 script:
     - echo "Travis branch is $TRAVIS_BRANCH"
     - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
 
 before_install:
-    - chmod +x gradlew
+ - chmod +x gradlew
+
 
 after_success:
-    - ./gradlew jacocoTestReport coveralls
+- ./gradlew cobertura coveralls
 
 notifications:
   email: lexfiapp@gmail.com

@@ -28,7 +28,7 @@ public class SignUpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signup);
+        setContentView(R.layout.activity_signup);
 
         Button btn_signup = (Button) findViewById(R.id.signup_btn_signup);
         final EditText edt_pseudo = (EditText) findViewById(R.id.signup_edt_pseudo);

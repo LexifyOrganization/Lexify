@@ -42,7 +42,7 @@ public class SignInActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signin);
+        setContentView(R.layout.activity_signin);
 
         btn_signin = (Button) findViewById(R.id.signin_btn_login);
         btn_playnoaccount = (Button) findViewById(R.id.signin_btn_playnoaccount);

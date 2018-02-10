@@ -20,11 +20,14 @@ import parisnanterre.fr.lexify.word.Word;
 
 public class VerbalGameActivity extends Activity
                                 implements VerbalGameFragment.OnFragmentInteractionListener,
-                                           VerbalGameSigningFragment.OnFragmentInteractionListener{
+                                           VerbalGameSigningFragment.OnFragmentInteractionListener,
+                                           VerbalGameResultsFragment.OnFragmentInteractionListener{
 
 
     public int score = 10;
     public boolean lastround = false;
+    public Player player1;
+    public Player player2;
 
 
 
@@ -32,6 +35,11 @@ public class VerbalGameActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verbal_game);
+
+        player1 = new Player("Player 1");
+        player2 = new Player("Player 2");
+
+        player1.setCurrentPlayer(true);
 
         Fragment signingGame = new VerbalGameSigningFragment();
         FragmentManager fragmentManager = getFragmentManager();
@@ -43,6 +51,24 @@ public class VerbalGameActivity extends Activity
 
     }
 
+
+    public Player getCurrentPlayer() {
+        if(player1.isCurrentPlayer())
+            return player1;
+        else
+            return player2;
+    }
+
+    public void changeCurrentPlayer() {
+        if(player1.isCurrentPlayer()) {
+            player1.setCurrentPlayer(false);
+            player2.setCurrentPlayer(true);
+        }
+        else {
+            player1.setCurrentPlayer(true);
+            player2.setCurrentPlayer(false);
+        }
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {

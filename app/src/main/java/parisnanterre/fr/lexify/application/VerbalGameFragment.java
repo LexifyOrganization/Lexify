@@ -72,6 +72,7 @@ public class VerbalGameFragment extends Fragment {
         final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
         score = gameActivity.score;
         lastround = gameActivity.lastround;
+        final Player player = gameActivity.getCurrentPlayer();
 
         final DatabaseWord db = new DatabaseWord(view.getContext());
 
@@ -93,12 +94,14 @@ public class VerbalGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                player.incNotFoundWord();
+
                 if(cpt==4) {
                     score = score -5;
 
-                    if(lastround)
-                        finishGame();
+                    if(lastround){gameActivity.score = score; finishGame();}
                     else {
+                        gameActivity.changeCurrentPlayer();
                         newRound();
                         gameActivity.lastround = true;
                         gameActivity.score = score;
@@ -134,13 +137,18 @@ public class VerbalGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                player.incFoundWord();
+
                 if(cpt==4)
                 {
                     score++;
 
-                    if(lastround)
+                    if(lastround){
+                        gameActivity.score = score;
                         finishGame();
+                    }
                     else {
+                        gameActivity.changeCurrentPlayer();
                         newRound();
                         gameActivity.lastround = true;
                         gameActivity.score = score;
@@ -170,15 +178,14 @@ public class VerbalGameFragment extends Fragment {
     }
 
     private void finishGame() {
-        Context context = getContext();
-        CharSequence text = "Finished ! Final score : " + score;
-        int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+        Fragment fragment = new VerbalGameResultsFragment();
+        FragmentManager fragmentManager = getActivity().getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_verbal_game_fragment, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
-        Intent i = new Intent(getContext(),MainActivity.class);
-        startActivity(i);
     }
 
     public void newRound() {

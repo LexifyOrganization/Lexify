@@ -1,29 +1,29 @@
 package parisnanterre.fr.lexify.application;
 
-import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.connection.SignInActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link VerbalGameSigningFragment.OnFragmentInteractionListener} interface
+ * {@link VerbalGameResultsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link VerbalGameSigningFragment#newInstance} factory method to
+ * Use the {@link VerbalGameResultsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VerbalGameSigningFragment extends Fragment {
+public class VerbalGameResultsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,7 +35,7 @@ public class VerbalGameSigningFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public VerbalGameSigningFragment() {
+    public VerbalGameResultsFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +45,11 @@ public class VerbalGameSigningFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment VerbalGameSigningFragment.
+     * @return A new instance of fragment VerbalGameResultsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static VerbalGameSigningFragment newInstance(String param1, String param2) {
-        VerbalGameSigningFragment fragment = new VerbalGameSigningFragment();
+    public static VerbalGameResultsFragment newInstance(String param1, String param2) {
+        VerbalGameResultsFragment fragment = new VerbalGameResultsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,36 +66,64 @@ public class VerbalGameSigningFragment extends Fragment {
         }
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_verbal_game_signing, container, false);
+        View view = inflater.inflate(R.layout.fragment_verbal_game_results, container, false);
 
-        final TextView txt_turn = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_playerturn);
-        final TextView txt_rules = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_rules);
-        FrameLayout frm_game = (FrameLayout) view.findViewById(R.id.fragment_verbal_game_signing_fragment);
+        TableRow player1 = (TableRow) view.findViewById(R.id.fragment_verbal_game_results_player1);
+        TableRow player2 = (TableRow) view.findViewById(R.id.fragment_verbal_game_results_player2);
+        TextView score = (TextView) view.findViewById(R.id.fragment_verbal_game_results_score);
+        Button btn_retry = (Button) view.findViewById(R.id.fragment_verbal_game_results_btn_retry);
+        Button btn_menu = (Button) view.findViewById(R.id.fragment_verbal_game_results_btn_menu);
 
 
-        frm_game.setOnClickListener(new View.OnClickListener() {
+        btn_retry.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Fragment fragment = new VerbalGameFragment();
-                FragmentManager fragmentManager = getActivity().getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.activity_verbal_game_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                // TODO Auto-generated method stub
+                Intent i = new Intent(getContext(),VerbalGameActivity.class);
+                startActivity(i);
+
             }
         });
 
-        VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
-        Player player = gameActivity.getCurrentPlayer();
+        btn_menu.setOnClickListener(new View.OnClickListener() {
 
-        txt_turn.setText(player.getName() + " it's your turn !");
-        //txt_rules.setText("Take the phone and try to guess the word to your partner only by using one word at a time !\nClick on the screen to start the game");
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(getContext(),MainActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
+
+        int scr = gameActivity.score;
+        score.setText(String.valueOf(scr));
+
+        int p1val[] = {gameActivity.player1.getNbWordFound(), gameActivity.player1.getNbWordNotFound()};
+        int p2val[] = {gameActivity.player2.getNbWordFound(), gameActivity.player2.getNbWordNotFound()};
+
+        TextView names = (TextView) player1.getChildAt(0);
+        names.setText(gameActivity.player1.getName());
+
+        names = (TextView) player2.getChildAt(0);
+        names.setText(gameActivity.player2.getName());
+
+        for (int i =0; i<2; i++)  {
+            TextView txt = (TextView) player1.getChildAt(i+1);
+            txt.setText(String.valueOf(p1val[i]));
+        }
+
+        for (int i =0; i<2; i++)  {
+            TextView txt = (TextView) player2.getChildAt(i+1);
+            txt.setText(String.valueOf(p2val[i]));
+        }
 
         return view;
     }

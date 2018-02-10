@@ -84,7 +84,7 @@ public class VerbalGameResultsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getContext(),VerbalGameActivity.class);
+                Intent i = new Intent(getActivity(),VerbalGameActivity.class);
                 startActivity(i);
 
             }
@@ -95,7 +95,7 @@ public class VerbalGameResultsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getContext(),MainActivity.class);
+                Intent i = new Intent(getActivity(),MainActivity.class);
                 startActivity(i);
 
             }

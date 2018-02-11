@@ -15,7 +15,8 @@ Développé sur mobile, et plus spécialement sur la Plateforme **Android**, Lex
 
 ## Fonctionnalités 
 
-* Jouer une partie orale avec un ami sur le même téléphone 
+### Version 0.1 :
+  * Jouer une partie orale avec un ami sur le même téléphone.
 
 ## Systeme de Build
 * [Gradle](https://gradle.org/)
@@ -53,7 +54,7 @@ Depuis Android studio :
 Depuis Android studio : 
   VCS > Checkout from version control > Git > Dans " Git Repository URL ", coller https://github.com/LexifyOrganization/Lexify.git > OK
   
-Et voila ! le projet est prêt pour utilisation
+Et voila ! le projet est prêt pour utilisation.
 
 ## Auteurs
 * **KHATIR Nassim** - (https://github.com/nassimkhatir)

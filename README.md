@@ -6,7 +6,7 @@
 
 **Lexify**, le jeu mobile qui lexify ton vocabulaire. 
 
-* Notre site web : https://lexifyorganization.github.io/Lexify/
+* Notre site web : [Lexify](https://lexifyorganization.github.io/Lexify/)
 
 ## Qu'est ce que c'est ?
 
@@ -29,7 +29,7 @@ Avant de pouvoir utiliser notre projet, il faut installer certains outils.
 
 #### Installer Android Studio et le SDK
 
-- Télécharger Android studio et l'installer : https://openclassrooms.com/courses/creez-des-applications-pour-android/installation-et-configuration-des-outils
+- Télécharger Android studio et l'installer : [Télécharger Android Studio]https://developer.android.com/studio/index.html
 
 - Télécharger le SDK : 
 
@@ -38,7 +38,7 @@ Depuis la fenêtres de bienvenue :
   
 #### Installer Git
 
-- Télécharger et installer Git : https://gitforwindows.org/
+- Télécharger et installer Git : [Télécharger Git](https://gitforwindows.org/)
 
 ### Cloner Lexify
 
@@ -57,8 +57,8 @@ Depuis Android studio :
 Et voila ! le projet est prêt pour utilisation.
 
 ## Auteurs
-* **KHATIR Nassim** - (https://github.com/nassimkhatir)
-* **Nayet Lucas** - (https://github.com/LNayet)
-* **Piot Nicolas** - (https://github.com/Yxiaa)
+* **KHATIR Nassim** - [Github](https://github.com/nassimkhatir)
+* **Nayet Lucas** - [Github](https://github.com/LNayet)
+* **Piot Nicolas** - [Github](https://github.com/Yxiaa)
 
   

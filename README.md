@@ -29,7 +29,7 @@ Avant de pouvoir utiliser notre projet, il faut installer certains outils.
 
 #### Installer Android Studio et le SDK
 
-- Télécharger Android studio et l'installer : [Télécharger Android Studio]https://developer.android.com/studio/index.html
+- Télécharger Android studio et l'installer : [Télécharger Android Studio](https://developer.android.com/studio/index.html)
 
 - Télécharger le SDK : 
 

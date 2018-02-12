@@ -18,7 +18,7 @@ Développé sur mobile, et plus spécialement sur la Plateforme **Android**, Lex
 ### Version 0.1 :
   * Jouer une partie orale avec un ami sur le même téléphone.
 
-## Systeme de Build
+## Système de Build
 * [Gradle](https://gradle.org/)
 
 ## Installation

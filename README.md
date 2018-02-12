@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/LexifyOrganization/Lexify.svg?branch=master)](https://travis-ci.org/LexifyOrganization/Lexify)
-[![Coverage Status](https://coveralls.io/repos/github/LexifyOrganization/Lexify/badge.svg?branch=master)](https://coveralls.io/github/LexifyOrganization/Lexify?branch=master)
+[![codecov](https://codecov.io/gh/LexifyOrganization/Lexify/branch/master/graph/badge.svg)](https://codecov.io/gh/LexifyOrganization/Lexify)
 [![GitHub license](https://img.shields.io/github/license/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/blob/master/LICENSE)
 
 # Lexify

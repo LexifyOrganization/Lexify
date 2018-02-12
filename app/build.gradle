@@ -1,8 +1,5 @@
 apply plugin: 'com.android.application'
-
-apply plugin: 'jacoco'
-
-
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 23
@@ -20,6 +17,8 @@ android {
             debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
             testCoverageEnabled true
         }
         release {
@@ -27,6 +26,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testCoverageEnabled false
         }
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -40,43 +42,3 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-// Jacoco config
-apply plugin: 'jacoco'
-
-jacoco {
-    // Use this version for upper ones are broken (with Gradle)
-    // https://github.com/jacoco/jacoco/issues/288
-    toolVersion = "0.7.1.201405082137"
-}
-
-// Edit covered scope if needed
-// For my part I like having the coverage of both application and tests
-def coverageSourceDirs = [
-        '../app/src'
-]
-
-task jacocoTestReport(type: JacocoReport, dependsOn: "test") {
-    group = "Reporting"
-
-    description = "Generate Jacoco coverage reports"
-
-    classDirectories = fileTree(
-            dir: '../app/build/intermediates/classes',
-            excludes: ['**/R.class',
-                       '**/R$*.class',
-                       '**/*$ViewInjector*.*',
-                       '**/BuildConfig.*',
-                       '**/Manifest*.*']
-    )
-
-    additionalSourceDirs = files(coverageSourceDirs)
-    sourceDirectories = files(coverageSourceDirs)
-    executionData = files('../app/build/jacoco/testUnitTestDebug.exec')
-
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-
-}
-//end Jacoco config

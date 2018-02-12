@@ -1,6 +1,11 @@
 language: android
 jdk: oraclejdk8
 
+env:
+  global:
+    - ANDROID_TARGET=android-15
+    - ANDROID_ABI=armeabi-v7a
+
 before_cache:
     - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
  
@@ -9,11 +14,6 @@ cache:
     - $HOME/.gradle/daemon      #Cache daemon logs
     - $HOME/.gradle/native      #Cache library downloaded from the gradle dependency
     - $HOME/.gradle/wrapper     #Cache the gradle
-
-  before_install:
-  - mkdir "$ANDROID_HOME/licenses" || true
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55\n\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 
 android:
   components:
@@ -27,10 +27,6 @@ android:
     - build-tools-25.0.2
 
     # The SDK version used to compile your project
-    - android-16
-    - android-21
-    - android-22
-    - android-23
     - android-25
 
     # Additional components
@@ -41,11 +37,7 @@ android:
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-16
-    - sys-img-armeabi-v7a-android-21
-    - sys-img-armeabi-v7a-android-22
-    - sys-img-armeabi-v7a-android-23
-    - sys-img-armeabi-v7a-android-25
+    - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
 
 licenses:
     - 'android-googletv-license-.+'
@@ -57,15 +49,15 @@ licenses:
     - 'mips-android-sysimage-license-.+'
 
 script:
-    - echo "Travis branch is $TRAVIS_BRANCH"
-    - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
-
-before_install:
- - chmod +x gradlew
-
+  - ./gradlew build jacocoTestReport assembleAndroidTest
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+  - ./gradlew connectedCheck
 
 after_success:
-- ./gradlew cobertura coveralls
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   email: lexfiapp@gmail.com

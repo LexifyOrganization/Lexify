@@ -5,8 +5,8 @@ before_install:
   # Download SDK
   - echo yes | sdkmanager "tools" &>/dev/null
   - echo yes | sdkmanager "platform-tools" &>/dev/null
-  - echo yes | sdkmanager "build-tools;25.0.2" &>/dev/null
-  - echo yes | sdkmanager "platforms;android-25" &>/dev/null
+  - echo yes | sdkmanager "build-tools;26.0.2" &>/dev/null
+  - echo yes | sdkmanager "platforms;android-27" &>/dev/null
   # Update remaining dependencies and accept licenses
   - echo yes | sdkmanager --update &>/dev/null
   - echo yes | sdkmanager --licenses &>/dev/null
@@ -30,10 +30,10 @@ android:
     - tools
 
     # The BuildTools version used by your project
-    - build-tools-25.0.2
+    - build-tools-26.0.2
 
     # The SDK version used to compile your project
-    - android-25
+    - android-27
 
     # Additional components
     - extra-google-google_play_services
@@ -43,7 +43,7 @@ android:
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-25
+    - sys-img-armeabi-v7a-android-27
 
 licenses:
     - 'android-sdk-preview-license-.+'

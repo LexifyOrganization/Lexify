@@ -1,0 +1,40 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="parisnanterre.fr.lexify.application.AboutGameFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/fragment_about_regles_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Regles"
+                />
+
+            <TextView
+                android:id="@+id/fragment_about_regles_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:text="\nApplication Lexify\n4 rounds\n2 players\n4 words\n1 word per round\n
+A player guesses a word to another with 4 indices related to the maximum word.\n\n
+Each round, the players change their role.\n\n
+Correct proposition : +1 point\nFalse proposition : -1 point\nPass : -5 points\n\n
+The game starts with a score of 10 points." />
+
+        </LinearLayout>
+
+</FrameLayout>

@@ -5,37 +5,42 @@
     android:id="@+id/fragment_about_game_fragment"
     tools:context="parisnanterre.fr.lexify.application.AboutGameFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/fragment_about_regles_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:text="" />
+
+    </LinearLayout>
+
+     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/fragment_about_regles_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Regles"
-                />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Rules" />
 
-            <TextView
-                android:id="@+id/fragment_about_regles_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="17sp"
-                android:text="\nApplication Lexify\n4 rounds\n2 players\n4 words\n1 word per round\n
-A player guesses a word to another with 4 indices related to the maximum word.\n\n
-Each round, the players change their role.\n\n
-Correct proposition : +1 point\nFalse proposition : -1 point\nPass : -5 points\n\n
-The game starts with a score of 10 points." />
+            <Button
+                android:id="@+id/fragment_about_menu_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Main menu"/>
 
-        </LinearLayout>
-
+     </LinearLayout>
 </FrameLayout>

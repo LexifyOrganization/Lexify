@@ -9,14 +9,13 @@ import android.os.Bundle;
 
 import parisnanterre.fr.lexify.R;
 
-public class AboutGameActivity extends Activity implements VerbalGameFragment.OnFragmentInteractionListener,
-        VerbalGameSigningFragment.OnFragmentInteractionListener,
-        VerbalGameResultsFragment.OnFragmentInteractionListener {
+public class AboutGameActivity extends Activity implements AboutGameFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_game);
+
         Fragment reglesGameFragment = new AboutGameFragment();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

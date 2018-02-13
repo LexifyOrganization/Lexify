@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".connection.SignInActivity" />
         <activity android:name=".connection.SignUpActivity" />
-        <activity android:name=".application.VerbalGameActivity"></activity>
+        <activity android:name=".application.VerbalGameActivity" />
+        <activity android:name=".application.AboutGameActivity"></activity>
     </application>
 
 </manifest>

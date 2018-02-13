@@ -13,7 +13,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import parisnanterre.fr.lexify.R;
-import parisnanterre.fr.lexify.connection.SignInActivity;
 
 /**
  * A simple {@link Fragment} subclass.

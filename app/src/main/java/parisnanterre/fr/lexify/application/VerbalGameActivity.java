@@ -2,21 +2,12 @@ package parisnanterre.fr.lexify.application;
 
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.content.Context;
-import android.content.Intent;
 import android.app.Fragment;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.FragmentTransaction;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import parisnanterre.fr.lexify.R;
-import parisnanterre.fr.lexify.word.DatabaseWord;
-import parisnanterre.fr.lexify.word.Word;
 
 public class VerbalGameActivity extends Activity
                                 implements VerbalGameFragment.OnFragmentInteractionListener,

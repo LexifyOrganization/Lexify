@@ -68,6 +68,16 @@ public class DatabaseWord extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
+    public boolean isPresent(Word w) {
+        List<Word> words = this.getAllWords();
+        for(Word word : words) {
+            if(word.getWord().equals(w.getWord()))
+                return true;
+        }
+
+        return false;
+    }
+
     public List<Word> getAllWords() {
         List<Word> wordList = new ArrayList<Word>();
         // Select All Query

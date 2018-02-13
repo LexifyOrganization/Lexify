@@ -1,0 +1,36 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_verbal_game_signing_fragment"
+    android:clickable="true"
+    tools:context="parisnanterre.fr.lexify.application.VerbalGameSigningFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_verbal_game_signing_playerturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/fragment_verbal_game_signing_rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:text="Take the phone and try to guess the word to your partner only by using one word at a time !\nCorrect proposition : +1 point\nFalse proposition : -1 point\nPass : -5 points \n\n\nClick on the screen to start the game !" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

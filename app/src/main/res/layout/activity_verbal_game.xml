@@ -1,47 +1,15 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/activity_verbal_game_txt_manche"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/activity_verbal_game_txt_word"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/activity_verbal_game_txt_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="" />
-
-    <Button
-        android:id="@+id/activity_verbal_game_btn_true"
+    <FrameLayout
+        android:id="@+id/activity_verbal_game_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="True" />
-
-    <Button
-        android:id="@+id/activity_verbal_game_btn_false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="False" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
 
+    </FrameLayout>
 
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

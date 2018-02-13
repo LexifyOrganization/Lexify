@@ -1,0 +1,159 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="parisnanterre.fr.lexify.application.VerbalGameResultsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum = "3">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_weight = "1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/fragment_verbal_game_results_congrats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="It's Finished ! You made a total score of :"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_verbal_game_results_score"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/fragment_verbal_game_results_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:text=""
+            app:layout_constraintTop_toBottomOf="@+id/fragment_verbal_game_results_congrats"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_verbal_game_results_table"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TableLayout
+            android:id="@+id/fragment_verbal_game_results_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_verbal_game_results_score"
+            app:layout_constraintVertical_chainStyle="packed"
+            >
+
+            <TableRow
+                android:layout_gravity="center_horizontal"
+                android:weightSum = "2"
+                >
+                <TextView
+                    android:text="Name"
+                    android:gravity="right"
+                    android:background="@drawable/cell_shape"
+                    android:layout_weight = "1"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="Found word"
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="Pass word"
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_gravity="center_horizontal"
+                android:weightSum = "2"
+                android:id="@+id/fragment_verbal_game_results_player1"
+                >
+                <TextView
+                    android:text="aaaa"
+                    android:gravity="right"
+                    android:background="@drawable/cell_shape"
+                    android:layout_weight = "1"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="aaaa"
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+
+                <TextView
+                    android:text="aaaa"
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_gravity="center_horizontal"
+                android:weightSum = "2"
+                android:id="@+id/fragment_verbal_game_results_player2"
+                >
+                <TextView
+                    android:text="aaaa"
+                    android:gravity="right"
+                    android:background="@drawable/cell_shape"
+                    android:layout_weight = "1"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="aaaa"
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+
+                <TextView
+                    android:text="aaaa"
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+            </TableRow>
+
+        </TableLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight = "2"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:weightSum = "2">
+
+
+        <Button
+            android:id="@+id/fragment_verbal_game_results_btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight = "1"
+            android:text="Retry" />
+
+        <Button
+            android:id="@+id/fragment_verbal_game_results_btn_menu"
+            android:layout_gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight = "1"
+            android:text="Main menu" />
+    </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

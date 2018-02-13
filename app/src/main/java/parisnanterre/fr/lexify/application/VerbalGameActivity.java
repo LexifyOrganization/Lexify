@@ -1,9 +1,14 @@
 package parisnanterre.fr.lexify.application;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.app.Fragment;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,10 +18,17 @@ import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
-public class VerbalGameActivity extends AppCompatActivity {
+public class VerbalGameActivity extends Activity
+                                implements VerbalGameFragment.OnFragmentInteractionListener,
+                                           VerbalGameSigningFragment.OnFragmentInteractionListener,
+                                           VerbalGameResultsFragment.OnFragmentInteractionListener{
 
-    public int cpt = 1;
+
     public int score = 10;
+    public boolean lastround = false;
+    public Player player1;
+    public Player player2;
+
 
 
     @Override
@@ -24,80 +36,42 @@ public class VerbalGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verbal_game);
 
-        final DatabaseWord db = new DatabaseWord(getApplicationContext());
+        player1 = new Player("Player 1");
+        player2 = new Player("Player 2");
 
-        //final Button btn_play_game = (Button) findViewById(R.id.activity_verbal_game_btn_round);
-        final Button btn_true = (Button) findViewById(R.id.activity_verbal_game_btn_true);
-        final Button btn_false = (Button) findViewById(R.id.activity_verbal_game_btn_false);
-        //final Button btn_pass = (Button) findViewById(R.id.activity_verbal_game_btn_pass);
-        final TextView txt_nbmanche = (TextView) findViewById(R.id.activity_verbal_game_txt_manche);
-        final TextView txt_word = (TextView) findViewById(R.id.activity_verbal_game_txt_word);
-        final TextView txt_score = (TextView) findViewById(R.id.activity_verbal_game_txt_score);
+        player1.setCurrentPlayer(true);
 
-        txt_nbmanche.setText("Round 1");
-        txt_score.setText("Score :" + score);
-        txt_word.setText(db.getRandomWord().getWord());
+        Fragment signingGame = new VerbalGameSigningFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.activity_verbal_game_fragment, signingGame ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
 
 
-        /*btn_pass.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                //plus tard
-
-            }
-        });*/
-
-        btn_false.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                score--;
-                txt_score.setText("Score :" + score);
-
-            }
-        });
+    }
 
 
-        btn_true.setOnClickListener(new View.OnClickListener() {
+    public Player getCurrentPlayer() {
+        if(player1.isCurrentPlayer())
+            return player1;
+        else
+            return player2;
+    }
 
-            @Override
-            public void onClick(View v) {
+    public void changeCurrentPlayer() {
+        if(player1.isCurrentPlayer()) {
+            player1.setCurrentPlayer(false);
+            player2.setCurrentPlayer(true);
+        }
+        else {
+            player1.setCurrentPlayer(true);
+            player2.setCurrentPlayer(false);
+        }
+    }
 
-                if(btn_true.getText().toString().equals("Finish game"))
-                {
-
-                    Context context = getApplicationContext();
-                    CharSequence text = "Finished ! Final score : " + score;
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-
-                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(i);
-                }
-                else {
-                    cpt++;
-
-                    score++;
-                    txt_score.setText("Score :" + score);
-
-                    Word random = db.getRandomWord();
-                    txt_word.setText(random.getWord());
-                    txt_nbmanche.setText("Round " + cpt);
-
-                    if(cpt==4)
-                        btn_true.setText("Finish game");
-                }
-
-
-            }
-        });
-
-
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }

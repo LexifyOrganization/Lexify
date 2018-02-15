@@ -45,7 +45,6 @@ public class SignInActivity extends Activity {
         setContentView(R.layout.activity_signin);
 
         btn_signin = (Button) findViewById(R.id.signin_btn_login);
-        btn_playnoaccount = (Button) findViewById(R.id.signin_btn_playnoaccount);
         btn_signup = (Button) findViewById(R.id.signin_btn_signup);
 
         edt_pseudo = (EditText) findViewById(R.id.signin_edt_name);
@@ -59,16 +58,6 @@ public class SignInActivity extends Activity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(getApplicationContext(),SignUpActivity.class);
-                startActivity(i);
-            }
-        });
-
-        btn_playnoaccount.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(),VerbalGameActivity.class);
                 startActivity(i);
             }
         });

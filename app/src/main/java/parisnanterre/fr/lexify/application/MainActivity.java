@@ -53,6 +53,10 @@ public class MainActivity extends Activity {
 
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
+        Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
+
+        //compte encore inutile, changer cette ligne plus tard
+        btn_account.setVisibility(View.GONE);
 
        /* Bundle b = this.getIntent().getExtras();
         if (b != null)
@@ -91,11 +95,23 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                if(currentUser!=null) {
-                    //go pour le jeu
 
-                    Intent i = new Intent(getApplicationContext(),VerbalGameActivity.class);
-                    startActivity(i);
+                Intent i = new Intent(getApplicationContext(),VerbalGameActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        btn_account.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                if(currentUser!=null) {
+
+                    //lancer activité du compte du joueur ici
+
 
                 }else {
                     Intent i = new Intent(getApplicationContext(),SignInActivity.class);
@@ -104,6 +120,10 @@ public class MainActivity extends Activity {
 
             }
         });
+
+
+
+
 
         btn_disconnect.setOnClickListener(new View.OnClickListener() {
 

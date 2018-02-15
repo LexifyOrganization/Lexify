@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,7 +75,7 @@ public class VerbalGameSigningFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_verbal_game_signing, container, false);
 
         final TextView txt_turn = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_playerturn);
-        final TextView txt_rules = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_rules);
+        //final TextView txt_rules = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_rules);
         FrameLayout frm_game = (FrameLayout) view.findViewById(R.id.fragment_verbal_game_signing_fragment);
         final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
 
@@ -87,7 +88,12 @@ public class VerbalGameSigningFragment extends Fragment {
         });
 
 
-        Player player = gameActivity.getCurrentPlayer();
+        Player player = null;
+        try {
+            player = gameActivity.getCurrentPlayer();
+        } catch (noCurrentPlayerException e) {
+            e.printStackTrace();
+        }
 
         txt_turn.setText(player.getName() + " it's your turn !");
         //txt_rules.setText("Take the phone and try to guess the word to your partner only by using one word at a time !\nClick on the screen to start the game");

@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
@@ -34,9 +35,10 @@ public class VerbalGameFragment extends Fragment {
     private static final String ARG_SCORE = "score";
 
     // TODO: Rename and change types of parameters
-    public int score;
-    public int cpt = 1;
-    public boolean lastround;
+    private int score;
+    private int cpt = 1;
+    private Player player;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -70,9 +72,13 @@ public class VerbalGameFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_verbal_game, container, false);
 
         final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
-        score = gameActivity.score;
-        lastround = gameActivity.lastround;
-        final Player player = gameActivity.getCurrentPlayer();
+        score = gameActivity.getScore();
+
+        try {
+            player = gameActivity.getCurrentPlayer();
+        } catch (noCurrentPlayerException e) {
+            e.printStackTrace();
+        }
 
         final DatabaseWord db = new DatabaseWord(view.getContext());
 
@@ -99,12 +105,16 @@ public class VerbalGameFragment extends Fragment {
                 if(cpt==4) {
                     score = score -5;
 
-                    if(lastround){gameActivity.score = score; gameActivity.setFragment(new VerbalGameResultsFragment());}
+                    if(gameActivity.isLastRound()){gameActivity.setScore(score); gameActivity.setFragment(new VerbalGameResultsFragment());}
                     else {
-                        gameActivity.changeCurrentPlayer();
+                        try {
+                            gameActivity.changeCurrentPlayer();
+                        } catch (noCurrentPlayerException e) {
+                            e.printStackTrace();
+                        }
                         gameActivity.setFragment(new VerbalGameSigningFragment());
-                        gameActivity.lastround = true;
-                        gameActivity.score = score;
+                        gameActivity.setLastRound(true);
+                        gameActivity.setScore(score);
                     }
                 }
                 else{
@@ -143,15 +153,19 @@ public class VerbalGameFragment extends Fragment {
                 {
                     score++;
 
-                    if(lastround){
-                        gameActivity.score = score;
+                    if(gameActivity.isLastRound()){
+                        gameActivity.setScore(score);
                         gameActivity.setFragment(new VerbalGameResultsFragment());
                     }
                     else {
-                        gameActivity.changeCurrentPlayer();
+                        try {
+                            gameActivity.changeCurrentPlayer();
+                        } catch (noCurrentPlayerException e) {
+                            e.printStackTrace();
+                        }
                         gameActivity.setFragment(new VerbalGameSigningFragment());
-                        gameActivity.lastround = true;
-                        gameActivity.score = score;
+                        gameActivity.setLastRound(true);
+                        gameActivity.setScore(score);
                     }
 
                 }

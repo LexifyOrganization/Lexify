@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.app.FragmentTransaction;
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 
 public class VerbalGameActivity extends Activity
                                 implements VerbalGameFragment.OnFragmentInteractionListener,
@@ -15,10 +16,10 @@ public class VerbalGameActivity extends Activity
                                            VerbalGameResultsFragment.OnFragmentInteractionListener{
 
 
-    public int score = 10;
-    public boolean lastround = false;
-    public Player player1;
-    public Player player2;
+    private int score = 10;
+    private boolean lastround = false;
+    private Player player1;
+    private Player player2;
 
 
 
@@ -48,22 +49,60 @@ public class VerbalGameActivity extends Activity
 
     }
 
-    public Player getCurrentPlayer() {
+    public Player getCurrentPlayer() throws noCurrentPlayerException {
         if(player1.isCurrentPlayer())
             return player1;
-        else
+        else if(player2.isCurrentPlayer())
             return player2;
+        else
+            throw new noCurrentPlayerException();
+
     }
 
-    public void changeCurrentPlayer() {
+    public void changeCurrentPlayer() throws noCurrentPlayerException {
         if(player1.isCurrentPlayer()) {
             player1.setCurrentPlayer(false);
             player2.setCurrentPlayer(true);
         }
-        else {
+        else if(player2.isCurrentPlayer()){
             player1.setCurrentPlayer(true);
             player2.setCurrentPlayer(false);
         }
+        else {
+            throw new noCurrentPlayerException();
+        }
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public boolean isLastRound() {
+        return lastround;
+    }
+
+    public void setLastRound(boolean lastround) {
+        this.lastround = lastround;
+    }
+
+    public void setPlayer1(Player player1) {
+        this.player1 = player1;
+    }
+
+    public void setPlayer2(Player player2) {
+        this.player2 = player2;
     }
 
     @Override

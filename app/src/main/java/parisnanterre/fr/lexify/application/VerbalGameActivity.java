@@ -32,16 +32,21 @@ public class VerbalGameActivity extends Activity
 
         player1.setCurrentPlayer(true);
 
-        Fragment signingGame = new VerbalGameSigningFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.activity_verbal_game_fragment, signingGame ); // give your fragment container id in first parameter
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
+        setFragment(new VerbalGameSigningFragment());
 
 
     }
 
+
+    public void setFragment(Fragment f) {
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.activity_verbal_game_fragment, f ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+
+    }
 
     public Player getCurrentPlayer() {
         if(player1.isCurrentPlayer())

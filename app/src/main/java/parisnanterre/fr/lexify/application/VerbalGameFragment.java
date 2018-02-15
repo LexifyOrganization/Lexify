@@ -99,10 +99,10 @@ public class VerbalGameFragment extends Fragment {
                 if(cpt==4) {
                     score = score -5;
 
-                    if(lastround){gameActivity.score = score; finishGame();}
+                    if(lastround){gameActivity.score = score; gameActivity.setFragment(new VerbalGameResultsFragment());}
                     else {
                         gameActivity.changeCurrentPlayer();
-                        newRound();
+                        gameActivity.setFragment(new VerbalGameSigningFragment());
                         gameActivity.lastround = true;
                         gameActivity.score = score;
                     }
@@ -145,11 +145,11 @@ public class VerbalGameFragment extends Fragment {
 
                     if(lastround){
                         gameActivity.score = score;
-                        finishGame();
+                        gameActivity.setFragment(new VerbalGameResultsFragment());
                     }
                     else {
                         gameActivity.changeCurrentPlayer();
-                        newRound();
+                        gameActivity.setFragment(new VerbalGameSigningFragment());
                         gameActivity.lastround = true;
                         gameActivity.score = score;
                     }
@@ -177,26 +177,6 @@ public class VerbalGameFragment extends Fragment {
         return view;
     }
 
-    private void finishGame() {
-
-        Fragment fragment = new VerbalGameResultsFragment();
-        FragmentManager fragmentManager = getActivity().getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.activity_verbal_game_fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-
-    }
-
-    public void newRound() {
-
-        Fragment fragment = new VerbalGameSigningFragment();
-        FragmentManager fragmentManager = getActivity().getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.activity_verbal_game_fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

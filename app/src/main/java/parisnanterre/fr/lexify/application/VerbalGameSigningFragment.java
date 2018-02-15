@@ -76,21 +76,17 @@ public class VerbalGameSigningFragment extends Fragment {
         final TextView txt_turn = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_playerturn);
         final TextView txt_rules = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_rules);
         FrameLayout frm_game = (FrameLayout) view.findViewById(R.id.fragment_verbal_game_signing_fragment);
+        final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
 
 
         frm_game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new VerbalGameFragment();
-                FragmentManager fragmentManager = getActivity().getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.activity_verbal_game_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+            gameActivity.setFragment(new VerbalGameFragment());
             }
         });
 
-        VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
+
         Player player = gameActivity.getCurrentPlayer();
 
         txt_turn.setText(player.getName() + " it's your turn !");

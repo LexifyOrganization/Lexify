@@ -33,7 +33,12 @@
         android:layout_gravity="center"
         android:text="play the game" />
 
-
+    <Button
+        android:id="@+id/activity_main_btn_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="My Account" />
 
 
 </LinearLayout>

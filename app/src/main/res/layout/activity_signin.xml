@@ -93,10 +93,5 @@
 
         </LinearLayout>
 
-    <Button
-        android:id="@+id/signin_btn_playnoaccount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Play without account" />
 
 </LinearLayout>

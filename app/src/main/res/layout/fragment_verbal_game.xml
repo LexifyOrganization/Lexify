@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_verbal_game_fragment"
-    tools:context="parisnanterre.fr.lexify.application.VerbalGameFragment">
+    tools:context="parisnanterre.fr.lexify.application.VerbalGameFragment"
+    android:background="@color/backgroundBlue">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,45 +15,80 @@
 
         <TextView
             android:id="@+id/fragment_verbal_game_txt_manche"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/btnColor"
             android:gravity="center"
-            android:text="" />
+            android:text=""
+            android:textAlignment="center"
+            android:textAppearance="@style/RoundNumberStyle" />
+
+        <TextView
+            android:id="@+id/fragment_verbal_game_txt_yourTurn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Your turn, make your team mate guess this word !"
+            android:textAlignment="center"
+            android:textAppearance="@style/YourTurnStyle" />
+
 
         <TextView
             android:id="@+id/fragment_verbal_game_txt_word"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
             android:gravity="center"
-            android:text="" />
+            android:text="cc"
+            android:textAppearance="@style/WordToGuessStyle"/>
+
 
         <TextView
             android:id="@+id/fragment_verbal_game_txt_score"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:layout_marginBottom="50dp"
             android:gravity="center"
-            android:text="" />
+            android:text="cc"
+            android:textAppearance="@style/ScoreInGameStyle" />
 
-        <Button
-            android:id="@+id/fragment_verbal_game_btn_true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="True" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/fragment_verbal_game_btn_false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="False" />
+            <Button
+                android:id="@+id/fragment_verbal_game_btn_true"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/roundedbutton_true"
+                android:drawableTop="@drawable/true_icon"
+                android:padding="16dp"
+                android:text="True !\n+1" />
+
+            <Button
+                android:id="@+id/fragment_verbal_game_btn_false"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/roundedbutton_false"
+                android:drawableTop="@drawable/false_icon"
+                android:padding="16dp"
+                android:text="False !\n-1"
+                />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/fragment_verbal_game_btn_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pass" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundedbutton_pass"
+            android:drawableTop="@drawable/pass_icon"
+            android:padding="16dp"
+            android:text="Pass\n-5" />
 
 
     </LinearLayout>

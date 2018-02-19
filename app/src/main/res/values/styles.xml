@@ -1,11 +1,47 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="LexifyTitleStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/lexifyTitleColor</item>
+        <item name="android:textSize">@dimen/lexifyTextSize</item>
+        <item name="android:fontFamily">@font/handfont_bold_italic</item>
+    </style>
+
+    <style name="RoundNumberStyle">
+        <item name="android:textColor">@color/roundNumberColor</item>
+        <item name="android:textSize">@dimen/roundNumberSize</item>
+        <item name="android:fontFamily">@font/handfont_bold</item>
+    </style>
+
+    <style name="YourTurnStyle">
+        <item name="android:textColor">@color/yourTurnStyleColor</item>
+        <item name="android:textSize">@dimen/yourTurnStyleSize</item>
+        <item name="android:fontFamily">@font/handfont_italic</item>
+    </style>
+
+    <style name="WordToGuessStyle">
+        <item name="android:textColor">@color/wordToGuessColor</item>
+        <item name="android:textSize">@dimen/wordToGuessSize</item>
+        <item name="android:fontFamily">@font/handfont_bold</item>
+    </style>
+
+    <style name="ScoreInGameStyle">
+        <item name="android:textColor">@color/scoreInGameColor</item>
+        <item name="android:textSize">@dimen/scoreInGameSize</item>
+        <item name="android:fontFamily">@font/handfont_italic</item>
+    </style>
+
+    <style name="BtnTrueStyle">
+        <item name="android:textColor">@color/scoreInGameColor</item>
+        <item name="android:textSize">@dimen/scoreInGameSize</item>
+        <item name="android:fontFamily">@font/handfont_italic</item>
     </style>
 
 </resources>

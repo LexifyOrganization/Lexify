@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="lexifyTextSize">40dp</dimen>
+    <dimen name="roundNumberSize">16dp</dimen>
+    <dimen name="yourTurnStyleSize">20dp</dimen>
+    <dimen name="wordToGuessSize">50dp</dimen>
+    <dimen name="scoreInGameSize">25dp</dimen>
+</resources>

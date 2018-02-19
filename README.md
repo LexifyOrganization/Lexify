@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/LexifyOrganization/Lexify.svg?branch=master)](https://travis-ci.org/LexifyOrganization/Lexify)
 [![codecov](https://codecov.io/gh/LexifyOrganization/Lexify/branch/master/graph/badge.svg)](https://codecov.io/gh/LexifyOrganization/Lexify)
 [![GitHub issues](https://img.shields.io/github/issues/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/issues)
-[![GitHub version](https://badge.fury.io/gh/LexifyOrganization%2FLexify.svg)](https://badge.fury.io/gh/LexifyOrganization%2FLexify)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7bd2698ab5d54ec19465c4d308b781ff)](https://www.codacy.com/app/nasscott/Lexify?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LexifyOrganization/Lexify&amp;utm_campaign=Badge_Grade)
 [![GitHub license](https://img.shields.io/github/license/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/blob/master/LICENSE)
+[![release](http://github-release-version.herokuapp.com/github/LexifyOrganization/Lexify/release.svg?style=flat)](https://github.com/LexifyOrganization/Lexify/releases/latest)
 
 # Lexify
 

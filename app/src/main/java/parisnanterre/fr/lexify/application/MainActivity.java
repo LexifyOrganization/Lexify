@@ -36,7 +36,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("firstTime", false)) {
             // <---- run your one time code here
@@ -50,8 +49,9 @@ public class MainActivity extends Activity {
         }
 
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
-
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
+        Button btn_play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
+        Button btn_about_game = (Button) findViewById(R.id.activity_main_btn_about_game);
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
         Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
@@ -70,34 +70,26 @@ public class MainActivity extends Activity {
             fileInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
 
-
-        if(currentUser!=null) {
+        if (currentUser != null) {
             txt_welcome.setText("Welcome " + currentUser.get_pseudo() + " !");
             lil_user.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             lil_user.setVisibility(View.GONE);
         }
-
-
-
-        Button play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
         //test
 
-        play_game.setOnClickListener(new View.OnClickListener() {
+        btn_play_game.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
 
-                Intent i = new Intent(getApplicationContext(),VerbalGameActivity.class);
-                startActivity(i);
+                    Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
+                    startActivity(i);
 
             }
         });
@@ -152,6 +144,13 @@ public class MainActivity extends Activity {
             }
         });
 
+        btn_about_game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), AboutGameActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void initializeWordDatabase() {

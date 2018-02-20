@@ -24,15 +24,25 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
 
     <Button
         android:id="@+id/activity_main_btn_play_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:text="play the game" />
 
+
+    <Button
+        android:id="@+id/activity_main_btn_about_game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="about game" />
     <Button
         android:id="@+id/activity_main_btn_account"
         android:layout_width="wrap_content"
@@ -40,5 +50,6 @@
         android:layout_gravity="center"
         android:text="My Account" />
 
+    </LinearLayout>
 
 </LinearLayout>

@@ -82,7 +82,6 @@ public class VerbalGameFragment extends Fragment {
 
         final DatabaseWord db = new DatabaseWord(view.getContext());
 
-        //final Button btn_play_game = (Button) findViewById(R.id.fragment_verbal_game_btn_round);
         final Button btn_true = (Button) view.findViewById(R.id.fragment_verbal_game_btn_true);
         final Button btn_false = (Button) view.findViewById(R.id.fragment_verbal_game_btn_false);
         final Button btn_pass = (Button) view.findViewById(R.id.fragment_verbal_game_btn_pass);

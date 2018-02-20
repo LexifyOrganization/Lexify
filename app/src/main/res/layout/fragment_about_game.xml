@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_about_game_fragment"
+    tools:context="parisnanterre.fr.lexify.application.AboutGameFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_about_main_text_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:textSize="17sp"
+            android:text="Application Lexify About Menu"/>
+
+        <TextView
+            android:id="@+id/fragment_about_affiche_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:text="\nLexify, the mobile game that lexify your vocabulary.\n\nInspired by the game Mot de Passe on France 2, Lexify's goal is either to guess a word or to guess a word.\n\nMail : lexifyapp@gmail.com\n\nAutors: \n\n Nassin Khatir\nLucas Nayet\nNicolas Piot" />
+
+
+    </LinearLayout>
+
+     <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="3"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/fragment_about_regles_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Rules" />
+
+            <Button
+                android:id="@+id/fragment_about_application_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="About"
+                />
+
+            <Button
+                android:id="@+id/fragment_about_menu_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Main menu"/>
+
+     </LinearLayout>
+
+</FrameLayout>

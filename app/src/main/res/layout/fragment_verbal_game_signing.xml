@@ -4,12 +4,14 @@
     android:layout_height="match_parent"
     android:id="@+id/fragment_verbal_game_signing_fragment"
     android:clickable="true"
-    tools:context="parisnanterre.fr.lexify.application.VerbalGameSigningFragment">
+    tools:context="parisnanterre.fr.lexify.application.VerbalGameSigningFragment"
+    android:background="@color/backgroundBlue">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="60dp">
 
         <TextView
             android:id="@+id/fragment_verbal_game_signing_playerturn"
@@ -17,18 +19,67 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="40sp"
-            android:text="" />
+            android:text=""
+            android:textAppearance="@style/VerbalGameSigning"/>
+
+
+        <TextView
+            android:id="@+id/fragment_verbal_game_signing_instructions"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Instructins :\nTake the phone and try to guess the word to your partner only by using one word at a time !"
+            android:textAppearance="@style/VerbalGameInstructions"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            >
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/smartphone_icon"
+                android:layout_marginLeft="30dp"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/arrow_icon"
+                android:layout_marginLeft="40dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/person_icon"
+                    android:layout_marginLeft="40dp"/>
+                <TextView
+                    android:id="@+id/fragment_verbal_game_signing_player"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text=""
+                    android:layout_marginLeft="20dp"
+                    android:textSize="17dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/fragment_verbal_game_signing_rules"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40sp"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="17sp"
-            android:text="Take the phone and try to guess the word to your partner only by using one word at a time !\nCorrect proposition : +1 point\nFalse proposition : -1 point\nPass : -5 points \n\n\nClick on the screen to start the game !" />
+            android:layout_marginTop="20dp"
+            android:text="Correct proposition : +1 point\nFalse proposition : -1 point\nPass : -5 points \n\n\nClick on the screen to start the game !"
+            android:textAppearance="@style/VerbalGameRules"/>
 
     </LinearLayout>
 

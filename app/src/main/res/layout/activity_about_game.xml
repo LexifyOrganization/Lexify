@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="parisnanterre.fr.lexify.application.AboutGameActivity">
+    tools:context="parisnanterre.fr.lexify.application.AboutGameActivity"
+    android:background="@color/backgroundBlue">
 
     <FrameLayout
         android:id="@+id/activity_about_game_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-
-
     </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

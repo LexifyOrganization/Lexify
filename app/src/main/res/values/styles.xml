@@ -1,11 +1,51 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="LexifyTitleStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/lexifyTitleColor</item>
+        <item name="android:textSize">@dimen/lexifyTextSize</item>
+    </style>
+
+    <style name="RoundNumberStyle">
+        <item name="android:textColor">@color/roundNumberColor</item>
+        <item name="android:textSize">@dimen/roundNumberSize</item>
+    </style>
+
+    <style name="YourTurnStyle">
+        <item name="android:textColor">@color/yourTurnStyleColor</item>
+        <item name="android:textSize">@dimen/yourTurnStyleSize</item>
+    </style>
+
+    <style name="WordToGuessStyle">
+        <item name="android:textColor">@color/wordToGuessColor</item>
+        <item name="android:textSize">@dimen/wordToGuessSize</item>
+    </style>
+
+    <style name="ScoreInGameStyle">
+        <item name="android:textColor">@color/scoreInGameColor</item>
+        <item name="android:textSize">@dimen/scoreInGameSize</item>
+    </style>
+
+    <style name="VerbalGameSigning">
+        <item name="android:textColor">@color/verbalGameSigningColor</item>
+        <item name="android:textSize">@dimen/verbalGameSigningSize</item>
+    </style>
+
+    <style name="VerbalGameInstructions">
+        <item name="android:textColor">@color/yourTurnStyleColor</item>
+        <item name="android:textSize">@dimen/yourTurnStyleSize</item>
+    </style>
+
+    <style name="VerbalGameRules">
+        <item name="android:textColor">@color/yourTurnStyleColor</item>
+        <item name="android:textSize">@dimen/yourTurnStyleSize</item>
     </style>
 
 </resources>

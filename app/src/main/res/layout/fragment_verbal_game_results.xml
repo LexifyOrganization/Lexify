@@ -27,27 +27,29 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            android:textSize="17dp"/>
 
         <TextView
             android:id="@+id/fragment_verbal_game_results_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:textSize="20dp"
-            android:text=""
+            android:textSize="60dp"
+            android:textColor="#80deea"
+            android:text="cc"
             app:layout_constraintTop_toBottomOf="@+id/fragment_verbal_game_results_congrats"
             app:layout_constraintBottom_toTopOf="@+id/fragment_verbal_game_results_table"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginBottom="20dp"/>
 
         <TableLayout
             android:id="@+id/fragment_verbal_game_results_table"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -84,19 +86,19 @@
                 android:id="@+id/fragment_verbal_game_results_player1"
                 >
                 <TextView
-                    android:text="aaaa"
+                    android:text=""
                     android:gravity="right"
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
                     android:padding="3dip" />
                 <TextView
-                    android:text="aaaa"
+                    android:text=""
                     android:layout_weight = "1"
                     android:background="@drawable/cell_shape"
                     android:padding="3dip" />
 
                 <TextView
-                    android:text="aaaa"
+                    android:text=""
                     android:layout_weight = "1"
                     android:background="@drawable/cell_shape"
                     android:padding="3dip" />
@@ -109,19 +111,19 @@
                 android:id="@+id/fragment_verbal_game_results_player2"
                 >
                 <TextView
-                    android:text="aaaa"
+                    android:text=""
                     android:gravity="right"
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
                     android:padding="3dip" />
                 <TextView
-                    android:text="aaaa"
+                    android:text=""
                     android:layout_weight = "1"
                     android:background="@drawable/cell_shape"
                     android:padding="3dip" />
 
                 <TextView
-                    android:text="aaaa"
+                    android:text=""
                     android:layout_weight = "1"
                     android:background="@drawable/cell_shape"
                     android:padding="3dip" />
@@ -137,6 +139,7 @@
         android:layout_weight = "2"
         android:layout_gravity="bottom"
         android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
         android:weightSum = "2">
 
 
@@ -146,7 +149,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight = "1"
-            android:text="Retry" />
+            android:text="Retry"
+            android:drawableLeft="@drawable/retry_icon"
+            />
 
         <Button
             android:id="@+id/fragment_verbal_game_results_btn_menu"
@@ -154,7 +159,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight = "1"
-            android:text="Main menu" />
+            android:text="Main menu"
+            android:drawableLeft="@drawable/home_icon"
+            />
     </LinearLayout>
     </LinearLayout>
 </FrameLayout>

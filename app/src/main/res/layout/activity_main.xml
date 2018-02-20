@@ -47,7 +47,6 @@
         android:background="@drawable/buttonshape"
         android:text="new game"
         android:textSize="25dp"
-        android:fontFamily="@font/handfont_bold"
         />
 
 

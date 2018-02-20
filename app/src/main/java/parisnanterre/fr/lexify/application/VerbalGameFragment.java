@@ -119,7 +119,7 @@ public class VerbalGameFragment extends Fragment {
                 else{
                     score= score - 5;
                     cpt++;
-                    txt_score.setText("Score :" + score);
+                    txt_score.setText("Score : " + score);
 
                     Word random = db.getRandomWord();
                     txt_word.setText(random.getWord());

@@ -13,4 +13,6 @@
     <color name="yourTurnStyleColor">#FFFFFF</color>
     <color name="wordToGuessColor">#ffea00</color>
     <color name="scoreInGameColor">#FFFFFF</color>
+    <color name="verbalGameSigningColor">#FFFFFF</color>
+
 </resources>

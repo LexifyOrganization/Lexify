@@ -2,7 +2,8 @@
 <resources>
     <dimen name="lexifyTextSize">40dp</dimen>
     <dimen name="roundNumberSize">16dp</dimen>
-    <dimen name="yourTurnStyleSize">20dp</dimen>
+    <dimen name="yourTurnStyleSize">17dp</dimen>
     <dimen name="wordToGuessSize">50dp</dimen>
     <dimen name="scoreInGameSize">25dp</dimen>
+    <dimen name="verbalGameSigningSize">30dp</dimen>
 </resources>

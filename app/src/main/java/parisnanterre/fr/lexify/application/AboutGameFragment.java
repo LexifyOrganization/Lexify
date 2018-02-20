@@ -81,6 +81,7 @@ public class AboutGameFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about_game, container, false);
         final Button btn_regles = (Button) view.findViewById(R.id.fragment_about_regles_btn);
         final Button btn_menu= (Button) view.findViewById(R.id.fragment_about_menu_btn);
+        final TextView txt_text_main= (TextView) view.findViewById(R.id.fragment_about_main_text_txt);
         final TextView txt_regles = (TextView) view.findViewById(R.id.fragment_about_regles_txt);
         FrameLayout frm_about = (FrameLayout) view.findViewById(R.id.fragment_about_game_fragment);
 
@@ -100,7 +101,7 @@ public class AboutGameFragment extends Fragment {
                 if (rules_actif == false) {
                     rules_actif = true;
                     txt_regles.setText(
-                            "Application Lexify\n\n4 rounds\n2 players\n4 words per game\n" +
+                            "\nRules\n\n4 rounds\n2 players\n4 words per game\n" +
                             "1 word per round\n\n" +
                                     "A player guesses a word to another with 4 indices related to the maximum word.\n\n" +
                                     "Each round, the players change their role.\n\n" +

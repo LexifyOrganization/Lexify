@@ -13,7 +13,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import parisnanterre.fr.lexify.R;
-import parisnanterre.fr.lexify.connection.SignInActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -103,17 +102,17 @@ public class VerbalGameResultsFragment extends Fragment {
 
         final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
 
-        int scr = gameActivity.score;
+        int scr = gameActivity.getScore();
         score.setText(String.valueOf(scr));
 
-        int p1val[] = {gameActivity.player1.getNbWordFound(), gameActivity.player1.getNbWordNotFound()};
-        int p2val[] = {gameActivity.player2.getNbWordFound(), gameActivity.player2.getNbWordNotFound()};
+        int p1val[] = {gameActivity.getPlayer1().getNbWordFound(), gameActivity.getPlayer1().getNbWordNotFound()};
+        int p2val[] = {gameActivity.getPlayer2().getNbWordFound(), gameActivity.getPlayer2().getNbWordNotFound()};
 
         TextView names = (TextView) player1.getChildAt(0);
-        names.setText(gameActivity.player1.getName());
+        names.setText(gameActivity.getPlayer1().getName());
 
         names = (TextView) player2.getChildAt(0);
-        names.setText(gameActivity.player2.getName());
+        names.setText(gameActivity.getPlayer2().getName());
 
         for (int i =0; i<2; i++)  {
             TextView txt = (TextView) player1.getChildAt(i+1);

@@ -1,10 +1,10 @@
 package parisnanterre.fr.lexify.application;
 
-import android.app.Activity;
+
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -13,9 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
@@ -34,9 +35,10 @@ public class VerbalGameFragment extends Fragment {
     private static final String ARG_SCORE = "score";
 
     // TODO: Rename and change types of parameters
-    public int score;
-    public int cpt = 1;
-    public boolean lastround;
+    private int score;
+    private int cpt = 1;
+    private Player player;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -70,9 +72,13 @@ public class VerbalGameFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_verbal_game, container, false);
 
         final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
-        score = gameActivity.score;
-        lastround = gameActivity.lastround;
-        final Player player = gameActivity.getCurrentPlayer();
+        score = gameActivity.getScore();
+
+        try {
+            player = gameActivity.getCurrentPlayer();
+        } catch (noCurrentPlayerException e) {
+            e.printStackTrace();
+        }
 
         final DatabaseWord db = new DatabaseWord(view.getContext());
 
@@ -99,12 +105,16 @@ public class VerbalGameFragment extends Fragment {
                 if(cpt==4) {
                     score = score -5;
 
-                    if(lastround){gameActivity.score = score; finishGame();}
+                    if(gameActivity.isLastRound()){gameActivity.setScore(score); gameActivity.setFragment(new VerbalGameResultsFragment());}
                     else {
-                        gameActivity.changeCurrentPlayer();
-                        newRound();
-                        gameActivity.lastround = true;
-                        gameActivity.score = score;
+                        try {
+                            gameActivity.changeCurrentPlayer();
+                        } catch (noCurrentPlayerException e) {
+                            e.printStackTrace();
+                        }
+                        gameActivity.setFragment(new VerbalGameSigningFragment());
+                        gameActivity.setLastRound(true);
+                        gameActivity.setScore(score);
                     }
                 }
                 else{
@@ -143,15 +153,19 @@ public class VerbalGameFragment extends Fragment {
                 {
                     score++;
 
-                    if(lastround){
-                        gameActivity.score = score;
-                        finishGame();
+                    if(gameActivity.isLastRound()){
+                        gameActivity.setScore(score);
+                        gameActivity.setFragment(new VerbalGameResultsFragment());
                     }
                     else {
-                        gameActivity.changeCurrentPlayer();
-                        newRound();
-                        gameActivity.lastround = true;
-                        gameActivity.score = score;
+                        try {
+                            gameActivity.changeCurrentPlayer();
+                        } catch (noCurrentPlayerException e) {
+                            e.printStackTrace();
+                        }
+                        gameActivity.setFragment(new VerbalGameSigningFragment());
+                        gameActivity.setLastRound(true);
+                        gameActivity.setScore(score);
                     }
 
                 }
@@ -177,26 +191,6 @@ public class VerbalGameFragment extends Fragment {
         return view;
     }
 
-    private void finishGame() {
-
-        Fragment fragment = new VerbalGameResultsFragment();
-        FragmentManager fragmentManager = getActivity().getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.activity_verbal_game_fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-
-    }
-
-    public void newRound() {
-
-        Fragment fragment = new VerbalGameSigningFragment();
-        FragmentManager fragmentManager = getActivity().getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.activity_verbal_game_fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

@@ -1,4 +1,4 @@
-package parisnanterre.fr.lexify.application;
+package parisnanterre.fr.lexify.verbalgame;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -44,7 +44,7 @@ public class VerbalGameActivity extends Activity
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.activity_verbal_game_fragment, f ); // give your fragment container id in first parameter
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        //transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
 
     }
@@ -107,6 +107,17 @@ public class VerbalGameActivity extends Activity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    public void initialize() {
+
+        this.score = 10;
+        this.lastround = false;
+        this.player1 = new Player("Player 1");
+        this.player2 = new Player("Player 2");
+
+        player1.setCurrentPlayer(true);
 
     }
 }

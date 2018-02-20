@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_verbal_game_fragment"
-    tools:context="parisnanterre.fr.lexify.application.VerbalGameFragment"
+    tools:context="parisnanterre.fr.lexify.verbalgame.VerbalGameFragment"
     android:background="@color/backgroundBlue">
 
     <LinearLayout

@@ -3,6 +3,8 @@ package parisnanterre.fr.lexify.application;
 import org.junit.Test;
 
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
+import parisnanterre.fr.lexify.verbalgame.Player;
+import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 
 import static org.junit.Assert.*;
 

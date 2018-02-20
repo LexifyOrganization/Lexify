@@ -1,4 +1,4 @@
-package parisnanterre.fr.lexify.application;
+package parisnanterre.fr.lexify.verbalgame;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.application.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,8 +84,9 @@ public class VerbalGameResultsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getActivity(),VerbalGameActivity.class);
-                startActivity(i);
+                VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
+                gameActivity.initialize();
+                gameActivity.setFragment(new VerbalGameSigningFragment());
 
             }
         });

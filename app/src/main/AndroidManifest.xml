@@ -23,7 +23,7 @@
         <activity android:name=".connection.SignUpActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".application.VerbalGameActivity"
+        <activity android:name=".verbalgame.VerbalGameActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>

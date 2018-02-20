@@ -1,4 +1,4 @@
-package parisnanterre.fr.lexify.application;
+package parisnanterre.fr.lexify.verbalgame;
 
 /**
  * Created by piotn_000 on 10/02/2018.

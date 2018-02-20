@@ -23,6 +23,7 @@ import java.io.PrintWriter;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.database.User;
+import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 

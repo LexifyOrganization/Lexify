@@ -1,4 +1,4 @@
-package parisnanterre.fr.lexify.application;
+package parisnanterre.fr.lexify.verbalgame;
 
 import android.app.FragmentManager;
 import android.content.Context;
@@ -84,12 +84,7 @@ public class VerbalGameSigningFragment extends Fragment {
         frm_game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new VerbalGameFragment();
-                FragmentManager fragmentManager = getActivity().getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.activity_verbal_game_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                gameActivity.setFragment(new VerbalGameFragment());
             }
         });
 

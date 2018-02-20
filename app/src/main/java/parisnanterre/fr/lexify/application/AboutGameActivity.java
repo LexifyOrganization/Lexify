@@ -20,7 +20,7 @@ public class AboutGameActivity extends Activity implements AboutGameFragment.OnF
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.activity_about_game_fragment, reglesGameFragment ); // give your fragment container id in first parameter
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        //transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
 

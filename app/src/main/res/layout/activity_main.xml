@@ -49,12 +49,17 @@
         android:textSize="25dp"
         />
 
-
     <Button
         android:id="@+id/activity_main_btn_about_game"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="about game" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttonshape"
+        android:text="About Game"
+        android:textSize="25dp"
+        />
+
     <Button
         android:id="@+id/activity_main_btn_account"
         android:layout_width="wrap_content"

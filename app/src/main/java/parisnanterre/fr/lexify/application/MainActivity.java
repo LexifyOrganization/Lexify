@@ -87,16 +87,10 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                if (currentUser != null) {
-                    //go pour le jeu
-                    // TODO Auto-generated method stub
 
                     Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
                     startActivity(i);
 
-                } else {
-                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
-                }
             }
         });
 

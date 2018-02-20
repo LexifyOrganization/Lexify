@@ -44,7 +44,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/smartphone_icon"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="30dp"/>
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"

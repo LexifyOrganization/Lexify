@@ -3,7 +3,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/issues)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7bd2698ab5d54ec19465c4d308b781ff)](https://www.codacy.com/app/nasscott/Lexify?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LexifyOrganization/Lexify&amp;utm_campaign=Badge_Grade)
 [![GitHub license](https://img.shields.io/github/license/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/blob/master/LICENSE)
-[![release](http://github-release-version.herokuapp.com/github/LexifyOrganization/Lexify/release.svg?style=flat)](https://github.com/LexifyOrganization/Lexify/releases/latest)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/LexifyOrganization/Lexify.svg?columns=all)](https://waffle.io/LexifyOrganization/Lexify)
 
 # Lexify
 

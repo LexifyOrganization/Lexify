@@ -43,8 +43,6 @@ public class VerbalGameSigningFragment extends Fragment {
     private String mParam2;
     private List<Word> words;
     boolean isChosenWords;
-    final CharSequence[] items = new CharSequence[8];
-    final boolean itemsChecked[] = new boolean[items.length];
 
     private OnFragmentInteractionListener mListener;
 
@@ -141,13 +139,12 @@ public class VerbalGameSigningFragment extends Fragment {
     {
 
 
-
-
+        final CharSequence[] items = new CharSequence[8];
+        final boolean itemsChecked[] = new boolean[items.length];
+        
         for (int i = 0; i<items.length;i++) {
             items[i] = words.get(i).getWord();
         }
-
-
 
 
 
@@ -155,6 +152,8 @@ public class VerbalGameSigningFragment extends Fragment {
         builder.setTitle("Choose 4 words");
 
         builder.setMultiChoiceItems(items, itemsChecked, new DialogInterface.OnMultiChoiceClickListener() {
+
+
 
             int count = 0;
 

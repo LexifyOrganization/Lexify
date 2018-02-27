@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ليكسي فاي</string>
+    <string name="newgame">لعبة جديدة</string>
+    <string name="AboutGame">حول لعبة</string>
+    <string name="MyAccount">حسابي</string>
+    <string name="Instructins">خذ الهاتف وقم باعطاء ايحاء عن الكلمة التي تظهر امامك لشريكك باستخدام كلمة واحدة !</string>
+    <string name="rules">اقتراح صحيح:  +1 نقطة \n اقتراح غلط: -1 نقطة \n باس: -5 نقطة\n\n\n انقر على الشاشة لبدء اللعبة! </string>
+    <string name="aboutrules">
+        "\n \ قواعد اللعبة \n \n4 جولات \n2 من اللاعبين \n4 كلمات لكل لعبة \n"
+                    "كلمة واحدة في الجولة \n\n"
+        "قم باعطاء ايحاء عن الكلمة التي تظهر امامك لشريكك باستخدام كلمة واحدة \n\n"
+      "كل جولة، واللاعبين تغيير دورهم \n\n"
+     "اقتراح صحيح: +1 نقطة \n"
+         "اقتراح خاطئ: -1 نقطة \n"
+         "باس: -5 نقطة \n\ n"
+         "تبدأ اللعبة بنتيجة 10 نقاط"
+    </string>
+    <string name="aboutapplication">
+        "\n نكسي فاي، لعبة الجوال التي تستخدم مفرداتك. \n \n"
+                    "مستوحاة من لعبة كلمة السر على فرنسا 2،"
+"هدف ليكسيفي هو تخمين كلمة أو تخمين كلمة واحدة."
+"\n \n البريد الإلكتروني: lexifyapp@gmail.com \n \n"
+"المؤلفون:\n نسيم خاطر \n لوكا نايت \n نيكولاس بيوت \n هاني عبد الوهاب"
+    </string>
+    <string name="yourturn">دورك، إجعل شريكك يخمن هذه الكلمة!</string>
+    <string name="round">جولة </string>
+    <string name="score">مجموع النقاط</string>
+    <string name="correct">صحيح !\n+1</string>
+    <string name="wrong">خاطئ !\n-1</string>
+    <string name="pass">تجاوز\n-5</string>
+    <string name="resultscongrats">انتهى ! لقد حققت النتيجة الإجمالية:</string>
+    <string name="name">اللاعبين</string>
+    <string name="Foundword">الكلمات الموجودة</string>
+    <string name="Password">كلمات خاطئة</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="Mainmenu">القائمة الرئيسية</string>
+
+
+
+
+
+</resources>

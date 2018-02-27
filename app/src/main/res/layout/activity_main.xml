@@ -39,13 +39,13 @@
         android:textAppearance="@style/LexifyTitleStyle" />
 
     <Button
+        android:text="@string/newgame"
         android:id="@+id/activity_main_btn_play_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonshape"
-        android:text="new game"
         android:textSize="20sp"
         />
 
@@ -62,12 +62,12 @@
 
     <Button
         android:id="@+id/activity_main_btn_about_game"
+        android:text="@string/AboutGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonshape"
-        android:text="About Game"
         android:textSize="20sp"
         />
 
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="My Account" />
+        android:text="@string/MyAccount" />
 
 
 </LinearLayout>

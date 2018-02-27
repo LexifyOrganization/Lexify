@@ -22,7 +22,7 @@
             android:id="@+id/fragment_verbal_game_results_congrats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="It's Finished ! You made a total score of :"
+            android:text="@string/resultscongrats"
             app:layout_constraintBottom_toTopOf="@+id/fragment_verbal_game_results_score"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -62,18 +62,18 @@
                 android:weightSum = "2"
                 >
                 <TextView
-                    android:text="Name"
+                    android:text="@string/name"
                     android:gravity="right"
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
                     android:padding="3dip" />
                 <TextView
-                    android:text="Found word"
+                    android:text="@string/Foundword"
                     android:layout_weight = "1"
                     android:background="@drawable/cell_shape"
                     android:padding="3dip" />
                 <TextView
-                    android:text="Pass word"
+                    android:text="@string/Password"
                     android:layout_weight = "1"
                     android:background="@drawable/cell_shape"
                     android:padding="3dip" />
@@ -167,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight = "1"
-            android:text="Retry"
+            android:text="@string/retry"
             android:drawableLeft="@drawable/retry_icon"
             />
 
@@ -177,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight = "1"
-            android:text="Main menu"
+            android:text="@string/Mainmenu"
             android:drawableLeft="@drawable/home_icon"
             />
     </LinearLayout>

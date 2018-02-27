@@ -79,10 +79,10 @@ public class AboutGameFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about_game, container, false);
-        final Button btn_regles = (Button) view.findViewById(R.id.fragment_about_regles_btn);
-        final Button btn_about_application= (Button) view.findViewById(R.id.fragment_about_application_btn);
-        final Button btn_menu= (Button) view.findViewById(R.id.fragment_about_menu_btn);
-        final TextView txt_about_application = (TextView) view.findViewById(R.id.fragment_about_affiche_txt);
+        final Button btn_regles = view.findViewById(R.id.fragment_about_regles_btn);
+        final Button btn_about_application=  view.findViewById(R.id.fragment_about_application_btn);
+        final Button btn_menu=  view.findViewById(R.id.fragment_about_menu_btn);
+        final TextView txt_about_application =  view.findViewById(R.id.fragment_about_affiche_txt);
 
         btn_menu.setOnClickListener(new View.OnClickListener() {
 
@@ -96,27 +96,14 @@ public class AboutGameFragment extends Fragment {
         btn_regles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    txt_about_application.setText(
-                            "\nRules\n\n4 rounds\n2 players\n4 words per game\n" +
-                                    "1 word per round\n\n" +
-                                    "A player guesses a word to another with 4 indices related to the maximum word.\n\n" +
-                                    "Each round, the players change their role.\n\n" +
-                                    "Correct proposition : +1 point\n" +
-                                    "False proposition : -1 point\n" +
-                                    "Pass : -5 points\n\n" +
-                                    "The game starts with a score of 10 points.");
+                    txt_about_application.setText(getResources().getString(R.string.aboutrules));
                 }
         });
 
         btn_about_application.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    txt_about_application.setText(
-                            "\nLexify, the mobile game that lexify your vocabulary.\n\n" +
-                                    "Inspired by the game Mot de Passe on France 2, " +
-                                    "Lexify's goal is either to guess a word or to guess a word." +
-                                    "\n\nMail : lexifyapp@gmail.com\n\n" +
-                                    "Autors: \n\n Nassin Khatir\nLucas Nayet\nNicolas Piot");
+                    txt_about_application.setText(getResources().getString(R.string.aboutapplication));
             }
         });
 

@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
-import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
 /**
@@ -78,7 +77,6 @@ public class VerbalGameFragment extends Fragment {
             e.printStackTrace();
         }
 
-        final DatabaseWord db = new DatabaseWord(view.getContext());
 
         final Button btn_true = (Button) view.findViewById(R.id.fragment_verbal_game_btn_true);
         final Button btn_false = (Button) view.findViewById(R.id.fragment_verbal_game_btn_false);
@@ -89,7 +87,7 @@ public class VerbalGameFragment extends Fragment {
 
         txt_nbmanche.setText("Round 1/4");
         txt_score.setText("Score :" + score);
-        txt_word.setText(db.getRandomWord().getWord());
+        txt_word.setText(gameActivity.getWords().get(0).getWord());
 
 
         btn_pass.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +117,7 @@ public class VerbalGameFragment extends Fragment {
                     cpt++;
                     txt_score.setText("Score : " + score);
 
-                    Word random = db.getRandomWord();
+                    Word random = gameActivity.getWords().get(cpt-1);
                     txt_word.setText(random.getWord());
                     txt_nbmanche.setText("Round " + cpt +"/4");
                 }
@@ -172,7 +170,7 @@ public class VerbalGameFragment extends Fragment {
                     score++;
                     txt_score.setText("Score :" + score);
 
-                    Word random = db.getRandomWord();
+                    Word random = gameActivity.getWords().get(cpt-1);
                     txt_word.setText(random.getWord());
                     txt_nbmanche.setText("Round " + cpt +"/4");
 

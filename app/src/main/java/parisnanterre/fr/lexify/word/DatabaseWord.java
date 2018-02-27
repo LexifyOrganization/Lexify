@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -121,6 +122,24 @@ public class DatabaseWord extends SQLiteOpenHelper {
         db.delete(TABLE_WORDS, KEY_ID + " = ?",
                 new String[] { String.valueOf(word.getId()) });
         db.close();
+    }
+
+    public List<Word> getNRandomWords(int n) {
+        List<Word> words = getAllWords();
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i=1; i<533; i++) {
+            list.add(new Integer(i));
+        }
+        Collections.shuffle(list);
+
+        List<Word> nWords = new ArrayList<Word>();
+        for(int i = 0; i<n;i++) {
+            nWords.add(words.get(list.get(i)));
+        }
+
+        return nWords;
+
     }
 
     public Word getRandomWord() {

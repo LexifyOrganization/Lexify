@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">ليكسي فاي</string>
     <string name="newgame">لعبة جديدة</string>
-    <string name="options">إعدادات</string>
-    <string name="Languages"> اللغات </string>
-    <string name="changelanguages">  تغيير اللغة</string>
     <string name="AboutGame">حول لعبة</string>
     <string name="MyAccount">حسابي</string>
     <string name="Instructins">خذ الهاتف وقم باعطاء ايحاء عن الكلمة التي تظهر امامك لشريكك باستخدام كلمة واحدة !</string>

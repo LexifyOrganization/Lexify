@@ -7,8 +7,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.FragmentTransaction;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
+import parisnanterre.fr.lexify.word.DatabaseWord;
+import parisnanterre.fr.lexify.word.Word;
 
 public class VerbalGameActivity extends Activity
                                 implements VerbalGameFragment.OnFragmentInteractionListener,
@@ -20,6 +26,8 @@ public class VerbalGameActivity extends Activity
     private boolean lastround = false;
     private Player player1;
     private Player player2;
+    private List<Word> words;
+    private DatabaseWord db;
 
 
 
@@ -31,7 +39,11 @@ public class VerbalGameActivity extends Activity
         player1 = new Player("Player 1");
         player2 = new Player("Player 2");
 
+        db = new DatabaseWord(getApplicationContext());
+        words = new ArrayList<Word>();
+
         player1.setCurrentPlayer(true);
+        words.clear();
 
         setFragment(new VerbalGameSigningFragment());
 
@@ -110,12 +122,39 @@ public class VerbalGameActivity extends Activity
 
     }
 
+    public void cleanWords() {
+        this.words.clear();
+    }
+
+    public List<Word> getEightRandomWords() {
+
+        return db.getNRandomWords(8);
+    }
+
+
+    public void addWord(Word w) {
+        words.add(w);
+    }
+
+    public List<Word> getWords() {
+        return words;
+    }
+
+    public void initializeWords() {
+
+        this.words.clear();
+
+        this.words = db.getNRandomWords(4);
+
+    }
+
     public void initialize() {
 
         this.score = 10;
         this.lastround = false;
         this.player1 = new Player("Player 1");
         this.player2 = new Player("Player 2");
+        words.clear();
 
         player1.setCurrentPlayer(true);
 

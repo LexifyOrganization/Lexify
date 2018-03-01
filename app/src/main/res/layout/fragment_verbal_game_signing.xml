@@ -81,6 +81,29 @@
             android:text="Correct proposition : +1 point\nFalse proposition : -1 point\nPass : -5 points \n\n\nClick on the screen to start the game !"
             android:textAppearance="@style/VerbalGameRules"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+
+        <Button
+            android:id="@+id/fragment_verbal_game_signing_btn_change_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change players names" />
+
+        <Button
+            android:id="@+id/fragment_verbal_game_signing_btn_choose_words"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose words" />
+
+    </LinearLayout>
+
+
     </LinearLayout>
 
 

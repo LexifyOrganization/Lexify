@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
-import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
 /**
@@ -36,6 +36,11 @@ public class VerbalGameFragment extends Fragment {
     private int score;
     private int cpt = 1;
     private Player player;
+
+    TextView txt_nbmanche;
+    TextView txt_word;
+    TextView txt_score;
+    VerbalGameActivity gameActivity;
 
 
     private OnFragmentInteractionListener mListener;
@@ -69,7 +74,7 @@ public class VerbalGameFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_verbal_game, container, false);
 
-        final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
+        gameActivity = (VerbalGameActivity) getActivity();
         score = gameActivity.getScore();
 
         try {
@@ -78,18 +83,17 @@ public class VerbalGameFragment extends Fragment {
             e.printStackTrace();
         }
 
-        final DatabaseWord db = new DatabaseWord(view.getContext());
 
         final Button btn_true = (Button) view.findViewById(R.id.fragment_verbal_game_btn_true);
         final Button btn_false = (Button) view.findViewById(R.id.fragment_verbal_game_btn_false);
         final Button btn_pass = (Button) view.findViewById(R.id.fragment_verbal_game_btn_pass);
-        final TextView txt_nbmanche = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_manche);
-        final TextView txt_word = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_word);
-        final TextView txt_score = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_score);
+        txt_nbmanche = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_manche);
+        txt_word = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_word);
+        txt_score = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_score);
 
         txt_nbmanche.setText("Round 1/4");
         txt_score.setText("Score :" + score);
-        txt_word.setText(db.getRandomWord().getWord());
+        txt_word.setText(gameActivity.getWords().get(0).getWord());
 
 
         btn_pass.setOnClickListener(new View.OnClickListener() {
@@ -115,13 +119,9 @@ public class VerbalGameFragment extends Fragment {
                     }
                 }
                 else{
-                    score= score - 5;
-                    cpt++;
-                    txt_score.setText("Score : " + score);
 
-                    Word random = db.getRandomWord();
-                    txt_word.setText(random.getWord());
-                    txt_nbmanche.setText("Round " + cpt +"/4");
+                    changeWord(PassingType.PASS);
+
                 }
 
             }
@@ -167,15 +167,8 @@ public class VerbalGameFragment extends Fragment {
 
                 }
                 else {
-                    cpt++;
 
-                    score++;
-                    txt_score.setText("Score :" + score);
-
-                    Word random = db.getRandomWord();
-                    txt_word.setText(random.getWord());
-                    txt_nbmanche.setText("Round " + cpt +"/4");
-
+                    changeWord(PassingType.TRUE);
 
                 }
 
@@ -188,6 +181,26 @@ public class VerbalGameFragment extends Fragment {
         return view;
     }
 
+
+    //fct qui change le mot
+    //parametre type = TRUE ou PASS (voir fichier enum PassingType) TRUE augmente le score et PASS le baisse
+    private void changeWord(PassingType type) {
+        if(type.equals(PassingType.TRUE)) {
+            score++;
+        }
+        else {
+            score = score - 5;
+        }
+
+
+        cpt++;
+        txt_score.setText("Score : " + score);
+
+        Word random = gameActivity.getWords().get(cpt-1);
+        txt_word.setText(random.getWord());
+        txt_nbmanche.setText("Round " + cpt +"/4");
+
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

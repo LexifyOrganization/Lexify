@@ -5,7 +5,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newgame">New game</string>
     <string name="options"> Option </string>
-    <string name="op1"> Change Langueges </string>
+    <string name="op1"> Langueges </string>
+    <string name="Languages"> change the language </string>
     <string name="AboutGame">About Game</string>
     <string name="MyAccount">My Account</string>
     <string name="Instructins">Take the phone and try to guess the word to your partner only by using one word at a time !</string>
@@ -45,6 +46,7 @@
 
 
     <string-array name="languages">
+        <item>choose a language</item>
         <item>English</item>
         <item>French</item>
         <item>Arabic</item>

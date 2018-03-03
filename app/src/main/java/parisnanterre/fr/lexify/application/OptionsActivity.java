@@ -32,7 +32,6 @@ public class OptionsActivity extends Activity {
                 // Dialog
                 final AlertDialog.Builder builder = new AlertDialog.Builder(OptionsActivity.this);
                 final View mview = getLayoutInflater().inflate(R.layout.dialog, null);
-                builder.setTitle("Add items to your shopping list");
 
                 final Spinner sp = (Spinner) mview.findViewById(R.id.spinner);
 
@@ -43,7 +42,7 @@ public class OptionsActivity extends Activity {
                 builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if ( !sp.getSelectedItem().toString().equalsIgnoreCase("choose a category")) {
+                        if ( !sp.getSelectedItem().toString().equalsIgnoreCase("choose a language")) {
                             String text = sp.getSelectedItem().toString();
                             switch (text) {
                                 case "English":
@@ -56,9 +55,9 @@ public class OptionsActivity extends Activity {
                                     LocalHelper.setLocale(OptionsActivity.this,"ar");
                                     break;
                             }
-                            Toast.makeText(OptionsActivity.this, "You choosed"+text, Toast.LENGTH_LONG).show();
+                            Toast.makeText(OptionsActivity.this, "You choosed "+text, Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(OptionsActivity.this, "You didn't choose", Toast.LENGTH_LONG).show();
+                            Toast.makeText(OptionsActivity.this, "You didn't choose a language ", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

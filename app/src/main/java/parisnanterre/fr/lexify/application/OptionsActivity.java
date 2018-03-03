@@ -29,12 +29,7 @@ public class OptionsActivity extends Activity {
             public void onClick(View v) {
                 // Dialog
                 final AlertDialog.Builder builder = new AlertDialog.Builder(OptionsActivity.this);
-<<<<<<< HEAD
-                final View mview = getLayoutInflater().inflate(R.layout.dialog,null);
-=======
                 final View mview = getLayoutInflater().inflate(R.layout.dialog, null);
-                builder.setTitle("Add items to your shopping list");
->>>>>>> Ajouter Option activity + Button pour change la langue
 
                 final Spinner sp = (Spinner) mview.findViewById(R.id.spinner);
 
@@ -45,7 +40,7 @@ public class OptionsActivity extends Activity {
                 builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-<<<<<<< HEAD
+
                         if ( !sp.getSelectedItem().toString().equalsIgnoreCase("choose a language")) {
                             String text = sp.getSelectedItem().toString();
                             switch (text) {
@@ -71,24 +66,32 @@ public class OptionsActivity extends Activity {
                             Toast.makeText(OptionsActivity.this, "You choosed "+text, Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(OptionsActivity.this, "You didn't choose a language ", Toast.LENGTH_LONG).show();
-=======
                         if ( !sp.getSelectedItem().toString().equalsIgnoreCase("choose a category")) {
                         if ( !sp.getSelectedItem().toString().equalsIgnoreCase("choose a language")) {
                             String text = sp.getSelectedItem().toString();
                             switch (text) {
                                 case "English":
-                                    LocalHelper.setLocale(OptionsActivity.this,"en");
+                                    Paper.book().write("language","en");
+                                    updateView("en");
+//                                    updateView((String)Paper.book().read("language"));
+//                                    LocalHelper.setLocale(OptionsActivity.this,"en");
                                     break;
                                 case "French":
-                                    LocalHelper.setLocale(OptionsActivity.this,"fr");
+                                    Paper.book().write("language","fr");
+                                    updateView("fr");
+//                                    updateView((String)Paper.book().read("language"));
+//                                    LocalHelper.setLocale(OptionsActivity.this,"fr");
                                     break;
                                 case "Arabic":
-                                    LocalHelper.setLocale(OptionsActivity.this,"ar");
+                                    Paper.book().write("language","ar");
+                                    updateView("ar");
+//                                    updateView((String)Paper.book().read("language"));
+//                                    LocalHelper.setLocale(OptionsActivity.this,"ar");
                                     break;
                             }
                             Toast.makeText(OptionsActivity.this, "You choosed "+text, Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(OptionsActivity.this, "You didn't choose", Toast.LENGTH_LONG).show();
+                            Toast.makeText(OptionsActivity.this, "You didn't choose a language ", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -103,5 +106,15 @@ public class OptionsActivity extends Activity {
                 dlog.show();
             }
         });
+    }
+    @SuppressWarnings("deprecation")
+    private void updateView(String lang) {
+        Locale mylocale=new Locale(lang);
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        Configuration conf = getResources().getConfiguration();
+        conf.locale=mylocale;
+        getResources().updateConfiguration(conf,dm);
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
     }
 }

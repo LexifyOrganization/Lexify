@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/op1" />
+            android:text="@string/Languages" />
 
         <Button
             android:id="@+id/op2"

@@ -38,5 +38,4 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait"></activity>
     </application>
-
 </manifest>

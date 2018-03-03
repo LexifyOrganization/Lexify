@@ -8,7 +8,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,11 +40,6 @@ import parisnanterre.fr.lexify.word.Word;
 public class MainActivity extends Activity {
 
     User currentUser = null;
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(LocalHelper.onAttach(newBase,"en"));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,17 +180,6 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void updateView(String lang) {
-        Context context=LocalHelper.setLocale(this,lang);
-        Resources resources=context.getResources();
-        // Change locale settings in the app.
-        DisplayMetrics dm = resources.getDisplayMetrics();
-        android.content.res.Configuration conf = resources.getConfiguration();
-        conf.setLocale(new Locale(lang.toLowerCase())); // API 17+ only.
-        // Use conf.locale = new Locale(...) if targeting lower versions
-        resources.updateConfiguration(conf, dm);
-    }
-
     private void initializeWordDatabase() {
 
         BufferedReader reader = null;
@@ -218,9 +201,6 @@ public class MainActivity extends Activity {
             }*/
 
             // do reading, usually loop until end of file reading
-
-
-
 
         } catch (IOException e) {
             //log the exception

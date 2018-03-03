@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lexify</string>
+    <string name="app_name" translatable="false">Lexify</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -9,20 +9,20 @@
     <string name="Instructins">Take the phone and try to guess the word to your partner only by using one word at a time !</string>
     <string name="rules">Correct proposition : +1 point\nFalse proposition : -1 point\nPass : -5 points \n\n\nClick on the screen to start the game !</string>
     <string name="aboutrules">
-        "\nRules\n\n4 rounds\n2 players\n4 words per game\n" +
-        "1 word per round\n\n" +
-        "A player guesses a word to another with 4 indices related to the maximum word.\n\n" +
-        "Each round, the players change their role.\n\n" +
-        "Correct proposition : +1 point\n" +
-        "False proposition : -1 point\n" +
-        "Pass : -5 points\n\n" +
+        "\nRules\n\n4 rounds\n2 players\n4 words per game\n"
+        "1 word per round\n\n"
+        "A player guesses a word to another with 4 indices related to the maximum word.\n\n"
+        "Each round, the players change their role.\n\n"
+        "Correct proposition : +1 point\n"
+        "False proposition : -1 point\n"
+        "Pass : -5 points\n\n"
         "The game starts with a score of 10 points."
     </string>
     <string name="aboutapplication">
-        "\nLexify, the mobile game that lexify your vocabulary.\n\n" +
-        "Inspired by the game Mot de Passe on France 2, " +
-        "Lexify's goal is either to guess a word or to guess a word." +
-        "\n\nMail : lexifyapp@gmail.com\n\n" +
+        "\nLexify, the mobile game that lexify your vocabulary.\n\n"
+        "Inspired by the game Mot de Passe on France 2, "
+        "Lexify's goal is either to guess a word or to guess a word."
+        "\n\nMail : lexifyapp@gmail.com\n\n"
         "Autors: \n\n Nassin Khatir\nLucas Nayet\nNicolas Piot"
     </string>
     <string name="yourturn">Your turn, make your team mate guess this word !</string>
@@ -37,5 +37,15 @@
     <string name="Password">Pass word</string>
     <string name="retry">Retry</string>
     <string name="Mainmenu">Main menu</string>
+    <string name="Selectlanguge">Select languge</string>
+
+
+
+
+    <string-array name="languages">
+        <item>English</item>
+        <item>French</item>
+        <item>Arabic</item>
+    </string-array>
 
 </resources>

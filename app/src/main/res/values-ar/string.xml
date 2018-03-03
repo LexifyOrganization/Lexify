@@ -2,6 +2,7 @@
 <resources>
     <string name="newgame">لعبة جديدة</string>
     <string name="options">إعدادات</string>
+    <string name="Languages"> تغيير اللغة</string>
     <string name="AboutGame">حول لعبة</string>
     <string name="MyAccount">حسابي</string>
     <string name="Instructins">خذ الهاتف وقم باعطاء ايحاء عن الكلمة التي تظهر امامك لشريكك باستخدام كلمة واحدة !</string>

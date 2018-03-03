@@ -73,6 +73,7 @@ public class OptionsActivity extends Activity {
                             Toast.makeText(OptionsActivity.this, "You didn't choose a language ", Toast.LENGTH_LONG).show();
 =======
                         if ( !sp.getSelectedItem().toString().equalsIgnoreCase("choose a category")) {
+                        if ( !sp.getSelectedItem().toString().equalsIgnoreCase("choose a language")) {
                             String text = sp.getSelectedItem().toString();
                             switch (text) {
                                 case "English":
@@ -85,10 +86,9 @@ public class OptionsActivity extends Activity {
                                     LocalHelper.setLocale(OptionsActivity.this,"ar");
                                     break;
                             }
-                            Toast.makeText(OptionsActivity.this, "You choosed"+text, Toast.LENGTH_LONG).show();
+                            Toast.makeText(OptionsActivity.this, "You choosed "+text, Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(OptionsActivity.this, "You didn't choose", Toast.LENGTH_LONG).show();
->>>>>>> Ajouter Option activity + Button pour change la langue
                         }
                     }
                 });
@@ -104,17 +104,4 @@ public class OptionsActivity extends Activity {
             }
         });
     }
-<<<<<<< HEAD
-    @SuppressWarnings("deprecation")
-    private void updateView(String lang) {
-        Locale mylocale=new Locale(lang);
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        Configuration conf = getResources().getConfiguration();
-        conf.locale=mylocale;
-        getResources().updateConfiguration(conf,dm);
-        Intent refresh = new Intent(this, MainActivity.class);
-        startActivity(refresh);
-    }
-=======
->>>>>>> Ajouter Option activity + Button pour change la langue
 }

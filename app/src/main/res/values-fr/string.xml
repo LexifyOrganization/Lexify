@@ -5,6 +5,7 @@
     <string name="newgame">nouveau jeu</string>
     <string name="options">Option</string>
     <string name="AboutGame">À propos du jeu</string>
+    <string name="Languages"> changer la langue </string>
     <string name="MyAccount"> Mon compte</string>
     <string name="Instructins">Prenez le téléphone et essayez de deviner le mot à votre partenaire seulement en utilisant un mot à la fois!</string>
     <string name="rules">Proposition correcte: +1 point \nFalse proposition: -1 point \nPasse: -5 points \n \n \nCliquez sur l'écran pour lancer le jeu!</string>

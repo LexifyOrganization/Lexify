@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Disconnect" />
 
+
     </LinearLayout>
 
 
@@ -69,6 +70,16 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonshape"
         android:textSize="20sp"
+        />
+    <Button
+        android:id="@+id/activity_main_btn_options"
+        android:text="@string/options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttonshape"
+        android:textSize="25dp"
         />
 
     <Button

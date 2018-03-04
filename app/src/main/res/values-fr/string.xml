@@ -39,12 +39,7 @@
     <string name="retry">Recommencez</string>
     <string name="Mainmenu">Menu </string>
 
-    <string-array name="languages">
-        <item>choisissez une langue</item>
-        <item>Anglais</item>
-        <item>Français</item>
-        <item>Arabe</item>
-    </string-array>
+
 
 
 </resources>

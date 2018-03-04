@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -37,7 +38,7 @@ public class OptionsActivity extends Activity {
             public void onClick(View v) {
                 // Dialog
                 final AlertDialog.Builder builder = new AlertDialog.Builder(OptionsActivity.this);
-                final View mview = getLayoutInflater().inflate(R.layout.dialog, null);
+                final View mview = getLayoutInflater().inflate(R.layout.dialog,null);
 
                 final Spinner sp = (Spinner) mview.findViewById(R.id.spinner);
 

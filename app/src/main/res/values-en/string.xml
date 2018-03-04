@@ -40,12 +40,6 @@
     <string name="Mainmenu">Main menu</string>
     <string name="Selectlanguge">Select languge</string>
 
-    <string-array name="languages">
-        <item>choose a language</item>
-        <item>English</item>
-        <item>French</item>
-        <item>Arabic</item>
-    </string-array>
 
 
 

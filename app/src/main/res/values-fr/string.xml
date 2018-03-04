@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="newgame">nouveau jeu</string>
-    <string name="options">Option</string>
-    <string name="AboutGame">À propos du jeu</string>
-    <string name="Languages"> Langues </string>
+    <string name="newgame">Nouvelle partie</string>
+    <string name="options">Options</string>
+    <string name="AboutGame">À propos</string>
+    <string name="Languages">Langues</string>
     <string name="changelanguages"> changer la langue </string>
     <string name="MyAccount"> Mon compte</string>
     <string name="Instructins">Prenez le téléphone et essayez de deviner le mot à votre partenaire seulement en utilisant un mot à la fois!</string>

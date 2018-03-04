@@ -62,8 +62,8 @@
         />
 
     <Button
-        android:id="@+id/activity_main_btn_about_game"
-        android:text="@string/AboutGame"
+        android:id="@+id/activity_main_btn_options"
+        android:text="@string/options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -71,9 +71,10 @@
         android:background="@drawable/buttonshape"
         android:textSize="20sp"
         />
+
     <Button
-        android:id="@+id/activity_main_btn_options"
-        android:text="@string/options"
+        android:id="@+id/activity_main_btn_about_game"
+        android:text="@string/AboutGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

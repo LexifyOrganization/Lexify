@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
@@ -44,6 +45,7 @@ public class VerbalGameFragment extends Fragment {
     TextView txt_time;
     VerbalGameActivity gameActivity;
     CountDownTimer chrono;
+    ProgressBar progressBar;
 
 
     private OnFragmentInteractionListener mListener;
@@ -94,10 +96,14 @@ public class VerbalGameFragment extends Fragment {
         txt_word = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_word);
         txt_score = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_score);
         txt_time = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_chrono);
+        progressBar = (ProgressBar) view.findViewById(R.id.fragment_verbal_game_progressbar);
 
         txt_nbmanche.setText("Round 1/4");
         txt_score.setText("Score :" + score);
         txt_word.setText(gameActivity.getWords().get(0).getWord());
+
+        progressBar.setMax(20);
+        progressBar.setProgress(20);
 
         chrono = initializeTimer();
         chrono.start();
@@ -109,12 +115,11 @@ public class VerbalGameFragment extends Fragment {
 
                 player.incNbPass();
 
-                if(cpt==4) {
-                    score = score -5;
+                if (cpt == 4) {
+                    score = score - 5;
 
                     changeFragment();
-                }
-                else{
+                } else {
 
 
                     changeWord(PassingType.PASS);
@@ -143,14 +148,12 @@ public class VerbalGameFragment extends Fragment {
 
                 player.incFoundWord();
 
-                if(cpt==4)
-                {
+                if (cpt == 4) {
                     score++;
 
                     changeFragment();
 
-                }
-                else {
+                } else {
 
                     changeWord(PassingType.TRUE);
 
@@ -161,7 +164,6 @@ public class VerbalGameFragment extends Fragment {
         });
 
 
-
         return view;
     }
 
@@ -170,22 +172,20 @@ public class VerbalGameFragment extends Fragment {
 
             public void onTick(long millisUntilFinished) {
 
-
-                int va = (int)( (millisUntilFinished%60000)/1000);
-                txt_time.setText(String.format("%02d",va));
+                int progress = (int) (millisUntilFinished / 1000);
+                txt_time.setText(String.valueOf(millisUntilFinished/1000));
+                progressBar.setProgress(progress);
             }
 
             public void onFinish() {
-                txt_time.setText("00");
+                txt_time.setText("Time's up !");
                 player.incNotFoundWord();
-
-                if(cpt!=4)
+                progressBar.setProgress(0);
+                if (cpt != 4)
                     changeWord(PassingType.PASS);
                 else {
-
-
-                    score = score -5;
-                   changeFragment();
+                    score = score - 5;
+                    changeFragment();
                 }
 
             }
@@ -197,11 +197,10 @@ public class VerbalGameFragment extends Fragment {
 
         chrono.cancel();
 
-        if(gameActivity.isLastRound()){
+        if (gameActivity.isLastRound()) {
             gameActivity.setScore(score);
             gameActivity.setFragment(new VerbalGameResultsFragment());
-        }
-        else {
+        } else {
             try {
                 gameActivity.changeCurrentPlayer();
             } catch (noCurrentPlayerException e) {
@@ -213,16 +212,16 @@ public class VerbalGameFragment extends Fragment {
         }
 
     }
+
     //fct qui change le mot
     //parametre type = TRUE ou PASS (voir fichier enum PassingType) TRUE augmente le score et PASS le baisse
     private void changeWord(PassingType type) {
 
         chrono.cancel();
 
-        if(type.equals(PassingType.TRUE)) {
+        if (type.equals(PassingType.TRUE)) {
             score++;
-        }
-        else {
+        } else {
             score = score - 5;
         }
 
@@ -230,11 +229,11 @@ public class VerbalGameFragment extends Fragment {
         cpt++;
         txt_score.setText("Score : " + score);
 
-        Word random = gameActivity.getWords().get(cpt-1);
+        Word random = gameActivity.getWords().get(cpt - 1);
         txt_word.setText(random.getWord());
-        txt_nbmanche.setText("Round " + cpt +"/4");
+        txt_nbmanche.setText("Round " + cpt + "/4");
 
-            chrono.start();
+        chrono.start();
 
     }
 

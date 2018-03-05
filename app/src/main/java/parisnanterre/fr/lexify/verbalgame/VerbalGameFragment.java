@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,9 @@ public class VerbalGameFragment extends Fragment {
     TextView txt_nbmanche;
     TextView txt_word;
     TextView txt_score;
+    TextView txt_time;
     VerbalGameActivity gameActivity;
+    CountDownTimer chrono;
 
 
     private OnFragmentInteractionListener mListener;
@@ -90,35 +93,29 @@ public class VerbalGameFragment extends Fragment {
         txt_nbmanche = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_manche);
         txt_word = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_word);
         txt_score = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_score);
+        txt_time = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_chrono);
 
         txt_nbmanche.setText("Round 1/4");
         txt_score.setText("Score :" + score);
         txt_word.setText(gameActivity.getWords().get(0).getWord());
 
+        chrono = initializeTimer();
+        chrono.start();
 
         btn_pass.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                player.incNotFoundWord();
+                player.incNbPass();
 
                 if(cpt==4) {
                     score = score -5;
 
-                    if(gameActivity.isLastRound()){gameActivity.setScore(score); gameActivity.setFragment(new VerbalGameResultsFragment());}
-                    else {
-                        try {
-                            gameActivity.changeCurrentPlayer();
-                        } catch (noCurrentPlayerException e) {
-                            e.printStackTrace();
-                        }
-                        gameActivity.setFragment(new VerbalGameSigningFragment());
-                        gameActivity.setLastRound(true);
-                        gameActivity.setScore(score);
-                    }
+                    changeFragment();
                 }
                 else{
+
 
                     changeWord(PassingType.PASS);
 
@@ -150,20 +147,7 @@ public class VerbalGameFragment extends Fragment {
                 {
                     score++;
 
-                    if(gameActivity.isLastRound()){
-                        gameActivity.setScore(score);
-                        gameActivity.setFragment(new VerbalGameResultsFragment());
-                    }
-                    else {
-                        try {
-                            gameActivity.changeCurrentPlayer();
-                        } catch (noCurrentPlayerException e) {
-                            e.printStackTrace();
-                        }
-                        gameActivity.setFragment(new VerbalGameSigningFragment());
-                        gameActivity.setLastRound(true);
-                        gameActivity.setScore(score);
-                    }
+                    changeFragment();
 
                 }
                 else {
@@ -181,10 +165,58 @@ public class VerbalGameFragment extends Fragment {
         return view;
     }
 
+    private CountDownTimer initializeTimer() {
+        return new CountDownTimer(21000, 1000) {
 
+            public void onTick(long millisUntilFinished) {
+
+
+                int va = (int)( (millisUntilFinished%60000)/1000);
+                txt_time.setText(String.format("%02d",va));
+            }
+
+            public void onFinish() {
+                txt_time.setText("00");
+                player.incNotFoundWord();
+
+                if(cpt!=4)
+                    changeWord(PassingType.PASS);
+                else {
+                    chrono.cancel();
+
+                    score = score -5;
+                   changeFragment();
+                }
+
+            }
+        };
+    }
+
+
+    private void changeFragment() {
+
+        if(gameActivity.isLastRound()){
+            gameActivity.setScore(score);
+            gameActivity.setFragment(new VerbalGameResultsFragment());
+        }
+        else {
+            try {
+                gameActivity.changeCurrentPlayer();
+            } catch (noCurrentPlayerException e) {
+                e.printStackTrace();
+            }
+            gameActivity.setFragment(new VerbalGameSigningFragment());
+            gameActivity.setLastRound(true);
+            gameActivity.setScore(score);
+        }
+
+    }
     //fct qui change le mot
     //parametre type = TRUE ou PASS (voir fichier enum PassingType) TRUE augmente le score et PASS le baisse
     private void changeWord(PassingType type) {
+
+        chrono.cancel();
+
         if(type.equals(PassingType.TRUE)) {
             score++;
         }
@@ -199,6 +231,8 @@ public class VerbalGameFragment extends Fragment {
         Word random = gameActivity.getWords().get(cpt-1);
         txt_word.setText(random.getWord());
         txt_nbmanche.setText("Round " + cpt +"/4");
+
+            chrono.start();
 
     }
 

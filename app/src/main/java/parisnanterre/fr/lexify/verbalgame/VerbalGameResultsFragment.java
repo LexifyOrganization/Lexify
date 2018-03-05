@@ -107,8 +107,8 @@ public class VerbalGameResultsFragment extends Fragment {
         int scr = gameActivity.getScore();
         score.setText(String.valueOf(scr));
 
-        int p1val[] = {gameActivity.getPlayer1().getNbWordFound(), gameActivity.getPlayer1().getNbWordNotFound()};
-        int p2val[] = {gameActivity.getPlayer2().getNbWordFound(), gameActivity.getPlayer2().getNbWordNotFound()};
+        int p1val[] = {gameActivity.getPlayer1().getNbWordFound(), gameActivity.getPlayer1().getNbPass()};
+        int p2val[] = {gameActivity.getPlayer2().getNbWordFound(), gameActivity.getPlayer2().getNbPass()};
 
         TextView names = (TextView) player1.getChildAt(0);
         names.setText(gameActivity.getPlayer1().getName());

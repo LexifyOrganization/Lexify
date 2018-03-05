@@ -78,6 +78,12 @@
                     android:background="@drawable/cell_shape"
                     android:padding="3dip" />
 
+                <TextView
+                    android:text="Not Found Word"
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+
             </TableRow>
 
             <TableRow
@@ -91,6 +97,12 @@
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
                     android:padding="3dip" />
+                <TextView
+                    android:text=""
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+
                 <TextView
                     android:text=""
                     android:layout_weight = "1"
@@ -116,6 +128,12 @@
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
                     android:padding="3dip" />
+                <TextView
+                    android:text=""
+                    android:layout_weight = "1"
+                    android:background="@drawable/cell_shape"
+                    android:padding="3dip" />
+
                 <TextView
                     android:text=""
                     android:layout_weight = "1"

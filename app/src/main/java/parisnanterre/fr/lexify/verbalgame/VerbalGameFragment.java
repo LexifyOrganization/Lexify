@@ -182,7 +182,7 @@ public class VerbalGameFragment extends Fragment {
                 if(cpt!=4)
                     changeWord(PassingType.PASS);
                 else {
-                    chrono.cancel();
+
 
                     score = score -5;
                    changeFragment();
@@ -194,6 +194,8 @@ public class VerbalGameFragment extends Fragment {
 
 
     private void changeFragment() {
+
+        chrono.cancel();
 
         if(gameActivity.isLastRound()){
             gameActivity.setScore(score);

@@ -17,16 +17,21 @@ public class SettingsActivity extends Activity {
     private Settings settings;
     private Switch chrono_switch;
     Button btn_menu;
+    public static boolean isChronoEnable = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        settings = new Settings();
 
         chrono_switch = (Switch) findViewById(R.id.activity_settings_btn_switch);
         btn_menu = (Button) findViewById(R.id.activity_settings_menu_btn);
+
+        if(isChronoEnable)
+            chrono_switch.setChecked(true);
+        else
+            chrono_switch.setChecked(false);
 
         btn_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,10 +46,10 @@ public class SettingsActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
               if(isChecked){
-                  settings.setChrono_enabled(true);
+                  isChronoEnable = true;
                   chrono_switch.setChecked(true);
               }else {
-                  settings.setChrono_enabled(false);
+                 isChronoEnable = false;
                   chrono_switch.setChecked(false);
               }
             }

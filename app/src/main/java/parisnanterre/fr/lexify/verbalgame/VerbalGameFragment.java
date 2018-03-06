@@ -22,6 +22,7 @@ import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.settings.Settings;
+import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.word.Word;
 
 /**
@@ -107,7 +108,7 @@ public class VerbalGameFragment extends Fragment {
         txt_score.setText("Score :" + score);
         txt_word.setText(gameActivity.getWords().get(0).getWord());
 
-        if(Settings.chrono_enabled){
+        if(SettingsActivity.isChronoEnable){
             layout_chrono.setVisibility(View.VISIBLE);
         }else {
             layout_chrono.setVisibility(View.GONE);

@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.FragmentTransaction;
+import android.os.CountDownTimer;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class VerbalGameActivity extends Activity
     private Player player2;
     private List<Word> words;
     private DatabaseWord db;
+    CountDownTimer chrono;
 
 
 
@@ -48,6 +50,22 @@ public class VerbalGameActivity extends Activity
         setFragment(new VerbalGameSigningFragment());
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(chrono!=null)
+            chrono.cancel();
+
+        finish();
+    }
+
+    public CountDownTimer getChrono() {
+        return chrono;
+    }
+
+    public void setChrono(CountDownTimer chrono) {
+        this.chrono = chrono;
     }
 
 

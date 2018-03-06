@@ -46,7 +46,18 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonshape"
         android:text="new game"
-        android:textSize="25dp"
+        android:textSize="20sp"
+        />
+
+    <Button
+        android:id="@+id/activity_main_btn_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttonshape"
+        android:text="Settings"
+        android:textSize="20sp"
         />
 
     <Button
@@ -57,7 +68,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonshape"
         android:text="About Game"
-        android:textSize="25dp"
+        android:textSize="20sp"
         />
 
     <Button

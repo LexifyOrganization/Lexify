@@ -117,6 +117,7 @@ public class VerbalGameFragment extends Fragment {
         progressBar.setProgress(20);
 
         chrono = initializeTimer();
+        gameActivity.setChrono(chrono);
         chrono.start();
 
         btn_pass.setOnClickListener(new View.OnClickListener() {

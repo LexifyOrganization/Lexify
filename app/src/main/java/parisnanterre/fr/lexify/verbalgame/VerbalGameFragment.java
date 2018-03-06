@@ -107,14 +107,9 @@ public class VerbalGameFragment extends Fragment {
         txt_score.setText("Score :" + score);
         txt_word.setText(gameActivity.getWords().get(0).getWord());
 
-        if(Settings.chrono_enabled){
-            layout_chrono.setVisibility(View.VISIBLE);
-        }else {
-            layout_chrono.setVisibility(View.GONE);
-        }
 
-        progressBar.setMax(20);
-        progressBar.setProgress(20);
+        progressBar.setMax(millisCountDownTimer/1000);
+        progressBar.setProgress(millisCountDownTimer/1000);
 
         chrono = initializeTimer();
         gameActivity.setChrono(chrono);
@@ -179,8 +174,10 @@ public class VerbalGameFragment extends Fragment {
         return view;
     }
 
-    private CountDownTimer initializeTimer() {
-        return new CountDownTimer(21000, 1000) {
+    public static int millisCountDownTimer = 20000;
+
+    public CountDownTimer initializeTimer() {
+        return new CountDownTimer(millisCountDownTimer, 1000) {
 
             public void onTick(long millisUntilFinished) {
 

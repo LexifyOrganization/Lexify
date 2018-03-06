@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="parisnanterre.fr.lexify.settings.SettingsActivity"
+    android:background="@color/backgroundBlue"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/activity_settings_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SETTINGS"
+        android:textAlignment="center"
+        android:textAppearance="@style/LexifyTitleStyle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <Switch
+            android:id="@+id/activity_settings_btn_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chronometer"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/activity_settings_menu_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:text="Main menu" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

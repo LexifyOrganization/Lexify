@@ -11,13 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
+import java.util.Set;
+
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
+import parisnanterre.fr.lexify.settings.Settings;
 import parisnanterre.fr.lexify.word.Word;
 
 /**
@@ -46,7 +50,7 @@ public class VerbalGameFragment extends Fragment {
     VerbalGameActivity gameActivity;
     CountDownTimer chrono;
     ProgressBar progressBar;
-
+    Settings settings;
 
     private OnFragmentInteractionListener mListener;
 
@@ -97,10 +101,17 @@ public class VerbalGameFragment extends Fragment {
         txt_score = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_score);
         txt_time = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_chrono);
         progressBar = (ProgressBar) view.findViewById(R.id.fragment_verbal_game_progressbar);
+        LinearLayout layout_chrono = (LinearLayout) view.findViewById(R.id.fragment_verbal_game_layout_chrono);
 
         txt_nbmanche.setText("Round 1/4");
         txt_score.setText("Score :" + score);
         txt_word.setText(gameActivity.getWords().get(0).getWord());
+
+        if(Settings.chrono_enabled){
+            layout_chrono.setVisibility(View.VISIBLE);
+        }else {
+            layout_chrono.setVisibility(View.GONE);
+        }
 
         progressBar.setMax(20);
         progressBar.setProgress(20);

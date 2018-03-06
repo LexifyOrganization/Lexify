@@ -23,6 +23,7 @@ import java.io.PrintWriter;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.database.User;
+import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
@@ -53,6 +54,7 @@ public class MainActivity extends Activity {
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
         Button btn_play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
         Button btn_about_game = (Button) findViewById(R.id.activity_main_btn_about_game);
+        Button btn_settings = (Button) findViewById(R.id.activity_main_btn_settings);
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
         Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
@@ -115,7 +117,13 @@ public class MainActivity extends Activity {
         });
 
 
-
+        btn_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),SettingsActivity.class);
+                startActivity(i);
+            }
+        });
 
 
         btn_disconnect.setOnClickListener(new View.OnClickListener() {

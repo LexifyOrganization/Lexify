@@ -159,7 +159,7 @@ public class VerbalGameSigningFragment extends Fragment {
                                     } catch (noCurrentPlayerException e) {
                                         e.printStackTrace();
                                     }
-                                    txt_turn.setText(player.getName() + " it's your turn !");
+                                    txt_turn.setText(player.getName() +" "+ getResources().getString(R.string.Itsyourturn));
                                     txt_player.setText(player.getName());
                                     dialog.dismiss();
                                 }
@@ -193,7 +193,7 @@ public class VerbalGameSigningFragment extends Fragment {
             e.printStackTrace();
         }
 
-        txt_turn.setText(player.getName() + " it's your turn !");
+        txt_turn.setText(player.getName() +" "+ getResources().getString(R.string.Itsyourturn));
         txt_player.setText(player.getName());
         //txt_rules.setText("Take the phone and try to guess the word to your partner only by using one word at a time !\nClick on the screen to start the game");
 

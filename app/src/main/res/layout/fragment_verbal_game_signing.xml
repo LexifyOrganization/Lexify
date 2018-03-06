@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text=""
+            android:text="@string/Itsyourturn"
             android:textAppearance="@style/VerbalGameSigning"/>
 
 
@@ -93,13 +93,13 @@
             android:id="@+id/fragment_verbal_game_signing_btn_change_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change players names" />
+            android:text="@string/Changeplayersnames" />
 
         <Button
             android:id="@+id/fragment_verbal_game_signing_btn_choose_words"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose words" />
+            android:text="@string/ChooseWords" />
 
     </LinearLayout>
 

@@ -42,10 +42,10 @@ public class MainActivity extends Activity {
 
     User currentUser = null;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(LocalHelper.onAttach(newBase,"en"));
-    }
+//    @Override
+//    protected void attachBaseContext(Context newBase) {
+//        super.attachBaseContext(LocalHelper.onAttach(newBase,"en"));
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -232,6 +232,5 @@ public class MainActivity extends Activity {
         }
 
     }
-
 
 }

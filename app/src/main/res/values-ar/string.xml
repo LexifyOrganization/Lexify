@@ -41,6 +41,7 @@
     <string name="name">اللاعبين</string>
     <string name="Foundword">الكلمات الموجودة</string>
     <string name="Password">كلمات خاطئة</string>
+    <string name="NotFoundWord">كلمات مفقودة</string>
     <string name="retry">إعادة المحاولة</string>
     <string name="Mainmenu">القائمة الرئيسية</string>
 

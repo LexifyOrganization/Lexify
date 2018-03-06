@@ -56,10 +56,10 @@ public class MainActivity extends Activity {
         Paper.init(this);
 
         // set default languge is English
-        String languge= Paper.book().read("language");
-        if (languge==null)
-            Paper.book().write("language","en");
-        updateView((String)Paper.book().read("language"));
+        String languge = Paper.book().read("language");
+        if (languge == null)
+            Paper.book().write("language", "en");
+        updateView((String) Paper.book().read("language"));
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -115,8 +115,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                    Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
-                    startActivity(i);
+                Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
+                startActivity(i);
 
             }
         });
@@ -127,13 +127,13 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 
-                if(currentUser!=null) {
+                if (currentUser != null) {
 
                     //lancer activité du compte du joueur ici
 
 
-                }else {
-                    Intent i = new Intent(getApplicationContext(),SignInActivity.class);
+                } else {
+                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
                     startActivity(i);
                 }
 
@@ -144,7 +144,7 @@ public class MainActivity extends Activity {
         btn_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),SettingsActivity.class);
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
             }
         });
@@ -187,8 +187,8 @@ public class MainActivity extends Activity {
     }
 
     private void updateView(String lang) {
-        Context context=LocalHelper.setLocale(this,lang);
-        Resources resources=context.getResources();
+        Context context = LocalHelper.setLocale(this, lang);
+        Resources resources = context.getResources();
         // Change locale settings in the app.
         DisplayMetrics dm = resources.getDisplayMetrics();
         android.content.res.Configuration conf = resources.getConfiguration();
@@ -208,7 +208,7 @@ public class MainActivity extends Activity {
             String mLine = "";
 
             //changer boucle for par while (bug bizarre)
-            for(int i = 0; i<533;i++){
+            for (int i = 0; i < 533; i++) {
                 db.addWord(new Word(reader.readLine(), 0, 0));
             }
 

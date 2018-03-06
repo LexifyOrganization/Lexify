@@ -30,7 +30,7 @@
          "\n\n Mail: lexifyapp@gmail.com \n\n"
          "Auteurs: \n\nNassin Khatir \nLucas Nayet \nNicolas Piot \nHani Abdulwahab"
     </string>
-    <string name="Changeplayersnames">Changer les noms des joueurs</string>
+    <string name="Changeplayersnames">Noms des joueurs</string>
     <string name="ChooseWords">Choisissez des mots</string>
     <string name="yourturn">A ton tour, fais que ton partenaire devine ce mot!</string>
     <string name="round">Rond </string>
@@ -41,7 +41,8 @@
     <string name="resultscongrats">C\'est fini ! Vous avez fait un score total de:</string>
     <string name="name">les joueurs</string>
     <string name="Foundword">Mots trouvé</string>
-    <string name="Password">Mots Passé </string>
+    <string name="Password">Mots Passés</string>
+    <string name="NotFoundWord">Mots  non trouvés</string>
     <string name="retry">Recommencez</string>
     <string name="Mainmenu">Menu </string>
 

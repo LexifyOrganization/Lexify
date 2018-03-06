@@ -86,20 +86,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-
+        android:weightSum="2"
         >
 
         <Button
             android:id="@+id/fragment_verbal_game_signing_btn_change_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Changeplayersnames" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Changeplayersnames"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/fragment_verbal_game_signing_btn_choose_words"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ChooseWords" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/ChooseWords"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

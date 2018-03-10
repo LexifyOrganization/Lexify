@@ -61,17 +61,15 @@ public class SettingsActivity extends Activity {
                             switch (text) {
                                 case "English":
                                     Paper.book().write("language", "en");
-                                    updateView("en");
+                                    updateLanguage("en");
                                     break;
                                 case "French":
                                     Paper.book().write("language", "fr");
-                                    updateView("fr");
+                                    updateLanguage("fr");
                                     break;
                                 case "Arabic":
                                     Paper.book().write("language", "ar");
-                                    updateView("ar");
-//                                    updateView((String)Paper.book().read("language"));
-//                                    LocalHelper.setLocale(OptionsActivity.this,"ar");
+                                    updateLanguage("ar");
                                     break;
                             }
                             Toast.makeText(SettingsActivity.this, "You choosed " + text, Toast.LENGTH_LONG).show();
@@ -122,8 +120,12 @@ public class SettingsActivity extends Activity {
         });
 
     }
-
-    private void updateView(String lang) {
+    @Override
+    public void  onBackPressed() {
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
+    }
+    private void updateLanguage(String lang) {
         Locale mylocale = new Locale(lang);
         DisplayMetrics dm = getResources().getDisplayMetrics();
         Configuration conf = getResources().getConfiguration();

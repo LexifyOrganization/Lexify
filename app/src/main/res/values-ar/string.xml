@@ -11,7 +11,7 @@
     <string name="Instructins">خذ الهاتف وقم باعطاء ايحاء عن الكلمة التي تظهر امامك لشريكك باستخدام كلمة واحدة !</string>
     <string name="Itsyourturn">إنه دورك !</string>
     <string name="rule">قواعد اللعبة</string>
-    <string name="rules">اقتراح صحيح:  +1 نقطة \n اقتراح غلط: -1 نقطة \n باس: -5 نقطة\n\n\n انقر على الشاشة لبدء اللعبة! </string>
+    <string name="rules">اقتراح صحيح :  +1 نقطة \n اقتراح غلط : -1 نقطة \n تجاوز : -5 نقطة\n\n\n انقر على الشاشة لبدء اللعبة! </string>
     <string name="aboutrules">
         "\n \ قواعد اللعبة \n \n4 جولات \n2 من اللاعبين \n4 كلمات لكل لعبة \n"
         "\nكلمة واحدة في الجولة "
@@ -27,7 +27,7 @@
                     "مستوحاة من لعبة كلمة السر على فرنسا 2،"
 "هدف ليكسي فاي هو تخمين كلمة أو تخمين كلمة واحدة."
         "\n \n البريد الإلكتروني: lexifyapp@gmail.com \n \n"
-"المؤلفون:\n نسيم خاطر \n لوكا نايت \n نيكولاس بيوت \n هاني عبد الوهاب"
+    "المؤلفون:\n نسيم خاطر \n لوكا نايت \n نيكولاس بيوت \n هاني عبد الوهاب"
     </string>
     <string name="Changeplayersnames">تغيير أسماء اللاعبين</string>
     <string name="ChooseWords">اختيار الكلمات</string>
@@ -41,7 +41,7 @@
     <string name="name">اللاعبين</string>
     <string name="Foundword">الكلمات الموجودة</string>
     <string name="Password">كلمات خاطئة</string>
-    <string name="NotFoundWord">كلمات مفقودة</string>
+    <string name="NotFoundWords">كلمات مفقودة</string>
     <string name="retry">إعادة المحاولة</string>
     <string name="Mainmenu">القائمة الرئيسية</string>
 

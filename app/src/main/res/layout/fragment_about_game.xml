@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="\nLexify, the mobile game that lexify your vocabulary.\n\nInspired by the game Mot de Passe on France 2, Lexify's goal is either to guess a word or to guess a word.\n\nMail : lexifyapp@gmail.com\n\nAutors: \n\n Nassin Khatir\nLucas Nayet\nNicolas Piot"
+            android:text="@string/aboutapplication"
             android:textColor="#FFFFFF"
             android:textSize="17sp" />
 

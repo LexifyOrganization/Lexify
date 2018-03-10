@@ -5,19 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,10 +20,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
-
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.connection.SignInActivity;
@@ -42,15 +34,9 @@ public class MainActivity extends Activity {
 
     User currentUser = null;
 
-//    @Override
-//    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(LocalHelper.onAttach(newBase,"en"));
-//    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         //initialize Paper
         Paper.init(this);
@@ -59,7 +45,9 @@ public class MainActivity extends Activity {
         String languge = Paper.book().read("language");
         if (languge == null)
             Paper.book().write("language", "en");
-        updateView((String) Paper.book().read("language"));
+        //System.out.println((String) Paper.book().read("language"));
+        updateLanguage((String) Paper.book().read("language"));
+        setContentView(R.layout.activity_main);
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -186,15 +174,13 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void updateView(String lang) {
-        Context context = LocalHelper.setLocale(this, lang);
-        Resources resources = context.getResources();
-        // Change locale settings in the app.
-        DisplayMetrics dm = resources.getDisplayMetrics();
-        android.content.res.Configuration conf = resources.getConfiguration();
-        conf.setLocale(new Locale(lang.toLowerCase())); // API 17+ only.
-        // Use conf.locale = new Locale(...) if targeting lower versions
-        resources.updateConfiguration(conf, dm);
+    private void updateLanguage(String language) {
+
+        Locale mylocale = new Locale(language);
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        Configuration conf = getResources().getConfiguration();
+        conf.locale = mylocale;
+        getResources().updateConfiguration(conf, dm);
     }
 
     private void initializeWordDatabase() {

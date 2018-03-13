@@ -9,6 +9,7 @@
     <string name="Chronometer">Chronomètre</string>
     <string name="changelanguages"> changer la langue </string>
     <string name="MyAccount"> Mon compte</string>
+    <string name="start">Start</string>
     <string name="Disconnect">Déconnecter</string>
     <string name="Instructins">Prenez le téléphone et essayez de deviner le mot à votre partenaire seulement en utilisant un mot à la fois!</string>
     <string name="Itsyourturn">C\'est ton tour !</string>

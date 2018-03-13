@@ -4,6 +4,7 @@
     <string name="newgame">New game</string>
     <string name="options"> Settings </string>
     <string name="Languages">Languages</string>
+    <string name="Chronometer">Chronometer</string>
     <string name="changelanguages"> change the language </string>
     <string name="AboutGame">About</string>
     <string name="Header">About Lexify </string>
@@ -28,6 +29,7 @@
         "Inspired by the game Mot de Passe on France 2, "
         "Lexify's goal is either to guess a word or to guess a word."
         "\n\nMail : lexifyapp@gmail.com\n\n"
+        "\n\visit our websit : lexifyorganization\n\n"
         "Autors: \n\n Nassin Khatir\nLucas Nayet\nNicolas Piot \nHani Abdulwahab"
     </string>
     <string name="Changeplayersnames">Players names</string>

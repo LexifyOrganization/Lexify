@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context="parisnanterre.fr.lexify.settings.SettingsActivity"
     android:background="@color/backgroundBlue"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layoutDirection="locale">
 
 
     <TextView
         android:id="@+id/activity_settings_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SETTINGS"
+        android:text="@string/options"
         android:textAlignment="center"
         android:textAppearance="@style/LexifyTitleStyle" />
 
@@ -27,7 +28,9 @@
             android:id="@+id/activity_settings_btn_switch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chronometer"
+            android:text="@string/Chronometer"
+
+
             />
 
         <Button
@@ -55,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="center"
-            android:text="Main menu"
+            android:text="@string/Mainmenu"
             android:drawableLeft="@drawable/home_icon"/>
 
     </LinearLayout>

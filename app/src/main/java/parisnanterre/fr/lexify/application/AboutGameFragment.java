@@ -2,16 +2,18 @@ package parisnanterre.fr.lexify.application;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.app.FragmentManager;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
@@ -84,6 +86,29 @@ public class AboutGameFragment extends Fragment {
         final Button btn_menu=  view.findViewById(R.id.fragment_about_menu_btn);
         final TextView txt_about_application =  view.findViewById(R.id.fragment_about_affiche_txt);
 
+        SpannableString sString = new SpannableString(getResources().getString(R.string.aboutapplication));
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                Intent lexifyorganization = new Intent(Intent.ACTION_VIEW);
+                lexifyorganization.setData(Uri.parse("https://lexifyorganization.github.io/Lexify/"));
+
+                startActivity(lexifyorganization);
+
+
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false);
+                ds.setColor(Color.BLUE);
+            }
+        };
+        sString.setSpan(clickableSpan,215,233, 0);
+        txt_about_application.append(sString);
+        txt_about_application.setMovementMethod(LinkMovementMethod.getInstance());
+
         btn_menu.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -104,8 +129,10 @@ public class AboutGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                     txt_about_application.setText(getResources().getString(R.string.aboutapplication));
+
             }
         });
+
 
         return view;
 

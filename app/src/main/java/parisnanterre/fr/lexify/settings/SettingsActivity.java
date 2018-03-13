@@ -63,11 +63,11 @@ public class SettingsActivity extends Activity {
                                     Paper.book().write("language", "en");
                                     updateLanguage("en");
                                     break;
-                                case "French":
+                                case "Français":
                                     Paper.book().write("language", "fr");
                                     updateLanguage("fr");
                                     break;
-                                case "Arabic":
+                                case "العربية":
                                     Paper.book().write("language", "ar");
                                     updateLanguage("ar");
                                     break;

@@ -3,6 +3,7 @@
     <string name="newgame">لعبة جديدة</string>
     <string name="options">إعدادات</string>
     <string name="Languages"> اللغات </string>
+    <string name="Chronometer">مؤقت</string>
     <string name="changelanguages">  تغيير اللغة</string>
     <string name="AboutGame">حول لعبة</string>
     <string name="Header">حول ليكسي فاي</string>
@@ -26,7 +27,8 @@
         "\n ليكسي فاي، لعبة الجوال التي تستخدم مفرداتك. \n \n"
                     "مستوحاة من لعبة كلمة السر على فرنسا 2،"
 "هدف ليكسي فاي هو تخمين كلمة أو تخمين كلمة واحدة."
-        "\n \n البريد الإلكتروني: lexifyapp@gmail.com \n \n"
+        "\n \n البريد الإلكتروني:lexifyapp@gmail.com \n \n"
+        "\n \n زيارة موقعنا على الانترنت: lexifyorganization \n \n"
     "المؤلفون:\n نسيم خاطر \n لوكا نايت \n نيكولاس بيوت \n هاني عبد الوهاب"
     </string>
     <string name="Changeplayersnames">تغيير أسماء اللاعبين</string>

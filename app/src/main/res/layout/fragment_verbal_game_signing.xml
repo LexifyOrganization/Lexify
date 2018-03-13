@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text=""
+            android:text="@string/Itsyourturn"
             android:textAppearance="@style/VerbalGameSigning"/>
 
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="Instructins :\nTake the phone and try to guess the word to your partner only by using one word at a time !"
+            android:text="@string/Instructins"
             android:textAppearance="@style/VerbalGameInstructions"/>
 
         <LinearLayout
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="Correct proposition : +1 point\nFalse proposition : -1 point\nPass : -5 points \n\n\nClick on the screen to start the game !"
+            android:text="@string/rules"
             android:textAppearance="@style/VerbalGameRules"/>
 
     <LinearLayout
@@ -86,20 +86,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-
+        android:weightSum="2"
         >
 
         <Button
             android:id="@+id/fragment_verbal_game_signing_btn_change_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Change players names" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Changeplayersnames"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/fragment_verbal_game_signing_btn_choose_words"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choose words" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/ChooseWords"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

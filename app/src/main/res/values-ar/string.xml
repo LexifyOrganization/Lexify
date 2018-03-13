@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="newgame">لعبة جديدة</string>
+    <string name="options">إعدادات</string>
+    <string name="Languages"> اللغات </string>
+    <string name="Chronometer">مؤقت</string>
+    <string name="changelanguages">  تغيير اللغة</string>
+    <string name="AboutGame">حول لعبة</string>
+    <string name="Header">حول ليكسي فاي</string>
+    <string name="MyAccount">حسابي</string>
+    <string name="Disconnect">قطع الاتصال</string>
+    <string name="Instructins">خذ الهاتف وقم باعطاء ايحاء عن الكلمة التي تظهر امامك لشريكك باستخدام كلمة واحدة !</string>
+    <string name="Itsyourturn">إنه دورك !</string>
+    <string name="rule">قواعد اللعبة</string>
+    <string name="rules">اقتراح صحيح :  +1 نقطة \n اقتراح غلط : -1 نقطة \n تجاوز : -5 نقطة\n\n\n انقر على الشاشة لبدء اللعبة! </string>
+    <string name="aboutrules">
+        "\n \ قواعد اللعبة \n \n4 جولات \n2 من اللاعبين \n4 كلمات لكل لعبة \n"
+        "\nكلمة واحدة في الجولة "
+        "\nقم باعطاء ايحاء عن الكلمة التي تظهر امامك لشريكك باستخدام كلمة واحدة "
+        "\nكل جولة، واللاعبين تغيير دورهم "
+        "\nاقتراح صحيح: +1 نقطة"
+        "\nاقتراح خاطئ: -1 نقطة "
+        "\nتجاوز: -5 نقطة "
+        "\nتبدأ اللعبة بنتيجة 10 نقاط"
+    </string>
+    <string name="aboutapplication">
+        "\n ليكسي فاي، لعبة الجوال التي تستخدم مفرداتك. \n \n"
+                    "مستوحاة من لعبة كلمة السر على فرنسا 2،"
+"هدف ليكسي فاي هو تخمين كلمة أو تخمين كلمة واحدة."
+        "\n \n البريد الإلكتروني:lexifyapp@gmail.com \n \n"
+        "\n \n زيارة موقعنا على الانترنت: lexifyorganization \n \n"
+    "المؤلفون:\n نسيم خاطر \n لوكا نايت \n نيكولاس بيوت \n هاني عبد الوهاب"
+    </string>
+    <string name="Changeplayersnames">تغيير أسماء اللاعبين</string>
+    <string name="ChooseWords">اختيار الكلمات</string>
+    <string name="yourturn">دورك، إجعل شريكك يخمن هذه الكلمة!</string>
+    <string name="round">جولة </string>
+    <string name="score">مجموع النقاط</string>
+    <string name="correct">صحيح !\n+1</string>
+    <string name="wrong">خاطئ !\n-1</string>
+    <string name="pass">تجاوز\n-5</string>
+    <string name="resultscongrats">انتهى ! لقد حققت النتيجة الإجمالية:</string>
+    <string name="name">اللاعبين</string>
+    <string name="Foundword">الكلمات الموجودة</string>
+    <string name="Password">كلمات خاطئة</string>
+    <string name="NotFoundWords">كلمات مفقودة</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="Mainmenu">القائمة الرئيسية</string>
+
+
+
+
+
+
+
+
+
+</resources>

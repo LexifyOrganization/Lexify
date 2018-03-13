@@ -20,7 +20,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/btnColor"
             android:gravity="center"
-            android:text=""
+            android:text="@string/round"
             android:textAlignment="center"
             android:textAppearance="@style/RoundNumberStyle" />
 
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Your turn, make your team mate guess this word !"
+            android:text="@string/yourturn"
             android:textAlignment="center"
             android:textAppearance="@style/YourTurnStyle" />
 
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:gravity="center"
-            android:text=""
+            android:text="@string/score"
             android:textAppearance="@style/ScoreInGameStyle" />
 
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:background="@drawable/roundedbutton_true"
                 android:drawableTop="@drawable/true_icon"
                 android:padding="16dp"
-                android:text="True !\n+1" />
+                android:text="@string/correct" />
 
             <Button
                 android:id="@+id/fragment_verbal_game_btn_false"
@@ -74,7 +74,7 @@
                 android:background="@drawable/roundedbutton_false"
                 android:drawableTop="@drawable/false_icon"
                 android:padding="16dp"
-                android:text="False !\n-1"
+                android:text="@string/wrong"
                 />
         </LinearLayout>
 
@@ -83,12 +83,12 @@
             android:id="@+id/fragment_verbal_game_btn_pass"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="138dp"
             android:layout_marginTop="20dp"
+            android:layout_gravity="center"
             android:background="@drawable/roundedbutton_pass"
             android:drawableTop="@drawable/pass_icon"
             android:padding="16dp"
-            android:text="Pass\n-5" />
+            android:text="@string/pass" />
 
 
         <LinearLayout

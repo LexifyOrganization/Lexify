@@ -4,14 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,7 +21,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.PrintWriter;
-
+import java.util.Locale;
+import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.database.User;
@@ -35,6 +38,16 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //initialize Paper
+        Paper.init(this);
+
+        // set default languge is English
+        String languge = Paper.book().read("language");
+        if (languge == null)
+            Paper.book().write("language", "en");
+        //System.out.println((String) Paper.book().read("language"));
+        updateLanguage((String) Paper.book().read("language"));
         setContentView(R.layout.activity_main);
 
 
@@ -91,8 +104,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                    Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
-                    startActivity(i);
+                Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
+                startActivity(i);
 
             }
         });
@@ -103,13 +116,13 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 
-                if(currentUser!=null) {
+                if (currentUser != null) {
 
                     //lancer activité du compte du joueur ici
 
 
-                }else {
-                    Intent i = new Intent(getApplicationContext(),SignInActivity.class);
+                } else {
+                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
                     startActivity(i);
                 }
 
@@ -120,7 +133,7 @@ public class MainActivity extends Activity {
         btn_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),SettingsActivity.class);
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
             }
         });
@@ -162,6 +175,15 @@ public class MainActivity extends Activity {
         });
     }
 
+    private void updateLanguage(String language) {
+
+        Locale mylocale = new Locale(language);
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        Configuration conf = getResources().getConfiguration();
+        conf.locale = mylocale;
+        getResources().updateConfiguration(conf, dm);
+    }
+
     private void initializeWordDatabase() {
 
         BufferedReader reader = null;
@@ -173,7 +195,7 @@ public class MainActivity extends Activity {
             String mLine = "";
 
             //changer boucle for par while (bug bizarre)
-            for(int i = 0; i<533;i++){
+            for (int i = 0; i < 533; i++) {
                 db.addWord(new Word(reader.readLine(), 0, 0));
             }
 
@@ -183,9 +205,6 @@ public class MainActivity extends Activity {
             }*/
 
             // do reading, usually loop until end of file reading
-
-
-
 
         } catch (IOException e) {
             //log the exception
@@ -200,6 +219,14 @@ public class MainActivity extends Activity {
         }
 
     }
-
+    @Override
+    public void  onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }
 
 }

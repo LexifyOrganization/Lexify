@@ -2,7 +2,6 @@ package parisnanterre.fr.lexify.verbalgame;
 
 
 import android.content.Context;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -14,10 +13,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-
-import java.util.Set;
-
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
@@ -104,8 +99,8 @@ public class VerbalGameFragment extends Fragment {
         progressBar = (ProgressBar) view.findViewById(R.id.fragment_verbal_game_progressbar);
         LinearLayout layout_chrono = (LinearLayout) view.findViewById(R.id.fragment_verbal_game_layout_chrono);
 
-        txt_nbmanche.setText("Round 1/4");
-        txt_score.setText("Score :" + score);
+        txt_nbmanche.setText(getResources().getString(R.string.round)+" "+cpt+"/4");
+        txt_score.setText(getResources().getString(R.string.score) +" : "+ score);
         txt_word.setText(gameActivity.getWords().get(0).getWord());
 
         if(SettingsActivity.isChronoEnable){
@@ -151,7 +146,7 @@ public class VerbalGameFragment extends Fragment {
             public void onClick(View v) {
 
                 score--;
-                txt_score.setText("Score :" + score);
+                txt_score.setText(getResources().getString(R.string.score)+" : "+ score);
 
             }
         });
@@ -245,11 +240,11 @@ public class VerbalGameFragment extends Fragment {
 
 
         cpt++;
-        txt_score.setText("Score : " + score);
+        txt_score.setText(getResources().getString(R.string.score)+" : "+ score);
 
         Word random = gameActivity.getWords().get(cpt - 1);
         txt_word.setText(random.getWord());
-        txt_nbmanche.setText("Round " + cpt + "/4");
+        txt_nbmanche.setText(getResources().getString(R.string.round) +" "+cpt +"/4");
 
 
             if(SettingsActivity.isChronoEnable)

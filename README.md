@@ -13,7 +13,7 @@
 ## Qu'est ce que c'est ?
 
 Inspiré du jeu **Mot de Passe** sur France 2, le but de Lexify est soit de deviner un mot, soit de faire deviner un mot. 
-Développé sur mobile, et plus spécialement sur la Plateforme **Android**, Lexify est donc une application sur smartphone.
+Développé sur mobile, et plus spécialement sur la plateforme **Android**, Lexify est donc une application sur smartphone.
 
 ## Fonctionnalités 
 
@@ -56,7 +56,7 @@ Depuis Android studio :
 Depuis Android studio : 
   VCS > Checkout from version control > Git > Dans " Git Repository URL ", coller https://github.com/LexifyOrganization/Lexify.git > OK
   
-#### Installation et lancement du avd manager 
+### Installation et lancement du avd manager 
 
 Suivre ce tuto : [Tutoriel AVD Manager](http://vogella.developpez.com/tutoriels/android/installation-outils-developpement/#L5)
 

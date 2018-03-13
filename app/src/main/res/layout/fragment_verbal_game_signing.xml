@@ -115,7 +115,7 @@
             android:id="@+id/fragment_verbal_game_signing_btn_play_game"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play the game" />
+            android:text="Start" />
 
 
 

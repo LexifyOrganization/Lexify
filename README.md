@@ -66,6 +66,6 @@ Et voila ! le projet est prêt pour utilisation.
 * **KHATIR Nassim** - [Github](https://github.com/nassimkhatir)
 * **NAYET Lucas** - [Github](https://github.com/LNayet)
 * **PIOT Nicolas** - [Github](https://github.com/Yxiaa)
-* **ABDULWAHAB Hani** - [Github](https://github.com/Yxiaa)
+* **ABDULWAHAB Hani** - [Github](https://github.com/HaniAbd)
 
   

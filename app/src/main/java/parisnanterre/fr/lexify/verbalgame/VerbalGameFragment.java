@@ -105,16 +105,19 @@ public class VerbalGameFragment extends Fragment {
 
         if(SettingsActivity.isChronoEnable){
             layout_chrono.setVisibility(View.VISIBLE);
+
+            progressBar.setMax(20);
+            progressBar.setProgress(20);
+
+            chrono = initializeTimer();
+            gameActivity.setChrono(chrono);
+            chrono.start();
+
         }else {
             layout_chrono.setVisibility(View.GONE);
         }
 
-        progressBar.setMax(20);
-        progressBar.setProgress(20);
 
-        chrono = initializeTimer();
-        gameActivity.setChrono(chrono);
-        chrono.start();
 
         btn_pass.setOnClickListener(new View.OnClickListener() {
 
@@ -203,7 +206,8 @@ public class VerbalGameFragment extends Fragment {
 
     private void changeFragment() {
 
-        chrono.cancel();
+        if(SettingsActivity.isChronoEnable)
+            chrono.cancel();
 
         if (gameActivity.isLastRound()) {
             gameActivity.setScore(score);
@@ -225,7 +229,8 @@ public class VerbalGameFragment extends Fragment {
     //parametre type = TRUE ou PASS (voir fichier enum PassingType) TRUE augmente le score et PASS le baisse
     private void changeWord(PassingType type) {
 
-        chrono.cancel();
+        if(SettingsActivity.isChronoEnable)
+          chrono.cancel();
 
         if (type.equals(PassingType.TRUE)) {
             score++;
@@ -241,7 +246,9 @@ public class VerbalGameFragment extends Fragment {
         txt_word.setText(random.getWord());
         txt_nbmanche.setText(getResources().getString(R.string.round) +" "+cpt +"/4");
 
-        chrono.start();
+
+            if(SettingsActivity.isChronoEnable)
+             chrono.start();
 
     }
 

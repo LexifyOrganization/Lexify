@@ -85,7 +85,9 @@ public class AboutGameFragment extends Fragment {
         final Button btn_about_application=  view.findViewById(R.id.fragment_about_application_btn);
         final Button btn_menu=  view.findViewById(R.id.fragment_about_menu_btn);
         final TextView txt_about_application =  view.findViewById(R.id.fragment_about_affiche_txt);
+        txt_about_application.setText(R.string.aboutapplication);
 
+        /*
         SpannableString sString = new SpannableString(getResources().getString(R.string.aboutapplication));
 
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -105,10 +107,10 @@ public class AboutGameFragment extends Fragment {
                 ds.setColor(Color.BLUE);
             }
         };
-        sString.setSpan(clickableSpan,215,233, 0);
+        sString.setSpan(clickableSpan,235,256, 0);
         txt_about_application.append(sString);
         txt_about_application.setMovementMethod(LinkMovementMethod.getInstance());
-
+        */
         btn_menu.setOnClickListener(new View.OnClickListener() {
 
             @Override

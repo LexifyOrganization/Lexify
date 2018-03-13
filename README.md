@@ -3,7 +3,6 @@
 [![GitHub issues](https://img.shields.io/github/issues/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/issues)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7bd2698ab5d54ec19465c4d308b781ff)](https://www.codacy.com/app/nasscott/Lexify?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LexifyOrganization/Lexify&amp;utm_campaign=Badge_Grade)
 [![GitHub license](https://img.shields.io/github/license/LexifyOrganization/Lexify.svg)](https://github.com/LexifyOrganization/Lexify/blob/master/LICENSE)
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/LexifyOrganization/Lexify.svg?columns=all)](https://waffle.io/LexifyOrganization/Lexify)
 
 # Lexify
 
@@ -14,7 +13,7 @@
 ## Qu'est ce que c'est ?
 
 Inspiré du jeu **Mot de Passe** sur France 2, le but de Lexify est soit de deviner un mot, soit de faire deviner un mot. 
-Développé sur mobile, et plus spécialement sur la Plateforme **Android**, Lexify est donc une application sur smartphone.
+Développé sur mobile, et plus spécialement sur la plateforme **Android**, Lexify est donc une application sur smartphone.
 
 ## Fonctionnalités 
 
@@ -57,11 +56,16 @@ Depuis Android studio :
 Depuis Android studio : 
   VCS > Checkout from version control > Git > Dans " Git Repository URL ", coller https://github.com/LexifyOrganization/Lexify.git > OK
   
+### Installation et lancement du avd manager 
+
+Suivre ce tuto : [Tutoriel AVD Manager](http://vogella.developpez.com/tutoriels/android/installation-outils-developpement/#L5)
+
 Et voila ! le projet est prêt pour utilisation.
 
 ## Auteurs
 * **KHATIR Nassim** - [Github](https://github.com/nassimkhatir)
-* **Nayet Lucas** - [Github](https://github.com/LNayet)
-* **Piot Nicolas** - [Github](https://github.com/Yxiaa)
+* **NAYET Lucas** - [Github](https://github.com/LNayet)
+* **PIOT Nicolas** - [Github](https://github.com/Yxiaa)
+* **ABDULWAHAB Hani** - [Github](https://github.com/HaniAbd)
 
   

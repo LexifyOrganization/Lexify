@@ -107,8 +107,8 @@ public class VerbalGameResultsFragment extends Fragment {
         int scr = gameActivity.getScore();
         score.setText(String.valueOf(scr));
 
-        int p1val[] = {gameActivity.getPlayer1().getNbWordFound(), gameActivity.getPlayer1().getNbPass(), gameActivity.getPlayer1().getNbWordNotFound()};
-        int p2val[] = {gameActivity.getPlayer2().getNbWordFound(), gameActivity.getPlayer2().getNbPass(), gameActivity.getPlayer2().getNbWordNotFound()};
+        int p1val[] = {gameActivity.getPlayer1().getNbWordFound(), gameActivity.getPlayer1().getNbWordNotFound()};
+        int p2val[] = {gameActivity.getPlayer2().getNbWordFound(), gameActivity.getPlayer2().getNbWordNotFound()};
 
         TextView names = (TextView) player1.getChildAt(0);
         names.setText(gameActivity.getPlayer1().getName());
@@ -116,12 +116,12 @@ public class VerbalGameResultsFragment extends Fragment {
         names = (TextView) player2.getChildAt(0);
         names.setText(gameActivity.getPlayer2().getName());
 
-        for (int i =0; i<3; i++)  {
+        for (int i =0; i<2; i++)  {
             TextView txt = (TextView) player1.getChildAt(i+1);
             txt.setText(String.valueOf(p1val[i]));
         }
 
-        for (int i =0; i<3; i++)  {
+        for (int i =0; i<2; i++)  {
             TextView txt = (TextView) player2.getChildAt(i+1);
             txt.setText(String.valueOf(p2val[i]));
         }

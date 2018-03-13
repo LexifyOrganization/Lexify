@@ -90,7 +90,7 @@ public class VerbalGameFragment extends Fragment {
 
 
         final Button btn_true = (Button) view.findViewById(R.id.fragment_verbal_game_btn_true);
-        final Button btn_false = (Button) view.findViewById(R.id.fragment_verbal_game_btn_false);
+        //final Button btn_false = (Button) view.findViewById(R.id.fragment_verbal_game_btn_false);
         final Button btn_pass = (Button) view.findViewById(R.id.fragment_verbal_game_btn_pass);
         txt_nbmanche = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_manche);
         txt_word = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_word);
@@ -105,6 +105,9 @@ public class VerbalGameFragment extends Fragment {
 
         if(SettingsActivity.isChronoEnable){
             layout_chrono.setVisibility(View.VISIBLE);
+            btn_pass.setVisibility(View.GONE);
+
+
 
             progressBar.setMax(20);
             progressBar.setProgress(20);
@@ -124,7 +127,7 @@ public class VerbalGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                player.incNbPass();
+                player.incNotFoundWord();
 
                 if (cpt == 4) {
                     score = score - 5;
@@ -140,16 +143,6 @@ public class VerbalGameFragment extends Fragment {
             }
         });
 
-        btn_false.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                score--;
-                txt_score.setText(getResources().getString(R.string.score)+" : "+ score);
-
-            }
-        });
 
 
         btn_true.setOnClickListener(new View.OnClickListener() {

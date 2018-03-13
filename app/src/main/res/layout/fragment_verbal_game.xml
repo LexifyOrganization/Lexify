@@ -65,30 +65,21 @@
                 android:background="@drawable/roundedbutton_true"
                 android:drawableTop="@drawable/true_icon"
                 android:padding="16dp"
-                android:text="@string/correct" />
+                android:text="@string/correct" />/>
 
             <Button
-                android:id="@+id/fragment_verbal_game_btn_false"
+                android:id="@+id/fragment_verbal_game_btn_pass"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/roundedbutton_false"
-                android:drawableTop="@drawable/false_icon"
+                android:background="@drawable/roundedbutton_pass"
+                android:drawableTop="@drawable/pass_icon"
                 android:padding="16dp"
-                android:text="@string/wrong"
-                />
+                android:animateLayoutChanges="true"
+                android:text="@string/pass" />
+
+
         </LinearLayout>
 
-
-        <Button
-            android:id="@+id/fragment_verbal_game_btn_pass"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:background="@drawable/roundedbutton_pass"
-            android:drawableTop="@drawable/pass_icon"
-            android:padding="16dp"
-            android:text="@string/pass" />
 
 
         <LinearLayout

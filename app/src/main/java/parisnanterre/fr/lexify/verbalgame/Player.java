@@ -8,7 +8,6 @@ public class Player {
 
     private String name;
     private int nbWordFound;
-    private int nbPass;
     private int nbWordNotFound;
     private int guessScore;
     private int haveToGuessScore;
@@ -21,7 +20,6 @@ public class Player {
         guessScore = 0;
         haveToGuessScore = 0;
         currentPlayer = false;
-        nbPass = 0;
     }
 
     public boolean isCurrentPlayer() {
@@ -40,9 +38,6 @@ public class Player {
         nbWordNotFound++;
     }
 
-    public void incNbPass() {
-        nbPass++;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -66,9 +61,5 @@ public class Player {
 
     public int getHaveToGuessScore() {
         return haveToGuessScore;
-    }
-
-    public int getNbPass() {
-        return nbPass;
     }
 }

@@ -92,6 +92,7 @@ public class VerbalGameSigningFragment extends Fragment {
         FrameLayout frm_game = (FrameLayout) view.findViewById(R.id.fragment_verbal_game_signing_fragment);
         final Button btn_choose = (Button) view.findViewById(R.id.fragment_verbal_game_signing_btn_choose_words);
         final Button btn_change = (Button) view.findViewById(R.id.fragment_verbal_game_signing_btn_change_name);
+        final Button btn_play = (Button) view.findViewById(R.id.fragment_verbal_game_signing_btn_play_game);
         final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
 
 
@@ -173,7 +174,7 @@ public class VerbalGameSigningFragment extends Fragment {
         });
 
 
-        frm_game.setOnClickListener(new View.OnClickListener() {
+        btn_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

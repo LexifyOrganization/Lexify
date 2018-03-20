@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
@@ -146,7 +147,7 @@ public class VerbalGameActivity extends Activity
 
     public List<Word> getEightRandomWords() {
 
-        return db.getNRandomWords(8);
+        return db.getNRandomWords(8, MainActivity.DATABASE_NB);
     }
 
 
@@ -162,7 +163,7 @@ public class VerbalGameActivity extends Activity
 
         this.words.clear();
 
-        this.words = db.getNRandomWords(4);
+        this.words = db.getNRandomWords(4, MainActivity.DATABASE_NB);
 
     }
 

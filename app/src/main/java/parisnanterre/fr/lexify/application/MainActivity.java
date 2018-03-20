@@ -34,6 +34,7 @@ import parisnanterre.fr.lexify.word.Word;
 public class MainActivity extends Activity {
 
     User currentUser = null;
+    public static final int DATABASE_NB = 533;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,7 +197,7 @@ public class MainActivity extends Activity {
             String mLine = "";
 
             //changer boucle for par while (bug bizarre)
-            for (int i = 0; i < 533; i++) {
+            for (int i = 0; i < DATABASE_NB; i++) {
                 db.addWord(new Word(reader.readLine(), 0, 0));
             }
 

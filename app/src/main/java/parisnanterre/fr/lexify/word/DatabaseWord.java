@@ -113,22 +113,22 @@ public class DatabaseWord extends SQLiteOpenHelper {
         values.put(KEY_NUMBER_PLAYED, word.getNumberPlayed());
 
         // updating row
-        return db.update(TABLE_WORDS, values, KEY_ID + " = ?",
+        return db.update(TABLE_WORDS, values, KEY_ID + word.getId(),
                 new String[] { String.valueOf(word.getId()) });
     }
 
-    public void deleteContact(Word word) {
+    public void deleteWord(Word word) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_WORDS, KEY_ID + " = ?",
                 new String[] { String.valueOf(word.getId()) });
         db.close();
     }
 
-    public List<Word> getNRandomWords(int n) {
+    public List<Word> getNRandomWords(int n, int limit) {
         List<Word> words = getAllWords();
 
         ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i=1; i<533; i++) {
+        for (int i=1; i<limit; i++) {
             list.add(new Integer(i));
         }
         Collections.shuffle(list);
@@ -154,4 +154,10 @@ public class DatabaseWord extends SQLiteOpenHelper {
 
     }
 
+    public void removeAll() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from "+ TABLE_WORDS);
+        db.close();
+    }
 }

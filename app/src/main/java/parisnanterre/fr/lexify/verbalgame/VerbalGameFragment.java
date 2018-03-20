@@ -22,6 +22,7 @@ import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.settings.Settings;
+import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.word.Word;
 
 /**
@@ -42,7 +43,7 @@ public class VerbalGameFragment extends Fragment {
     private int score;
     private int cpt = 1;
     private Player player;
-
+    public static int millisCountDownTimer;
     TextView txt_nbmanche;
     TextView txt_word;
     TextView txt_score;
@@ -51,6 +52,7 @@ public class VerbalGameFragment extends Fragment {
     CountDownTimer chrono;
     ProgressBar progressBar;
     Settings settings;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -108,12 +110,20 @@ public class VerbalGameFragment extends Fragment {
         txt_word.setText(gameActivity.getWords().get(0).getWord());
 
 
-        progressBar.setMax(millisCountDownTimer/1000);
-        progressBar.setProgress(millisCountDownTimer/1000);
+        if(millisCountDownTimer!=0){
+            layout_chrono.setVisibility(View.VISIBLE);
+            btn_pass.setVisibility(View.GONE);
 
-        chrono = initializeTimer();
-        gameActivity.setChrono(chrono);
-        chrono.start();
+            progressBar.setMax(millisCountDownTimer / 1000);
+            progressBar.setProgress(millisCountDownTimer / 1000);
+
+            chrono = initializeTimer();
+            gameActivity.setChrono(chrono);
+            chrono.start();
+        }
+        else {
+            layout_chrono.setVisibility(View.GONE);
+        }
 
         btn_pass.setOnClickListener(new View.OnClickListener() {
 
@@ -127,10 +137,7 @@ public class VerbalGameFragment extends Fragment {
 
                     changeFragment();
                 } else {
-
-
                     changeWord(PassingType.PASS);
-
                 }
 
             }
@@ -147,7 +154,6 @@ public class VerbalGameFragment extends Fragment {
             }
         });
 
-
         btn_true.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -157,24 +163,15 @@ public class VerbalGameFragment extends Fragment {
 
                 if (cpt == 4) {
                     score++;
-
                     changeFragment();
 
                 } else {
-
                     changeWord(PassingType.TRUE);
-
                 }
-
-
             }
         });
-
-
         return view;
     }
-
-    public static int millisCountDownTimer = 20000;
 
     public CountDownTimer initializeTimer() {
         return new CountDownTimer(millisCountDownTimer, 1000) {
@@ -204,7 +201,9 @@ public class VerbalGameFragment extends Fragment {
 
     private void changeFragment() {
 
-        chrono.cancel();
+        if(millisCountDownTimer!=0){
+            chrono.cancel();
+        }
 
         if (gameActivity.isLastRound()) {
             gameActivity.setScore(score);
@@ -225,8 +224,9 @@ public class VerbalGameFragment extends Fragment {
     //fct qui change le mot
     //parametre type = TRUE ou PASS (voir fichier enum PassingType) TRUE augmente le score et PASS le baisse
     private void changeWord(PassingType type) {
-
-        chrono.cancel();
+        if(millisCountDownTimer!=0) {
+            chrono.cancel();
+        }
 
         if (type.equals(PassingType.TRUE)) {
             score++;
@@ -241,8 +241,9 @@ public class VerbalGameFragment extends Fragment {
         Word random = gameActivity.getWords().get(cpt - 1);
         txt_word.setText(random.getWord());
         txt_nbmanche.setText("Round " + cpt + "/4");
-
-        chrono.start();
+        if(millisCountDownTimer!=0){
+            chrono.start();
+        }
 
     }
 

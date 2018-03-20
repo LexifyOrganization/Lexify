@@ -21,7 +21,6 @@ import static parisnanterre.fr.lexify.verbalgame.VerbalGameFragment.millisCountD
 
 public class SettingsActivity extends Activity {
 
-    private Switch chrono_switch;
     private Button btn_level_difficulty;
     public static boolean isChronoEnable = false;
     Button btn_menu;
@@ -31,7 +30,6 @@ public class SettingsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        chrono_switch = (Switch) findViewById(R.id.activity_settings_btn_switch);
         btn_level_difficulty = (Button) findViewById(R.id.activity_settings_btn_level_difficulty);
         btn_menu = (Button) findViewById(R.id.activity_settings_menu_btn);
 
@@ -64,16 +62,18 @@ public class SettingsActivity extends Activity {
                             String text = sp.getSelectedItem().toString();
                             switch (text) {
                                 case "Easy":
-                                    isChronoEnable=false;
+                                    millisCountDownTimer=0;
+                                    Toast.makeText(SettingsActivity.this, "Chronometer is off ! You choosed " + text, Toast.LENGTH_LONG).show();
                                     break;
                                 case "Middle":
                                     millisCountDownTimer=40000;
+                                    Toast.makeText(SettingsActivity.this, "Chronometer initialized at 40 seconds ! You choosed " + text, Toast.LENGTH_LONG).show();
                                     break;
                                 case "Hard":
                                     millisCountDownTimer=20000;
+                                    Toast.makeText(SettingsActivity.this, "Chronomoter initialized at 20 seconds ! You choosed " + text, Toast.LENGTH_LONG).show();
                                     break;
                             }
-                            Toast.makeText(SettingsActivity.this, "You choosed " + text, Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(SettingsActivity.this, "You didn't choose a level of difficulty ", Toast.LENGTH_LONG).show();
                         }
@@ -93,26 +93,6 @@ public class SettingsActivity extends Activity {
                 dlog.show();
             }
         });
-
-                if (isChronoEnable)
-                    chrono_switch.setChecked(true);
-                else
-                    chrono_switch.setChecked(false);
-
-                chrono_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
-                            isChronoEnable = true;
-                            chrono_switch.setChecked(true);
-                        } else {
-                            isChronoEnable = false;
-                            chrono_switch.setChecked(false);
-                        }
-                    }
-
-                });
 
             }
     }

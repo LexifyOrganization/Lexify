@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -27,7 +26,7 @@ public class SettingsActivity extends Activity {
     private Settings settings;
     private Switch chrono_switch;
     Button btn_menu;
-    public static boolean isChronoEnable = false;
+    public static boolean isChronoEnable = true;
     private Button btn_lang;
 
     @Override
@@ -38,6 +37,7 @@ public class SettingsActivity extends Activity {
         chrono_switch = (Switch) findViewById(R.id.activity_settings_btn_switch);
         btn_menu = (Button) findViewById(R.id.activity_settings_menu_btn);
         Button btn_lang = (Button) findViewById(R.id.activity_settings_btn_languages);
+
 
         //spinner
         btn_lang.setOnClickListener(new View.OnClickListener() {

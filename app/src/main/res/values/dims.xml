@@ -6,4 +6,6 @@
     <dimen name="wordToGuessSize">50dp</dimen>
     <dimen name="scoreInGameSize">25dp</dimen>
     <dimen name="verbalGameSigningSize">30dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
+    <dimen name="layer_padding">3dp</dimen>
 </resources>

@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_verbal_game_signing_fragment"
-    android:clickable="true"
     tools:context="parisnanterre.fr.lexify.verbalgame.VerbalGameSigningFragment"
     android:background="@color/backgroundBlue">
 
@@ -44,12 +43,12 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/smartphone_icon"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginStart="30dp"/>
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/arrow_icon"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginStart="40dp"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,7 +57,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/person_icon"
-                    android:layout_marginLeft="40dp"/>
+                    android:layout_marginStart="40dp"/>
                 <TextView
                     android:id="@+id/fragment_verbal_game_signing_player"
                     android:layout_width="wrap_content"
@@ -66,8 +65,9 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text=""
-                    android:layout_marginLeft="20dp"
-                    android:textSize="17dp"/>
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="20dp"
+                    android:textSize="17sp"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -113,10 +113,11 @@
 
         <Button
             android:id="@+id/fragment_verbal_game_signing_btn_play_game"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/start" />
+            android:text="@string/start"
+         />
 
 
 

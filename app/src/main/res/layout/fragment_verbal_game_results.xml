@@ -28,7 +28,8 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintVertical_chainStyle="packed"
+                android:textColor="#FFFFFF"/>
 
             <TextView
                 android:id="@+id/fragment_verbal_game_results_score"
@@ -37,8 +38,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="15dp"
                 android:text="cc"
-                android:textColor="#80deea"
-                android:textSize="60dp"
+                android:textColor="#CDDC39"
+                android:textSize="60sp"
                 app:layout_constraintBottom_toTopOf="@+id/fragment_verbal_game_results_table"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -65,13 +66,15 @@
                         android:background="@drawable/cell_shape"
                         android:gravity="right"
                         android:padding="3dip"
-                        android:text="@string/name" />
+                        android:text="@string/name"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
                         android:padding="3dip"
-                        android:text="@string/Foundword" />
+                        android:text="@string/Foundword"
+                        android:textColor="#FFFFFF"/>
 
 
 
@@ -79,7 +82,8 @@
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
                         android:padding="3dip"
-                        android:text="@string/NotFoundWords" />
+                        android:text="@string/NotFoundWords"
+                        android:textColor="#FFFFFF"/>
 
                 </TableRow>
 
@@ -94,19 +98,22 @@
                     android:gravity="right"
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
-                    android:padding="3dip" />
+                    android:padding="3dip"
+                    android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
                         android:padding="3dip"
-                        android:text="" />
+                        android:text=""
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
                         android:padding="3dip"
-                        android:text="" />
+                        android:text=""
+                        android:textColor="#FFFFFF"/>
                 </TableRow>
 
 
@@ -120,20 +127,23 @@
                     android:gravity="right"
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
-                    android:padding="3dip" />
+                    android:padding="3dip"
+                    android:textColor="#FFFFFF"/>
 
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
                         android:padding="3dip"
-                        android:text="" />
+                        android:text=""
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
                         android:padding="3dip"
-                        android:text="" />
+                        android:text=""
+                        android:textColor="#FFFFFF"/>
                 </TableRow>
 
             </TableLayout>
@@ -157,7 +167,8 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/retry_icon"
-                android:text="@string/retry" />
+                android:text="@string/retry"
+                android:textColor="#FFFFFF"/>
 
             <Button
                 android:id="@+id/fragment_verbal_game_results_btn_menu"
@@ -166,7 +177,8 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/home_icon"
-                android:text="@string/Mainmenu" />
+                android:text="@string/Mainmenu"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
     </LinearLayout>

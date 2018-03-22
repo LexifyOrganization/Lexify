@@ -47,6 +47,8 @@
     <string name="NotFoundWords">كلمات مفقودة</string>
     <string name="retry">إعادة المحاولة</string>
     <string name="Mainmenu">القائمة الرئيسية</string>
+    <string name="youchoose">لقد اخترتم </string>
+    <string name="youdontchoose">لم تختر لغة</string>
 
 
 

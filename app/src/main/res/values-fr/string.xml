@@ -48,5 +48,7 @@
     <string name="NotFoundWord">Mots non trouvés</string>
     <string name="retry">Recommencez</string>
     <string name="Mainmenu">Menu </string>
+    <string name="youchoose">Vous avez choisi </string>
+    <string name="youdontchoose">Vous n\'avez pas choisi de langue</string>
 
 </resources>

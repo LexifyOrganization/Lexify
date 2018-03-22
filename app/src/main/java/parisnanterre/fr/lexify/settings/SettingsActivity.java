@@ -72,9 +72,9 @@ public class SettingsActivity extends Activity {
                                     updateLanguage("ar");
                                     break;
                             }
-                            Toast.makeText(SettingsActivity.this, "You choosed " + text, Toast.LENGTH_LONG).show();
+                            Toast.makeText(SettingsActivity.this,getResources().getString(R.string.youchoose)+" "+text, Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(SettingsActivity.this, "You didn't choose a language ", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SettingsActivity.this,R.string.youdontchoose, Toast.LENGTH_LONG).show();
                         }
                     }
                 });

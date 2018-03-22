@@ -47,6 +47,8 @@
     <string name="retry">Retry</string>
     <string name="Mainmenu">Main menu</string>
     <string name="Selectlanguge">Select the language</string>
+    <string name="youchoose">You choosed </string>
+    <string name="youdontchoose">You didn\'t choose a language</string>
 
     <string-array name="languages">
         <item>choose a language</item>

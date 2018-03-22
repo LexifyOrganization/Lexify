@@ -1,24 +1,29 @@
 package parisnanterre.fr.lexify.verbalgame;
 
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.settings.Settings;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.word.Word;
+
+import static android.view.animation.Animation.RELATIVE_TO_SELF;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,7 +100,7 @@ public class VerbalGameFragment extends Fragment {
         txt_nbmanche = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_manche);
         txt_word = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_word);
         txt_score = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_score);
-        txt_time = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_chrono);
+        txt_time = (TextView) view.findViewById(R.id.fragment_verbal_game_timer);
         progressBar = (ProgressBar) view.findViewById(R.id.fragment_verbal_game_progressbar);
         LinearLayout layout_chrono = (LinearLayout) view.findViewById(R.id.fragment_verbal_game_layout_chrono);
 
@@ -109,8 +114,12 @@ public class VerbalGameFragment extends Fragment {
 
 
 
-            progressBar.setMax(20);
-            progressBar.setProgress(20);
+            /*Animation*/
+            RotateAnimation makeVertical = new RotateAnimation(0, -90, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
+            makeVertical.setFillAfter(true);
+            progressBar.startAnimation(makeVertical);
+            progressBar.setSecondaryProgress(21);
+            progressBar.setProgress(0);
 
             chrono = initializeTimer();
             gameActivity.setChrono(chrono);
@@ -126,7 +135,7 @@ public class VerbalGameFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getActivity(),"Ouch... ",Toast.LENGTH_SHORT).show();
                 player.incNotFoundWord();
 
                 if (cpt == 4) {
@@ -149,7 +158,7 @@ public class VerbalGameFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getActivity(),"Bravo!",Toast.LENGTH_SHORT).show();
                 player.incFoundWord();
 
                 if (cpt == 4) {
@@ -178,12 +187,17 @@ public class VerbalGameFragment extends Fragment {
 
                 int progress = (int) (millisUntilFinished / 1000);
                 txt_time.setText(String.valueOf(millisUntilFinished/1000));
+                progressBar.setMax(21);
+                progressBar.setSecondaryProgress(21);
                 progressBar.setProgress(progress);
+
             }
 
             public void onFinish() {
-                txt_time.setText("Time's up !");
+                Toast.makeText(getActivity(),"Time's up !",Toast.LENGTH_SHORT).show();
                 player.incNotFoundWord();
+                progressBar.setMax(21);
+                progressBar.setSecondaryProgress(21);
                 progressBar.setProgress(0);
                 if (cpt != 4)
                     changeWord(PassingType.PASS);

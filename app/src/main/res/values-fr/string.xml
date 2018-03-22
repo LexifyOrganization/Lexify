@@ -45,7 +45,7 @@
     <string name="name">les joueurs</string>
     <string name="Foundword">Mots trouvé</string>
     <string name="Password">Mots Passés</string>
-    <string name="NotFoundWord">Mots non trouvés</string>
+    <string name="NotFoundWords">Mots non trouvés</string>
     <string name="retry">Recommencez</string>
     <string name="Mainmenu">Menu </string>
 

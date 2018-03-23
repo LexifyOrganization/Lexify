@@ -13,7 +13,7 @@
     <string name="Instructins">Take the phone and try to make your partner guess the mystery word only by using one clue at a time !</string>
     <string name="Itsyourturn">it\'s your turn !</string>
     <string name="rule">Rules</string>
-    <string name="rules">Correct proposition : +1 point\nWord not found : -5 points \n\n\n</string>
+    <string name="rules">Correct proposition : + 1 point\nWord not found : - 5 points \n\n\n</string>
     <string name="aboutrules">
         "\nRules\n\n4 rounds\n2 players\n4 words per game\n"
         "1 word per round\n\n"

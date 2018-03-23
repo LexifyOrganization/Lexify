@@ -74,7 +74,7 @@
                 android:id="@+id/fragment_verbal_game_btn_pass"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
                 android:background="@drawable/roundedbutton_pass"
                 android:drawableTop="@drawable/pass_icon"
                 android:padding="16dp"

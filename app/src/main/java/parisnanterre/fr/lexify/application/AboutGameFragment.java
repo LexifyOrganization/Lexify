@@ -1,23 +1,16 @@
 package parisnanterre.fr.lexify.application;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.TextPaint;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.app.Fragment;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-
-import org.w3c.dom.Text;
 
 import parisnanterre.fr.lexify.R;
 
@@ -85,6 +78,30 @@ public class AboutGameFragment extends Fragment {
         final Button btn_about_application=  view.findViewById(R.id.fragment_about_application_btn);
         final Button btn_menu=  view.findViewById(R.id.fragment_about_menu_btn);
         final TextView txt_about_application =  view.findViewById(R.id.fragment_about_affiche_txt);
+        final ImageView image_github = view.findViewById(R.id.fragment_about_github);
+        final ImageView image_website = view.findViewById(R.id.fragment_about_website);
+
+        image_github.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://github.com/LexifyOrganization/Lexify"));
+                startActivity(intent);
+            }
+        });
+
+        image_website.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://lexifyorganization.github.io/Lexify/"));
+                startActivity(intent);
+            }
+        });
+
+
         txt_about_application.setText(R.string.aboutapplication);
 
         /*

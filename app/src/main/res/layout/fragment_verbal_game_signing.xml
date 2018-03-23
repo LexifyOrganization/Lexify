@@ -37,37 +37,43 @@
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginStart="-12dp"
+            android:layout_gravity="center"
             >
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/smartphone_icon"
-                android:layout_marginStart="30dp"/>
+                android:layout_marginStart="50dp"
+                android:src="@drawable/smartphone_icon" />
+
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/arrow_icon"
-                android:layout_marginStart="40dp"/>
+                android:layout_marginStart="30dp"
+                android:src="@drawable/arrow_icon" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="35dp"
+                >
+
                 <ImageView
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/person_icon"
-                    android:layout_marginStart="40dp"/>
+
+                    android:src="@drawable/person_icon" />
+
                 <TextView
                     android:id="@+id/fragment_verbal_game_signing_player"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text=""
+                    android:text="player 1"
                     android:textColor="#FFFFFF"
-                    android:layout_marginStart="20dp"
-                    android:textSize="17sp"/>
+                    android:textSize="15sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -82,11 +88,13 @@
             android:textAppearance="@style/VerbalGameRules"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:layout_gravity="center"
         android:weightSum="2"
+
         >
 
         <Button
@@ -106,8 +114,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:gravity="center">
 
@@ -117,6 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/start"
+            android:background="@drawable/buttonshape"
          />
 
 

@@ -7,46 +7,45 @@
     <string name="Header">À propos de Lexify </string>
     <string name="Languages">Langues</string>
     <string name="Chronometer">Chronomètre</string>
-    <string name="changelanguages"> changer la langue </string>
+    <string name="changelanguages">Changer la langue </string>
     <string name="MyAccount"> Mon compte</string>
     <string name="start">Start</string>
     <string name="Disconnect">Déconnecter</string>
     <string name="Instructins">Prenez le téléphone et faites deviner le mot mystère à votre partenaire seulement en utilisant un indice à la fois!</string>
     <string name="Itsyourturn">C\'est ton tour !</string>
     <string name="rule">Règles</string>
-    <string name="rules">Proposition correcte: +1 point \nPasse: -5 points \n\n\n</string>
+    <string name="rules">Proposition correcte:  + 1 point \nPasser : - 5 points \nTime's up : -5\n\n\n</string>
     <string name="aboutrules">
     "\nRègles \n \n4 tours \n2 joueurs \n4 mots par partie\n"
     "1 mot par tour \n \n"
     "Un joueur fait deviner un mot à son partenaire avec un indice à chaque fois. \n"
     "L'indice ne doit pas avoir la même base \n"
     "Exemple d'indice intérdit : \nMot mystère : Camion \nIndice : Camionette \n\n"
-    "Proposition correcte: +1 point \n"
-    "Fausse proposition: -1 point \n"
-    "Passer: -5 points \n \n"
+    "Proposition correcte : + 1 point \n"
+    "Passer : - 5 points \n \n"
     "Le jeu commence avec un score de 10 points\n \n"
     </string>
     <string name="aboutapplication">
         "\nLexify, le jeu mobile qui Lexify votre vocabulaire. \n\n"
          "Inspiré du jeu Mot de Passe sur France 2,\n"
          "Le but de Lexify est soit de deviner un mot, soit de faire deviner un mot.\n"
-         "\n\n Mail: lexifyapp@gmail.com \n\n"
+         "\n\n Mail : lexifyapp@gmail.com \n\n"
          "Auteurs: \n\nNassin Khatir \nLucas Nayet \nNicolas Piot \nHani Abdulwahab"
     </string>
     <string name="Changeplayersnames">Noms des joueurs</string>
-    <string name="ChooseWords">Choisissez des mots</string>
+    <string name="ChooseWords">Choisir des mots</string>
     <string name="yourturn">A ton tour, fais deviner le mot mystère à ton partenaire!</string>
     <string name="round">Tour</string>
     <string name="score">Score</string>
     <string name="correct">Vrai !\n+1</string>
     <string name="wrong">Faux !\n-1</string>
-    <string name="pass">Passer\n-5</string>
+    <string name="pass">Passer \n-5</string>
     <string name="resultscongrats">C\'est fini ! Vous avez fait un score total de:</string>
-    <string name="name">les joueurs</string>
-    <string name="Foundword">Mots trouvé</string>
+    <string name="name">Joueurs</string>
+    <string name="Foundword">Mots trouvés</string>
     <string name="Password">Mots Passés</string>
     <string name="NotFoundWords">Mots non trouvés</string>
-    <string name="retry">Recommencez</string>
-    <string name="Mainmenu">Menu </string>
+    <string name="retry">Recommencer</string>
+    <string name="Mainmenu">Menu principal</string>
 
 </resources>

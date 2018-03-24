@@ -2,13 +2,11 @@ package parisnanterre.fr.lexify.verbalgame;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import parisnanterre.fr.lexify.R;
@@ -79,7 +76,6 @@ public class VerbalGameSigningFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,14 +92,13 @@ public class VerbalGameSigningFragment extends Fragment {
         final VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
 
 
-
         //si joueur 2 alors peut plus changer pseudo
-        if(gameActivity.isLastRound()){
+        if (gameActivity.isLastRound()) {
             btn_change.setVisibility(View.GONE);
         }
 
-       words =  gameActivity.getEightRandomWords();
-       isChosenWords = false;
+        words = gameActivity.getEightRandomWords();
+        isChosenWords = false;
 
         btn_choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,10 +141,10 @@ public class VerbalGameSigningFragment extends Fragment {
                             @Override
                             public void onClick(View view) {
 
-                                if(edt_player1.getText().toString().length()==0 || edt_player2.getText().toString().length()==0) {
+                                if (edt_player1.getText().toString().length() == 0 || edt_player2.getText().toString().length() == 0) {
                                     Toast toast = Toast.makeText(getActivity(), "Please enter name for player 1 and 2", Toast.LENGTH_SHORT);
                                     toast.show();
-                                }else {
+                                } else {
 
                                     gameActivity.getPlayer1().setName(edt_player1.getText().toString());
                                     gameActivity.getPlayer2().setName(edt_player2.getText().toString());
@@ -160,7 +155,7 @@ public class VerbalGameSigningFragment extends Fragment {
                                     } catch (noCurrentPlayerException e) {
                                         e.printStackTrace();
                                     }
-                                    txt_turn.setText(player.getName() +" "+ getResources().getString(R.string.Itsyourturn));
+                                    txt_turn.setText(player.getName() + " " + getResources().getString(R.string.Itsyourturn));
                                     txt_player.setText(player.getName());
                                     dialog.dismiss();
                                 }
@@ -178,7 +173,7 @@ public class VerbalGameSigningFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(!isChosenWords) {
+                if (!isChosenWords) {
                     gameActivity.initializeWords();
                 }
 
@@ -194,31 +189,27 @@ public class VerbalGameSigningFragment extends Fragment {
             e.printStackTrace();
         }
 
-        txt_turn.setText(player.getName() +" "+ getResources().getString(R.string.Itsyourturn));
+        txt_turn.setText(player.getName() + " " + getResources().getString(R.string.Itsyourturn));
         txt_player.setText(player.getName());
-        //txt_rules.setText("Take the phone and try to guess the word to your partner only by using one word at a time !\nClick on the screen to start the game");
 
         return view;
     }
 
-    public void showChooseDialog(final VerbalGameActivity gameActivity)
-    {
+    public void showChooseDialog(final VerbalGameActivity gameActivity) {
 
 
         final CharSequence[] items = new CharSequence[8];
         final boolean itemsChecked[] = new boolean[items.length];
-        
-        for (int i = 0; i<items.length;i++) {
+
+        for (int i = 0; i < items.length; i++) {
             items[i] = words.get(i).getWord();
         }
 
 
-
-        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose 4 words");
 
         builder.setMultiChoiceItems(items, itemsChecked, new DialogInterface.OnMultiChoiceClickListener() {
-
 
 
             int count = 0;
@@ -229,10 +220,9 @@ public class VerbalGameSigningFragment extends Fragment {
                 itemsChecked[which] = isChecked;
                 Button b = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
 
-                if(count !=4) {
+                if (count != 4) {
                     b.setEnabled(false);
-                }
-                else {
+                } else {
                     b.setEnabled(true);
                 }
 
@@ -240,9 +230,8 @@ public class VerbalGameSigningFragment extends Fragment {
 
         })
 
-                   .setPositiveButton("Ok", null)
-            .setNegativeButton("Cancel", null);
-
+                .setPositiveButton("Ok", null)
+                .setNegativeButton("Cancel", null);
 
 
         final AlertDialog dialog = builder.create();
@@ -260,23 +249,22 @@ public class VerbalGameSigningFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-                            gameActivity.cleanWords();
+                        gameActivity.cleanWords();
 
 
-                            for(int i = 0;i<items.length;i++) {
-                                if(itemsChecked[i]){
-                                    gameActivity.addWord(words.get(i));
-                                }
+                        for (int i = 0; i < items.length; i++) {
+                            if (itemsChecked[i]) {
+                                gameActivity.addWord(words.get(i));
                             }
-                            isChosenWords = true;
-                            dialog.dismiss();
+                        }
+                        isChosenWords = true;
+                        dialog.dismiss();
 
                     }
                 });
             }
         });
         dialog.show();
-
 
 
     }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import parisnanterre.fr.lexify.R;
@@ -35,7 +36,7 @@ public class AboutGameFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    boolean rules_actif=false;
+    boolean rules_actif = false;
 
     public AboutGameFragment() {
         // Required empty public constructor
@@ -72,17 +73,19 @@ public class AboutGameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about_game, container, false);
         final Button btn_regles = view.findViewById(R.id.fragment_about_regles_btn);
-        final Button btn_about_application=  view.findViewById(R.id.fragment_about_application_btn);
-        final Button btn_menu=  view.findViewById(R.id.fragment_about_menu_btn);
-        final TextView txt_about_application =  view.findViewById(R.id.fragment_about_affiche_txt);
+        final Button btn_about_application = view.findViewById(R.id.fragment_about_application_btn);
+        final Button btn_menu = view.findViewById(R.id.fragment_about_menu_btn);
+        final TextView txt_about_application = view.findViewById(R.id.fragment_about_affiche_txt);
         final ImageView image_github = view.findViewById(R.id.fragment_about_github);
         final ImageView image_website = view.findViewById(R.id.fragment_about_website);
+        final LinearLayout social_media = view.findViewById(R.id.fragment_social_media);
 
-        image_github.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        image_github.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
@@ -91,8 +94,8 @@ public class AboutGameFragment extends Fragment {
             }
         });
 
-        image_website.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        image_website.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
@@ -104,35 +107,11 @@ public class AboutGameFragment extends Fragment {
 
         txt_about_application.setText(R.string.aboutapplication);
 
-        /*
-        SpannableString sString = new SpannableString(getResources().getString(R.string.aboutapplication));
-
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View textView) {
-                Intent lexifyorganization = new Intent(Intent.ACTION_VIEW);
-                lexifyorganization.setData(Uri.parse("https://lexifyorganization.github.io/Lexify/"));
-
-                startActivity(lexifyorganization);
-
-
-            }
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setUnderlineText(false);
-                ds.setColor(Color.BLUE);
-            }
-        };
-        sString.setSpan(clickableSpan,235,256, 0);
-        txt_about_application.append(sString);
-        txt_about_application.setMovementMethod(LinkMovementMethod.getInstance());
-        */
         btn_menu.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),MainActivity.class);
+                Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
             }
         });
@@ -140,14 +119,17 @@ public class AboutGameFragment extends Fragment {
         btn_regles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    txt_about_application.setText(getResources().getString(R.string.aboutrules));
-                }
+                txt_about_application.setText(getResources().getString(R.string.aboutrules));
+                social_media.setVisibility(View.GONE);
+
+            }
         });
 
         btn_about_application.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    txt_about_application.setText(getResources().getString(R.string.aboutapplication));
+                txt_about_application.setText(getResources().getString(R.string.aboutapplication));
+                social_media.setVisibility(View.VISIBLE);
 
             }
         });

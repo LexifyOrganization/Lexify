@@ -120,11 +120,13 @@ public class SettingsActivity extends Activity {
         });
 
     }
+
     @Override
-    public void  onBackPressed() {
+    public void onBackPressed() {
         Intent refresh = new Intent(this, MainActivity.class);
         startActivity(refresh);
     }
+
     private void updateLanguage(String lang) {
         Locale mylocale = new Locale(lang);
         DisplayMetrics dm = getResources().getDisplayMetrics();

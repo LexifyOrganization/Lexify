@@ -1,9 +1,5 @@
 package parisnanterre.fr.lexify.application;
 
-/**
- * Created by Hani on 28/02/2018.
- */
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
+
 import java.util.Locale;
 
 /**
@@ -21,6 +18,7 @@ import java.util.Locale;
  * <p/>
  * Created by gunhansancar on 07/10/15.
  */
+
 public class LocalHelper {
 
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";

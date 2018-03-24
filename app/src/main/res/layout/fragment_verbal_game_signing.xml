@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:text="@string/Instructins"
             android:textAppearance="@style/VerbalGameInstructions"/>
 
@@ -84,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:text="@string/rules"
             android:textAppearance="@style/VerbalGameRules"/>
 
@@ -91,10 +93,10 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
+        android:gravity="bottom"
         android:layout_gravity="center"
         android:weightSum="2"
-
+        android:layout_marginTop="30dp"
         >
 
         <Button
@@ -129,8 +131,6 @@
             android:text="@string/start"
             android:background="@drawable/buttonshape"
          />
-
-
 
     </LinearLayout>
 

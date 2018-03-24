@@ -20,10 +20,6 @@ import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 
-/**
- * Created by piotn_000 on 30/01/2018.
- */
-
 public class SignInActivity extends Activity {
 
     User currentUser = null;
@@ -56,7 +52,7 @@ public class SignInActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(),SignUpActivity.class);
+                Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(i);
             }
         });
@@ -71,29 +67,26 @@ public class SignInActivity extends Activity {
 
         txt_errors.setText("");
 
-        if(pseudo.length() == 0)
-        {
+        if (pseudo.length() == 0) {
             txt_errors.append("Please enter your pseudo \n");
         }
 
-        if(pass.length() == 0)
-        {
+        if (pass.length() == 0) {
             txt_errors.append("Please enter your password \n");
         }
 
-        if(txt_errors.length()==0) {
+        if (txt_errors.length() == 0) {
             List<User> users = db.getAllUsers();
 
-            for(User u : users) {
-                if(u.get_pseudo().equals(pseudo) && u.get_pass().equals(pass)) {
+            for (User u : users) {
+                if (u.get_pseudo().equals(pseudo) && u.get_pass().equals(pass)) {
                     currentUser = u;
                 }
             }
 
-            if(currentUser==null) {
+            if (currentUser == null) {
                 txt_errors.append("Can't find this account, please check if the informations you entered are correct");
-            }
-            else {
+            } else {
                 Context context = getApplicationContext();
                 CharSequence text = "You are connected";
                 int duration = Toast.LENGTH_SHORT;
@@ -112,7 +105,6 @@ public class SignInActivity extends Activity {
                 }
 
 
-
                 Intent i = new Intent();
                 /*Bundle b = new Bundle();
                 b.putSerializable("Current user", currentUser);
@@ -122,7 +114,6 @@ public class SignInActivity extends Activity {
             }
 
         }
-
 
 
     }

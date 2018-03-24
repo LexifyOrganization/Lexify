@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 import parisnanterre.fr.lexify.R;
 
-public class AboutGameActivity extends Activity implements AboutGameFragment.OnFragmentInteractionListener{
+public class AboutGameActivity extends Activity implements AboutGameFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class AboutGameActivity extends Activity implements AboutGameFragment.OnF
         Fragment reglesGameFragment = new AboutGameFragment();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.activity_about_game_fragment, reglesGameFragment ); // give your fragment container id in first parameter
+        transaction.replace(R.id.activity_about_game_fragment, reglesGameFragment); // give your fragment container id in first parameter
         //transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }

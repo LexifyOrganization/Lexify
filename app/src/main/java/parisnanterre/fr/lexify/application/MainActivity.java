@@ -47,9 +47,9 @@ public class MainActivity extends Activity {
 
         // set default languge is English
         String languge = Paper.book().read("language");
-        if (languge == null){
+        if (languge == null) {
             Locale.getDefault().getLanguage();
-        }else {
+        } else {
             updateLanguage((String) Paper.book().read("language"));
         }
         setContentView(R.layout.activity_main);
@@ -75,7 +75,6 @@ public class MainActivity extends Activity {
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
         Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
         ImageView logo = (ImageView) findViewById(R.id.activity_main_logo);
-
 
 
         //compte encore inutile, changer cette ligne plus tard
@@ -226,8 +225,9 @@ public class MainActivity extends Activity {
         }
 
     }
+
     @Override
-    public void  onBackPressed() {
+    public void onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addCategory(Intent.CATEGORY_HOME);

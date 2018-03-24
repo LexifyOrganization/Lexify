@@ -19,10 +19,6 @@ import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 
-/**
- * Created by piotn_000 on 30/01/2018.
- */
-
 public class SignUpActivity extends Activity {
 
     @Override
@@ -54,61 +50,56 @@ public class SignUpActivity extends Activity {
 
                 txt_errors.setText("");
 
-                if(!Pattern.compile("^([a-zA-Z0-9-_]{2,36})$", Pattern.CASE_INSENSITIVE).matcher(pseudo).find()
+                if (!Pattern.compile("^([a-zA-Z0-9-_]{2,36})$", Pattern.CASE_INSENSITIVE).matcher(pseudo).find()
                         && (pseudo.length() >= 1)) {
                     txt_errors.append("Wrong pseudo format \n");
                 }
 
-                if(!Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).matcher(email).find()
+                if (!Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).matcher(email).find()
                         && (email.length() >= 1)) {
                     txt_errors.append("Wrong email format \n");
                 }
 
-                if(!pass.equals(confirm_pass) && pass.length()>=4 && confirm_pass.length()>=4) {
+                if (!pass.equals(confirm_pass) && pass.length() >= 4 && confirm_pass.length() >= 4) {
                     txt_errors.append("Passwords do not match \n");
                 }
 
-                if((confirm_pass.length()>36 || pass.length()>36 || confirm_pass.length()<4 || pass.length()<4) && (confirm_pass.length()>=1 && pass.length()>=1)) {
+                if ((confirm_pass.length() > 36 || pass.length() > 36 || confirm_pass.length() < 4 || pass.length() < 4) && (confirm_pass.length() >= 1 && pass.length() >= 1)) {
                     txt_errors.append("Password must have at least 4 characters and at most 36 characters \n");
                 }
 
-                if(pseudo.length() == 0)
-                {
+                if (pseudo.length() == 0) {
                     txt_errors.append("You must choose a pseudo \n");
                 }
 
-                if(email.length() == 0) {
+                if (email.length() == 0) {
                     txt_errors.append("You must enter an email \n");
                 }
 
-                if(pass.length() == 0)
-                {
+                if (pass.length() == 0) {
                     txt_errors.append("You must enter password \n");
                 }
 
-                if(confirm_pass.length() == 0)
-                {
+                if (confirm_pass.length() == 0) {
                     txt_errors.append("You must confirm password \n");
                 }
 
 
-                if(txt_errors.getText().toString().length()==0) {
+                if (txt_errors.getText().toString().length() == 0) {
                     List<User> users = db.getAllUsers();
 
-                    for(User u : users) {
-                        if(pseudo.equals(u.get_pseudo())) {
+                    for (User u : users) {
+                        if (pseudo.equals(u.get_pseudo())) {
                             txt_errors.append("Pseudo already exist \n");
                         }
-                        if(email.equals(u.get_email())) {
+                        if (email.equals(u.get_email())) {
                             txt_errors.append("This email is already used \n");
                         }
                     }
                 }
 
 
-
-
-                if(txt_errors.getText().toString().length()==0) {
+                if (txt_errors.getText().toString().length() == 0) {
                     db.addUser(new User(edt_pseudo.getText().toString(), edt_email.getText().toString(), edt_pass.getText().toString()));
 
                     Context context = getApplicationContext();
@@ -118,7 +109,7 @@ public class SignUpActivity extends Activity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
 
-                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
 
                 }

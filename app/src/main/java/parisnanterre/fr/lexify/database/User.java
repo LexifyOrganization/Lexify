@@ -2,11 +2,7 @@ package parisnanterre.fr.lexify.database;
 
 import java.io.Serializable;
 
-/**
- * Created by piotn_000 on 30/01/2018.
- */
-
-public class User implements Serializable{
+public class User implements Serializable {
 
     int _id;
     String _pseudo;

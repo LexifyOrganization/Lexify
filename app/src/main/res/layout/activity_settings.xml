@@ -29,8 +29,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Chronometer"
-
-
             />
 
         <Button
@@ -57,9 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:gravity="center"
             android:text="@string/Mainmenu"
-            android:drawableLeft="@drawable/home_icon"/>
+            android:drawableStart="@drawable/home_icon"/>
 
     </LinearLayout>
 

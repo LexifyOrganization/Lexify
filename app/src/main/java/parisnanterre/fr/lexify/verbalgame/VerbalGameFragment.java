@@ -1,24 +1,28 @@
 package parisnanterre.fr.lexify.verbalgame;
 
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
-import parisnanterre.fr.lexify.settings.Settings;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.word.Word;
+
+import static android.view.animation.Animation.RELATIVE_TO_SELF;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,7 +50,6 @@ public class VerbalGameFragment extends Fragment {
     VerbalGameActivity gameActivity;
     CountDownTimer chrono;
     ProgressBar progressBar;
-    Settings settings;
 
     private OnFragmentInteractionListener mListener;
 
@@ -95,75 +98,63 @@ public class VerbalGameFragment extends Fragment {
         txt_nbmanche = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_manche);
         txt_word = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_word);
         txt_score = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_score);
-        txt_time = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_chrono);
+        txt_time = (TextView) view.findViewById(R.id.fragment_verbal_game_timer);
         progressBar = (ProgressBar) view.findViewById(R.id.fragment_verbal_game_progressbar);
         LinearLayout layout_chrono = (LinearLayout) view.findViewById(R.id.fragment_verbal_game_layout_chrono);
 
-        txt_nbmanche.setText(getResources().getString(R.string.round)+" "+cpt+"/4");
-        txt_score.setText(getResources().getString(R.string.score) +" : "+ score);
+        txt_nbmanche.setText(getResources().getString(R.string.round) + " " + cpt + "/4");
+        txt_score.setText(getResources().getString(R.string.score) + " : " + score);
         txt_word.setText(gameActivity.getWords().get(0).getWord());
 
-        if(SettingsActivity.isChronoEnable){
+        if (SettingsActivity.isChronoEnable) {
             layout_chrono.setVisibility(View.VISIBLE);
             btn_pass.setVisibility(View.GONE);
 
-
-
-            progressBar.setMax(20);
-            progressBar.setProgress(20);
+            /*Animation*/
+            RotateAnimation makeVertical = new RotateAnimation(0, -90, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
+            makeVertical.setFillAfter(true);
+            progressBar.startAnimation(makeVertical);
+            progressBar.setSecondaryProgress(21);
+            progressBar.setProgress(0);
 
             chrono = initializeTimer();
             gameActivity.setChrono(chrono);
             chrono.start();
 
-        }else {
+        } else {
             layout_chrono.setVisibility(View.GONE);
         }
-
 
 
         btn_pass.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
                 player.incNotFoundWord();
 
                 if (cpt == 4) {
                     score = score - 5;
-
                     changeFragment();
                 } else {
-
-
                     changeWord(PassingType.PASS);
-
                 }
 
             }
         });
 
 
-
         btn_true.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
                 player.incFoundWord();
 
                 if (cpt == 4) {
                     score++;
-
                     changeFragment();
-
                 } else {
-
                     changeWord(PassingType.TRUE);
-
                 }
-
-
             }
         });
 
@@ -177,14 +168,19 @@ public class VerbalGameFragment extends Fragment {
             public void onTick(long millisUntilFinished) {
 
                 int progress = (int) (millisUntilFinished / 1000);
-                txt_time.setText(String.valueOf(millisUntilFinished/1000));
+                txt_time.setText(String.valueOf(millisUntilFinished / 1000));
+                progressBar.setMax(21);
+                progressBar.setSecondaryProgress(21);
                 progressBar.setProgress(progress);
+
             }
 
             public void onFinish() {
-                txt_time.setText("Time's up !");
                 player.incNotFoundWord();
+                progressBar.setMax(21);
+                progressBar.setSecondaryProgress(21);
                 progressBar.setProgress(0);
+                Toast.makeText(getActivity(), "Time's up !", Toast.LENGTH_SHORT).show();
                 if (cpt != 4)
                     changeWord(PassingType.PASS);
                 else {
@@ -199,7 +195,7 @@ public class VerbalGameFragment extends Fragment {
 
     private void changeFragment() {
 
-        if(SettingsActivity.isChronoEnable)
+        if (SettingsActivity.isChronoEnable)
             chrono.cancel();
 
         if (gameActivity.isLastRound()) {
@@ -222,8 +218,8 @@ public class VerbalGameFragment extends Fragment {
     //parametre type = TRUE ou PASS (voir fichier enum PassingType) TRUE augmente le score et PASS le baisse
     private void changeWord(PassingType type) {
 
-        if(SettingsActivity.isChronoEnable)
-          chrono.cancel();
+        if (SettingsActivity.isChronoEnable)
+            chrono.cancel();
 
         if (type.equals(PassingType.TRUE)) {
             score++;
@@ -231,17 +227,16 @@ public class VerbalGameFragment extends Fragment {
             score = score - 5;
         }
 
-
         cpt++;
-        txt_score.setText(getResources().getString(R.string.score)+" : "+ score);
+        txt_score.setText(getResources().getString(R.string.score) + " : " + score);
 
         Word random = gameActivity.getWords().get(cpt - 1);
         txt_word.setText(random.getWord());
-        txt_nbmanche.setText(getResources().getString(R.string.round) +" "+cpt +"/4");
+        txt_nbmanche.setText(getResources().getString(R.string.round) + " " + cpt + "/4");
 
 
-            if(SettingsActivity.isChronoEnable)
-             chrono.start();
+        if (SettingsActivity.isChronoEnable)
+            chrono.start();
 
     }
 

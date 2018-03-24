@@ -11,10 +11,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by piotn_000 on 05/02/2018.
- */
-
 public class DatabaseWord extends SQLiteOpenHelper {
 
     // All Static variables
@@ -71,8 +67,8 @@ public class DatabaseWord extends SQLiteOpenHelper {
 
     public boolean isPresent(Word w) {
         List<Word> words = this.getAllWords();
-        for(Word word : words) {
-            if(word.getWord().equals(w.getWord()))
+        for (Word word : words) {
+            if (word.getWord().equals(w.getWord()))
                 return true;
         }
 
@@ -114,13 +110,13 @@ public class DatabaseWord extends SQLiteOpenHelper {
 
         // updating row
         return db.update(TABLE_WORDS, values, KEY_ID + word.getId(),
-                new String[] { String.valueOf(word.getId()) });
+                new String[]{String.valueOf(word.getId())});
     }
 
     public void deleteWord(Word word) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_WORDS, KEY_ID + " = ?",
-                new String[] { String.valueOf(word.getId()) });
+                new String[]{String.valueOf(word.getId())});
         db.close();
     }
 
@@ -128,13 +124,13 @@ public class DatabaseWord extends SQLiteOpenHelper {
         List<Word> words = getAllWords();
 
         ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i=1; i<limit; i++) {
+        for (int i = 1; i < limit; i++) {
             list.add(new Integer(i));
         }
         Collections.shuffle(list);
 
         List<Word> nWords = new ArrayList<Word>();
-        for(int i = 0; i<n;i++) {
+        for (int i = 0; i < n; i++) {
             nWords.add(words.get(list.get(i)));
         }
 
@@ -148,7 +144,7 @@ public class DatabaseWord extends SQLiteOpenHelper {
         Random r = new Random();
         int Low = 0;
         int High = words.size();
-        int random = r.nextInt(High-Low) + Low;
+        int random = r.nextInt(High - Low) + Low;
 
         return words.get(random);
 
@@ -157,7 +153,7 @@ public class DatabaseWord extends SQLiteOpenHelper {
     public void removeAll() {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("delete from "+ TABLE_WORDS);
+        db.execSQL("delete from " + TABLE_WORDS);
         db.close();
     }
 }

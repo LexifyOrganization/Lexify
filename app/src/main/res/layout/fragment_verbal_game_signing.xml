@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_verbal_game_signing_fragment"
-    android:clickable="true"
     tools:context="parisnanterre.fr.lexify.verbalgame.VerbalGameSigningFragment"
     android:background="@color/backgroundBlue">
 
@@ -29,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:text="@string/Instructins"
             android:textAppearance="@style/VerbalGameInstructions"/>
 
@@ -38,36 +38,43 @@
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginStart="-12dp"
+            android:layout_gravity="center"
             >
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/smartphone_icon"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginStart="50dp"
+                android:src="@drawable/smartphone_icon" />
+
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/arrow_icon"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginStart="30dp"
+                android:src="@drawable/arrow_icon" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="35dp"
+                >
+
                 <ImageView
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/person_icon"
-                    android:layout_marginLeft="40dp"/>
+
+                    android:src="@drawable/person_icon" />
+
                 <TextView
                     android:id="@+id/fragment_verbal_game_signing_player"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text=""
-                    android:layout_marginLeft="20dp"
-                    android:textSize="17dp"/>
+                    android:text="player 1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -78,15 +85,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:text="@string/rules"
             android:textAppearance="@style/VerbalGameRules"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
+        android:gravity="bottom"
+        android:layout_gravity="center"
         android:weightSum="2"
+        android:layout_marginTop="30dp"
         >
 
         <Button
@@ -106,19 +116,21 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:gravity="center">
 
         <Button
             android:id="@+id/fragment_verbal_game_signing_btn_play_game"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/start" />
-
-
+            android:text="@string/start"
+            android:background="@drawable/buttonshape"
+         />
 
     </LinearLayout>
 

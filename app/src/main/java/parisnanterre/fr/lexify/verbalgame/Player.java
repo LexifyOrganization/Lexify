@@ -1,9 +1,5 @@
 package parisnanterre.fr.lexify.verbalgame;
 
-/**
- * Created by piotn_000 on 10/02/2018.
- */
-
 public class Player {
 
     private String name;

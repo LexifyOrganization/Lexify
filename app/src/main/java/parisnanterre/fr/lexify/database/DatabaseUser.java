@@ -9,10 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by piotn_000 on 30/01/2018.
- */
-
 public class DatabaseUser extends SQLiteOpenHelper {
 
     // All Static variables
@@ -102,13 +98,13 @@ public class DatabaseUser extends SQLiteOpenHelper {
 
         // updating row
         return db.update(TABLE_USERS, values, KEY_ID + " = ?",
-                new String[] { String.valueOf(user.get_id()) });
+                new String[]{String.valueOf(user.get_id())});
     }
 
     public void deleteContact(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USERS, KEY_ID + " = ?",
-                new String[] { String.valueOf(user.get_id()) });
+                new String[]{String.valueOf(user.get_id())});
         db.close();
     }
 

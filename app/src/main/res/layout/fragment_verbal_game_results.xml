@@ -23,12 +23,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/resultscongrats"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@+id/fragment_verbal_game_results_score"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintVertical_chainStyle="packed"
+                android:textColor="#FFFFFF"/>
 
             <TextView
                 android:id="@+id/fragment_verbal_game_results_score"
@@ -36,9 +37,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="15dp"
-                android:text="cc"
-                android:textColor="#80deea"
-                android:textSize="60dp"
+                android:text=""
+                android:textColor="#81c784"
+                android:textSize="60sp"
                 app:layout_constraintBottom_toTopOf="@+id/fragment_verbal_game_results_table"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -63,23 +64,32 @@
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
-                        android:gravity="right"
-                        android:padding="3dip"
-                        android:text="@string/name" />
+                        android:gravity="center"
+                        android:padding="10dip"
+                        android:text="@string/name"
+                        android:textSize="15sp"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
-                        android:padding="3dip"
-                        android:text="@string/Foundword" />
+                        android:padding="10dip"
+                        android:text="@string/Foundword"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF"/>
 
 
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
-                        android:padding="3dip"
-                        android:text="@string/NotFoundWords" />
+                        android:padding="10dip"
+                        android:text="@string/NotFoundWords"
+                        android:textSize="15sp"
+                        android:gravity="center"
+
+                        android:textColor="#FFFFFF"/>
 
                 </TableRow>
 
@@ -91,22 +101,30 @@
                 >
                 <TextView
                     android:text=""
-                    android:gravity="right"
+                    android:gravity="center"
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
-                    android:padding="3dip" />
+                    android:padding="10dip"
+                    android:textSize="17sp"
+                    android:textColor="#FFFFFF"/>
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/cell_shape"
+                    android:gravity="center"
+                    android:padding="10dip"
+                    android:textSize="17sp"
+                    android:textColor="#FFFFFF" />
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
-                        android:padding="3dip"
-                        android:text="" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:background="@drawable/cell_shape"
-                        android:padding="3dip"
-                        android:text="" />
+                        android:padding="10dip"
+                        android:text=""
+                        android:gravity="center"
+                        android:textSize="17sp"
+                        android:textColor="#FFFFFF"/>
                 </TableRow>
 
 
@@ -117,23 +135,31 @@
                 >
                 <TextView
                     android:text=""
-                    android:gravity="right"
+                    android:gravity="center"
                     android:background="@drawable/cell_shape"
                     android:layout_weight = "1"
-                    android:padding="3dip" />
+                    android:padding="10dip"
+                    android:textSize="17sp"
+                    android:textColor="#FFFFFF"/>
 
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
-                        android:padding="3dip"
-                        android:text="" />
+                        android:padding="10dip"
+                        android:text=""
+                        android:gravity="center"
+                        android:textSize="17sp"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:layout_weight="1"
                         android:background="@drawable/cell_shape"
-                        android:padding="3dip"
-                        android:text="" />
+                        android:padding="10dip"
+                        android:text=""
+                        android:gravity="center"
+                        android:textSize="17sp"
+                        android:textColor="#FFFFFF"/>
                 </TableRow>
 
             </TableLayout>
@@ -141,9 +167,9 @@
         </android.support.constraint.ConstraintLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="164dp"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:layout_weight="2"
             android:orientation="horizontal"
@@ -157,7 +183,8 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/retry_icon"
-                android:text="@string/retry" />
+                android:text="@string/retry"
+                android:textColor="#FFFFFF"/>
 
             <Button
                 android:id="@+id/fragment_verbal_game_results_btn_menu"
@@ -166,7 +193,8 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/home_icon"
-                android:text="@string/Mainmenu" />
+                android:text="@string/Mainmenu"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
     </LinearLayout>

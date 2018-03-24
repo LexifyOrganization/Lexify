@@ -1,14 +1,13 @@
 package parisnanterre.fr.lexify.verbalgame;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.FragmentTransaction;
 import android.os.CountDownTimer;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +18,9 @@ import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
 public class VerbalGameActivity extends Activity
-                                implements VerbalGameFragment.OnFragmentInteractionListener,
-                                           VerbalGameSigningFragment.OnFragmentInteractionListener,
-                                           VerbalGameResultsFragment.OnFragmentInteractionListener{
+        implements VerbalGameFragment.OnFragmentInteractionListener,
+        VerbalGameSigningFragment.OnFragmentInteractionListener,
+        VerbalGameResultsFragment.OnFragmentInteractionListener {
 
 
     private int score = 10;
@@ -31,7 +30,6 @@ public class VerbalGameActivity extends Activity
     private List<Word> words;
     private DatabaseWord db;
     CountDownTimer chrono;
-
 
 
     @Override
@@ -55,7 +53,7 @@ public class VerbalGameActivity extends Activity
 
     @Override
     public void onBackPressed() {
-        if(chrono!=null)
+        if (chrono != null)
             chrono.cancel();
 
         finish();
@@ -74,16 +72,16 @@ public class VerbalGameActivity extends Activity
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.activity_verbal_game_fragment, f ); // give your fragment container id in first parameter
+        transaction.replace(R.id.activity_verbal_game_fragment, f); // give your fragment container id in first parameter
         //transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
 
     }
 
     public Player getCurrentPlayer() throws noCurrentPlayerException {
-        if(player1.isCurrentPlayer())
+        if (player1.isCurrentPlayer())
             return player1;
-        else if(player2.isCurrentPlayer())
+        else if (player2.isCurrentPlayer())
             return player2;
         else
             throw new noCurrentPlayerException();
@@ -91,15 +89,13 @@ public class VerbalGameActivity extends Activity
     }
 
     public void changeCurrentPlayer() throws noCurrentPlayerException {
-        if(player1.isCurrentPlayer()) {
+        if (player1.isCurrentPlayer()) {
             player1.setCurrentPlayer(false);
             player2.setCurrentPlayer(true);
-        }
-        else if(player2.isCurrentPlayer()){
+        } else if (player2.isCurrentPlayer()) {
             player1.setCurrentPlayer(true);
             player2.setCurrentPlayer(false);
-        }
-        else {
+        } else {
             throw new noCurrentPlayerException();
         }
     }

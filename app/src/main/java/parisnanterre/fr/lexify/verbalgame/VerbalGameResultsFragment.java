@@ -96,7 +96,7 @@ public class VerbalGameResultsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getActivity(),MainActivity.class);
+                Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
 
             }
@@ -116,13 +116,13 @@ public class VerbalGameResultsFragment extends Fragment {
         names = (TextView) player2.getChildAt(0);
         names.setText(gameActivity.getPlayer2().getName());
 
-        for (int i =0; i<2; i++)  {
-            TextView txt = (TextView) player1.getChildAt(i+1);
+        for (int i = 0; i < 2; i++) {
+            TextView txt = (TextView) player1.getChildAt(i + 1);
             txt.setText(String.valueOf(p1val[i]));
         }
 
-        for (int i =0; i<2; i++)  {
-            TextView txt = (TextView) player2.getChildAt(i+1);
+        for (int i = 0; i < 2; i++) {
+            TextView txt = (TextView) player2.getChildAt(i + 1);
             txt.setText(String.valueOf(p2val[i]));
         }
 

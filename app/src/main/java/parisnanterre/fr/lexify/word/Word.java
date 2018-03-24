@@ -1,15 +1,12 @@
 package parisnanterre.fr.lexify.word;
 
-/**
- * Created by piotn_000 on 05/02/2018.
- */
 
 public class Word {
 
-    int id;
-    String word;
-    int difficulty;
-    int numberPlayed;
+    private int id;
+    private String word;
+    private int difficulty;
+    private int numberPlayed;
 
     public  Word() {
 

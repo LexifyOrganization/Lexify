@@ -4,7 +4,7 @@ public class Settings {
 
     public static boolean chrono_enabled;
 
-    public Settings(){
+    public Settings() {
         chrono_enabled = true;
     }
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="parisnanterre.fr.lexify.application.AboutGameActivity"
-    android:background="@color/backgroundBlue">
+    android:background="@drawable/background_color">
 
     <FrameLayout
         android:id="@+id/activity_about_game_fragment"

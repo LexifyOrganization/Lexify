@@ -5,7 +5,7 @@
     <string name="options">Options</string>
     <string name="AboutGame">À propos</string>
     <string name="Header">À propos de Lexify </string>
-    <string name="Languages">Langues</string>
+    <string name="Languages">Langue</string>
     <string name="Chronometer">Chronomètre</string>
     <string name="changelanguages">Changer la langue </string>
     <string name="MyAccount"> Mon compte</string>
@@ -14,21 +14,22 @@
     <string name="Instructins">Prenez le téléphone et faites deviner le mot mystère à votre partenaire seulement en utilisant un indice à la fois!</string>
     <string name="Itsyourturn">C\'est ton tour !</string>
     <string name="rule">Règles</string>
-    <string name="rules">Proposition correcte:  + 1 point \nMot non trouvé : - 5 points \n\n\n</string>
+    <string name="submit">Valider</string>
+    <string name="rules">Proposition correcte :  + 1 point \nPasser : - 5 points \n\n\n</string>
     <string name="aboutrules">
     "\nRègles \n \n4 tours \n2 joueurs \n4 mots par partie\n"
     "1 mot par tour \n \n"
     "Un joueur fait deviner un mot à son partenaire avec un indice à chaque fois. \n"
-    "L'indice ne doit pas avoir la même base \n"
+    "L'indice ne doit pas avoir la même base.\n\n"
     "Exemple d'indice intérdit : \nMot mystère : Camion \nIndice : Camionette \n\n"
     "Proposition correcte : + 1 point \n"
     "Passer : - 5 points \n \n"
-    "Le jeu commence avec un score de 10 points\n \n"
+    "Le jeu commence avec un score de 10 points.\n \n"
     </string>
     <string name="aboutapplication">
         "\nLexify, le jeu mobile qui Lexify votre vocabulaire. \n\n"
          "Inspiré du jeu Mot de Passe sur France 2,\n"
-         "Le but de Lexify est soit de deviner un mot, soit de faire deviner un mot.\n"
+         "Le but de Lexify est soit de deviner un mot,\n soit de faire deviner un mot.\n"
          "\n\n Mail : lexifyapp@gmail.com \n\n"
          "Auteurs: \n\nNassin Khatir \nLucas Nayet \nNicolas Piot \nHani Abdulwahab"
     </string>

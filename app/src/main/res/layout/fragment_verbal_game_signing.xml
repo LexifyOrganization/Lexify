@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/fragment_verbal_game_signing_fragment"
     tools:context="parisnanterre.fr.lexify.verbalgame.VerbalGameSigningFragment"
-    android:background="@color/backgroundBlue">
+    android:background="@drawable/background_color">
 
     <LinearLayout
         android:layout_width="match_parent"

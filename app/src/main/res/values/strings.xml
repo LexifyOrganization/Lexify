@@ -46,6 +46,7 @@
     <string name="NotFoundWords">Words not found</string>
     <string name="retry">Retry</string>
     <string name="Mainmenu">Main menu</string>
+    <string name="submit">Validate</string>
     <string name="Selectlanguge">Select the language</string>
 
     <string-array name="languages">

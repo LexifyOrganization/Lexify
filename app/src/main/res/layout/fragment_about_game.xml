@@ -3,7 +3,7 @@
     android:id="@+id/fragment_about_game_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundBlue"
+    android:background="@drawable/background_color"
     tools:context="parisnanterre.fr.lexify.application.AboutGameFragment">
 
     <LinearLayout
@@ -83,7 +83,7 @@
             android:layout_weight="1"
             android:drawableStart="@drawable/info_icon"
             android:text="@string/AboutGame"
-            android:textSize="13sp"/>
+            android:textSize="12sp"/>
 
         <Button
             android:id="@+id/fragment_about_regles_btn"
@@ -92,7 +92,7 @@
             android:layout_weight="1"
             android:drawableStart="@drawable/rules_icon"
             android:text="@string/rule"
-            android:textSize="13sp"/>
+            android:textSize="12sp"/>
 
 
         <Button
@@ -102,7 +102,7 @@
             android:layout_weight="1"
             android:drawableStart="@drawable/home_icon"
             android:text="@string/Mainmenu"
-            android:textSize="12sp"/>
+            android:textSize="9sp"/>
 
     </LinearLayout>
 

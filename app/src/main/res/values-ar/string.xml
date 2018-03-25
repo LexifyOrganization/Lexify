@@ -2,7 +2,7 @@
 <resources>
     <string name="newgame">لعبة جديدة</string>
     <string name="options">إعدادات</string>
-    <string name="Languages"> اللغات </string>
+    <string name="Languages">اللغة</string>
     <string name="Chronometer">مؤقت</string>
     <string name="changelanguages">  تغيير اللغة</string>
     <string name="AboutGame">حول لعبة</string>
@@ -13,6 +13,7 @@
     <string name="Instructins">خذ الهاتف وقم باعطاء ايحاء عن الكلمة التي تظهر امامك لشريكك باستخدام كلمة واحدة !</string>
     <string name="Itsyourturn">إنه دورك !</string>
     <string name="rule">قواعد اللعبة</string>
+    <string name="submit">تأكد</string>
     <string name="rules">اقتراح صحيح :  + 1 نقطة \n تجاوز : - 5 نقطة\n\n\n انقر على الشاشة لبدء اللعبة! </string>
     <string name="aboutrules">
         "\n \ قواعد اللعبة \n \n4 جولات \n2 من اللاعبين \n4 كلمات لكل لعبة \n"

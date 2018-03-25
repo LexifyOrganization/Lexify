@@ -1,33 +1,35 @@
 package parisnanterre.fr.lexify.settings;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
     private Settings settings;
     private Switch chrono_switch;
     Button btn_menu;
     public static boolean isChronoEnable = true;
-    private Button btn_lang;
+    Spinner spinner_lang;
+    int spinnerPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,61 +37,32 @@ public class SettingsActivity extends Activity {
         setContentView(R.layout.activity_settings);
 
         chrono_switch = (Switch) findViewById(R.id.activity_settings_btn_switch);
-        btn_menu = (Button) findViewById(R.id.activity_settings_menu_btn);
-        Button btn_lang = (Button) findViewById(R.id.activity_settings_btn_languages);
+        btn_menu = (Button) findViewById(R.id.activity_settings_submit);
 
+        spinner_lang = (Spinner) findViewById(R.id.activity_languages_spinner);
+        spinner_lang.setOnItemSelectedListener(this);
 
-        //spinner
-        btn_lang.setOnClickListener(new View.OnClickListener() {
+        //save spinner's state
+        SharedPreferences spinnersaving = getSharedPreferences("spinnerstate",0);
 
-            public void onClick(View v) {
-                // Dialog
-                final AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
-                View mview = getLayoutInflater().inflate(R.layout.dialog, null);
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<>();
+        categories.add("Français");
+        categories.add("English");
+        categories.add("العربية");
 
-                final Spinner sp = (Spinner) mview.findViewById(R.id.spinner);
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
-                ArrayAdapter<CharSequence> adp = ArrayAdapter.createFromResource(SettingsActivity.this, R.array.languages, android.R.layout.simple_spinner_item);
-                adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                sp.setAdapter(adp);
-                //button Ok
-                builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (!sp.getSelectedItem().toString().equalsIgnoreCase("choose a language")) {
-                            String text = sp.getSelectedItem().toString();
-                            switch (text) {
-                                case "English":
-                                    Paper.book().write("language", "en");
-                                    updateLanguage("en");
-                                    break;
-                                case "Français":
-                                    Paper.book().write("language", "fr");
-                                    updateLanguage("fr");
-                                    break;
-                                case "العربية":
-                                    Paper.book().write("language", "ar");
-                                    updateLanguage("ar");
-                                    break;
-                            }
-                            Toast.makeText(SettingsActivity.this, "You choosed " + text, Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(SettingsActivity.this, "You didn't choose a language ", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-                builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                //button Cancel
-                builder.setView(mview);
-                AlertDialog dlog = builder.create();
-                dlog.show();
-            }
-        });
+        // Drop down layout style - list view with radio button_about
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner_lang.setAdapter(dataAdapter);
+
+        //get spinner's state
+        spinner_lang.setSelection(spinnersaving.getInt("spinnerPos", 0));
+
 
         if (isChronoEnable)
             chrono_switch.setChecked(true);
@@ -133,7 +106,44 @@ public class SettingsActivity extends Activity {
         Configuration conf = getResources().getConfiguration();
         conf.locale = mylocale;
         getResources().updateConfiguration(conf, dm);
-        Intent refresh = new Intent(this, SettingsActivity.class);
-        startActivity(refresh);
+
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String item = adapterView.getItemAtPosition(i).toString();
+        spinnerPos = i;
+        switch (item){
+            case "English":
+                Paper.book().write("language", "en");
+                updateLanguage("en");
+                spinner_lang.setPrompt("English");
+                break;
+            case "Français":
+                Paper.book().write("language", "fr");
+                updateLanguage("fr");
+                spinner_lang.setPrompt("Français");
+                break;
+            case "العربية":
+                Paper.book().write("language", "ar");
+                updateLanguage("ar");
+                spinner_lang.setPrompt("العربية");
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    protected void onStop(){
+        super.onStop();
+        SharedPreferences spinnersaving = getSharedPreferences("spinnerstate",0);
+        SharedPreferences.Editor editor = spinnersaving.edit();
+        editor.putInt("spinnerPos", spinnerPos);
+        editor.apply();
+    }
+
+
 }

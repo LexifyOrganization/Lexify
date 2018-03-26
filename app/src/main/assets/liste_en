@@ -2,7 +2,7 @@ electric
 clock
 world
 human
-person
+no one
 man
 wife
 young
@@ -149,7 +149,7 @@ handle
 bay
 gulf
 island
-peninsula
+peninsula island ??
 archipelago
 atoll
 lagoon
@@ -161,6 +161,7 @@ bank
 shore
 channel
 lake
+swamp
 swamp
 pond
 barrage
@@ -174,16 +175,19 @@ gulf
 not
 door
 city
+city
+town
 town
 hamlet
 downtown
-suburb
+suburbs
 periphery
 campaign
 field
 forest
 jungle
 wood
+hedge
 coral
 ground
 dinosaur
@@ -466,6 +470,7 @@ come
 go
 to start
 finish
+finish
 to leave
 forget
 small
@@ -494,6 +499,7 @@ wrong
 angle
 cabinet
 bench
+office
 office
 tile
 chair

@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,7 +22,6 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.util.Locale;
-
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.connection.SignInActivity;
@@ -36,7 +34,6 @@ import parisnanterre.fr.lexify.word.Word;
 public class MainActivity extends Activity {
 
     User currentUser = null;
-    public static final int DATABASE_NB = 533;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +44,10 @@ public class MainActivity extends Activity {
 
         // set default languge is English
         String languge = Paper.book().read("language");
-        if (languge == null) {
+        if (languge == null){
+            Paper.book().write("language", "en");
             Locale.getDefault().getLanguage();
-        } else {
+        }else {
             updateLanguage((String) Paper.book().read("language"));
         }
         setContentView(R.layout.activity_main);
@@ -192,17 +190,22 @@ public class MainActivity extends Activity {
 
     private void initializeWordDatabase() {
 
-        BufferedReader reader = null;
+        BufferedReader reader_fr= null, reader_en = null, reader_ar = null;
         DatabaseWord db = new DatabaseWord(this);
         try {
-            reader = new BufferedReader(
-                    new InputStreamReader(getAssets().open("liste_mot.txt"), "iso-8859-1"));
+            reader_fr = new BufferedReader(
+                    new InputStreamReader(getAssets().open("liste_fr.txt"), "iso-8859-1"));
+            reader_en = new BufferedReader(
+                    new InputStreamReader(getAssets().open("liste_en.txt"), "iso-8859-1"));
+            reader_ar = new BufferedReader(
+                    new InputStreamReader(getAssets().open("liste_ar.txt"), "iso-8859-1"));
 
             String mLine = "";
 
             //changer boucle for par while (bug bizarre)
-            for (int i = 0; i < DATABASE_NB; i++) {
-                db.addWord(new Word(reader.readLine(), 0, 0));
+            for (int i = 0; i < 533; i++) {
+                String en = reader_en.readLine();
+                db.addWord(new Word(en, en, reader_fr.readLine(), reader_ar.readLine(), 0, 0));
             }
 
 
@@ -215,9 +218,11 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             //log the exception
         } finally {
-            if (reader != null) {
+            if (reader_en != null || reader_ar != null || reader_fr!=null) {
                 try {
-                    reader.close();
+                    reader_ar.close();
+                    reader_en.close();
+                    reader_fr.close();
                 } catch (IOException e) {
                     //log the exception
                 }
@@ -225,9 +230,8 @@ public class MainActivity extends Activity {
         }
 
     }
-
     @Override
-    public void onBackPressed() {
+    public void  onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addCategory(Intent.CATEGORY_HOME);

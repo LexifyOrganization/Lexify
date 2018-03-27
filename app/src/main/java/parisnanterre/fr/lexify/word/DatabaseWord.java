@@ -26,6 +26,10 @@ public class DatabaseWord extends SQLiteOpenHelper {
     // Contacts Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_WORD = "word";
+    private static final String KEY_WORD_EN = "word_en";
+    private static final String KEY_WORD_FR = "word_fr";
+    private static final String KEY_WORD_AR = "word_ar";
+
     private static final String KEY_DIFFICULTY = "difficulty";
     private static final String KEY_NUMBER_PLAYED = "numberPlayed";
 
@@ -37,7 +41,7 @@ public class DatabaseWord extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_WORDS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_WORD + " TEXT," + KEY_DIFFICULTY + " TEXT,"
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_WORD + " TEXT," + KEY_WORD_EN + " TEXT," + KEY_WORD_FR + " TEXT," + KEY_WORD_AR + " TEXT," + KEY_DIFFICULTY + " TEXT,"
                 + KEY_NUMBER_PLAYED + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
@@ -57,6 +61,9 @@ public class DatabaseWord extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_WORD, word.getWord());
+        values.put(KEY_WORD_EN, word.getWord_en());
+        values.put(KEY_WORD_FR, word.getWord_fr());
+        values.put(KEY_WORD_AR, word.getWord_ar());
         values.put(KEY_DIFFICULTY, word.getDifficulty());
         values.put(KEY_NUMBER_PLAYED, word.getNumberPlayed());
 
@@ -89,8 +96,11 @@ public class DatabaseWord extends SQLiteOpenHelper {
                 Word word = new Word();
                 word.setId(Integer.parseInt(cursor.getString(0)));
                 word.setWord(cursor.getString(1));
-                word.setDifficulty(Integer.parseInt(cursor.getString(2)));
-                word.setNumberPlayed(Integer.parseInt(cursor.getString(3)));
+                word.setWord_en(cursor.getString(2));
+                word.setWord_fr(cursor.getString(3));
+                word.setWord_ar(cursor.getString(4));
+                word.setDifficulty(Integer.parseInt(cursor.getString(5)));
+                word.setNumberPlayed(Integer.parseInt(cursor.getString(6)));
                 // Adding contact to list
                 wordList.add(word);
             } while (cursor.moveToNext());
@@ -105,6 +115,9 @@ public class DatabaseWord extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_WORD, word.getWord());
+        values.put(KEY_WORD_EN, word.getWord_en());
+        values.put(KEY_WORD_FR, word.getWord_fr());
+        values.put(KEY_WORD_AR, word.getWord_ar());
         values.put(KEY_DIFFICULTY, word.getDifficulty());
         values.put(KEY_NUMBER_PLAYED, word.getNumberPlayed());
 

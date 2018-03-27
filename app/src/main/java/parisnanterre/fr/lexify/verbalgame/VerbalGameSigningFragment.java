@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.word.Word;
@@ -74,6 +75,7 @@ public class VerbalGameSigningFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
 
 
     @Override
@@ -200,9 +202,15 @@ public class VerbalGameSigningFragment extends Fragment {
 
         final CharSequence[] items = new CharSequence[8];
         final boolean itemsChecked[] = new boolean[items.length];
+        String lang = Paper.book().read("language");
 
-        for (int i = 0; i < items.length; i++) {
-            items[i] = words.get(i).getWord();
+        if(lang==null)
+            lang="en";
+
+        for (int i = 0; i<items.length;i++) {
+
+            items[i] = words.get(i).getWord(lang);
+
         }
 
 

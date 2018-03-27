@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -45,6 +44,7 @@ public class MainActivity extends Activity {
         // set default languge is English
         String languge = Paper.book().read("language");
         if (languge == null){
+            Paper.book().write("language", "en");
             Locale.getDefault().getLanguage();
         }else {
             updateLanguage((String) Paper.book().read("language"));
@@ -187,17 +187,22 @@ public class MainActivity extends Activity {
 
     private void initializeWordDatabase() {
 
-        BufferedReader reader = null;
+        BufferedReader reader_fr= null, reader_en = null, reader_ar = null;
         DatabaseWord db = new DatabaseWord(this);
         try {
-            reader = new BufferedReader(
-                    new InputStreamReader(getAssets().open("liste_mot.txt"), "iso-8859-1"));
+            reader_fr = new BufferedReader(
+                    new InputStreamReader(getAssets().open("liste_fr.txt"), "iso-8859-1"));
+            reader_en = new BufferedReader(
+                    new InputStreamReader(getAssets().open("liste_en.txt"), "iso-8859-1"));
+            reader_ar = new BufferedReader(
+                    new InputStreamReader(getAssets().open("liste_ar.txt"), "iso-8859-1"));
 
             String mLine = "";
 
             //changer boucle for par while (bug bizarre)
             for (int i = 0; i < 533; i++) {
-                db.addWord(new Word(reader.readLine(), 0, 0));
+                String en = reader_en.readLine();
+                db.addWord(new Word(en, en, reader_fr.readLine(), reader_ar.readLine(), 0, 0));
             }
 
 
@@ -210,9 +215,11 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             //log the exception
         } finally {
-            if (reader != null) {
+            if (reader_en != null || reader_ar != null || reader_fr!=null) {
                 try {
-                    reader.close();
+                    reader_ar.close();
+                    reader_en.close();
+                    reader_fr.close();
                 } catch (IOException e) {
                     //log the exception
                 }

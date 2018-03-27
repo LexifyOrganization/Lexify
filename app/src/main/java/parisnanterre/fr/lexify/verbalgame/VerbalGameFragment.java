@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
@@ -101,7 +103,13 @@ public class VerbalGameFragment extends Fragment {
 
         txt_nbmanche.setText(getResources().getString(R.string.round)+" "+cpt+"/4");
         txt_score.setText(getResources().getString(R.string.score) +" : "+ score);
-        txt_word.setText(gameActivity.getWords().get(0).getWord());
+
+        String lang = Paper.book().read("language");
+
+        if(lang==null)
+            lang="en";
+
+        txt_word.setText(gameActivity.getWords().get(0).getWord(lang));
 
         if(SettingsActivity.isChronoEnable){
             layout_chrono.setVisibility(View.VISIBLE);
@@ -235,8 +243,15 @@ public class VerbalGameFragment extends Fragment {
         cpt++;
         txt_score.setText(getResources().getString(R.string.score)+" : "+ score);
 
+
+        String lang = Paper.book().read("language");
+
+        if(lang==null)
+            lang="en";
+
+
         Word random = gameActivity.getWords().get(cpt - 1);
-        txt_word.setText(random.getWord());
+        txt_word.setText(random.getWord(lang));
         txt_nbmanche.setText(getResources().getString(R.string.round) +" "+cpt +"/4");
 
 

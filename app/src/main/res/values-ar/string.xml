@@ -6,7 +6,7 @@
     <string name="Chronometer">مؤقت</string>
     <string name="changelanguages">  تغيير اللغة</string>
     <string name="AboutGame">حول لعبة</string>
-    <string name="Header">حول ليكسي فاي</string>
+    <string name="Header">حول ليكسيفاي</string>
     <string name="start">البداية</string>
     <string name="MyAccount">حسابي</string>
     <string name="Disconnect">قطع الاتصال</string>
@@ -46,13 +46,16 @@
     <string name="NotFoundWords">كلمات مفقودة</string>
     <string name="retry">إعادة المحاولة</string>
     <string name="Mainmenu">القائمة الرئيسية</string>
-
-
-
-
-
-
-
-
+    <string name="level">المستوى</string>
+    <string name="off"> توقيت معطل</string>
+    <string name="easy">سهل</string>
+    <string name="medium">متوسط</string>
+    <string name="hard">صعب</string>
+    <string name="player1">لاعب 1</string>
+    <string name="player2">لاعب 2</string>
+    <string name="ok">حسنا</string>
+    <string name="cancel">إلغاء</string>
+    <string name="enter_names">أدخل أسماء اللاعبين</string>
+    <string name="choose_words">اختر 4 كلمات</string>
 
 </resources>

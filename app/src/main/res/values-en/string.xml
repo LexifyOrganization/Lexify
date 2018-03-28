@@ -15,6 +15,7 @@
     <string name="Itsyourturn">it\'s your turn !</string>
     <string name="rule">Rules</string>
     <string name="submit">Validate</string>
+    <string name="level">Level</string>
     <string name="rules">Correct proposition : + 1 point\nWord not found : - 5 points \n\n\n</string>
     <string name="aboutrules">
         "\nRules\n\n4 rounds\n2 players\n4 words per game\n"
@@ -49,11 +50,14 @@
     <string name="retry">Retry</string>
     <string name="Mainmenu">Main menu</string>
     <string name="Selectlanguge">Select the language</string>
-
-    <string-array name="languages">
-        <item>choose a language</item>
-        <item>English</item>
-        <item>Français</item>
-        <item>العربية</item>
-    </string-array>
+    <string name="off">Timer OFF</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_names">Please enter players names</string>
+    <string name="choose_words">Please choose 4 words</string>
 </resources>

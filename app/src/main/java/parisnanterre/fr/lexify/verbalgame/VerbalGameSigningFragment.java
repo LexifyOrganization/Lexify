@@ -119,8 +119,8 @@ public class VerbalGameSigningFragment extends Fragment {
                 // Pass null as the parent view because its going in the dialog layout
                 builder.setView(view)
                         // Add action buttons
-                        .setPositiveButton("Ok", null)
-                        .setNegativeButton("Cancel", null);
+                        .setPositiveButton(getResources().getString(R.string.ok), null)
+                        .setNegativeButton(getResources().getString(R.string.cancel), null);
 
                 final EditText edt_player1 = (EditText) view.findViewById(R.id.dialog_verbal_game_player1);
                 final EditText edt_player2 = (EditText) view.findViewById(R.id.dialog_verbal_game_player2);
@@ -142,7 +142,7 @@ public class VerbalGameSigningFragment extends Fragment {
                             public void onClick(View view) {
 
                                 if (edt_player1.getText().toString().length() == 0 || edt_player2.getText().toString().length() == 0) {
-                                    Toast toast = Toast.makeText(getActivity(), "Please enter name for player 1 and 2", Toast.LENGTH_SHORT);
+                                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.enter_names), Toast.LENGTH_SHORT);
                                     toast.show();
                                 } else {
 
@@ -207,7 +207,7 @@ public class VerbalGameSigningFragment extends Fragment {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Choose 4 words");
+        builder.setTitle(getResources().getString(R.string.choose_words));
 
         builder.setMultiChoiceItems(items, itemsChecked, new DialogInterface.OnMultiChoiceClickListener() {
 
@@ -230,8 +230,8 @@ public class VerbalGameSigningFragment extends Fragment {
 
         })
 
-                .setPositiveButton("Ok", null)
-                .setNegativeButton("Cancel", null);
+                .setPositiveButton(getResources().getString(R.string.ok), null)
+                .setNegativeButton(getResources().getString(R.string.cancel), null);
 
 
         final AlertDialog dialog = builder.create();

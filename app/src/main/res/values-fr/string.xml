@@ -9,7 +9,7 @@
     <string name="Chronometer">Chronomètre</string>
     <string name="changelanguages">Changer la langue </string>
     <string name="MyAccount"> Mon compte</string>
-    <string name="start">Start</string>
+    <string name="start">Jouer</string>
     <string name="Disconnect">Déconnecter</string>
     <string name="Instructins">Prenez le téléphone et faites deviner le mot mystère à votre partenaire seulement en utilisant un indice à la fois!</string>
     <string name="Itsyourturn">C\'est ton tour !</string>
@@ -27,10 +27,8 @@
     "Le jeu commence avec un score de 10 points.\n \n"
     </string>
     <string name="aboutapplication">
-        "\nLexify, le jeu mobile qui Lexify votre vocabulaire. \n\n"
-         "Inspiré du jeu Mot de Passe sur France 2,\n"
-         "Le but de Lexify est soit de deviner un mot,\n soit de faire deviner un mot.\n"
-         "\n\n Mail : lexifyapp@gmail.com \n\n"
+         "Lexify, le jeu mobile qui Lexify votre vocabulaire.\n\n Inspiré du jeu Mot de Passe sur France 2, le but de Lexify est soit de deviner un mot, soit de faire deviner un mot.\n\n"
+         "Mail : lexifyapp@gmail.com \n\n"
          "Auteurs: \n\nNassin Khatir \nLucas Nayet \nNicolas Piot \nHani Abdulwahab"
     </string>
     <string name="Changeplayersnames">Noms des joueurs</string>
@@ -47,6 +45,16 @@
     <string name="Password">Mots Passés</string>
     <string name="NotFoundWords">Mots non trouvés</string>
     <string name="retry">Recommencer</string>
-    <string name="Mainmenu">Menu principal</string>
-
+    <string name="Mainmenu">Menu</string>
+    <string name="level">Difficulté</string>
+    <string name="off">Sans chronomètre</string>
+    <string name="easy">Facile</string>
+    <string name="medium">Moyen</string>
+    <string name="hard">Difficile</string>
+    <string name="player1">Joueur 1</string>
+    <string name="player2">Joueur 2</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Annuler</string>
+    <string name="enter_names">Saisissez les noms des joueurs</string>
+    <string name="choose_words">Choisissez 4 mots</string>
 </resources>

@@ -37,8 +37,8 @@ public class VerbalGameActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verbal_game);
 
-        player1 = new Player("Player 1");
-        player2 = new Player("Player 2");
+        player1 = new Player(getResources().getString(R.string.player1));
+        player2 = new Player(getResources().getString(R.string.player2));
 
         db = new DatabaseWord(getApplicationContext());
         words = new ArrayList<Word>();

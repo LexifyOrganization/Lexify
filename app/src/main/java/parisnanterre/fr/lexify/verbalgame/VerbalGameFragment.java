@@ -19,7 +19,6 @@ import android.widget.Toast;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
-import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.word.Word;
 
 import static android.view.animation.Animation.RELATIVE_TO_SELF;
@@ -42,7 +41,7 @@ public class VerbalGameFragment extends Fragment {
     private int score;
     private int cpt = 1;
     private Player player;
-
+    public static int millisCountDownTimer;
     TextView txt_nbmanche;
     TextView txt_word;
     TextView txt_score;
@@ -106,22 +105,23 @@ public class VerbalGameFragment extends Fragment {
         txt_score.setText(getResources().getString(R.string.score) + " : " + score);
         txt_word.setText(gameActivity.getWords().get(0).getWord());
 
-        if (SettingsActivity.isChronoEnable) {
+
+        if(millisCountDownTimer!=0){
             layout_chrono.setVisibility(View.VISIBLE);
             btn_pass.setVisibility(View.GONE);
 
-            /*Animation*/
             RotateAnimation makeVertical = new RotateAnimation(0, -90, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
             makeVertical.setFillAfter(true);
             progressBar.startAnimation(makeVertical);
-            progressBar.setSecondaryProgress(21);
+
+            progressBar.setSecondaryProgress(millisCountDownTimer/1000);
             progressBar.setProgress(0);
 
             chrono = initializeTimer();
             gameActivity.setChrono(chrono);
             chrono.start();
-
-        } else {
+        }
+        else {
             layout_chrono.setVisibility(View.GONE);
         }
 
@@ -163,22 +163,22 @@ public class VerbalGameFragment extends Fragment {
     }
 
     private CountDownTimer initializeTimer() {
-        return new CountDownTimer(21000, 1000) {
+        return new CountDownTimer(millisCountDownTimer, 1000) {
 
             public void onTick(long millisUntilFinished) {
 
                 int progress = (int) (millisUntilFinished / 1000);
                 txt_time.setText(String.valueOf(millisUntilFinished / 1000));
-                progressBar.setMax(21);
-                progressBar.setSecondaryProgress(21);
+                progressBar.setMax(millisCountDownTimer/1000);
+                progressBar.setSecondaryProgress(millisCountDownTimer/1000);
                 progressBar.setProgress(progress);
 
             }
 
             public void onFinish() {
                 player.incNotFoundWord();
-                progressBar.setMax(21);
-                progressBar.setSecondaryProgress(21);
+                progressBar.setMax(millisCountDownTimer/1000);
+                progressBar.setSecondaryProgress(millisCountDownTimer/1000);
                 progressBar.setProgress(0);
                 Toast.makeText(getActivity(), "Time's up !", Toast.LENGTH_SHORT).show();
                 if (cpt != 4)
@@ -195,7 +195,7 @@ public class VerbalGameFragment extends Fragment {
 
     private void changeFragment() {
 
-        if (SettingsActivity.isChronoEnable)
+        if (millisCountDownTimer!=0)
             chrono.cancel();
 
         if (gameActivity.isLastRound()) {
@@ -218,7 +218,7 @@ public class VerbalGameFragment extends Fragment {
     //parametre type = TRUE ou PASS (voir fichier enum PassingType) TRUE augmente le score et PASS le baisse
     private void changeWord(PassingType type) {
 
-        if (SettingsActivity.isChronoEnable)
+        if (millisCountDownTimer!=0)
             chrono.cancel();
 
         if (type.equals(PassingType.TRUE)) {
@@ -235,7 +235,7 @@ public class VerbalGameFragment extends Fragment {
         txt_nbmanche.setText(getResources().getString(R.string.round) + " " + cpt + "/4");
 
 
-        if (SettingsActivity.isChronoEnable)
+        if (millisCountDownTimer!=0)
             chrono.start();
 
     }

@@ -195,14 +195,16 @@ public class MainActivity extends Activity {
             reader_en = new BufferedReader(
                     new InputStreamReader(getAssets().open("liste_en.txt"), "iso-8859-1"));
             reader_ar = new BufferedReader(
-                    new InputStreamReader(getAssets().open("liste_ar.txt"), "iso-8859-1"));
+                    new InputStreamReader(getAssets().open("liste_ar.txt"), "utf-8"));
 
             String mLine = "";
 
             //changer boucle for par while (bug bizarre)
             for (int i = 0; i < 533; i++) {
                 String en = reader_en.readLine();
-                db.addWord(new Word(en, en, reader_fr.readLine(), reader_ar.readLine(), 0, 0));
+                db.addWord(new Word(en, en,
+                        reader_fr.readLine(),
+                        reader_ar.readLine(), 0, 0));
             }
 
 

@@ -149,7 +149,7 @@ handle
 bay
 gulf
 island
-peninsula island ??
+peninsula
 archipelago
 atoll
 lagoon

@@ -45,8 +45,14 @@ public class MainActivity extends Activity {
         // set default languge is English
         String languge = Paper.book().read("language");
         if (languge == null){
-            Paper.book().write("language", "en");
+
+            String lang = getResources().getConfiguration().locale.getLanguage();
+            if(!(lang.equals("fr") || lang.equals("en") || lang.equals("ar")))
+                lang = "en";
+
+            Paper.book().write("language", lang);
             Locale.getDefault().getLanguage();
+
         }else {
             updateLanguage((String) Paper.book().read("language"));
         }

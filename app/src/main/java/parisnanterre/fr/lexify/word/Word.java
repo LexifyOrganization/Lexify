@@ -15,6 +15,17 @@ public class Word {
 
     }
 
+    //word -> par défaut anglais
+    public Word(String word, String en, String fr, String ar, int difficulty, int numberPlayed) {
+        word_en = en;
+        word_fr = fr;
+        word_ar = ar;
+
+        this.word = word;
+        this.difficulty = difficulty;
+        this.numberPlayed = numberPlayed;
+    }
+
     public Word(String word) {
         this.word = word;
     }

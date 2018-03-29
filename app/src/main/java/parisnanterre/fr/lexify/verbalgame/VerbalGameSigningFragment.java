@@ -257,7 +257,7 @@ public class VerbalGameSigningFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-                        gameActivity.cleanWords();
+                            gameActivity.cleanWords();
 
 
                         for (int i = 0; i < items.length; i++) {

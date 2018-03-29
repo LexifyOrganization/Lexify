@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import parisnanterre.fr.lexify.R;
-import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
@@ -143,9 +142,8 @@ public class VerbalGameActivity extends Activity
 
     public List<Word> getEightRandomWords() {
 
-        return db.getNRandomWords(8, MainActivity.DATABASE_NB);
+        return db.getNRandomWords(8);
     }
-
 
     public void addWord(Word w) {
         words.add(w);
@@ -159,7 +157,7 @@ public class VerbalGameActivity extends Activity
 
         this.words.clear();
 
-        this.words = db.getNRandomWords(4, MainActivity.DATABASE_NB);
+        this.words = db.getNRandomWords(4);
 
     }
 
@@ -167,8 +165,8 @@ public class VerbalGameActivity extends Activity
 
         this.score = 10;
         this.lastround = false;
-        this.player1 = new Player("Player 1");
-        this.player2 = new Player("Player 2");
+        this.player1 = new Player(getResources().getString(R.string.player1));
+        this.player2 = new Player(getResources().getString(R.string.player2));
         words.clear();
 
         player1.setCurrentPlayer(true);

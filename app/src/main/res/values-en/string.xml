@@ -22,7 +22,7 @@
         "1 word per round\n\n"
         "A player makes his partner guess the mystery word with one clue at a time.\n\n"
         "The clue must not have the same base \n"
-        "Example of a forbidden clue : \nMystery word : Camion \nClue : Camionette \n\n"
+        "Example of a forbidden clue : \nMystery word : Sun \nClue : Sunny \n\n"
         "Correct proposition : + 1 point\n"
         "Word not found : - 5 points\n\n"
         "The game starts with a score of 10 points."

@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ import static parisnanterre.fr.lexify.verbalgame.VerbalGameFragment.millisCountD
 
 public class SettingsActivity extends Activity {
 
+
+    Button btn_submit;
     Spinner spinner_lang;
     Spinner spinner_level;
     int spinnerPos, spinnerPos2;
@@ -32,6 +35,7 @@ public class SettingsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        btn_submit = (Button) findViewById(R.id.activity_settings_submit);
         spinner_lang = (Spinner) findViewById(R.id.activity_languages_spinner);
         spinner_level = (Spinner) findViewById(R.id.activity_settings_spinner_level);
 
@@ -124,6 +128,14 @@ public class SettingsActivity extends Activity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SettingsActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
 

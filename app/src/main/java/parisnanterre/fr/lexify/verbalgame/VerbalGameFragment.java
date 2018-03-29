@@ -16,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
@@ -101,9 +103,15 @@ public class VerbalGameFragment extends Fragment {
         progressBar = (ProgressBar) view.findViewById(R.id.fragment_verbal_game_progressbar);
         LinearLayout layout_chrono = (LinearLayout) view.findViewById(R.id.fragment_verbal_game_layout_chrono);
 
-        txt_nbmanche.setText(getResources().getString(R.string.round) + " " + cpt + "/4");
-        txt_score.setText(getResources().getString(R.string.score) + " : " + score);
-        txt_word.setText(gameActivity.getWords().get(0).getWord());
+        txt_nbmanche.setText(getResources().getString(R.string.round)+" "+cpt+"/4");
+        txt_score.setText(getResources().getString(R.string.score) +" : "+ score);
+
+        String lang = Paper.book().read("language");
+
+        if(lang==null)
+            lang="en";
+
+        txt_word.setText(gameActivity.getWords().get(0).getWord(lang));
 
 
         if(millisCountDownTimer!=0){
@@ -227,12 +235,19 @@ public class VerbalGameFragment extends Fragment {
             score = score - 5;
         }
 
+
         cpt++;
-        txt_score.setText(getResources().getString(R.string.score) + " : " + score);
+        txt_score.setText(getResources().getString(R.string.score)+" : "+ score);
+
+
+        String lang = Paper.book().read("language");
+
+        if(lang==null)
+            lang="en";
 
         Word random = gameActivity.getWords().get(cpt - 1);
-        txt_word.setText(random.getWord());
-        txt_nbmanche.setText(getResources().getString(R.string.round) + " " + cpt + "/4");
+        txt_word.setText(random.getWord(lang));
+        txt_nbmanche.setText(getResources().getString(R.string.round) +" "+cpt +"/4");
 
 
         if (millisCountDownTimer!=0)

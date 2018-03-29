@@ -79,4 +79,24 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/activity_settings_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/submit"
+            android:drawableStart="@drawable/ic_save_black_24dp"/>
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

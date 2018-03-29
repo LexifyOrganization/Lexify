@@ -29,12 +29,13 @@
         <activity
             android:name=".verbalgame.VerbalGameActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".application.AboutGameActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".settings.SettingsActivity">
+        <activity android:name=".settings.SettingsActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>

@@ -17,8 +17,15 @@ Développé sur mobile, et plus spécialement sur la plateforme **Android**, Lex
 
 ## Fonctionnalités 
 
-### Version 0.1 :
+### Version 1.0.0-Beta :
   * Jouer une partie orale avec un ami sur le même téléphone.
+  * Pimentez vos parties grâce au Chronomètre. 
+  * Choix de difficulté.
+  * Jouer en plusieurs langues.
+  * Choix des mots. 
+  
+## Télécharger 
+* [Dernière version](https://github.com/LexifyOrganization/Lexify/releases/download/1.0.0-Beta/lexify-beta.apk)
 
 ## Système de Build
 * [Gradle](https://gradle.org/)

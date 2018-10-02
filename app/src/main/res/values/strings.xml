@@ -24,6 +24,7 @@
         "Word not found : -5 points\n\n"
         "The game starts with a score of 10 points."
     </string>
+    <string name="start">Start</string>
     <string name="aboutapplication">
         "\nLexify, the mobile game that LEXIFY your vocabulary.\n\n"
         "Inspired from tv show Mot de Passe on the french channel France 2, "

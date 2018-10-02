@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
 
 
         //compte encore inutile, changer cette ligne plus tard
-        btn_account.setVisibility(View.GONE);
+        //btn_account.setVisibility(View.GONE);
 
        /* Bundle b = this.getIntent().getExtras();
         if (b != null)

@@ -24,6 +24,7 @@ import java.io.PrintWriter;
 import java.util.Locale;
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.computergame.ComputerGameActivity;
 import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
@@ -74,6 +75,7 @@ public class MainActivity extends Activity {
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
         Button btn_play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
+        Button btn_computer = (Button) findViewById(R.id.activity_main_btn_computer_game);
         Button btn_about_game = (Button) findViewById(R.id.activity_main_btn_about_game);
         Button btn_settings = (Button) findViewById(R.id.activity_main_btn_settings);
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
@@ -115,6 +117,17 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        btn_computer.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getApplicationContext(), ComputerGameActivity.class);
                 startActivity(i);
 
             }

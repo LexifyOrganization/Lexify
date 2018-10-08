@@ -21,7 +21,7 @@
     "1 mot par tour \n \n"
     "Un joueur fait deviner un mot à son partenaire avec un indice à chaque fois. \n"
     "L'indice ne doit pas avoir la même base.\n\n"
-    "Exemple d'indice intérdit : \nMot mystère : Camion \nIndice : Camionette \n\n"
+    "Exemple d'indice interdit : \nMot mystère : Camion \nIndice : Camionette \n\n"
     "Proposition correcte : + 1 point \n"
     "Passer : - 5 points \n \n"
     "Le jeu commence avec un score de 10 points.\n \n"

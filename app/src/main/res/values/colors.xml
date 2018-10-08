@@ -6,6 +6,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="backgroundBlue">#303F9F</color>
+    <color name="grey">#8a92c7</color>
     <color name="lexifyTitleColor">#FFFFFF</color>
     <color name="btnColor">#FFFFFF</color>
     <color name="btnShadowColor">#212121</color>

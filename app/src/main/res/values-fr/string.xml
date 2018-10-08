@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="newgame">Nouvelle partie</string>
+    <string name="newgame">Partie oral</string>
+    <string name="computergame">Contre l\'ordinateur</string>
     <string name="options">Options</string>
     <string name="AboutGame">À propos</string>
     <string name="Header">À propos de Lexify </string>

@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_verbal_game_fragment"
-    tools:context="parisnanterre.fr.lexify.verbalgame.VerbalGameFragment"
+    android:id="@+id/fragment_computer_game_fragment"
+    tools:context="parisnanterre.fr.lexify.computergame.VerbalGameFragment"
     android:background="@drawable/background_color">
 
     <LinearLayout
@@ -12,13 +12,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/fragment_computer_game_txt_manche"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/btnColor"
+            android:gravity="center"
+            android:text="@string/round"
+            android:textAlignment="center"
+            android:textAppearance="@style/RoundNumberStyle" />
+
+
 
         <TextView
-            android:id="@+id/fragment_verbal_game_txt_yourTurn"
+            android:id="@+id/fragment_computer_game_txt_yourTurn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="It's computer turn !"
+            android:text="C'est au tour de l'ordinateur !"
             android:textAlignment="center"
             android:textAppearance="@style/YourTurnStyle"
             android:textColor="#FFFFFF"/>
@@ -157,18 +169,18 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:visibility="gone"
-                android:id="@+id/fragment_verbal_game_end">
+                android:id="@+id/fragment_computer_game_end">
 
             <TextView
-                android:id="@+id/fragment_verbal_game_txt_end"
+                android:id="@+id/fragment_computer_game_txt_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Terminé ! Vous avez deviné le mot ou pas en ..."
+                android:text=""
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textAppearance="@style/YourTurnStyle"
@@ -181,6 +193,7 @@
                 android:gravity="center">
 
                 <Button
+                    android:id="@+id/fragment_computer_game_btn_next"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -188,6 +201,7 @@
                     android:text="Manche suivante"/>
 
                 <Button
+                    android:id="@+id/fragment_computer_game_btn_abandon"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
@@ -226,7 +240,7 @@
 
 
             <LinearLayout
-                android:id="@+id/fragment_verbal_game_layout_chrono"
+                android:id="@+id/fragment_computer_game_layout_chrono"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -239,7 +253,7 @@
                     >
 
                     <ProgressBar
-                        android:id="@+id/fragment_verbal_game_progressbar"
+                        android:id="@+id/fragment_computer_game_progressbar"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -255,7 +269,7 @@
                         android:textStyle="bold"
                         android:text="cc"
                         android:textColor="#FFFFFF"
-                        android:id="@+id/fragment_verbal_game_timer"
+                        android:id="@+id/fragment_computer_game_timer"
                         android:layout_centerInParent="true"
                         />
                 </RelativeLayout>

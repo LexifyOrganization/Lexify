@@ -88,6 +88,8 @@ public class ComputerGameFragment extends Fragment {
                 reset(left);
                 reset(right);
                 currentPosition = 0;
+                currentTimerProgress=100;
+                countDownTimer=createTimer(getView());
 
                 edittext.setVisibility(View.VISIBLE);
                 edittext.setText("");
@@ -101,6 +103,8 @@ public class ComputerGameFragment extends Fragment {
                 edittext.findFocus();
                 edittext.hasFocus();
 
+                countDownTimer.start();
+                animateProgressBar.start();
             }
 
         });
@@ -138,20 +142,26 @@ public class ComputerGameFragment extends Fragment {
                         if(currentRound==4) {
                             abandon.setText("Revenir menu principal");
                             next.setVisibility(View.GONE);
+                            animateProgressBar.end();
+                            countDownTimer.cancel();
                         }
 
                         if(edittext.getText().toString().equalsIgnoreCase(motOrdi)) {
                             endText.setText("Bravo vous avez gagné !");
+                            animateProgressBar.end();
+                            countDownTimer.cancel();
                         }
                         else if (currentPosition==3) {
                             endText.setText("Vous avez perdu !");
+                            animateProgressBar.end();
+                            countDownTimer.cancel();
                         }
 
                         InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                         input.hideSoftInputFromWindow(edittext.getWindowToken(), 0);
                         edittext.clearFocus();
-                        animateProgressBar.end();
-                        countDownTimer.cancel();
+                        //animateProgressBar.end();
+                        //countDownTimer.cancel();
                     } else {
                         edittext.setText("");
                         currentPosition++;
@@ -179,29 +189,6 @@ public class ComputerGameFragment extends Fragment {
         }
     }
 
-    /*private void startChrono(final View view, final ProgressBar progressBar, CountDownTimer countDownTimer, ObjectAnimator animateProgressBar){
-        progressBar.setProgress(currentTimerProgress);
-        animateProgressBar = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
-        animateProgressBar.setDuration(30000);
-        animateProgressBar.setInterpolator(new LinearInterpolator());
-
-        countDownTimer = new CountDownTimer(30000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                currentTimerProgress--;
-                progressBar.setProgress((int)currentTimerProgress*100/(30000/1000));
-            }
-
-            @Override
-            public void onFinish() {
-                Toast.makeText(getActivity(), "Time's up !", Toast.LENGTH_SHORT).show();
-            }
-        };
-
-        animateProgressBar.start();
-        countDownTimer.start();
-    }*/
-
     public CountDownTimer createTimer(View view){
         final EditText edittext = view.findViewById(R.id.fragment_computer_game_edit);
         final LinearLayout layout = view.findViewById(R.id.fragment_computer_game_end);
@@ -220,8 +207,10 @@ public class ComputerGameFragment extends Fragment {
                 Toast.makeText(getActivity(), "Time's up !", Toast.LENGTH_SHORT).show();
                 edittext.setVisibility(View.GONE);
                 layout.setVisibility(View.VISIBLE);
-                abandon.setText("Revenir menu principal");
-                next.setVisibility(View.GONE);
+                if (currentRound==4) {
+                    abandon.setText("Revenir menu principal");
+                    next.setVisibility(View.GONE);
+                }
                 endText.setText("Vous avez perdu !");
                 InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                 input.hideSoftInputFromWindow(edittext.getWindowToken(), 0);

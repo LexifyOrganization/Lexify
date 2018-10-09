@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
 
 
         //compte encore inutile, changer cette ligne plus tard
-        //btn_account.setVisibility(View.GONE);
+        btn_account.setVisibility(View.GONE);
 
        /* Bundle b = this.getIntent().getExtras();
         if (b != null)
@@ -226,13 +226,6 @@ public class MainActivity extends Activity {
                 String en = reader_en.readLine();
                 db.addWord(new Word(en, en, reader_fr.readLine(), reader_ar.readLine(), 0, 0));
             }
-
-
-            /*while (reader.readLine() != null) {
-                String s = mLine;
-            }*/
-
-            // do reading, usually loop until end of file reading
 
         } catch (IOException e) {
             //log the exception

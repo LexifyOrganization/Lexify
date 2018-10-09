@@ -18,26 +18,30 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
-import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
-import parisnanterre.fr.lexify.verbalgame.VerbalGameFragment;
 
 public class ComputerGameFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private int currentPosition = 0;
     private int currentRound = 1;
-    private String motOrdi = "aimer";
-    private List<String> synonymes = new ArrayList<String>(Arrays.asList("adorer", "désirer", "apprécier", "admirer"));
+    private String ComputerWord;
+    private String ComputerSynonyme;
+    final private int nombre_mots = 23;
+    private int nombre_tire;
+    ComputerGameActivity computerGameActivity;
+
+    public void determine_computer_word(){
+        nombre_tire = (int)(Math.random() * ((nombre_mots)));
+        ComputerWord = computerGameActivity.getMots().get(nombre_tire);
+    }
+
+    public void determine_computer_synonyme(){
+        int i = (int)(Math.random() * (computerGameActivity.getSynonymes().get(nombre_tire).size()));
+        ComputerSynonyme = computerGameActivity.getSynonymes().get(nombre_tire).get(i);
+    }
 
 
     public interface OnFragmentInteractionListener {
@@ -57,6 +61,9 @@ public class ComputerGameFragment extends Fragment {
         final TextView round = view.findViewById(R.id.fragment_computer_game_txt_manche);
         final Button next = view.findViewById(R.id.fragment_computer_game_btn_next);
         final Button abandon = view.findViewById(R.id.fragment_computer_game_btn_abandon);
+        computerGameActivity = (ComputerGameActivity) getActivity();
+        determine_computer_word();
+        determine_computer_synonyme();
 
         round.setText("Round "+currentRound+"/4");
 
@@ -65,6 +72,8 @@ public class ComputerGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 currentRound++;
+                determine_computer_word();
+                determine_computer_synonyme();
                 round.setText("Round "+currentRound+"/4");
                 reset(left);
                 reset(right);
@@ -75,7 +84,7 @@ public class ComputerGameFragment extends Fragment {
                 layout.setVisibility(View.GONE);
 
                 TextView text = (TextView) left.getChildAt(currentPosition);
-                text.setText(synonymes.get(currentPosition));
+                text.setText(ComputerSynonyme);
 
                 InputMethodManager imm = (InputMethodManager)   getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
@@ -99,7 +108,7 @@ public class ComputerGameFragment extends Fragment {
 
         edittext.hasFocus();
         TextView text = (TextView) left.getChildAt(currentPosition);
-        text.setText(synonymes.get(currentPosition));
+        text.setText(ComputerSynonyme);
 
         edittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -112,7 +121,7 @@ public class ComputerGameFragment extends Fragment {
 
                     TextView text = (TextView) right.getChildAt(currentPosition);
                     text.setText(edittext.getText().toString());
-                    if(edittext.getText().toString().equalsIgnoreCase(motOrdi) || currentPosition==3){
+                    if(edittext.getText().toString().equalsIgnoreCase(ComputerWord) || currentPosition==3){
                         edittext.setVisibility(View.GONE);
                         layout.setVisibility(View.VISIBLE);
 
@@ -121,11 +130,11 @@ public class ComputerGameFragment extends Fragment {
                             next.setVisibility(View.GONE);
                         }
 
-                        if(edittext.getText().toString().equalsIgnoreCase(motOrdi)) {
+                        if(edittext.getText().toString().equalsIgnoreCase(ComputerWord)) {
                             endText.setText("Bravo vous avez gagné !");
                         }
                         else if (currentPosition==3) {
-                            endText.setText("Vous avez perdu !");
+                            endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWord);
                         }
 
                         InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -134,15 +143,15 @@ public class ComputerGameFragment extends Fragment {
                     } else {
                         edittext.setText("");
                         currentPosition++;
+                        determine_computer_synonyme();
                         text = (TextView) left.getChildAt(currentPosition);
-                        text.setText(synonymes.get(currentPosition));
+                        text.setText(ComputerSynonyme);
                     }
 
                     return true;
                 }
                 return false;
-            }
-        });
+        }});
 
         return view;
     }

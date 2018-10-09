@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_computer_game_fragment"
-    tools:context="parisnanterre.fr.lexify.computergame.VerbalGameFragment"
+    tools:context="parisnanterre.fr.lexify.computergame.ComputerGameFragment"
     android:background="@drawable/background_color">
 
     <LinearLayout
@@ -36,7 +36,13 @@
             android:textColor="#FFFFFF"/>
 
 
-
+        <ProgressBar
+            android:id="@+id/fragment_computer_game_progressbar_countdown"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="100"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -234,47 +240,6 @@
                 android:ems="10"
                 android:layout_marginBottom="5dp"
                 />
-
-
-
-
-
-            <LinearLayout
-                android:id="@+id/fragment_computer_game_layout_chrono"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp">
-
-                <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:orientation="vertical"
-                    >
-
-                    <ProgressBar
-                        android:id="@+id/fragment_computer_game_progressbar"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_centerInParent="true"
-                        android:progressDrawable="@drawable/drawable_circularprogressbar" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="27sp"
-                        android:textStyle="bold"
-                        android:text="cc"
-                        android:textColor="#FFFFFF"
-                        android:id="@+id/fragment_computer_game_timer"
-                        android:layout_centerInParent="true"
-                        />
-                </RelativeLayout>
-
-            </LinearLayout>
         </LinearLayout>
 
 

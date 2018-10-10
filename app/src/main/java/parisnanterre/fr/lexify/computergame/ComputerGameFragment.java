@@ -24,6 +24,13 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 
@@ -42,14 +49,62 @@ public class ComputerGameFragment extends Fragment {
     ObjectAnimator animateProgressBar;
     ComputerGameActivity computerGameActivity;
 
+    public List<List<String>> create_liste_synonymes(){
+        List<List<String>> synonymes = new ArrayList<List<String>>();
+        BufferedReader lecteur = null;
+        try {
+            lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_fr.txt"), "iso-8859-1"));
+            String line;
+            StringBuilder out = new StringBuilder();
+            while((line = lecteur.readLine()) != null){
+                out.append(line);
+                String tmp = out.toString();
+                String [] filelineTab = tmp.split(", ");
+                List <String> filelineListe = new ArrayList<String>();
+                Collections.addAll(filelineListe,filelineTab);
+                synonymes.add(filelineListe);
+            }
+        }catch (Exception e){
+        }
+        finally {
+            if(lecteur != null) try {
+                lecteur.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return synonymes;
+    }
+
+    public List<String> create_liste_mots(){
+        List<String> mots = new ArrayList<String>();
+        BufferedReader lecteur = null;
+        try {
+            lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_fr.txt"), "iso-8859-1"));
+            String line;
+            while((line = lecteur.readLine()) != null){
+                mots.add(line);
+            }
+        }catch (Exception e){
+        }
+        finally {
+            if(lecteur != null) try {
+                lecteur.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return mots;
+    }
+
     public void determine_computer_word(){
         nombre_tire = (int)(Math.random() * ((nombre_mots)));
-        ComputerWord = computerGameActivity.getMots().get(nombre_tire);
+        ComputerWord = create_liste_mots().get(nombre_tire);
     }
 
     public void determine_computer_synonyme(){
-        int i = (int)(Math.random() * (computerGameActivity.getSynonymes().get(nombre_tire).size()));
-        ComputerSynonyme = computerGameActivity.getSynonymes().get(nombre_tire).get(i);
+        int i = (int)(Math.random() * (create_liste_synonymes().get(nombre_tire).size()));
+        ComputerSynonyme = create_liste_synonymes().get(nombre_tire).get(i);
     }
 
     public interface OnFragmentInteractionListener {

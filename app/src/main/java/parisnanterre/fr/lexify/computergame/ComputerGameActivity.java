@@ -30,65 +30,6 @@ public class ComputerGameActivity extends Activity implements ComputerGameFragme
         transaction.commit();
     }
 
-    public List<List<String>> create_liste_synonymes(){
-        List<List<String>> synonymes = new ArrayList<List<String>>();
-        BufferedReader lecteur = null;
-        try {
-            lecteur = new BufferedReader (new InputStreamReader(getAssets().open("liste_synonymes_fr.txt"), "iso-8859-1"));
-            String line;
-            StringBuilder out = new StringBuilder();
-            while((line = lecteur.readLine()) != null){
-                out.append(line);
-                String tmp = out.toString();
-                String [] filelineTab = tmp.split(", ");
-                List <String> filelineListe = new ArrayList<String>();
-                Collections.addAll(filelineListe,filelineTab);
-                synonymes.add(filelineListe);
-            }
-        }catch (Exception e){
-        }
-        finally {
-            if(lecteur != null) try {
-                lecteur.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return synonymes;
-    }
-
-    public List<String> create_liste_mots(){
-        List<String> mots = new ArrayList<String>();
-        BufferedReader lecteur = null;
-        try {
-            lecteur = new BufferedReader (new InputStreamReader(getAssets().open("liste_reduite_fr.txt"), "iso-8859-1"));
-            String line;
-            while((line = lecteur.readLine()) != null){
-                mots.add(line);
-            }
-        }catch (Exception e){
-        }
-        finally {
-            if(lecteur != null) try {
-                lecteur.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return mots;
-    }
-
-    private List<List<String>> synonymes= new ArrayList<List<String>>(create_liste_synonymes());
-    private List<String> mots = new ArrayList<String>(create_liste_mots());
-
-    public List<List<String>> getSynonymes() {
-        return synonymes;
-    }
-
-    public List<String> getMots() {
-        return mots;
-    }
-
     @Override
     public void onFragmentInteraction(Uri uri) {
 

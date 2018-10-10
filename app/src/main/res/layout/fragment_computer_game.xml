@@ -1,0 +1,249 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_computer_game_fragment"
+    tools:context="parisnanterre.fr.lexify.computergame.ComputerGameFragment"
+    android:background="@drawable/background_color">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_computer_game_txt_manche"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/btnColor"
+            android:gravity="center"
+            android:text="@string/round"
+            android:textAlignment="center"
+            android:textAppearance="@style/RoundNumberStyle" />
+
+
+
+        <TextView
+            android:id="@+id/fragment_computer_game_txt_yourTurn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="C'est au tour de l'ordinateur !"
+            android:textAlignment="center"
+            android:textAppearance="@style/YourTurnStyle"
+            android:textColor="#FFFFFF"/>
+
+
+        <ProgressBar
+            android:id="@+id/fragment_computer_game_progressbar_countdown"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="100"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center|top">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/fragment_computer_game_left"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey"
+                            android:text="Mot 1"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey"
+                            android:text="Mot 2"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:text="Mot 3"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/grey"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:text="Mot 4"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/grey"
+                            android:textColor="#FFFFFF"/>
+
+                    </TableLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:gravity="center|top"
+                    android:layout_weight="1">
+
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:id="@+id/fragment_computer_game_right"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey"
+                            android:text="Mot 1"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey"
+                            android:text="Mot 2"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:text="Mot 3"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/grey"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:text="Mot 4"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/grey"
+                            android:textColor="#FFFFFF"/>
+
+                    </TableLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:id="@+id/fragment_computer_game_end">
+
+            <TextView
+                android:id="@+id/fragment_computer_game_txt_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textAppearance="@style/YourTurnStyle"
+                android:textColor="#FFFFFF"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/fragment_computer_game_btn_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:text="Manche suivante"/>
+
+                <Button
+                    android:id="@+id/fragment_computer_game_btn_abandon"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="Abandon"/>
+
+            </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/fragment_computer_game_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/colorPrimary"
+                android:hint=""
+                android:textColorHint="#9b9b9b"
+                android:background="#FFFFFF"
+                android:imeOptions="actionDone"
+                android:inputType="textCapSentences|textAutoCorrect|textNoSuggestions"
+                android:ems="10"
+                android:layout_marginBottom="5dp"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

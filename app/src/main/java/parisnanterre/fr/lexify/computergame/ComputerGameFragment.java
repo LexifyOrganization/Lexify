@@ -27,6 +27,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -57,8 +58,8 @@ public class ComputerGameFragment extends Fragment {
             String line;
             StringBuilder out = new StringBuilder();
             while((line = lecteur.readLine()) != null){
-                out.append(line);
-                String tmp = out.toString();
+
+                String tmp = line.toString();
                 String [] filelineTab = tmp.split(", ");
                 List <String> filelineListe = new ArrayList<String>();
                 Collections.addAll(filelineListe,filelineTab);
@@ -103,8 +104,9 @@ public class ComputerGameFragment extends Fragment {
     }
 
     public void determine_computer_synonyme(){
-        int i = (int)(Math.random() * (create_liste_synonymes().get(nombre_tire).size()));
-        ComputerSynonyme = create_liste_synonymes().get(nombre_tire).get(i);
+        List<List<String>> synonymes = create_liste_synonymes();
+        int i = (int)(Math.random() * (synonymes.get(nombre_tire).size()));
+        ComputerSynonyme = synonymes.get(nombre_tire).get(i);
     }
 
     public interface OnFragmentInteractionListener {
@@ -199,7 +201,7 @@ public class ComputerGameFragment extends Fragment {
 
                     TextView text = (TextView) right.getChildAt(currentPosition);
                     text.setText(edittext.getText().toString());
-                    if(edittext.getText().toString().equalsIgnoreCase(ComputerWord) || currentPosition==3){
+                    if(equalsIgnoreAccent(ComputerWord, edittext.getText().toString()) || currentPosition==3){
                         edittext.setVisibility(View.GONE);
                         layout.setVisibility(View.VISIBLE);
 
@@ -217,7 +219,6 @@ public class ComputerGameFragment extends Fragment {
                         }
                         else if (currentPosition==3) {
                             endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWord);
-                            endText.setText("Vous avez perdu !");
                             animateProgressBar.end();
                             countDownTimer.cancel();
                         }
@@ -267,7 +268,7 @@ public class ComputerGameFragment extends Fragment {
             }
             @Override
             public void onFinish() {
-                Toast.makeText(getActivity(), "Time's up !", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Time's up !", Toast.LENGTH_SHORT).show();
                 edittext.setVisibility(View.GONE);
                 layout.setVisibility(View.VISIBLE);
                 if (currentRound==4) {
@@ -299,5 +300,20 @@ public class ComputerGameFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private boolean equalsIgnoreAccent(String a, String b) {
+
+        final Collator instance = Collator.getInstance();
+
+        // This strategy mean it'll ignore the accents
+        instance.setStrength(Collator.NO_DECOMPOSITION);
+
+        // Will print 0 because its EQUAL
+        if(instance.compare(a,b)==0)
+            return true;
+        else
+            return false;
+
     }
 }

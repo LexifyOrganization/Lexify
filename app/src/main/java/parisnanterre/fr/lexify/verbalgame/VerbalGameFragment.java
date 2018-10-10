@@ -205,6 +205,7 @@ public class VerbalGameFragment extends Fragment {
         if (millisCountDownTimer!=0)
             chrono.cancel();
 
+
         if (gameActivity.isLastRound()) {
             gameActivity.setScore(score);
             gameActivity.setFragment(new VerbalGameResultsFragment());

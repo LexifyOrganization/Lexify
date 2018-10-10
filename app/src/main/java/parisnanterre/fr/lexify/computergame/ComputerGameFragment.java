@@ -142,6 +142,7 @@ public class ComputerGameFragment extends Fragment {
         countDownTimer = createTimer(view);
         animateProgressBar.start();
         countDownTimer.start();
+        computerGameActivity.setChrono(countDownTimer);
 
         next.setOnClickListener(new View.OnClickListener() {
 

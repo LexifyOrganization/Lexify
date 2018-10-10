@@ -283,7 +283,7 @@ public class ComputerGameFragment extends Fragment {
                     abandon.setText("Revenir menu principal");
                     next.setVisibility(View.GONE);
                 }
-                endText.setText("Vous avez perdu !");
+                endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWord);
                 InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                 input.hideSoftInputFromWindow(edittext.getWindowToken(), 0);
                 edittext.clearFocus();

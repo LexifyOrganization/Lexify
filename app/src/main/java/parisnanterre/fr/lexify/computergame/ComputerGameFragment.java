@@ -45,6 +45,7 @@ public class ComputerGameFragment extends Fragment {
     final private int nombre_mots = 23;
     private int nombre_tire;
     private int currentTimerProgress = 100; //percentage of progress, not number of seconds
+    int currentTimeLeft = 30000;
     ProgressBar progressBar;
     CountDownTimer countDownTimer;
     ObjectAnimator animateProgressBar;
@@ -141,8 +142,9 @@ public class ComputerGameFragment extends Fragment {
 
         countDownTimer = createTimer(view);
         animateProgressBar.start();
-        countDownTimer.start();
         computerGameActivity.setChrono(countDownTimer);
+        countDownTimer.start();
+
 
         next.setOnClickListener(new View.OnClickListener() {
 
@@ -170,6 +172,7 @@ public class ComputerGameFragment extends Fragment {
                 edittext.findFocus();
                 edittext.hasFocus();
 
+                computerGameActivity.setChrono(countDownTimer);
                 countDownTimer.start();
                 animateProgressBar.start();
             }
@@ -216,7 +219,9 @@ public class ComputerGameFragment extends Fragment {
                         if(edittext.getText().toString().equalsIgnoreCase(ComputerWord)) {
                             endText.setText("Bravo vous avez gagné !");
                             animateProgressBar.end();
-                            countDownTimer.cancel();
+                            if (currentTimeLeft != 0){
+                                countDownTimer.cancel();
+                            }
                         }
                         else if (currentPosition==3) {
                             endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWord);
@@ -252,6 +257,7 @@ public class ComputerGameFragment extends Fragment {
                 tv.setText("");
             }
         }
+        computerGameActivity.setChrono(countDownTimer);
     }
 
     public CountDownTimer createTimer(View view){
@@ -265,6 +271,7 @@ public class ComputerGameFragment extends Fragment {
             @Override
             public void onTick(long millisUntilFinished) {
                 currentTimerProgress--;
+                currentTimeLeft = currentTimeLeft - 1000;
                 progressBar.setProgress((int) currentTimerProgress * 100 / (30000 / 1000));
             }
             @Override
@@ -282,6 +289,7 @@ public class ComputerGameFragment extends Fragment {
                 edittext.clearFocus();
                 animateProgressBar.end();
                 countDownTimer.cancel();
+                currentTimeLeft = 30000;
             }
         };
     }

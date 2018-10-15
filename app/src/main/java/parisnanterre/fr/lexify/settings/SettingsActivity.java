@@ -20,6 +20,7 @@ import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 
+import static parisnanterre.fr.lexify.computergame.ComputerGameFragment.timeSettingComputer;
 import static parisnanterre.fr.lexify.verbalgame.VerbalGameFragment.millisCountDownTimer;
 
 public class SettingsActivity extends Activity {
@@ -109,18 +110,23 @@ public class SettingsActivity extends Activity {
                 if (item2.equals(getResources().getString(R.string.off))) {
                     spinner_level.setPrompt(getResources().getString(R.string.off));
                     millisCountDownTimer = 0;
+                    timeSettingComputer = 0;
+
 
                 } else if (item2.equals(getResources().getString(R.string.easy))) {
                     spinner_level.setPrompt(getResources().getString(R.string.easy));
                     millisCountDownTimer = 40000;
+                    timeSettingComputer = 40000;
 
                 } else if (item2.equals(getResources().getString(R.string.medium))) {
                     spinner_level.setPrompt(getResources().getString(R.string.medium));
                     millisCountDownTimer = 30000;
+                    timeSettingComputer = 30000;
 
                 } else if (item2.equals(getResources().getString(R.string.hard))) {
                     spinner_level.setPrompt(getResources().getString(R.string.hard));
                     millisCountDownTimer = 20000;
+                    timeSettingComputer = 20000;
 
                 }
             }

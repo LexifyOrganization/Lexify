@@ -45,7 +45,8 @@ public class ComputerGameFragment extends Fragment {
     final private int nombre_mots = 23;
     private int nombre_tire;
     private int currentTimerProgress = 100; //percentage of progress, not number of seconds
-    int currentTimeLeft = 30000;
+    int currentTimeLeft;
+    public static int timeSettingComputer;
     ProgressBar progressBar;
     CountDownTimer countDownTimer;
     ObjectAnimator animateProgressBar;
@@ -135,16 +136,22 @@ public class ComputerGameFragment extends Fragment {
 
         round.setText("Round "+currentRound+"/4");
 
-        progressBar.setProgress(currentTimerProgress);
-        animateProgressBar = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
-        animateProgressBar.setDuration(30000);
-        animateProgressBar.setInterpolator(new LinearInterpolator());
+        if (timeSettingComputer != 0) {
+            progressBar.setVisibility(View.VISIBLE);
+            currentTimerProgress = timeSettingComputer;
+            progressBar.setProgress(currentTimerProgress);
+            animateProgressBar = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
+            animateProgressBar.setDuration(timeSettingComputer);
+            animateProgressBar.setInterpolator(new LinearInterpolator());
 
-        countDownTimer = createTimer(view);
-        animateProgressBar.start();
-        computerGameActivity.setChrono(countDownTimer);
-        countDownTimer.start();
-
+            countDownTimer = createTimer(view);
+            animateProgressBar.start();
+            computerGameActivity.setChrono(countDownTimer);
+            countDownTimer.start();
+        }
+        else{
+            progressBar.setVisibility(View.INVISIBLE);
+        }
 
         next.setOnClickListener(new View.OnClickListener() {
 
@@ -157,8 +164,10 @@ public class ComputerGameFragment extends Fragment {
                 reset(left);
                 reset(right);
                 currentPosition = 0;
-                currentTimerProgress=100;
-                countDownTimer=createTimer(getView());
+                if (timeSettingComputer != 0) {
+                    currentTimerProgress = 100;
+                    countDownTimer = createTimer(getView());
+                }
 
                 edittext.setVisibility(View.VISIBLE);
                 edittext.setText("");
@@ -172,9 +181,11 @@ public class ComputerGameFragment extends Fragment {
                 edittext.findFocus();
                 edittext.hasFocus();
 
-                computerGameActivity.setChrono(countDownTimer);
-                countDownTimer.start();
-                animateProgressBar.start();
+                if (timeSettingComputer !=0) {
+                    computerGameActivity.setChrono(countDownTimer);
+                    countDownTimer.start();
+                    animateProgressBar.start();
+                }
             }
 
         });
@@ -212,21 +223,23 @@ public class ComputerGameFragment extends Fragment {
                         if(currentRound==4) {
                             abandon.setText("Revenir menu principal");
                             next.setVisibility(View.GONE);
-                            animateProgressBar.end();
-                            countDownTimer.cancel();
+                            if (timeSettingComputer!=0) {
+                                animateProgressBar.end();
+                                countDownTimer.cancel();
+                            }
                         }
 
                         if(edittext.getText().toString().equalsIgnoreCase(ComputerWord)) {
                             endText.setText("Bravo vous avez gagné !");
                             animateProgressBar.end();
-                            if (currentTimeLeft != 0){
-                                countDownTimer.cancel();
-                            }
+                            if (timeSettingComputer != 0) if (currentTimeLeft != 0) countDownTimer.cancel();
                         }
                         else if (currentPosition==3) {
                             endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWord);
-                            animateProgressBar.end();
-                            countDownTimer.cancel();
+                            if (timeSettingComputer!=0) {
+                                animateProgressBar.end();
+                                countDownTimer.cancel();
+                            }
                         }
 
                         InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -267,12 +280,12 @@ public class ComputerGameFragment extends Fragment {
         final Button next = view.findViewById(R.id.fragment_computer_game_btn_next);
         final Button abandon = view.findViewById(R.id.fragment_computer_game_btn_abandon);
 
-        return new CountDownTimer(30000,1000) {
+        return new CountDownTimer(timeSettingComputer,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 currentTimerProgress--;
                 currentTimeLeft = currentTimeLeft - 1000;
-                progressBar.setProgress((int) currentTimerProgress * 100 / (30000 / 1000));
+                progressBar.setProgress((int) currentTimerProgress * 100 / (timeSettingComputer / 1000));
             }
             @Override
             public void onFinish() {
@@ -289,7 +302,7 @@ public class ComputerGameFragment extends Fragment {
                 edittext.clearFocus();
                 animateProgressBar.end();
                 countDownTimer.cancel();
-                currentTimeLeft = 30000;
+                currentTimeLeft = timeSettingComputer;
             }
         };
     }

@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameFragment;
@@ -58,7 +59,16 @@ public class ComputerGameFragment extends Fragment {
         List<List<String>> synonymes = new ArrayList<List<String>>();
         BufferedReader lecteur = null;
         try {
-            lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_fr.txt"), "iso-8859-1"));
+
+            String lang = Paper.book().read("language");
+            if(lang==null)
+                lang="en";
+            if(lang.equals("fr")) {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_fr.txt"), "iso-8859-1"));
+            }
+            else {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_en.txt"), "iso-8859-1"));
+            }
             String line;
             StringBuilder out = new StringBuilder();
             while((line = lecteur.readLine()) != null){
@@ -84,7 +94,16 @@ public class ComputerGameFragment extends Fragment {
         List<String> mots = new ArrayList<String>();
         BufferedReader lecteur = null;
         try {
-            lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_fr.txt"), "iso-8859-1"));
+
+            String lang = Paper.book().read("language");
+            if(lang==null)
+                lang="en";
+            if(lang.equals("fr")) {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_fr.txt"), "iso-8859-1"));
+            }
+            else {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_en.txt"), "iso-8859-1"));
+            }
             String line;
             while((line = lecteur.readLine()) != null){
                 mots.add(line);

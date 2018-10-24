@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="C'est au tour de l'ordinateur !"
+            android:text="@string/computergameturn"
             android:textAlignment="center"
             android:textAppearance="@style/YourTurnStyle"
             android:textColor="#FFFFFF"/>
@@ -76,7 +76,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_height="wrap_content"
                             android:background="@color/grey"
-                            android:text="Mot 1"
+                            android:text=""
                             android:textColor="#FFFFFF"/>
 
                         <TextView
@@ -85,14 +85,14 @@
                             android:layout_marginTop="5dp"
                             android:layout_height="wrap_content"
                             android:background="@color/grey"
-                            android:text="Mot 2"
+                            android:text=""
                             android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:gravity="center"
                             android:layout_height="wrap_content"
-                            android:text="Mot 3"
+                            android:text=""
                             android:layout_marginTop="5dp"
                             android:background="@color/grey"
                             android:textColor="#FFFFFF"/>
@@ -101,7 +101,7 @@
                             android:layout_width="match_parent"
                             android:gravity="center"
                             android:layout_height="wrap_content"
-                            android:text="Mot 4"
+                            android:text=""
                             android:layout_marginTop="5dp"
                             android:background="@color/grey"
                             android:textColor="#FFFFFF"/>
@@ -133,7 +133,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_height="wrap_content"
                             android:background="@color/grey"
-                            android:text="Mot 1"
+                            android:text=""
                             android:textColor="#FFFFFF"/>
 
                         <TextView
@@ -142,14 +142,14 @@
                             android:layout_marginTop="5dp"
                             android:layout_height="wrap_content"
                             android:background="@color/grey"
-                            android:text="Mot 2"
+                            android:text=""
                             android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:gravity="center"
                             android:layout_height="wrap_content"
-                            android:text="Mot 3"
+                            android:text=""
                             android:layout_marginTop="5dp"
                             android:background="@color/grey"
                             android:textColor="#FFFFFF"/>
@@ -158,7 +158,7 @@
                             android:layout_width="match_parent"
                             android:gravity="center"
                             android:layout_height="wrap_content"
-                            android:text="Mot 4"
+                            android:text=""
                             android:layout_marginTop="5dp"
                             android:background="@color/grey"
                             android:textColor="#FFFFFF"/>

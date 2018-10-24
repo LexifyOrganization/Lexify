@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameFragment;
@@ -58,7 +59,16 @@ public class ComputerGameFragment extends Fragment {
         List<List<String>> synonymes = new ArrayList<List<String>>();
         BufferedReader lecteur = null;
         try {
-            lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_fr.txt"), "iso-8859-1"));
+
+            String lang = Paper.book().read("language");
+            if(lang==null)
+                lang="en";
+            if(lang.equals("fr")) {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_fr.txt"), "iso-8859-1"));
+            }
+            else {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_en.txt"), "iso-8859-1"));
+            }
             String line;
             StringBuilder out = new StringBuilder();
             while((line = lecteur.readLine()) != null){
@@ -84,7 +94,16 @@ public class ComputerGameFragment extends Fragment {
         List<String> mots = new ArrayList<String>();
         BufferedReader lecteur = null;
         try {
-            lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_fr.txt"), "iso-8859-1"));
+
+            String lang = Paper.book().read("language");
+            if(lang==null)
+                lang="en";
+            if(lang.equals("fr")) {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_fr.txt"), "iso-8859-1"));
+            }
+            else {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_en.txt"), "iso-8859-1"));
+            }
             String line;
             while((line = lecteur.readLine()) != null){
                 mots.add(line);
@@ -146,7 +165,7 @@ public class ComputerGameFragment extends Fragment {
         determine_computer_words_and_synonymes();
         progressBar = view.findViewById(R.id.fragment_computer_game_progressbar_countdown);
 
-        round.setText("Round "+currentRound+"/4");
+        round.setText(getResources().getString(R.string.round)+" "+currentRound+"/4");
 
         if (timeSettingComputer != 0) {
             progressBar.setVisibility(View.VISIBLE);
@@ -240,14 +259,14 @@ public class ComputerGameFragment extends Fragment {
                         }
 
                         if(edittext.getText().toString().equalsIgnoreCase(ComputerWords.get(currentRound-1))) {
-                            endText.setText("Bravo vous avez gagné !");
+                            endText.setText(getResources().getString(R.string.cg_win));
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();
                                 countDownTimer.cancel();
                             }
                         }
                         else if (currentPosition==3) {
-                            endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWords.get(currentRound-1));
+                            endText.setText(getResources().getString(R.string.cg_lose) + ComputerWords.get(currentRound-1));
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();
                                 countDownTimer.cancel();
@@ -307,7 +326,7 @@ public class ComputerGameFragment extends Fragment {
                     abandon.setText("Revenir menu principal");
                     next.setVisibility(View.GONE);
                 }
-                endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWords.get(currentRound-1));
+                endText.setText(getResources().getString(R.string.cg_lose) + ComputerWords.get(currentRound-1));
                 InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                 input.hideSoftInputFromWindow(edittext.getWindowToken(), 0);
                 edittext.clearFocus();

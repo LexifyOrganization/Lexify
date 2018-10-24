@@ -37,4 +37,4 @@ abstract, ethology, concrete, ideal, material, metempirical, ontology, philosoph
 apologue, clausule, deontology, honesty, philosophy
 value, theory, precept, honest, deontology, clausule, ethics, ethology
 fantasy, fiction, hallucination, ideal, illusion, illusionism, mirage, myth, phalanstery, fantasy, conjuring
-death, concept, end, stop, finished, finish, life, extinction, corpse, body, ditch, alive
+concept, end, stop, finished, finish, life, extinction, corpse, body, ditch, alive

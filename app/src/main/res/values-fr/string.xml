@@ -58,4 +58,7 @@
     <string name="cancel">Annuler</string>
     <string name="enter_names">Saisissez les noms des joueurs</string>
     <string name="choose_words">Choisissez 4 mots</string>
+    <string name="computergameturn">C\'est au tour de l\'ordinateur !</string>
+    <string name="cg_win">Bravo vous avez gagné !</string>
+    <string name="cg_lose">"Vous avez perdu ! Le mot à deviner était "</string>
 </resources>

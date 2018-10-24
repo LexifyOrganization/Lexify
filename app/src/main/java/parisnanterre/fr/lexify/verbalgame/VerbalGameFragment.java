@@ -94,7 +94,6 @@ public class VerbalGameFragment extends Fragment {
 
 
         final Button btn_true = (Button) view.findViewById(R.id.fragment_verbal_game_btn_true);
-        //final Button btn_false = (Button) view.findViewById(R.id.fragment_verbal_game_btn_false);
         final Button btn_pass = (Button) view.findViewById(R.id.fragment_verbal_game_btn_pass);
         txt_nbmanche = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_manche);
         txt_word = (TextView) view.findViewById(R.id.fragment_verbal_game_txt_word);
@@ -205,6 +204,7 @@ public class VerbalGameFragment extends Fragment {
 
         if (millisCountDownTimer!=0)
             chrono.cancel();
+
 
         if (gameActivity.isLastRound()) {
             gameActivity.setScore(score);

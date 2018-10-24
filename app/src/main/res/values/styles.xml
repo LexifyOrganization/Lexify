@@ -48,4 +48,8 @@
         <item name="android:textSize">@dimen/yourTurnStyleSize</item>
     </style>
 
+    <style name="SplashScreenStyle" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_color</item>
+    </style>
+
 </resources>

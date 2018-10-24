@@ -9,15 +9,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+<<<<<<< HEAD
             android:name=".application.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar">
             <intent-filter>
                 <action android:name="android:intent.action.MAIN"/>
+=======
+            android:name=".application.SplashScreenActivity" android:theme="@style/SplashScreenStyle"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+>>>>>>> e4c961956f82b051fcc4db27b8f626123088fb86
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".application.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".application.MainActivity"
             android:configChanges="orientation"
@@ -33,6 +44,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".verbalgame.VerbalGameActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".computergame.ComputerGameActivity"
+            android:windowSoftInputMode="stateVisible"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>

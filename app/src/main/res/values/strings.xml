@@ -61,6 +61,9 @@
     <string name="cancel">Cancel</string>
     <string name="enter_names">Please enter players names</string>
     <string name="choose_words">Please choose 4 words</string>
+    <string name="computergameturn">It\'s computer turn !</string>
+    <string name="cg_win">You won !</string>
+    <string name="cg_lose">"You lost ! The word to guess was "</string>
 
 
 </resources>

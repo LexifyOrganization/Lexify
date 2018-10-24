@@ -32,20 +32,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
+import parisnanterre.fr.lexify.verbalgame.VerbalGameFragment;
 
 public class ComputerGameFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private int currentPosition = 0;
     private int currentRound = 1;
-    private String ComputerWord;
-    private String ComputerSynonyme;
-    final private int nombre_mots = 23;
-    private int nombre_tire;
+    List<String> wordsDB = new ArrayList<String>();
+    List<List<String>> synonymesDB = new ArrayList<List<String>>();
+    List<String> ComputerWords = new ArrayList<String>();
+    List<List<String>> ComputerSynonymes = new ArrayList<List<String>>();
     private int currentTimerProgress = 100; //percentage of progress, not number of seconds
-    int currentTimeLeft = 30000;
+    private int nombre_tire;
+    int currentTimeLeft;
+    public static int timeSettingComputer;
     ProgressBar progressBar;
     CountDownTimer countDownTimer;
     ObjectAnimator animateProgressBar;
@@ -55,11 +59,19 @@ public class ComputerGameFragment extends Fragment {
         List<List<String>> synonymes = new ArrayList<List<String>>();
         BufferedReader lecteur = null;
         try {
-            lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_fr.txt"), "iso-8859-1"));
+
+            String lang = Paper.book().read("language");
+            if(lang==null)
+                lang="en";
+            if(lang.equals("fr")) {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_fr.txt"), "iso-8859-1"));
+            }
+            else {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_synonymes_en.txt"), "iso-8859-1"));
+            }
             String line;
             StringBuilder out = new StringBuilder();
             while((line = lecteur.readLine()) != null){
-
                 String tmp = line.toString();
                 String [] filelineTab = tmp.split(", ");
                 List <String> filelineListe = new ArrayList<String>();
@@ -82,7 +94,16 @@ public class ComputerGameFragment extends Fragment {
         List<String> mots = new ArrayList<String>();
         BufferedReader lecteur = null;
         try {
-            lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_fr.txt"), "iso-8859-1"));
+
+            String lang = Paper.book().read("language");
+            if(lang==null)
+                lang="en";
+            if(lang.equals("fr")) {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_fr.txt"), "iso-8859-1"));
+            }
+            else {
+                lecteur = new BufferedReader (new InputStreamReader(getActivity().getAssets().open("liste_reduite_en.txt"), "iso-8859-1"));
+            }
             String line;
             while((line = lecteur.readLine()) != null){
                 mots.add(line);
@@ -99,15 +120,26 @@ public class ComputerGameFragment extends Fragment {
         return mots;
     }
 
-    public void determine_computer_word(){
-        nombre_tire = (int)(Math.random() * ((nombre_mots)));
-        ComputerWord = create_liste_mots().get(nombre_tire);
+    public void initialize_listes() {
+        wordsDB = create_liste_mots();
+        synonymesDB = create_liste_synonymes();
     }
 
-    public void determine_computer_synonyme(){
-        List<List<String>> synonymes = create_liste_synonymes();
-        int i = (int)(Math.random() * (synonymes.get(nombre_tire).size()));
-        ComputerSynonyme = synonymes.get(nombre_tire).get(i);
+    public void determine_computer_words_and_synonymes() {
+        List<String> tmp = new ArrayList<String>();
+        for (int i = 0; i < 4; i++) {
+            nombre_tire = (int) (Math.random() * ((wordsDB.size())));
+            ComputerWords.add(wordsDB.get(nombre_tire));
+            for (int j = 0; j < 4; j++) {
+                int random = (int) (Math.random() * (synonymesDB.get(nombre_tire).size()));
+                tmp.add(synonymesDB.get(nombre_tire).get(random));
+                synonymesDB.get(nombre_tire).remove(random);
+            }
+            ComputerSynonymes.add(new ArrayList<String>(tmp));
+            tmp.clear();
+            wordsDB.remove(nombre_tire);
+            synonymesDB.remove(nombre_tire);
+        }
     }
 
     public interface OnFragmentInteractionListener {
@@ -129,52 +161,60 @@ public class ComputerGameFragment extends Fragment {
         final Button abandon = view.findViewById(R.id.fragment_computer_game_btn_abandon);
 
         computerGameActivity = (ComputerGameActivity) getActivity();
-        determine_computer_word();
-        determine_computer_synonyme();
+        initialize_listes();
+        determine_computer_words_and_synonymes();
         progressBar = view.findViewById(R.id.fragment_computer_game_progressbar_countdown);
 
-        round.setText("Round "+currentRound+"/4");
+        round.setText(getResources().getString(R.string.round)+" "+currentRound+"/4");
 
-        progressBar.setProgress(currentTimerProgress);
-        animateProgressBar = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
-        animateProgressBar.setDuration(30000);
-        animateProgressBar.setInterpolator(new LinearInterpolator());
+        if (timeSettingComputer != 0) {
+            progressBar.setVisibility(View.VISIBLE);
+            currentTimerProgress = timeSettingComputer;
+            progressBar.setProgress(currentTimerProgress);
+            animateProgressBar = ObjectAnimator.ofInt(progressBar, "progress", 100, 0);
+            animateProgressBar.setDuration(timeSettingComputer);
+            animateProgressBar.setInterpolator(new LinearInterpolator());
 
-        countDownTimer = createTimer(view);
-        animateProgressBar.start();
-        computerGameActivity.setChrono(countDownTimer);
-        countDownTimer.start();
-
+            countDownTimer = createTimer(view);
+            animateProgressBar.start();
+            computerGameActivity.setChrono(countDownTimer);
+            countDownTimer.start();
+        }
+        else{
+            progressBar.setVisibility(View.INVISIBLE);
+        }
 
         next.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 currentRound++;
-                determine_computer_word();
-                determine_computer_synonyme();
                 round.setText("Round "+currentRound+"/4");
                 reset(left);
                 reset(right);
                 currentPosition = 0;
-                currentTimerProgress=100;
-                countDownTimer=createTimer(getView());
+                if (timeSettingComputer != 0) {
+                    currentTimerProgress = 100;
+                    countDownTimer = createTimer(getView());
+                }
 
                 edittext.setVisibility(View.VISIBLE);
                 edittext.setText("");
                 layout.setVisibility(View.GONE);
 
                 TextView text = (TextView) left.getChildAt(currentPosition);
-                text.setText(ComputerSynonyme);
+                text.setText(ComputerSynonymes.get(currentRound-1).get(currentPosition));
 
                 InputMethodManager imm = (InputMethodManager)   getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
                 edittext.findFocus();
                 edittext.hasFocus();
 
-                computerGameActivity.setChrono(countDownTimer);
-                countDownTimer.start();
-                animateProgressBar.start();
+                if (timeSettingComputer !=0) {
+                    computerGameActivity.setChrono(countDownTimer);
+                    countDownTimer.start();
+                    animateProgressBar.start();
+                }
             }
 
         });
@@ -192,7 +232,7 @@ public class ComputerGameFragment extends Fragment {
 
         edittext.hasFocus();
         TextView text = (TextView) left.getChildAt(currentPosition);
-        text.setText(ComputerSynonyme);
+        text.setText(ComputerSynonymes.get(currentRound-1).get(currentPosition));
 
         edittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -205,28 +245,32 @@ public class ComputerGameFragment extends Fragment {
 
                     TextView text = (TextView) right.getChildAt(currentPosition);
                     text.setText(edittext.getText().toString());
-                    if(equalsIgnoreAccent(ComputerWord, edittext.getText().toString()) || currentPosition==3){
+                    if(equalsIgnoreAccent(ComputerWords.get(currentRound-1), edittext.getText().toString()) || currentPosition==3){
                         edittext.setVisibility(View.GONE);
                         layout.setVisibility(View.VISIBLE);
 
                         if(currentRound==4) {
                             abandon.setText("Revenir menu principal");
                             next.setVisibility(View.GONE);
-                            animateProgressBar.end();
-                            countDownTimer.cancel();
+                            if (timeSettingComputer!=0) {
+                                animateProgressBar.end();
+                                countDownTimer.cancel();
+                            }
                         }
 
-                        if(edittext.getText().toString().equalsIgnoreCase(ComputerWord)) {
-                            endText.setText("Bravo vous avez gagné !");
-                            animateProgressBar.end();
-                            if (currentTimeLeft != 0){
+                        if(edittext.getText().toString().equalsIgnoreCase(ComputerWords.get(currentRound-1))) {
+                            endText.setText(getResources().getString(R.string.cg_win));
+                            if (timeSettingComputer!=0) {
+                                animateProgressBar.end();
                                 countDownTimer.cancel();
                             }
                         }
                         else if (currentPosition==3) {
-                            endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWord);
-                            animateProgressBar.end();
-                            countDownTimer.cancel();
+                            endText.setText(getResources().getString(R.string.cg_lose) + ComputerWords.get(currentRound-1));
+                            if (timeSettingComputer!=0) {
+                                animateProgressBar.end();
+                                countDownTimer.cancel();
+                            }
                         }
 
                         InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -235,15 +279,14 @@ public class ComputerGameFragment extends Fragment {
                     } else {
                         edittext.setText("");
                         currentPosition++;
-                        determine_computer_synonyme();
                         text = (TextView) left.getChildAt(currentPosition);
-                        text.setText(ComputerSynonyme);
+                        text.setText(ComputerSynonymes.get(currentRound-1).get(currentPosition));
                     }
 
                     return true;
                 }
                 return false;
-        }});
+            }});
 
         return view;
     }
@@ -267,12 +310,12 @@ public class ComputerGameFragment extends Fragment {
         final Button next = view.findViewById(R.id.fragment_computer_game_btn_next);
         final Button abandon = view.findViewById(R.id.fragment_computer_game_btn_abandon);
 
-        return new CountDownTimer(30000,1000) {
+        return new CountDownTimer(timeSettingComputer,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 currentTimerProgress--;
                 currentTimeLeft = currentTimeLeft - 1000;
-                progressBar.setProgress((int) currentTimerProgress * 100 / (30000 / 1000));
+                progressBar.setProgress((int) currentTimerProgress * 100 / (timeSettingComputer / 1000));
             }
             @Override
             public void onFinish() {
@@ -283,13 +326,13 @@ public class ComputerGameFragment extends Fragment {
                     abandon.setText("Revenir menu principal");
                     next.setVisibility(View.GONE);
                 }
-                endText.setText("Vous avez perdu ! Le mot à deviner était " + ComputerWord);
+                endText.setText(getResources().getString(R.string.cg_lose) + ComputerWords.get(currentRound-1));
                 InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                 input.hideSoftInputFromWindow(edittext.getWindowToken(), 0);
                 edittext.clearFocus();
                 animateProgressBar.end();
                 countDownTimer.cancel();
-                currentTimeLeft = 30000;
+                currentTimeLeft = timeSettingComputer;
             }
         };
     }

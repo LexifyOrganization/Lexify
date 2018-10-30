@@ -35,6 +35,14 @@
         "\n\nMail : lexifyapp@gmail.com\n\n"
         "Authors: \n\n KHATIR Nassim\nNAYET Lucas\nPIOT Nicolas \nABDULWAHAB Hani"
     </string>
+    <string name="aboutcomputergame">
+        "Rules of the game against the computer: guess a word.\n\n"
+        "4 rounds\n4 words suggested to guess by turn.\n\n"
+        "For each round, the computer selects a word and 4 synonyms.\n"
+        "These are randomly selected.\n"
+        "The user must guess the word from the proposed synonyms.\n\n"
+        "Playable mode with or without timer adjustable in options.\n\n"
+    </string>
     <string name="Changeplayersnames">Players names</string>
     <string name="ChooseWords">Choose words</string>
     <string name="yourturn">Your turn, make your partner guess this word !</string>

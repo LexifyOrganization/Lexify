@@ -35,7 +35,8 @@ public class AboutGameActivity extends AppCompatActivity  {
     private void setViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new AboutLexifyFragment(), "About Lexify");
-        adapter.addFragment(new RulesLexifyFragment(), "Lexify's Rules");
+        adapter.addFragment(new RulesLexifyFragment(), "Verbal Game");
+        adapter.addFragment(new AboutComputerGameFragment(), "Computer Game");
         viewPager.setAdapter(adapter);
     }
 

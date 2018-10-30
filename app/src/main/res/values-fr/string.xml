@@ -32,6 +32,14 @@
          "Mail : lexifyapp@gmail.com \n\n"
          "Auteurs: \n\nNassin Khatir \nLucas Nayet \nNicolas Piot \nHani Abdulwahab"
     </string>
+    <string name="aboutcomputergame">
+        "Règles du jeu contre l'ordinateur : deviner un mot.\n\n"
+        "4 tours\n4 mots proposés pour deviner par tour.\n\n"
+        "Pour chaque manche, l'ordinateur sélectionne un mot et 4 synonymes.\n"
+        "Ces derniers sont sélectionnés de manière aléatoire.\n"
+        "L'utilisateur doit alors deviner le mot à partir des synonymes proposés.\n\n"
+        "Mode jouable avec ou sans chronomètre réglable dans les options.\n\n"
+    </string>
     <string name="Changeplayersnames">Noms des joueurs</string>
     <string name="ChooseWords">Choisir des mots</string>
     <string name="yourturn">A ton tour, fais deviner le mot mystère à ton partenaire!</string>

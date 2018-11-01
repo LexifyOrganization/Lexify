@@ -84,7 +84,7 @@ shelter, accel, ring, ansette, bay, cove, curve, creek, gulf, lace, ear, handle,
 shelter, achen, cove, balauste, ball, cove, conch, creek, crossed, drupe, notch, depression, window, fruit, gulf, grain, grain, haven, inlet, dormer, opening, harbor, empty, view
 aber, shelter, cove, asylum, bay, cove, conch, creek, notch, estuary, fjord, harbor, harbor, retirement, ria
 haven, oasis, land, continent, small
-agglomeration, island, center, grouping
+archipelago, atoll, haven, retreat, enclave, peninsula, shetler
 island, round, hole, water, corals, lagoon
 arm, pond, lake, lagoon, liman
 peninsula, tongue, advanced, join

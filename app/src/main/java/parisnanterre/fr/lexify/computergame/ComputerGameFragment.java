@@ -162,6 +162,12 @@ public class ComputerGameFragment extends Fragment {
         final Button next = view.findViewById(R.id.fragment_computer_game_btn_next);
         final Button abandon = view.findViewById(R.id.fragment_computer_game_btn_abandon);
 
+        edittext.requestFocus();
+        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        edittext.findFocus();
+        edittext.hasFocus();
+
         computerGameActivity = (ComputerGameActivity) getActivity();
         initialize_listes();
         determine_computer_words_and_synonymes();

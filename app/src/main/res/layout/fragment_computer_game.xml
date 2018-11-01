@@ -204,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginRight="10dp"
-                    android:text="Manche suivante"/>
+                    android:text="@string/nextround"/>
 
                 <Button
                     android:id="@+id/fragment_computer_game_btn_abandon"
@@ -212,7 +212,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_height="wrap_content"
-                    android:text="Abandon"/>
+                    android:text="@string/abandon"/>
 
             </LinearLayout>
 

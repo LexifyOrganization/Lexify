@@ -84,4 +84,8 @@
         "The computer gives up to 4 synonyms.\n"
         "After 4 false proposals, the round is lost.\n"
     </string>
+    <string name="nextround">Next round</string>
+    <string name="abandon">Abandon</string>
+    <string name="statistics">See statistics</string>
+
 </resources>

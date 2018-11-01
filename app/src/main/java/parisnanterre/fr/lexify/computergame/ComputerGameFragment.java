@@ -264,7 +264,7 @@ public class ComputerGameFragment extends Fragment {
                         layout.setVisibility(View.VISIBLE);
 
                         if(currentRound==4) {
-                            next.setText("Voir statistiques");
+                            next.setText(getResources().getString(R.string.statistics));
                             abandon.setVisibility(View.GONE);
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();

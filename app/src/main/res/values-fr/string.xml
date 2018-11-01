@@ -84,4 +84,7 @@
         "L'ordinateur donne jusqu'à 4 synonymes maximum.\n"
         "Au bout de 4 propositions fausses, la manche est perdue.\n"
     </string>
+    <string name="nextround">Manche suivante</string>
+    <string name="abandon">Abandonner</string>
+    <string name="statistics">Voir statistiques</string>
 </resources>

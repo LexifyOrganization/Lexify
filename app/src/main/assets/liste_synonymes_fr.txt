@@ -62,3 +62,39 @@ architecte, auteur, bienfaiteur, chercheur, concepteur, créateur, découvreur, fa
 annaliste, artiste, auteur, barbouilleur, bas-bleu, calligraphe, comique, copiste, dramaturge, écrivailleur, écrivaillon, écrivant, écrivassier, employé, épistolier, essayiste, gendelettre, gratte-papier, greffier, grimaud, historien, journaliste, littérateur, logographe, nouvelliste, pisse-copie, plume, plumitif, poète, polygraphe, prosateur, publiciste, rédacteur, romancier, scribe, scribouillard, scripteur, styliste, tragique, vaudevilliste
 contemplateur, contemplatif, méditatif, moraliste, philosophe, raisonneur, rêveur, songeur, théoricien
 abasourdi, anéanti, assommé, chancelant, effondré, étourdi, faible, hébété, knock-out, médusé, sonné
+éthanol, bistouille, blanche, boisson, brandevin, brandy, casse-gueule, casse-pattes, casse-poitrine, combustible, cric, digestif, eau, eau-de-vie, esprit, esprit-de-vin, gnôle, gnole, goutte, ivresse, liqueur, marc, pétrole, pousse-au-crime, pousse-café, punch, quintessence, rhum, rinçonnette, rincette, riquiqui, rogomme, schnick, spiritueux, tafia
+abandonné, aride, bled, dénudé, dépeuplé, déserté, désertique, désolé, erg, hamada, impeuplé, inanimé, inculte, infréquenté, inhabité, inoccupé, libre, mort, néant, pampa, perdu, retiré, rien, sable, sahara, sauvage, savane, seul, solitaire, solitude, steppe, thébaïde, toundra, trou
+accident, accumulation, élévation, alpage, amas, éminence, amoncellement, assemblage, chaîne, chaînon, cime, colline, contrefort, djebel, entassement, fatras, fouillis, hauteur, haut, lieu, mamelon, masse, monceau, mont, monticule, pâturage, pic, pile, piton, quantité, sierra, sommet, tas
+élévation, éminence, butte, côte, coteau, haut, hauteur, mamelon, mont, monticule, penchant, relief, roche, tertre
+acmé, aiguille, éminence, apogée, apothéose, arête, ballon, calotte, cime, comble, couronnement, crête, culmen, dôme, dent, dessus, extrême, extrémité, faîte, front, haut, hauteur, mamelon, maximum, montagne, pôle, paroxysme, perfection, pic, pinacle, piton, point, culminant, pointe, sublime, summum, suprématie, table
+abri, affranchissement, air, allure, anse, appontement, asile, aspect, attitude, bassin, brèche, but, cluse, col, compostage, contenance, débarcadère, défilé, dégaine, démarche, darse, dock, droit, escale, fisc, gare, golfe, havre, hivernage, ligne, manière, mine, oasis, oblitération, pas, passage, passe, patente, ponction, portage, portement, prestance, quai, rade, redevance, refuge, relâche, représentation, retraite, silhouette, stature, surtaxe, taille, tarif, taxe, tenue, timbre, touche, tournure, trafic, transbordement, transfèrement, transport, ville
+accès, écoulement, alinéa, allée, altération, avenue, barrage, bazar, billet, bouffée, boyau, brèche, bribe, canal, cavalcade, chemin, chenal, circonstance, circulation, citation, col, communication, conduit, conjoncture, corridor, couloir, défilé, dégagement, déplacement, détroit, endroit, extrait, flânerie, foulée, fragment, franchissement, fuite, galerie, gorge, goulet, gué, issue, lieu, moment, morceau, ouverture, péage, page, pèlerinage, paragraphe, partie, pas, passée, passe, passerelle, pâturage, percée, piste, port, randonnée, route, rue, sédentarisation, séjour, saut, sentier, seuil, sillage, stage, strophe, suture, texte, trace, trafic, transit, transition, transport, traversée, traverse, trimard, trouée, tunnel, vadrouille, va-et-vient, venelle, venue, vestibule, voie
+inlandsis, langue, miroitier, moraine, névé
+anfractuosité, cavité, craquelure, déchirure, engelure, entaille, faille, fente, fissure, fondrière, gerçure, lézarde, précipice, rainure, renfoncement, rhagade
+blanc, neige, ours, polaire, habitat
+banquise, glace, titanic, flotte
+chaleur, ardeur, danger, cratère, montagne, pompéi
+basalte, cendre, volcan, chaud, liquide
+gerbe, giclée, jaillissement, jet, eau
+étendue, bassin, campagne, champ, champagne, nappe, pampa, pénéplaine, piémont, planure, campagne, steppe, surface, toundra
+bassin, cluse, combe, gorge, ravin
+abîme, baille, boisson, déluge, eau, flot, gouffre, mer
+abondance, étendue, baille, déluge, espace, essaim, fleuve, flot, flots, fourmilière, fourmillement, large, marine, masse, multitude, océan, onde, plaine, quantité, reflux, rivage
+abri, accul, anneau, ansette, baie, calanque, courbe, crique, golfe, lacet, oreille, poignée, port, portant, voûte
+abri, akène, anse, balauste, boule, calanque, conche, crique, croisée, drupe, échancrure, enfoncement, fenêtre, fruit, golfe, grain, graine, havre, inlet, lucarne, ouverture, rade, vide, vue
+aber, abri, anse, asile, baie, calanque, conche, crique, échancrure, estuaire, fjord, havre, port, retraite, ria
+havre, oasis, terre, continent, petit
+agglomération, île, centre, regroupement
+île, ronde, trou, eau, coraux, lagon
+bras, étang, lac, lagon, liman
+péninsule, langue, avancée, jointure, presqu'île
+gibraltar, canal, pasee, couloir, gorge
+eau, flot, mer, multitude, quantité, rivière, ruisseau, torrent
+affluent, bain, canal, collecteur, collier, cours d'eau, émissaire, fleuve, flux, gave, oued, ravine, ru, ruisseau, torrent, tributaire, fluviale
+bas-fond, bassesse, boue, bourbier, claire, cloaque, culture, étang, fagne, fange, hortillonnage, jardin, jardinage, lac, mare, marécage, maremme, marigot, palud, palus, polder
+bas-fond, bassesse, bourbier, cloaque, étang, gâtine, grenouillère, marais, maremme
+bassin, chott, lac, lagon, lagune, marais, mare, marécage, pièce d'eau, réservoir, retenue
+arrêt, barricade, barrière, batardeau, blocage, bombardement, borne, bouchon, centrale, champ, clôture, cordon, défense, digue, duit, écluse, écran, estacade, fermette, fermeture, hausse, jetée, levée, manifestation, obstacle, obstruction, opposition, ouvrage d'art, pertuis, réservoir, résistance, retenue, vanne
+à-pic, belvédère, côte, escarpement, hauteur, mur, muraille, paroi, promontoire
+butte, erg, hauteur, sable
+banc, bloc, brisant, congolais, écueil, étoc, pierre, récif, varappe

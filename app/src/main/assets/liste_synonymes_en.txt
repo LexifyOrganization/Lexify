@@ -62,3 +62,39 @@ architect, author, benefactor, researcher, designer, creator, discoverer, manufa
 annalist, artist, author, dauber, low-blue, calligrapher, comic, copyist, playwright, writer, writer, writing, writer, employee, writer, essayist, gendeletter, paper scrap, clerk, grimaud, historian, journalist, writer, logographer, novelist, piss-copy, pen, plumitive, poet, polygraph, publicist, editor, novelist, scribe, scribouillard, writer, stylist, tragic, vaudevillist
 contemplator, contemplative, meditative, moralist, philosopher, reasoner, dreamer, pensive, theorist
 stunned, annihilated, staggered, collapsed, weak, dazed, knockout
+ethanol, bistouille, white, drink, brandevin, brandy, jigsaw, breaker, burster, fuel, jack, digestive, water, brandy, spirit, spirits, spirits, gnole, drop, drunkenness, liquor, marc, oil, crime-killer, coffee-sprout, punch, quintessence, rum, rennet, rincette, riquiqui, rogomme, schnick, spirits, tafia
+abandoned, arid, bled, bare, depopulated, deserted, desert, desolate, erg, hamada, impregnated, inanimate, uncultivated, unregistered, uninhabited, unoccupied, free, death, nothing, pampas, lost, removed, nothing, sand, sahara, wild, savanna, alone, lonely, loneliness, steppe, thebaïde, tundra, hole
+accident, accumulation, elevation, mountain pasture, heaps, eminence, pile up, assemblage, chain, link, summit, hill, buttress, djebel, heap, jumble, clutter, height, high, place, nipple, mass, heap, mount, mound, grazing, peak, pile, piton, quantity, sierra, summit, heap
+elevation, eminence, hillock, coast, hillside, high, height, nipple, mount, mound, leaning, relief, rock, mound
+acme, needle, eminence, apogee, apotheosis, ridge, balloon, cap, summit, crest, crowning, crest, culmen, dome, tooth, on, extreme, extremity, ridge, forehead, up, height, nipple, maximum, mountain, pole, paroxysm, perfection, peak, pinnacle, peak, point, culminating, peak, sublime, summum, supremacy, table
+shelter, postage, air, pace, cove, wharf, asylum, aspect, attitude, basin, breach, butt, cluse, pass, composting, countenance, landing stage, parade, quickdraw, gait, darse, dock, right, layover, station, gulf, haven, wintering, line, way, mine, oasis, obliteration, no, passage, pass, patent, puncture, portage, portage, imposing, wharf, harbor, royalty, refuge, release, representation, retirement, silhouette, stature, surcharge, size, fare, tax, holding, stamp, key, turn, traffic, transhipment, transfer, transportation, city
+access, flow, paragraph, alley, alteration, avenue, dam, bazaar, ticket, puff, gut, breach, chip, channel, ride, path, channel, circumstance, circulation, quote, pass, communication, conduit, conjuncture, corridor, corridor, parade, release, moving, strait, place, extract, stroll, stride, fragment, crossing, leak, gallery, gorge, inlet, ford, issue, place, moment, piece, opening, toll, page, pilgrimage, paragraph, part, not, passed, pass, footbridge, pasture, breakthrough, track, harbor, hike, road, street, sedentary, stay, jump, path, threshold, wake, stage, stanza, suture, text, trace, traffic, transit, transition, transportation, crossing, crosses, trundle, gap, tunnel, mop, back and forth, alley, coming, vestibule, way
+tongue, miroitier, moraine, neve
+anfractuosity, cavity, cracking, tearing, frostbite, notch, crack, cleft, crack, melting, cracking, crevice, precipice, groove, indentation, rhagade
+white, snow, bear, polar, habitat
+ice, floe, fleet, titanic
+heat, ardor, danger, crater, mountain, pumped
+basalt, ash, volcano, hot, liquid
+sheaf, squirt, squirt, spray, water
+expanse, basin, countryside, field, champagne, tablecloth, pampas, peneplain, piedmont, planes, countryside, steppe, surface, tundra
+pond, cluse, combe, gorge, ravine
+abyss, baille, drink, deluge, water, flow, chasm, sea
+abundance, extended, baille, deluge, space, swarm, river, flow, waves, anthill, swarm, broad, marine, mass, multitude, ocean, wave, plain, quantity, ebb, shore
+shelter, accel, ring, ansette, bay, cove, curve, creek, gulf, lace, ear, handle, port, carrying, arch
+shelter, achen, cove, balauste, ball, cove, conch, creek, crossed, drupe, notch, depression, window, fruit, gulf, grain, grain, haven, inlet, dormer, opening, harbor, empty, view
+aber, shelter, cove, asylum, bay, cove, conch, creek, notch, estuary, fjord, harbor, harbor, retirement, ria
+haven, oasis, land, continent, small
+agglomeration, island, center, grouping
+island, round, hole, water, corals, lagoon
+arm, pond, lake, lagoon, liman
+peninsula, tongue, advanced, join
+gibraltar, channel, pasee, lane, gorge
+water, flow, sea, multitude, quantity, river, stream, torrent
+affluent, bath, canal, collector, collar, stream, emissary, river, flow, gave, oued, ravine, ru, stream, stream, tributary, fluvial
+low-lying, baseness, mud, quagmire, clear, cloaca, culture, pond, fagne, mud, hortillonnage, garden, gardening, lake, pond, swamp, maremma, marigot, palud, palus, polder
+low-lying, bash, quagmire, cloaca, pond, goat, frog, marsh, maremma
+basin, chott, lake, lagoon, lagoon, marsh, pond, swamp, pond, reservoir, reservoir
+stop, barricade, barrier, cofferdam, blocking, bombardment, bollard, cap, central, field, fence, cord, defense, dike, duit, lock, screen, heck, farmhouse, closing, rise, jetty, raised, manifestation, obstacle, obstruction, opposition, engineering structure, pertuis, tank, resistance, restraint, valve
+peak, belvedere, coast, escarpment, height, wall, wall, wall, promontory
+butte, erg, height, sand
+bench, block, breaking, Congolese

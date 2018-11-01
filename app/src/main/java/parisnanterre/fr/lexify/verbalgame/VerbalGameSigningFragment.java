@@ -86,8 +86,6 @@ public class VerbalGameSigningFragment extends Fragment {
 
         final TextView txt_turn = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_playerturn);
         final TextView txt_player = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_player);
-        final TextView txt_rules = (TextView) view.findViewById(R.id.fragment_verbal_game_signing_rules);
-        FrameLayout frm_game = (FrameLayout) view.findViewById(R.id.fragment_verbal_game_signing_fragment);
         final Button btn_choose = (Button) view.findViewById(R.id.fragment_verbal_game_signing_btn_choose_words);
         final Button btn_change = (Button) view.findViewById(R.id.fragment_verbal_game_signing_btn_change_name);
         final Button btn_play = (Button) view.findViewById(R.id.fragment_verbal_game_signing_btn_play_game);

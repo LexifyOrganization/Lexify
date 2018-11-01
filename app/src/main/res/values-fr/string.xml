@@ -43,12 +43,12 @@
     <string name="Changeplayersnames">Noms des joueurs</string>
     <string name="ChooseWords">Choisir des mots</string>
     <string name="yourturn">A ton tour, fais deviner le mot mystère à ton partenaire!</string>
-    <string name="round">Tour</string>
+    <string name="round">Manche</string>
     <string name="score">Score</string>
     <string name="correct">Vrai !\n+1</string>
     <string name="wrong">Faux !\n-1</string>
     <string name="pass">Passer \n-5</string>
-    <string name="resultscongrats">C\'est fini ! Vous avez fait un score total de:</string>
+    <string name="resultscongrats">C\'est fini ! Vous avez fait un score total de :</string>
     <string name="name">Joueurs</string>
     <string name="Foundword">Mots trouvés</string>
     <string name="Password">Mots Passés</string>
@@ -69,4 +69,19 @@
     <string name="computergameturn">C\'est au tour de l\'ordinateur !</string>
     <string name="cg_win">Bravo vous avez gagné !</string>
     <string name="cg_lose">"Vous avez perdu ! Le mot à deviner était "</string>
+    <string name="word">Mot</string>
+    <string name="found">Trouvé</string>
+    <string name="computerresults">C\'est fini ! Nombre de mots trouvés :</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="computerinstructions">
+        "Partie contre l'ordinateur :\n"
+        "deviner un mot"
+    </string>
+    <string name="computerrules">
+        "L'ordinateur sélectionne un mot et tente de vous le faire deviner en donnant un synonyme de ce dernier.\n"
+        "Vous devez renseigner le mot auquel vous pensez dans la boite de dialogue.\n"
+        "L'ordinateur donne jusqu'à 4 synonymes maximum.\n"
+        "Au bout de 4 propositions fausses, la manche est perdue.\n"
+    </string>
 </resources>

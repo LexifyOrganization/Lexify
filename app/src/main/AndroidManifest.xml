@@ -9,11 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-<<<<<<< HEAD
-            android:name=".application.MainActivity" 
-=======
             android:name=".application.MainActivity"
->>>>>>> a0784c0e7b4224e7817d1a57c0cacc676fc7b21d
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>

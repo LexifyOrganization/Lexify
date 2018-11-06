@@ -1,19 +1,29 @@
 package parisnanterre.fr.lexify.verbalgame;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
+
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,8 +91,19 @@ public class VerbalGameResultsFragment extends Fragment {
 
         btn_retry.setOnClickListener(new View.OnClickListener() {
 
+            @TargetApi(Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+                currentUser.update_gamesPlayed();
+                try {
+                    FileOutputStream fileOutputStream = getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                    objectOutputStream.writeObject(currentUser);
+                    objectOutputStream.close();
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 // TODO Auto-generated method stub
                 VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
                 gameActivity.initialize();
@@ -93,8 +114,19 @@ public class VerbalGameResultsFragment extends Fragment {
 
         btn_menu.setOnClickListener(new View.OnClickListener() {
 
+            @TargetApi(Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+                currentUser.update_gamesPlayed();
+                try {
+                    FileOutputStream fileOutputStream = getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                    objectOutputStream.writeObject(currentUser);
+                    objectOutputStream.close();
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 // TODO Auto-generated method stub
                 Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);

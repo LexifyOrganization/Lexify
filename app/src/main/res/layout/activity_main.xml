@@ -96,5 +96,12 @@
         android:layout_gravity="center"
         android:text="@string/MyAccount" />
 
+    <Button
+        android:id="@+id/activity_main_btn_playerstats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Stats" />
+
 
 </LinearLayout>

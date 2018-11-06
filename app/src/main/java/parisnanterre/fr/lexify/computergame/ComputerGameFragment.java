@@ -1,11 +1,13 @@
 package parisnanterre.fr.lexify.computergame;
 
 import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -25,8 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,6 +40,8 @@ import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameFragment;
+
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
 
 public class ComputerGameFragment extends Fragment {
 
@@ -167,7 +173,7 @@ public class ComputerGameFragment extends Fragment {
 
         round.setText(getResources().getString(R.string.round)+" "+currentRound+"/4");
 
-        if (timeSettingComputer != 0) {
+        if (timeSettingComputer != 0 ) {
             progressBar.setVisibility(View.VISIBLE);
             currentTimerProgress = timeSettingComputer;
             progressBar.setProgress(currentTimerProgress);
@@ -223,6 +229,8 @@ public class ComputerGameFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
+                currentUser.update_gamesFailed();
+                saveUserStats();
                 Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
             }
@@ -252,6 +260,10 @@ public class ComputerGameFragment extends Fragment {
                         if(currentRound==4) {
                             abandon.setText("Revenir menu principal");
                             next.setVisibility(View.GONE);
+                            //called to conterbalance the use of the button, not a real abandon
+                            currentUser.fix_gamesFailed();
+                            currentUser.update_gamesPlayed();
+                            saveUserStats();
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();
                                 countDownTimer.cancel();
@@ -260,6 +272,8 @@ public class ComputerGameFragment extends Fragment {
 
                         if(edittext.getText().toString().equalsIgnoreCase(ComputerWords.get(currentRound-1))) {
                             endText.setText(getResources().getString(R.string.cg_win));
+                            currentUser.update_wordGuessed();
+                            saveUserStats();
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();
                                 countDownTimer.cancel();
@@ -367,5 +381,18 @@ public class ComputerGameFragment extends Fragment {
         else
             return false;
 
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void saveUserStats(){
+        try {
+            FileOutputStream fileOutputStream = getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(currentUser);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

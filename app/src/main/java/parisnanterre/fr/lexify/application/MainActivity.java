@@ -34,7 +34,7 @@ import parisnanterre.fr.lexify.word.Word;
 
 public class MainActivity extends Activity {
 
-    User currentUser = null;
+    public static User currentUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +72,7 @@ public class MainActivity extends Activity {
             editor.commit();
         }
 
+
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
         Button btn_play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
@@ -82,9 +83,9 @@ public class MainActivity extends Activity {
         Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
         ImageView logo = (ImageView) findViewById(R.id.activity_main_logo);
 
-
         //compte encore inutile, changer cette ligne plus tard
-        btn_account.setVisibility(View.GONE);
+        //btn_account.setVisibility(View.GONE);
+        btn_account.setVisibility(View.VISIBLE);
 
        /* Bundle b = this.getIntent().getExtras();
         if (b != null)
@@ -194,6 +195,25 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), AboutGameActivity.class);
                 startActivity(i);
+            }
+        });
+
+        //currently test button
+        Button btn_stats = (Button) findViewById(R.id.activity_main_btn_playerstats);
+        btn_stats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String stats = "Played : "+String.valueOf(currentUser.get_gamesPlayed());
+                Toast toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
+                toast.show();
+
+                stats = "Failed : "+String.valueOf(currentUser.get_gamesFailed());
+                toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
+                toast.show();
+
+                stats = "Guessed : "+String.valueOf(currentUser.get_wordGuessed());
+                toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }

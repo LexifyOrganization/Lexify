@@ -71,7 +71,6 @@ public class SettingsActivity extends Activity {
         //get spinner's state
         spinner_lang.setSelection(spinnersaving.getInt("spinnerPos", -1));
         spinner_level.setSelection(spinnersaving2.getInt("spinnerPos2", -1));
-
         spinner_lang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

@@ -28,6 +28,7 @@ import parisnanterre.fr.lexify.computergame.ComputerGameActivity;
 import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
+import parisnanterre.fr.lexify.user.UserPage;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
@@ -74,6 +75,7 @@ public class MainActivity extends Activity {
 
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
+        Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
         Button btn_play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
         Button btn_computer = (Button) findViewById(R.id.activity_main_btn_computer_game);
         Button btn_about_game = (Button) findViewById(R.id.activity_main_btn_about_game);
@@ -84,7 +86,7 @@ public class MainActivity extends Activity {
 
 
         //compte encore inutile, changer cette ligne plus tard
-        btn_account.setVisibility(View.GONE);
+        //btn_account.setVisibility(View.GONE);
 
        /* Bundle b = this.getIntent().getExtras();
         if (b != null)
@@ -128,6 +130,17 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 Intent i = new Intent(getApplicationContext(), ComputerGameActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getApplicationContext(), UserPage.class);
                 startActivity(i);
 
             }

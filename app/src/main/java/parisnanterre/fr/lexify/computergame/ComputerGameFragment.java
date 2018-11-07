@@ -46,8 +46,10 @@ import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
 public class ComputerGameFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private int wordsFound=0;
     private int currentPosition = 0;
     private int currentRound = 1;
+    List<String> wordsFoundList = new ArrayList<String>();
     List<String> wordsDB = new ArrayList<String>();
     List<List<String>> synonymesDB = new ArrayList<List<String>>();
     List<String> ComputerWords = new ArrayList<String>();
@@ -166,9 +168,16 @@ public class ComputerGameFragment extends Fragment {
         final Button next = view.findViewById(R.id.fragment_computer_game_btn_next);
         final Button abandon = view.findViewById(R.id.fragment_computer_game_btn_abandon);
 
+        edittext.requestFocus();
+        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        edittext.findFocus();
+        edittext.hasFocus();
+
         computerGameActivity = (ComputerGameActivity) getActivity();
         initialize_listes();
         determine_computer_words_and_synonymes();
+        computerGameActivity.setWordsComputer(ComputerWords);
         progressBar = view.findViewById(R.id.fragment_computer_game_progressbar_countdown);
 
         round.setText(getResources().getString(R.string.round)+" "+currentRound+"/4");
@@ -195,31 +204,36 @@ public class ComputerGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 currentRound++;
-                round.setText("Round "+currentRound+"/4");
-                reset(left);
-                reset(right);
-                currentPosition = 0;
-                if (timeSettingComputer != 0) {
-                    currentTimerProgress = 100;
-                    countDownTimer = createTimer(getView());
+                if(currentRound==5){
+                    computerGameActivity.setFragment(new ComputerGameResultsFragment());
                 }
+                else {
+                    round.setText("Round " + currentRound + "/4");
+                    reset(left);
+                    reset(right);
+                    currentPosition = 0;
+                    if (timeSettingComputer != 0) {
+                        currentTimerProgress = 100;
+                        countDownTimer = createTimer(getView());
+                    }
 
-                edittext.setVisibility(View.VISIBLE);
-                edittext.setText("");
-                layout.setVisibility(View.GONE);
+                    edittext.setVisibility(View.VISIBLE);
+                    edittext.setText("");
+                    layout.setVisibility(View.GONE);
 
-                TextView text = (TextView) left.getChildAt(currentPosition);
-                text.setText(ComputerSynonymes.get(currentRound-1).get(currentPosition));
+                    TextView text = (TextView) left.getChildAt(currentPosition);
+                    text.setText(ComputerSynonymes.get(currentRound - 1).get(currentPosition));
 
-                InputMethodManager imm = (InputMethodManager)   getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-                edittext.findFocus();
-                edittext.hasFocus();
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                    edittext.findFocus();
+                    edittext.hasFocus();
 
-                if (timeSettingComputer !=0) {
-                    computerGameActivity.setChrono(countDownTimer);
-                    countDownTimer.start();
-                    animateProgressBar.start();
+                    if (timeSettingComputer != 0) {
+                        computerGameActivity.setChrono(countDownTimer);
+                        countDownTimer.start();
+                        animateProgressBar.start();
+                    }
                 }
             }
 
@@ -258,12 +272,13 @@ public class ComputerGameFragment extends Fragment {
                         layout.setVisibility(View.VISIBLE);
 
                         if(currentRound==4) {
-                            abandon.setText("Revenir menu principal");
-                            next.setVisibility(View.GONE);
+                            next.setText(getResources().getString(R.string.statistics));
+                            abandon.setVisibility(View.GONE);
                             //called to conterbalance the use of the button, not a real abandon
                             currentUser.fix_gamesFailed();
                             currentUser.update_gamesPlayed();
                             saveUserStats();
+
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();
                                 countDownTimer.cancel();
@@ -272,6 +287,9 @@ public class ComputerGameFragment extends Fragment {
 
                         if(edittext.getText().toString().equalsIgnoreCase(ComputerWords.get(currentRound-1))) {
                             endText.setText(getResources().getString(R.string.cg_win));
+                            wordsFound++;
+                            wordsFoundList.add((getResources().getString(R.string.yes)));
+                            computerGameActivity.setWordsFound(wordsFound);
                             currentUser.update_wordGuessed();
                             saveUserStats();
                             if (timeSettingComputer!=0) {
@@ -281,6 +299,7 @@ public class ComputerGameFragment extends Fragment {
                         }
                         else if (currentPosition==3) {
                             endText.setText(getResources().getString(R.string.cg_lose) + ComputerWords.get(currentRound-1));
+                            wordsFoundList.add((getResources().getString(R.string.no)));
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();
                                 countDownTimer.cancel();
@@ -301,6 +320,8 @@ public class ComputerGameFragment extends Fragment {
                 }
                 return false;
             }});
+
+        computerGameActivity.setWordsFoundList(wordsFoundList);
 
         return view;
     }
@@ -333,12 +354,11 @@ public class ComputerGameFragment extends Fragment {
             }
             @Override
             public void onFinish() {
-                //Toast.makeText(getActivity(), "Time's up !", Toast.LENGTH_SHORT).show();
                 edittext.setVisibility(View.GONE);
                 layout.setVisibility(View.VISIBLE);
                 if (currentRound==4) {
-                    abandon.setText("Revenir menu principal");
-                    next.setVisibility(View.GONE);
+                    next.setText("Voir statistiques");
+                    abandon.setVisibility(View.GONE);
                 }
                 endText.setText(getResources().getString(R.string.cg_lose) + ComputerWords.get(currentRound-1));
                 InputMethodManager input = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);

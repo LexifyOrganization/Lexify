@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">Lexify</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newgame">Verbal game</string>
-    <string name="computergame">Against computer</string>
+    <string name="computergame">Against Computer</string>
     <string name="options">Settings</string>
     <string name="Languages">Language</string>
     <string name="Chronometer">Chronometer</string>
@@ -13,7 +13,7 @@
     <string name="MyAccount">My Account</string>
     <string name="Disconnect">Disconnect</string>
     <string name="Instructins">Take the phone and try to make your partner guess the mystery word only by using one clue at a time !</string>
-    <string name="Itsyourturn">it\'s your turn !</string>
+    <string name="Itsyourturn">It\'s your turn !</string>
     <string name="rule">Rules</string>
     <string name="submit">Validate</string>
     <string name="level">Level</string>
@@ -35,6 +35,14 @@
         "\n\nMail : lexifyapp@gmail.com\n\n"
         "Authors: \n\n KHATIR Nassim\nNAYET Lucas\nPIOT Nicolas \nABDULWAHAB Hani"
     </string>
+    <string name="aboutcomputergame">
+        "Rules of the game against the computer: guess a word.\n\n"
+        "4 rounds\n4 words suggested to guess by turn.\n\n"
+        "For each round, the computer selects a word and 4 synonyms.\n"
+        "These are randomly selected.\n"
+        "The user must guess the word from the proposed synonyms.\n\n"
+        "Playable mode with or without timer adjustable in options.\n\n"
+    </string>
     <string name="Changeplayersnames">Players names</string>
     <string name="ChooseWords">Choose words</string>
     <string name="yourturn">Your turn, make your partner guess this word !</string>
@@ -43,7 +51,7 @@
     <string name="correct">True !\n+1</string>
     <string name="wrong">False !\n-1</string>
     <string name="pass">Pass\n-5</string>
-    <string name="resultscongrats">It\'s Finished ! You made a total score of :</string>
+    <string name="resultscongrats">It\'s finish ! You made a total score of :</string>
     <string name="name">Players</string>
     <string name="Foundword">Found words</string>
     <string name="Password">Passed words</string>
@@ -64,4 +72,19 @@
     <string name="computergameturn">It\'s computer turn !</string>
     <string name="cg_win">You won !</string>
     <string name="cg_lose">"You lost ! The word to guess was "</string>
+    <string name="word">Word</string>
+    <string name="found">Found</string>
+    <string name="computerresults">I\'ts finish ! Number of found words :</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="computerinstructions">Play against computer :\nguess a word</string>
+    <string name="computerrules">
+        "The computer picks a word and tries to make it guess by giving a synonym for it.\n"
+        "You have to enter the word you think in the dialog box.\n"
+        "The computer gives up to 4 synonyms.\n"
+        "After 4 false proposals, the round is lost.\n"
+    </string>
+    <string name="nextround">Next round</string>
+    <string name="abandon">Abandon</string>
+    <string name="statistics">See statistics</string>
 </resources>

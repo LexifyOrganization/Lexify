@@ -28,7 +28,7 @@ import parisnanterre.fr.lexify.computergame.ComputerGameActivity;
 import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
-import parisnanterre.fr.lexify.user.UserPage;
+import parisnanterre.fr.lexify.userpage.UserPage;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
@@ -141,6 +141,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 Intent i = new Intent(getApplicationContext(), UserPage.class);
+                i.putExtra("user", currentUser);
                 startActivity(i);
 
             }

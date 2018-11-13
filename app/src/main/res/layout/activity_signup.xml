@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color">
 
 
     <ImageView
@@ -18,7 +19,7 @@
         android:id="@+id/signup_txt_infos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter information" />
+        android:text="@string/enterinformation" />
 
     <TextView
         android:id="@+id/signup_txt_errors"
@@ -55,7 +56,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="@string/password" />
 
     <EditText
         android:id="@+id/signup_edt_confirmpassword"
@@ -65,7 +66,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:inputType="textPassword"
-        android:hint="Confirm Password" />
+        android:hint="@string/confirmpassword" />
 
     <Button
         android:id="@+id/signup_btn_signup"
@@ -73,5 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:text="Sign Up" />
+        android:background="@drawable/buttonshape"
+        android:textSize="18sp"
+        android:text="@string/signup" />
 </LinearLayout>

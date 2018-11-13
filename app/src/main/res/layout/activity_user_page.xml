@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:background="@drawable/background_color">
 
     <ImageView
         android:id="@+id/ivProfile"
@@ -120,7 +121,9 @@
         android:layout_below="@+id/line"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Edit profile"
+        android:text="@string/editprofile"
+        android:background="@drawable/buttonshape"
+        android:textSize="18sp"
         android:textColor="#ffff" />
 
 

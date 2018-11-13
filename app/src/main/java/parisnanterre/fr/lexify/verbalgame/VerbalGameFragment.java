@@ -38,6 +38,7 @@ import parisnanterre.fr.lexify.word.Word;
 
 import static android.view.animation.Animation.RELATIVE_TO_SELF;
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
+import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -236,12 +237,27 @@ public class VerbalGameFragment extends Fragment {
             gameActivity.setScore(score);
         }
 
-        try {
+        /*try {
             FileOutputStream fileOutputStream = this.getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(currentUser);
             objectOutputStream.close();
             fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        try{
+            FileOutputStream fileOutputStream = getContext().openFileOutput("user.json", Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            userList.put(currentUser.get_id(),currentUser);
+            objectOutputStream.writeObject(userList);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

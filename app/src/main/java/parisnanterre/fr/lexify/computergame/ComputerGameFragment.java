@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -42,6 +43,7 @@ import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameFragment;
 
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
+import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 public class ComputerGameFragment extends Fragment {
 
@@ -243,7 +245,9 @@ public class ComputerGameFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                currentUser.update_gamesFailed();
+                if (currentRound != 4){
+                    currentUser.update_gamesFailed();
+                }
                 saveUserStats();
                 Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
@@ -275,7 +279,7 @@ public class ComputerGameFragment extends Fragment {
                             next.setText(getResources().getString(R.string.statistics));
                             abandon.setVisibility(View.GONE);
                             //called to conterbalance the use of the button, not a real abandon
-                            currentUser.fix_gamesFailed();
+                            //currentUser.fix_gamesFailed();
                             currentUser.update_gamesPlayed();
                             saveUserStats();
 
@@ -405,12 +409,28 @@ public class ComputerGameFragment extends Fragment {
 
     @TargetApi(Build.VERSION_CODES.M)
     private void saveUserStats(){
-        try {
+        /*try {
             FileOutputStream fileOutputStream = getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(currentUser);
+            objectOutputStream.flush();
             objectOutputStream.close();
             fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        try{
+            FileOutputStream fileOutputStream = getContext().openFileOutput("user.json", Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            userList.put(currentUser.get_id(),currentUser);
+            objectOutputStream.writeObject(userList);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

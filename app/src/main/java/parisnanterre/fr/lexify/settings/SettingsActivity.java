@@ -20,6 +20,7 @@ import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
 import static parisnanterre.fr.lexify.computergame.ComputerGameFragment.timeSettingComputer;
 import static parisnanterre.fr.lexify.verbalgame.VerbalGameFragment.millisCountDownTimer;
 
@@ -172,6 +173,7 @@ public class SettingsActivity extends Activity {
         editor2.putInt("spinnerPos2", spinnerPos2);
         editor.apply();
         editor2.apply();
+
     }
 
 }

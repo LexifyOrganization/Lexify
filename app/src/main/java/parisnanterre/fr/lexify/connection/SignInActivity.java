@@ -3,6 +3,7 @@ package parisnanterre.fr.lexify.connection;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,15 +11,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 import java.util.List;
 
 import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
+
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
+//import static parisnanterre.fr.lexify.application.MainActivity.lastUser;
+import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 public class SignInActivity extends Activity {
 
@@ -57,6 +66,15 @@ public class SignInActivity extends Activity {
             }
         });
 
+        btn_signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SignIn(v);
+            }
+        });
+
+        //Toast toast = Toast.makeText(this, lastUser, Toast.LENGTH_SHORT);
+        //toast.show();
 
     }
 
@@ -94,7 +112,7 @@ public class SignInActivity extends Activity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
-                try {
+                /*try {
                     FileOutputStream fileOutputStream = context.openFileOutput("user.txt", Context.MODE_PRIVATE);
                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
                     objectOutputStream.writeObject(currentUser);
@@ -102,8 +120,27 @@ public class SignInActivity extends Activity {
                     fileOutputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }*/
 
+                /*try{
+                    FileOutputStream fileOutputStream = context.openFileOutput("user.json", Context.MODE_PRIVATE);
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                    userList.put(currentUser.get_id(),currentUser);
+                    objectOutputStream.writeObject(userList);
+                    objectOutputStream.flush();
+                    objectOutputStream.close();
+                    fileOutputStream.close();
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
+
+                updateUserInfo();
+
+                toast = Toast.makeText(context, MainActivity.currentUser.get_pseudo(), duration);
+                toast.show();
 
                 Intent i = new Intent();
                 /*Bundle b = new Bundle();
@@ -116,6 +153,45 @@ public class SignInActivity extends Activity {
         }
 
 
+    }
+
+    public void updateUserInfo(){
+        try{
+            FileInputStream fileInputStream = getApplicationContext().openFileInput("user.json");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            //checks if json is empty by checking the content and file size
+            //if yes, fills the userList with users from the local DB
+            //else, fills it with the json file content
+            if (objectInputStream.toString().equals("{}") || objectInputStream.available()==0){
+                final DatabaseUser db = new DatabaseUser(this);
+                List<User> tmplist = db.getAllUsers();
+                final int size = tmplist.size();
+                for (int i = 0; i < size; i++) {
+                    userList.put(tmplist.get(i).get_id(), tmplist.get(i));
+                }
+            }
+            else{
+                //userList is a Hashmap<String,User> where the key is the _id from the User object
+                userList = (HashMap<Integer,User>) objectInputStream.readObject();
+            }
+            //currentUser contains the User object identified by the _id of the last connected User
+            MainActivity.currentUser = userList.get(this.currentUser.get_id());
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (ClassCastException e ){
+            e.printStackTrace();
+        }
+
+        /*SharedPreferences lastConnectedUser = getSharedPreferences("lastUser", 0);
+        SharedPreferences.Editor editor = lastConnectedUser.edit();
+        editor.putInt("lastUser", MainActivity.currentUser.get_id());
+        editor.commit();*/
     }
 
 }

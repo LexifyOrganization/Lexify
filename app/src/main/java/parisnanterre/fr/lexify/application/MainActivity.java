@@ -21,11 +21,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.computergame.ComputerGameActivity;
 import parisnanterre.fr.lexify.connection.SignInActivity;
+import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.userpage.UserPage;
@@ -35,7 +38,9 @@ import parisnanterre.fr.lexify.word.Word;
 
 public class MainActivity extends Activity {
 
-    public static User currentUser = null;
+    public static User currentUser;
+    public static HashMap<Integer,User> userList = new HashMap<>();
+    //public static int lastUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +77,7 @@ public class MainActivity extends Activity {
             editor.putBoolean("firstTime", true);
             editor.commit();
         }
+        //lastUser = prefs.getInt("lastUser",-1);
 
 
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
@@ -93,7 +99,9 @@ public class MainActivity extends Activity {
         if (b != null)
             currentUser = (User) b.getSerializable("Current user");*/
 
-        try {
+
+       //Old connection method, with a single user in "user.txt"
+        /*try {
             FileInputStream fileInputStream = getApplicationContext().openFileInput("user.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             currentUser = (User) objectInputStream.readObject();
@@ -103,6 +111,39 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }*/
+
+        //New connection method, with a list of user saved in a Hashmap<String,User> in "user.json"
+        try{
+            FileInputStream fileInputStream = getApplicationContext().openFileInput("user.json");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            //checks if json is empty by checking the content and file size
+            //if yes, fills the userList with users from the local DB
+            //else, fills it with the json file content
+            if (objectInputStream.toString().equals("{}") || objectInputStream.available()==0){
+                final DatabaseUser db = new DatabaseUser(this);
+                List<User> tmplist = db.getAllUsers();
+                final int size = tmplist.size();
+                for (int i = 0; i < size; i++) {
+                    userList.put(tmplist.get(i).get_id(), tmplist.get(i));
+                }
+            }
+            else{
+                //userList is a Hashmap<String,User> where the key is the _id from the User object
+                userList = (HashMap<Integer,User>) objectInputStream.readObject();
+            }
+            //currentUser contains the User object identified by the _id of the last connected User
+            //currentUser = userList.get(lastUser);
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (ClassCastException e ){
+            e.printStackTrace();
         }
 
 
@@ -111,6 +152,8 @@ public class MainActivity extends Activity {
             lil_user.setVisibility(View.VISIBLE);
         } else {
             lil_user.setVisibility(View.GONE);
+            Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+            startActivity(i);
         }
         //test
 
@@ -118,9 +161,14 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-
-                Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
-                startActivity(i);
+                if (currentUser == null) {
+                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
+                    startActivity(i);
+                }
 
             }
         });
@@ -129,9 +177,14 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-
-                Intent i = new Intent(getApplicationContext(), ComputerGameActivity.class);
-                startActivity(i);
+                if (currentUser == null) {
+                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    Intent i = new Intent(getApplicationContext(), ComputerGameActivity.class);
+                    startActivity(i);
+                }
 
             }
         });
@@ -140,11 +193,15 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-
-                Intent i = new Intent(getApplicationContext(), UserPage.class);
-                i.putExtra("user", currentUser);
-                startActivity(i);
-
+                if (currentUser == null) {
+                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    Intent i = new Intent(getApplicationContext(), UserPage.class);
+                    i.putExtra("user", currentUser);
+                    startActivity(i);
+                }
             }
         });
 
@@ -171,8 +228,14 @@ public class MainActivity extends Activity {
         btn_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
+                if (currentUser == null) {
+                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                    startActivity(i);
+                }
             }
         });
 
@@ -201,6 +264,8 @@ public class MainActivity extends Activity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
+                Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(i);
             }
         });
 
@@ -217,17 +282,23 @@ public class MainActivity extends Activity {
         btn_stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String stats = "Played : "+String.valueOf(currentUser.get_gamesPlayed());
-                Toast toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
-                toast.show();
+                if (currentUser == null) {
+                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    String stats = "Played : " + String.valueOf(currentUser.get_gamesPlayed());
+                    Toast toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
+                    toast.show();
 
-                stats = "Failed : "+String.valueOf(currentUser.get_gamesFailed());
-                toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
-                toast.show();
+                    stats = "Failed : " + String.valueOf(currentUser.get_gamesFailed());
+                    toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
+                    toast.show();
 
-                stats = "Guessed : "+String.valueOf(currentUser.get_wordGuessed());
-                toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
-                toast.show();
+                    stats = "Guessed : " + String.valueOf(currentUser.get_wordGuessed());
+                    toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
     }
@@ -285,5 +356,16 @@ public class MainActivity extends Activity {
         startActivity(intent);
         finish();
     }
+
+    /*@Override
+    public void onStop(){
+        super.onStop();
+        if (currentUser != null) {
+            SharedPreferences lastConnectedUser = getSharedPreferences("lastUser", 0);
+            SharedPreferences.Editor editor = lastConnectedUser.edit();
+            editor.putInt("lastUser", currentUser.get_id());
+            editor.commit();
+        }
+    }*/
 
 }

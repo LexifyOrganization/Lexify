@@ -1,8 +1,12 @@
 package parisnanterre.fr.lexify.connection;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -18,6 +26,9 @@ import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
+
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
+import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 public class SignUpActivity extends Activity {
 
@@ -101,6 +112,7 @@ public class SignUpActivity extends Activity {
 
                 if (txt_errors.getText().toString().length() == 0) {
                     db.addUser(new User(edt_pseudo.getText().toString(), edt_email.getText().toString(), edt_pass.getText().toString()));
+                    insertUserInFileFromDB(edt_pseudo.getText().toString(), edt_email.getText().toString(), edt_pass.getText().toString(), db);
 
                     Context context = getApplicationContext();
                     CharSequence text = "Your account " + pseudo + " has been created";
@@ -128,6 +140,32 @@ public class SignUpActivity extends Activity {
         });
 
 
+    }
+
+    private void insertUserInFileFromDB(String pseudo, String mail, String mdp, DatabaseUser db){
+        User user = new User(pseudo, mail, mdp);
+        user.set_id(db.getLastCreatedId());
+        //updates the current user
+        //Done this way because signing up signs in at the same time
+        MainActivity.currentUser = user;
+        try{
+            FileOutputStream fileOutputStream = openFileOutput("user.json", Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            userList.put(user.get_id(),user);
+            objectOutputStream.writeObject(userList);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SharedPreferences lastConnectedUser = getSharedPreferences("lastUser", 0);
+        SharedPreferences.Editor editor = lastConnectedUser.edit();
+        editor.putInt("lastUser", user.get_id());
+        editor.apply();
     }
 
 }

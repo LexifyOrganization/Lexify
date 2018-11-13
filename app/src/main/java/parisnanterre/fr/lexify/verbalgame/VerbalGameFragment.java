@@ -237,16 +237,6 @@ public class VerbalGameFragment extends Fragment {
             gameActivity.setScore(score);
         }
 
-        /*try {
-            FileOutputStream fileOutputStream = this.getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(currentUser);
-            objectOutputStream.close();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
         try{
             FileOutputStream fileOutputStream = getContext().openFileOutput("user.json", Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

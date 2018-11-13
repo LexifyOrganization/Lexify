@@ -112,31 +112,6 @@ public class SignInActivity extends Activity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
-                /*try {
-                    FileOutputStream fileOutputStream = context.openFileOutput("user.txt", Context.MODE_PRIVATE);
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                    objectOutputStream.writeObject(currentUser);
-                    objectOutputStream.close();
-                    fileOutputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
-
-                /*try{
-                    FileOutputStream fileOutputStream = context.openFileOutput("user.json", Context.MODE_PRIVATE);
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                    userList.put(currentUser.get_id(),currentUser);
-                    objectOutputStream.writeObject(userList);
-                    objectOutputStream.flush();
-                    objectOutputStream.close();
-                    fileOutputStream.close();
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
-
                 updateUserInfo();
 
                 toast = Toast.makeText(context, MainActivity.currentUser.get_pseudo(), duration);
@@ -184,14 +159,9 @@ public class SignInActivity extends Activity {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (ClassCastException e ){
+        } catch (ClassCastException e ) {
             e.printStackTrace();
         }
-
-        /*SharedPreferences lastConnectedUser = getSharedPreferences("lastUser", 0);
-        SharedPreferences.Editor editor = lastConnectedUser.edit();
-        editor.putInt("lastUser", MainActivity.currentUser.get_id());
-        editor.commit();*/
     }
 
 }

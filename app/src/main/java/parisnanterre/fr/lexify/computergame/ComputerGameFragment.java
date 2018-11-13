@@ -409,17 +409,6 @@ public class ComputerGameFragment extends Fragment {
 
     @TargetApi(Build.VERSION_CODES.M)
     private void saveUserStats(){
-        /*try {
-            FileOutputStream fileOutputStream = getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(currentUser);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
         try{
             FileOutputStream fileOutputStream = getContext().openFileOutput("user.json", Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

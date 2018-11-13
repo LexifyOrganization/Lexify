@@ -162,10 +162,6 @@ public class SignUpActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SharedPreferences lastConnectedUser = getSharedPreferences("lastUser", 0);
-        SharedPreferences.Editor editor = lastConnectedUser.edit();
-        editor.putInt("lastUser", user.get_id());
-        editor.apply();
     }
 
 }

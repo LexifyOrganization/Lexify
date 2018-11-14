@@ -11,7 +11,7 @@ public class User implements Serializable {
     String _email;
     String _pass;
     String description;
-    CircleImageView avatar;
+    String avatar;
     String name;
 
     public String getDescription() {
@@ -22,11 +22,11 @@ public class User implements Serializable {
         this.description = description;
     }
 
-    public CircleImageView getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(CircleImageView avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 

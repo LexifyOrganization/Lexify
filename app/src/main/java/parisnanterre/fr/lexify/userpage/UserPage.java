@@ -113,7 +113,7 @@ public class UserPage extends Activity implements Serializable{
 
                 CircleImageView image = (CircleImageView) findViewById(R.id.ivProfile);
                 image.setImageBitmap(bitmap);
-                u.setAvatar(image);
+                //u.setAvatar(image);
             } catch (IOException e) {
                 e.printStackTrace();
             }

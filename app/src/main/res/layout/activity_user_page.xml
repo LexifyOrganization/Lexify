@@ -31,6 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
         android:padding="5dp"
+        android:clickable="true"
         android:src="@drawable/default_avatar" />
 
         <ImageView

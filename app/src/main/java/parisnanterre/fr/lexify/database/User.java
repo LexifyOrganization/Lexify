@@ -2,6 +2,8 @@ package parisnanterre.fr.lexify.database;
 
 import java.io.Serializable;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class User implements Serializable {
 
     int _id;
@@ -9,7 +11,7 @@ public class User implements Serializable {
     String _email;
     String _pass;
     String description;
-    String avatar;
+    CircleImageView avatar;
     String name;
 
     public String getDescription() {
@@ -20,11 +22,11 @@ public class User implements Serializable {
         this.description = description;
     }
 
-    public String getAvatar() {
+    public CircleImageView getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(CircleImageView avatar) {
         this.avatar = avatar;
     }
 

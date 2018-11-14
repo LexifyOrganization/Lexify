@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color">
 
     <ImageView
         android:id="@+id/signin_img_logo"
@@ -21,7 +22,7 @@
         android:layout_marginBottom="10dp"
         android:textSize="20sp"
         android:layout_marginLeft="20dp"
-        android:text="Enter your information :" />
+        android:text="@string/enterinformation" />
 
     <TextView
         android:id="@+id/signin_txt_errors"
@@ -49,7 +50,7 @@
         android:layout_marginRight="15dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="@string/password" />
 
     <Button
         android:id="@+id/signin_btn_login"
@@ -61,7 +62,8 @@
         android:layout_marginBottom="24dp"
         android:onClick="SignIn"
         android:padding="12dp"
-        android:text="Login"/>
+        android:text="@string/login"
+        android:background="@drawable/buttonshape"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -78,7 +80,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
-            android:text="No account ?" />
+            android:text="@string/noaccount" />
 
         <Button
             android:id="@+id/signin_btn_signup"
@@ -89,7 +91,8 @@
             android:layout_marginRight="20dp"
             android:layout_gravity="center"
             android:padding="12dp"
-            android:text="Sign Up"/>
+            android:text="@string/signup"
+            android:background="@drawable/buttonshape"/>
 
         </LinearLayout>
 

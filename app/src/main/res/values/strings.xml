@@ -87,5 +87,30 @@
     <string name="nextround">Next round</string>
     <string name="abandon">Abandon</string>
     <string name="statistics">See statistics</string>
-
+    <string name="editprofile">Edit Profile</string>
+    <string name="signup">Sign Up</string>
+    <string name="enterinformation">Enter your informations :</string>
+    <string name="password">Password</string>
+    <string name="confirmpassword">Confirm password</string>
+    <string name="noaccount">No Account ?</string>
+    <string name="login">Login</string>
+    <string name="welcome">"Welcome "</string>
+    <string name="nofindaccount">"Can't find this account, please check if the informations you entered are correct"</string>
+    <string name="enterpassword">"Please enter your password\n"</string>
+    <string name="enterpseudo">"Please enter your pseudo\n"</string>
+    <string name="SucessConnexion">You are connected\n</string>
+    <string name="wrongformatpseudo">Wrong pseudo format\n</string>
+    <string name="wrongformatemail">Wrong email format\n</string>
+    <string name="passwordsnomatch">Passwords do not match\n</string>
+    <string name="limitspassword">"Password must have at least 4 characters and at most 36 characters\n"</string>
+    <string name="choosepseudo">"You must choose a pseudo\n"</string>
+    <string name="enteremail">"You must enter an email\n"</string>
+    <string name="mustpassword">"You must enter password\n"</string>
+    <string name="mustconfirmpassword">"You must confirm password\n"</string>
+    <string name="pseudoalreadyexist">"Pseudo already exist\n"</string>
+    <string name="emailalreadyused">Email already used\n</string>
+    <string name="youraccount">Your account</string>
+    <string name="hasbeencreated">" has been created"</string>
+    <string name="SuccessDeconnexion">You are disconnected</string>
+    <string name="Seeprofile">See Profile</string>
 </resources>

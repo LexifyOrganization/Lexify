@@ -75,14 +75,13 @@ public class MainActivity extends Activity {
 
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
-        Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
         Button btn_play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
         Button btn_computer = (Button) findViewById(R.id.activity_main_btn_computer_game);
         Button btn_about_game = (Button) findViewById(R.id.activity_main_btn_about_game);
         Button btn_settings = (Button) findViewById(R.id.activity_main_btn_settings);
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
-        Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
-        ImageView logo = (ImageView) findViewById(R.id.activity_main_logo);
+        final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
+        final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
 
         //compte encore inutile, changer cette ligne plus tard
@@ -106,12 +105,14 @@ public class MainActivity extends Activity {
 
 
         if (currentUser != null) {
-            txt_welcome.setText("Welcome " + currentUser.get_pseudo() + " !");
+            txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
             lil_user.setVisibility(View.VISIBLE);
+            btn_account.setVisibility(View.GONE);
+            btn_profile.setVisibility(View.VISIBLE);
         } else {
             lil_user.setVisibility(View.GONE);
+            btn_profile.setVisibility(View.GONE);
         }
-        //test
 
         btn_play_game.setOnClickListener(new View.OnClickListener() {
 
@@ -183,6 +184,8 @@ public class MainActivity extends Activity {
                 // TODO Auto-generated method stub
                 currentUser = null;
                 lil_user.setVisibility(View.GONE);
+                btn_profile.setVisibility(View.GONE);
+                btn_account.setVisibility(View.VISIBLE);
 
                 PrintWriter writer = null;
                 try {
@@ -194,12 +197,11 @@ public class MainActivity extends Activity {
                 writer.close();
 
                 Context context = getApplicationContext();
-                CharSequence text = "You are disconnected";
+                CharSequence text = getResources().getString(R.string.SuccessDeconnexion);
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-
             }
         });
 

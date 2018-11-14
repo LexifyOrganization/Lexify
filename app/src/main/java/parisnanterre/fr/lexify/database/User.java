@@ -8,11 +8,13 @@ public class User implements Serializable {
     String _pseudo;
     String _email;
     String _pass;
+    int _foundwords = 0;
+    int _wordsguess = 0;
+    String _description = "No Description";
 
     public User() {
 
     }
-
 
     public User(String _pseudo, String _email, String _pass) {
         this._pseudo = _pseudo;
@@ -50,5 +52,29 @@ public class User implements Serializable {
 
     public void set_id(int _id) {
         this._id = _id;
+    }
+
+    public int get_foundwords() {
+        return _foundwords;
+    }
+
+    public void set_foundwords(int _foundwords) {
+        this._foundwords = _foundwords;
+    }
+
+    public int get_wordsguess() {
+        return _wordsguess;
+    }
+
+    public void set_wordsguess(int _wordsguess) {
+        this._wordsguess = _wordsguess;
+    }
+
+    public String get_description() {
+        return _description;
+    }
+
+    public void set_description(String _description) {
+        this._description = _description;
     }
 }

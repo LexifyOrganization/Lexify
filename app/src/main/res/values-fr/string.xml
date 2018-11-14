@@ -112,5 +112,7 @@
     <string name="youraccount">Ton compte</string>
     <string name="hasbeencreated">" a été créé"</string>
     <string name="SuccessDeconnexion">Vous êtes déconnecté</string>
-    <string name="Seeprofile">See Profile</string>
+    <string name="Seeprofile">Voir Profil</string>
+    <string name="wordsfound">Mots trouvés</string>
+    <string name="wordsmadeguess">Mots devinés</string>
 </resources>

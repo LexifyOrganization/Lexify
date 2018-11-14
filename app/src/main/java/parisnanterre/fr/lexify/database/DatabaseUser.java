@@ -26,6 +26,9 @@ public class DatabaseUser extends SQLiteOpenHelper {
     private static final String KEY_PSEUDO = "pseudo";
     private static final String KEY_PASS = "pass";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_FOUNDWORDS = "foundwords";
+    private static final String KEY_WORDSGUESS = "wordsguess";
+    private static final String KEY_DESCRIPTION = "description";
 
     public DatabaseUser(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,7 +39,8 @@ public class DatabaseUser extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_PSEUDO + " TEXT," + KEY_PASS + " TEXT,"
-                + KEY_EMAIL + " TEXT" + ")";
+                + KEY_EMAIL + " TEXT," + KEY_FOUNDWORDS + "TEXT," + KEY_WORDSGUESS + "TEXT,"
+                + KEY_DESCRIPTION + "TEXT" +")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
 
@@ -57,6 +61,9 @@ public class DatabaseUser extends SQLiteOpenHelper {
         values.put(KEY_PSEUDO, user.get_pseudo());
         values.put(KEY_EMAIL, user.get_email());
         values.put(KEY_PASS, user.get_pass());
+        values.put(KEY_FOUNDWORDS, user.get_foundwords());
+        values.put(KEY_WORDSGUESS, user.get_wordsguess());
+        values.put(KEY_DESCRIPTION, user.get_description());
 
         // Inserting Row
         db.insert(TABLE_USERS, null, values);
@@ -79,6 +86,9 @@ public class DatabaseUser extends SQLiteOpenHelper {
                 user.set_pseudo(cursor.getString(1));
                 user.set_pass(cursor.getString(2));
                 user.set_email(cursor.getString(3));
+                user.set_foundwords(Integer.parseInt(cursor.getString(4)));
+                user.set_wordsguess(Integer.parseInt(cursor.getString(5)));
+                user.set_description(cursor.getString(6));
                 // Adding contact to list
                 contactList.add(user);
             } while (cursor.moveToNext());
@@ -95,6 +105,9 @@ public class DatabaseUser extends SQLiteOpenHelper {
         values.put(KEY_PSEUDO, user.get_pseudo());
         values.put(KEY_PASS, user.get_pass());
         values.put(KEY_EMAIL, user.get_email());
+        values.put(KEY_FOUNDWORDS, user.get_foundwords());
+        values.put(KEY_WORDSGUESS, user.get_wordsguess());
+        values.put(KEY_DESCRIPTION, user.get_description());
 
         // updating row
         return db.update(TABLE_USERS, values, KEY_ID + " = ?",

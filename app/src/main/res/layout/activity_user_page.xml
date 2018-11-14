@@ -7,7 +7,7 @@
     android:background="@drawable/background_color">
 
     <ImageView
-        android:id="@+id/ivProfile"
+        android:id="@+id/activity_user_page_imageview_profile"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_alignParentTop="true"
@@ -20,15 +20,15 @@
         android:id="@+id/activity_user_page_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ivProfile"
+        android:layout_below="@+id/activity_user_page_imageview_profile"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="User001"
+        android:text=""
         android:textSize="22sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvDescription"
+        android:id="@+id/activity_user_page_textview_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/activity_user_page_name"
@@ -42,7 +42,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvDescription"
+        android:layout_below="@id/activity_user_page_textview_description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
@@ -56,18 +56,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv1"
+                android:id="@+id/activity_user_page_textview_found_words"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="3260"
+                android:text=""
                 android:textColor="@color/colorAccent"
                 android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Found words"
+                android:text="@string/Foundword"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -87,18 +87,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv2"
+                android:id="@+id/activity_user_page_textview_words_made_guess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="3356"
+                android:text=""
                 android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Words made guess"
+                android:text="@string/wordsmadeguess"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -107,7 +107,7 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/line"
+        android:id="@+id/activity_user_page_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/linearLayout"
@@ -115,10 +115,10 @@
         android:background="#A9A9A9" />
 
     <Button
-        android:id="@+id/btnFollow"
+        android:id="@+id/activity_user_page_btn_follow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line"
+        android:layout_below="@+id/activity_user_page_line"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/editprofile"

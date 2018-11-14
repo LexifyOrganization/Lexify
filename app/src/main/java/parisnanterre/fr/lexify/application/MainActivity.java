@@ -83,10 +83,6 @@ public class MainActivity extends Activity {
         final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
         final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
-
-        //compte encore inutile, changer cette ligne plus tard
-        //btn_account.setVisibility(View.GONE);
-
        /* Bundle b = this.getIntent().getExtras();
         if (b != null)
             currentUser = (User) b.getSerializable("Current user");*/

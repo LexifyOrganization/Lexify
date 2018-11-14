@@ -98,7 +98,7 @@
     <string name="nofindaccount">"Can't find this account, please check if the informations you entered are correct"</string>
     <string name="enterpassword">"Please enter your password\n"</string>
     <string name="enterpseudo">"Please enter your pseudo\n"</string>
-    <string name="SucessConnexion">You are connected\n</string>
+    <string name="SucessConnexion">You are connected</string>
     <string name="wrongformatpseudo">Wrong pseudo format\n</string>
     <string name="wrongformatemail">Wrong email format\n</string>
     <string name="passwordsnomatch">Passwords do not match\n</string>
@@ -113,4 +113,6 @@
     <string name="hasbeencreated">" has been created"</string>
     <string name="SuccessDeconnexion">You are disconnected</string>
     <string name="Seeprofile">See Profile</string>
+    <string name="wordsfound">Words found</string>
+    <string name="wordsmadeguess">Words made guess</string>
 </resources>

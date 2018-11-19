@@ -23,9 +23,9 @@ public class User implements Serializable {
         this._pseudo = _pseudo;
         this._email = _email;
         this._pass = _pass;
-        this._wordGuessed = 0;
+        /*this._wordGuessed = 0;
         this._gamesFailed = 0;
-        this._gamesPlayed = 0;
+        this._gamesPlayed = 0;*/
     }
 
     public String get_pseudo() {
@@ -87,6 +87,12 @@ public class User implements Serializable {
 
     public void update_wordGuessed() {
         this._wordGuessed += 1;
+    }
+
+    public void initializeStats(){
+        this._gamesPlayed = 0;
+        this._gamesFailed = 0;
+        this._wordGuessed = 0;
     }
 
 }

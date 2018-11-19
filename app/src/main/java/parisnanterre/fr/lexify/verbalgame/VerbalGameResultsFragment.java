@@ -3,10 +3,12 @@ package parisnanterre.fr.lexify.verbalgame;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +18,19 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
+import parisnanterre.fr.lexify.database.User;
 
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
+import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,6 +51,8 @@ public class VerbalGameResultsFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private HashMap<Integer, User> userListToSerialize;
 
     public VerbalGameResultsFragment() {
         // Required empty public constructor
@@ -94,7 +103,7 @@ public class VerbalGameResultsFragment extends Fragment {
             @TargetApi(Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                currentUser.update_gamesPlayed();
+                /*currentUser.update_gamesPlayed();
                 try {
                     FileOutputStream fileOutputStream = getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -103,6 +112,21 @@ public class VerbalGameResultsFragment extends Fragment {
                     fileOutputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }*/
+                if (currentUser != null) {
+                    currentUser.update_gamesPlayed();
+                    try {
+                        userList.put(currentUser.get_id(), currentUser);
+                        userListToSerialize = userList;
+                        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+                        Gson gson = new Gson();
+                        String json = gson.toJson(userListToSerialize);
+                        prefsEditor.putString("userList", json);
+                        prefsEditor.commit();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 // TODO Auto-generated method stub
                 VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
@@ -117,7 +141,7 @@ public class VerbalGameResultsFragment extends Fragment {
             @TargetApi(Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                currentUser.update_gamesPlayed();
+                /*currentUser.update_gamesPlayed();
                 try {
                     FileOutputStream fileOutputStream = getContext().openFileOutput("user.txt", Context.MODE_PRIVATE);
                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -126,6 +150,20 @@ public class VerbalGameResultsFragment extends Fragment {
                     fileOutputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }*/
+                if (currentUser != null) {
+                    currentUser.update_gamesPlayed();
+                    try {
+                        userList.put(currentUser.get_id(), currentUser);
+                        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+                        Gson gson = new Gson();
+                        String json = gson.toJson(userList);
+                        prefsEditor.putString("userList", json);
+                        prefsEditor.commit();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 // TODO Auto-generated method stub
                 Intent i = new Intent(getActivity(), MainActivity.class);

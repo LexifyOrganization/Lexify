@@ -69,36 +69,36 @@ public class SignUpActivity extends Activity {
 
                 if (!Pattern.compile("^([a-zA-Z0-9-_]{2,36})$", Pattern.CASE_INSENSITIVE).matcher(pseudo).find()
                         && (pseudo.length() >= 1)) {
-                    txt_errors.append("Wrong pseudo format \n");
+                    txt_errors.append(getResources().getString(R.string.wrongformatpseudo));
                 }
 
                 if (!Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).matcher(email).find()
                         && (email.length() >= 1)) {
-                    txt_errors.append("Wrong email format \n");
+                    txt_errors.append(getResources().getString(R.string.wrongformatemail));
                 }
 
                 if (!pass.equals(confirm_pass) && pass.length() >= 4 && confirm_pass.length() >= 4) {
-                    txt_errors.append("Passwords do not match \n");
+                    txt_errors.append(getResources().getString(R.string.passwordsnomatch));
                 }
 
                 if ((confirm_pass.length() > 36 || pass.length() > 36 || confirm_pass.length() < 4 || pass.length() < 4) && (confirm_pass.length() >= 1 && pass.length() >= 1)) {
-                    txt_errors.append("Password must have at least 4 characters and at most 36 characters \n");
+                    txt_errors.append(getResources().getString(R.string.limitspassword));
                 }
 
                 if (pseudo.length() == 0) {
-                    txt_errors.append("You must choose a pseudo \n");
+                    txt_errors.append(getResources().getString(R.string.choosepseudo));
                 }
 
                 if (email.length() == 0) {
-                    txt_errors.append("You must enter an email \n");
+                    txt_errors.append(getResources().getString(R.string.enteremail));
                 }
 
                 if (pass.length() == 0) {
-                    txt_errors.append("You must enter password \n");
+                    txt_errors.append(getResources().getString(R.string.mustpassword));
                 }
 
                 if (confirm_pass.length() == 0) {
-                    txt_errors.append("You must confirm password \n");
+                    txt_errors.append(getResources().getString(R.string.mustconfirmpassword));
                 }
 
 
@@ -107,10 +107,10 @@ public class SignUpActivity extends Activity {
 
                     for (User u : users) {
                         if (pseudo.equals(u.get_pseudo())) {
-                            txt_errors.append("Pseudo already exist \n");
+                            txt_errors.append(getResources().getString(R.string.pseudoalreadyexist));
                         }
                         if (email.equals(u.get_email())) {
-                            txt_errors.append("This email is already used \n");
+                            txt_errors.append(getResources().getString(R.string.emailalreadyused));
                         }
                     }
                 }
@@ -121,7 +121,7 @@ public class SignUpActivity extends Activity {
                     insertUserInFileFromDB(edt_pseudo.getText().toString(), edt_email.getText().toString(), edt_pass.getText().toString(), db);
 
                     Context context = getApplicationContext();
-                    CharSequence text = "Your account " + pseudo + " has been created";
+                    CharSequence text = getResources().getString(R.string.youraccount) + pseudo + getResources().getString(R.string.hasbeencreated);
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);

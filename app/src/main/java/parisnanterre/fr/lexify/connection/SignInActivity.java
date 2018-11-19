@@ -91,11 +91,11 @@ public class SignInActivity extends Activity {
         txt_errors.setText("");
 
         if (pseudo.length() == 0) {
-            txt_errors.append("Please enter your pseudo \n");
+            txt_errors.append(getResources().getString(R.string.enterpseudo));
         }
 
         if (pass.length() == 0) {
-            txt_errors.append("Please enter your password \n");
+            txt_errors.append(getResources().getString(R.string.enterpassword));
         }
 
         if (txt_errors.length() == 0) {
@@ -108,10 +108,10 @@ public class SignInActivity extends Activity {
             }
 
             if (MainActivity.currentUser == null) {
-                txt_errors.append("Can't find this account, please check if the informations you entered are correct");
+                txt_errors.append(getResources().getString(R.string.nofindaccount));
             } else {
                 Context context = getApplicationContext();
-                CharSequence text = "You are connected";
+                CharSequence text = getResources().getString(R.string.SucessConnexion);
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(context, text, duration);

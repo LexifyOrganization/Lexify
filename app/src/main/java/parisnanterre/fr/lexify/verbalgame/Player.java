@@ -9,6 +9,7 @@ public class Player {
     private int haveToGuessScore;
     private boolean currentPlayer;
 
+
     public Player(String name) {
         this.name = name;
         nbWordFound = 0;
@@ -58,4 +59,5 @@ public class Player {
     public int getHaveToGuessScore() {
         return haveToGuessScore;
     }
+
 }

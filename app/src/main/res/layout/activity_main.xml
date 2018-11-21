@@ -109,5 +109,12 @@
         android:background="@drawable/buttonshape"
         android:textSize="18sp"
         android:text="@string/Seeprofile" />
+    <Button
+        android:id="@+id/activity_main_btn_playerstats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Stats" />
+
 
 </LinearLayout>

@@ -66,6 +66,11 @@ public class User implements Serializable {
     String gender;
     int age;
 
+    int _gamesPlayed;
+    int _gamesFailed;
+    int _wordGuessed;
+
+
     public User() {
 
     }
@@ -75,6 +80,9 @@ public class User implements Serializable {
         this._pseudo = _pseudo;
         this._email = _email;
         this._pass = _pass;
+        /*this._wordGuessed = 0;
+        this._gamesFailed = 0;
+        this._gamesPlayed = 0;*/
     }
 
     public String get_pseudo() {
@@ -108,4 +116,40 @@ public class User implements Serializable {
     public void set_id(int _id) {
         this._id = _id;
     }
+
+    public int get_gamesPlayed() {
+        return _gamesPlayed;
+    }
+
+    public void update_gamesPlayed() {
+        this._gamesPlayed += 1;
+    }
+
+    public int get_gamesFailed() {
+        return _gamesFailed;
+    }
+
+    public void update_gamesFailed() {
+        this._gamesFailed += 1;
+    }
+
+    //only used when the "abandon" button is pressed normally at the end of the computer game
+    public void fix_gamesFailed() {
+        this._gamesFailed -= 1;
+    }
+
+    public int get_wordGuessed() {
+        return _wordGuessed;
+    }
+
+    public void update_wordGuessed() {
+        this._wordGuessed += 1;
+    }
+
+    public void initializeStats(){
+        this._gamesPlayed = 0;
+        this._gamesFailed = 0;
+        this._wordGuessed = 0;
+    }
+
 }

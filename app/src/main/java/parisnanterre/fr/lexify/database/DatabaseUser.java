@@ -121,5 +121,12 @@ public class DatabaseUser extends SQLiteOpenHelper {
         db.close();
     }
 
+    public int getLastCreatedId(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT last_insert_rowid()", null);
+        cursor.moveToFirst();
+        return Integer.parseInt(cursor.getString(0));
+    }
+
 
 }

@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background_color">
 
-
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/activity_main_lil_user"
+        android:id="@+id/activity_play_lil_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/activity_main_txt_welcome"
+            android:id="@+id/activity_playing_txt_welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
             />
 
         <Button
-            android:id="@+id/activity_main_btn_disconnect"
+            android:id="@+id/activity_play_btn_disconnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Disconnect" />
@@ -33,7 +29,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/activity_main_logo"
+        android:id="@+id/activity_playing_logo"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginTop="10dp"
@@ -42,8 +38,8 @@
         android:scaleType="fitXY"/>
 
     <Button
-        android:text="Play Games"
-        android:id="@+id/activity_main_btn_play_game"
+        android:text="@string/newgame"
+        android:id="@+id/activity_playing_btn_play_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -54,21 +50,8 @@
         />
 
     <Button
-        android:id="@+id/activity_main_btn_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/buttonshape"
-        android:text="@string/options"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        />
-
-
-    <Button
-        android:id="@+id/activity_main_btn_about_game"
-        android:text="@string/AboutGame"
+        android:text="@string/computergame"
+        android:id="@+id/activity_playing_btn_computer_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -79,30 +62,16 @@
         />
 
     <Button
-        android:id="@+id/activity_main_btn_account"
+        android:id="@+id/activity_playing_btn_words_memory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/buttonshape"
+        android:text="Words Memory"
         android:textSize="18sp"
-        android:text="@string/MyAccount" />
-
-    <Button
-        android:id="@+id/activity_main_btn_see_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/buttonshape"
-        android:textSize="18sp"
-        android:text="@string/Seeprofile" />
-    <Button
-        android:id="@+id/activity_main_btn_playerstats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Stats" />
+        android:textColor="#FFFFFF"
+        />
 
 
 </LinearLayout>

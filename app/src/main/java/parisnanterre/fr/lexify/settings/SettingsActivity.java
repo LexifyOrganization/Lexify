@@ -20,6 +20,7 @@ import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
 import static parisnanterre.fr.lexify.computergame.ComputerGameFragment.timeSettingComputer;
 import static parisnanterre.fr.lexify.verbalgame.VerbalGameFragment.millisCountDownTimer;
 
@@ -71,7 +72,6 @@ public class SettingsActivity extends Activity {
         //get spinner's state
         spinner_lang.setSelection(spinnersaving.getInt("spinnerPos", -1));
         spinner_level.setSelection(spinnersaving2.getInt("spinnerPos2", -1));
-
         spinner_lang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -173,6 +173,7 @@ public class SettingsActivity extends Activity {
         editor2.putInt("spinnerPos2", spinnerPos2);
         editor.apply();
         editor2.apply();
+
     }
 
 }

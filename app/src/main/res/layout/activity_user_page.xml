@@ -59,7 +59,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvDescription"
+            android:id="@+id/activity_user_page_textview_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/activity_user_page_name"
@@ -89,7 +89,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv1"
+                android:id="@+id/activity_user_page_textview_found_words"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -121,7 +121,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/activity_user_page_textview2"
+                android:id="@+id/activity_user_page_textview_words_made_guess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

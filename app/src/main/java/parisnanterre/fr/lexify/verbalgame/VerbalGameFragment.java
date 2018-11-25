@@ -1,11 +1,17 @@
 package parisnanterre.fr.lexify.verbalgame;
 
 
+import android.annotation.TargetApi;
+import android.app.Application;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +23,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
 import parisnanterre.fr.lexify.word.Word;
 
 import static android.view.animation.Animation.RELATIVE_TO_SELF;
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
+import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +73,8 @@ public class VerbalGameFragment extends Fragment {
     ProgressBar progressBar;
 
     private OnFragmentInteractionListener mListener;
+
+    private HashMap<Integer, User> userListToSerialize;
 
     public VerbalGameFragment() {
         // Required empty public constructor
@@ -155,6 +177,9 @@ public class VerbalGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 player.incFoundWord();
+                if (currentUser != null) {
+                    currentUser.update_wordGuessed();
+                }
 
                 if (cpt == 4) {
                     score++;
@@ -200,6 +225,7 @@ public class VerbalGameFragment extends Fragment {
     }
 
 
+    @TargetApi(Build.VERSION_CODES.M)
     private void changeFragment() {
 
         if (millisCountDownTimer!=0)
@@ -218,6 +244,36 @@ public class VerbalGameFragment extends Fragment {
             gameActivity.setFragment(new VerbalGameSigningFragment());
             gameActivity.setLastRound(true);
             gameActivity.setScore(score);
+        }
+
+        /*try{
+            FileOutputStream fileOutputStream = getContext().openFileOutput("user.json", Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            userList.put(currentUser.get_id(),currentUser);
+            objectOutputStream.writeObject(userList);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        if (currentUser != null) {
+            try {
+                userList.put(currentUser.get_id(), currentUser);
+                userListToSerialize = userList;
+                SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+                SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(userListToSerialize);
+                prefsEditor.putString("userList", json);
+                prefsEditor.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }

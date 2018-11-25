@@ -1,13 +1,17 @@
 package parisnanterre.fr.lexify.computergame;
 
 import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,18 +28,28 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
+import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameFragment;
+
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
+import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 public class ComputerGameFragment extends Fragment {
 
@@ -56,6 +70,7 @@ public class ComputerGameFragment extends Fragment {
     CountDownTimer countDownTimer;
     ObjectAnimator animateProgressBar;
     ComputerGameActivity computerGameActivity;
+    private HashMap<Integer, User> userListToSerialize;
 
     public List<List<String>> create_liste_synonymes(){
         List<List<String>> synonymes = new ArrayList<List<String>>();
@@ -176,7 +191,7 @@ public class ComputerGameFragment extends Fragment {
 
         round.setText(getResources().getString(R.string.round)+" "+currentRound+"/4");
 
-        if (timeSettingComputer != 0) {
+        if (timeSettingComputer != 0 ) {
             progressBar.setVisibility(View.VISIBLE);
             currentTimerProgress = timeSettingComputer;
             progressBar.setProgress(currentTimerProgress);
@@ -237,6 +252,12 @@ public class ComputerGameFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
+                if (currentUser != null) {
+                    if (currentRound != 4) {
+                        currentUser.update_gamesFailed();
+                    }
+                    saveUserStats();
+                }
                 Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
             }
@@ -266,6 +287,11 @@ public class ComputerGameFragment extends Fragment {
                         if(currentRound==4) {
                             next.setText(getResources().getString(R.string.statistics));
                             abandon.setVisibility(View.GONE);
+                            if (currentUser != null) {
+                                currentUser.update_gamesPlayed();
+                                saveUserStats();
+                            }
+
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();
                                 countDownTimer.cancel();
@@ -277,6 +303,10 @@ public class ComputerGameFragment extends Fragment {
                             wordsFound++;
                             wordsFoundList.add((getResources().getString(R.string.yes)));
                             computerGameActivity.setWordsFound(wordsFound);
+                            if (currentUser != null) {
+                                currentUser.update_wordGuessed();
+                                saveUserStats();
+                            }
                             if (timeSettingComputer!=0) {
                                 animateProgressBar.end();
                                 countDownTimer.cancel();
@@ -386,5 +416,36 @@ public class ComputerGameFragment extends Fragment {
         else
             return false;
 
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void saveUserStats(){
+        /*try{
+            FileOutputStream fileOutputStream = getContext().openFileOutput("user.json", Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            userList.put(currentUser.get_id(),currentUser);
+            objectOutputStream.writeObject(userList);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        try {
+            userList.put(currentUser.get_id(), currentUser);
+            userListToSerialize = userList;
+            SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+            SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(userListToSerialize);
+            prefsEditor.putString("userList", json);
+            prefsEditor.commit();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

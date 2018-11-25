@@ -18,9 +18,11 @@ public class User implements Serializable {
     String _mobile;
     String _gender;
     int _age;
+    int _gamesPlayed;
+    int _gamesFailed;
+    int _wordGuessed;
 
     public User() {
-
     }
 
     public User(String _pseudo, String _email, String _pass) {
@@ -77,16 +79,8 @@ public class User implements Serializable {
         this._wordsguess = _wordsguess;
     }
 
-    public String get_description() {
-        return _description;
-    }
-
     public void set_description(String _description) {
         this._description = _description;
-    }
-
-    public CircleImageView get_avatar() {
-        return _avatar;
     }
 
     public void set_avatar(CircleImageView _avatar) {
@@ -124,4 +118,60 @@ public class User implements Serializable {
     public void set_age(int _age) {
         this._age = _age;
     }
+
+    public String get_description() {
+        return _description;
+    }
+
+    public CircleImageView get_avatar() {
+        return _avatar;
+    }
+
+    public void set_gamesPlayed(int _gamesPlayed) {
+        this._gamesPlayed = _gamesPlayed;
+    }
+
+    public void set_gamesFailed(int _gamesFailed) {
+        this._gamesFailed = _gamesFailed;
+    }
+
+    public void set_wordGuessed(int _wordGuessed) {
+        this._wordGuessed = _wordGuessed;
+    }
+
+    public int get_gamesPlayed() {
+        return _gamesPlayed;
+    }
+
+    public void update_gamesPlayed() {
+        this._gamesPlayed += 1;
+    }
+
+    public int get_gamesFailed() {
+        return _gamesFailed;
+    }
+
+    public void update_gamesFailed() {
+        this._gamesFailed += 1;
+    }
+
+    //only used when the "abandon" button is pressed normally at the end of the computer game
+    public void fix_gamesFailed() {
+        this._gamesFailed -= 1;
+    }
+
+    public int get_wordGuessed() {
+        return _wordGuessed;
+    }
+
+    public void update_wordGuessed() {
+        this._wordGuessed += 1;
+    }
+
+    public void initializeStats(){
+        this._gamesPlayed = 0;
+        this._gamesFailed = 0;
+        this._wordGuessed = 0;
+    }
+
 }

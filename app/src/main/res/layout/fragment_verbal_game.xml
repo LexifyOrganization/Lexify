@@ -14,15 +14,15 @@
 
 
         <TextView
-            android:id="@+id/fragment_verbal_game_txt_manche"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/btnColor"
-            android:gravity="center"
-            android:text="@string/round"
-            android:textAlignment="center"
-            android:textAppearance="@style/RoundNumberStyle" />
+        android:id="@+id/fragment_verbal_game_txt_manche"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/btnColor"
+        android:gravity="center"
+        android:text="@string/round"
+        android:textAlignment="center"
+        android:textAppearance="@style/RoundNumberStyle" />
 
         <TextView
             android:id="@+id/fragment_verbal_game_txt_yourTurn"

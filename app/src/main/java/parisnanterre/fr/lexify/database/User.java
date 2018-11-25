@@ -2,6 +2,8 @@ package parisnanterre.fr.lexify.database;
 
 import java.io.Serializable;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class User implements Serializable {
 
     int _id;
@@ -11,6 +13,11 @@ public class User implements Serializable {
     int _foundwords = 0;
     int _wordsguess = 0;
     String _description = "No Description";
+    CircleImageView _avatar;
+    String _name;
+    String _mobile;
+    String _gender;
+    int _age;
 
     public User() {
 
@@ -76,5 +83,45 @@ public class User implements Serializable {
 
     public void set_description(String _description) {
         this._description = _description;
+    }
+
+    public CircleImageView get_avatar() {
+        return _avatar;
+    }
+
+    public void set_avatar(CircleImageView _avatar) {
+        this._avatar = _avatar;
+    }
+
+    public String get_name() {
+        return _name;
+    }
+
+    public void set_name(String _name) {
+        this._name = _name;
+    }
+
+    public String get_mobile() {
+        return _mobile;
+    }
+
+    public void set_mobile(String _mobile) {
+        this._mobile = _mobile;
+    }
+
+    public String get_gender() {
+        return _gender;
+    }
+
+    public void set_gender(String _gender) {
+        this._gender = _gender;
+    }
+
+    public int get_age() {
+        return _age;
+    }
+
+    public void set_age(int _age) {
+        this._age = _age;
     }
 }

@@ -40,16 +40,20 @@ public class UserPage extends Activity implements Serializable{
         TextView age = findViewById(R.id.age_val);
         TextView email = findViewById(R.id.e_mail_val);
         TextView mobile = findViewById(R.id.mobile_val);
+        TextView gender = findViewById(R.id.gender_val);
         CircleImageView avatar = findViewById(R.id.ivProfile);
         //tv1 is the number of words found by the user.
         //tv2 is the number of games played
+        //tv3 is the number of games failed/abandonned
         TextView tv1 = findViewById(R.id.tv1);
         TextView tv2 = findViewById(R.id.tv2);
+        TextView tv3 = findViewById(R.id.tv3);
 
         LinearLayout ageLayout = findViewById(R.id.age);
         LinearLayout emailLayout = findViewById(R.id.e_mail);
         LinearLayout mobileLayout = findViewById(R.id.mobile);
         LinearLayout realNameLayout = findViewById(R.id.real_name);
+        LinearLayout genderLayout = findViewById(R.id.gender);
 
 
         realName.setText(u.getName());
@@ -60,6 +64,7 @@ public class UserPage extends Activity implements Serializable{
 
         tv1.setText(Integer.toString(currentUser.get_wordGuessed()));
         tv2.setText(Integer.toString(currentUser.get_gamesPlayed()));
+        tv3.setText(Integer.toString(currentUser.get_gamesFailed()));
 
 
 
@@ -74,6 +79,9 @@ public class UserPage extends Activity implements Serializable{
         }
         if(mobile.getText().toString().isEmpty()) {
             mobileLayout.setVisibility(View.GONE);
+        }
+        if(gender.getText().toString().isEmpty()){
+            genderLayout.setVisibility(View.GONE);
         }
 
 

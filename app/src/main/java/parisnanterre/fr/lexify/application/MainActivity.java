@@ -102,12 +102,12 @@ public class MainActivity extends Activity {
         //compte encore inutile, changer cette ligne plus tard
         //btn_account.setVisibility(View.GONE);
 
-       /* Bundle b = this.getIntent().getExtras();
+        /* Bundle b = this.getIntent().getExtras();
         if (b != null)
             currentUser = (User) b.getSerializable("Current user");*/
 
 
-       //Old connection method, with a single user in "user.txt"
+        //Old connection method, with a single user in "user.txt"
         /*try {
             FileInputStream fileInputStream = getApplicationContext().openFileInput("user.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -185,7 +185,6 @@ public class MainActivity extends Activity {
             lil_user.setVisibility(View.GONE);
             btn_profile.setVisibility(View.GONE);
         }
-
 
         btn_play_game.setOnClickListener(new View.OnClickListener() {
             @Override

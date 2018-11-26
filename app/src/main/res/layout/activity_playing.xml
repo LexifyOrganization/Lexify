@@ -8,7 +8,7 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/activity_play_lil_user"
+        android:id="@+id/activity_playing_lil_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -21,7 +21,7 @@
             />
 
         <Button
-            android:id="@+id/activity_play_btn_disconnect"
+            android:id="@+id/activity_playing_btn_disconnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Disconnect" />

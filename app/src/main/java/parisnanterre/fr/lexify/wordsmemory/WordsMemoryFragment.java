@@ -76,7 +76,6 @@ public class WordsMemoryFragment extends Fragment {
         Button btn_notview = (Button) view.findViewById(R.id.fragment_words_memory_btn_not_view);
         Button btn_retry = (Button) view.findViewById(R.id.fragment_words_memory_btn_retry);
         Button btn_menu = (Button) view.findViewById(R.id.fragment_words_memory_btn_menu);
-        final WordsMemoryActivity getActivity = (WordsMemoryActivity) getActivity();
 
         btn_retry.setOnClickListener(new View.OnClickListener() {
 

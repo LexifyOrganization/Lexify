@@ -75,7 +75,7 @@
             android:layout_width="320dp"
             android:layout_height="164dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="270dp"
+            android:layout_marginBottom="310dp"
             android:layout_weight="2"
             android:orientation="horizontal"
             android:weightSum="2">
@@ -88,7 +88,7 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/retry_icon"
-                android:text="@string/retry"
+                android:text="Play Menu"
                 android:textColor="#FFFFFF"/>
 
             <Button

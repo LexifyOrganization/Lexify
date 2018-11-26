@@ -5,15 +5,27 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.application.PlayingActivity;
+import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
+import parisnanterre.fr.lexify.word.Word;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +44,13 @@ public class WordsMemoryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    WordsMemoryActivity gameActivity;
+    private List<Word> wordsNotSeen;
+    private List<Word> wordsSeen;
+    private Word currentWord;
+    private TextView txt_word;
+    private int cpt = 1;
+    private  int totalwords = 0;
 
     private OnFragmentInteractionListener mListener;
 
@@ -70,19 +89,103 @@ public class WordsMemoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_words_memory, container, false);
-        TextView txt_numberword = (TextView) view.findViewById(R.id.fragment_words_memory_txt_number_word);
-        TextView txt_word = (TextView) view.findViewById(R.id.fragment_words_memory_txt_word);
+        final TextView txt_numberword = (TextView) view.findViewById(R.id.fragment_words_memory_txt_number_word);
+        txt_word = (TextView) view.findViewById(R.id.fragment_words_memory_txt_word);
         Button btn_view = (Button) view.findViewById(R.id.fragment_words_memory_btn_view);
         Button btn_notview = (Button) view.findViewById(R.id.fragment_words_memory_btn_not_view);
         Button btn_retry = (Button) view.findViewById(R.id.fragment_words_memory_btn_retry);
         Button btn_menu = (Button) view.findViewById(R.id.fragment_words_memory_btn_menu);
+        final LinearLayout buttons = (LinearLayout) view.findViewById(R.id.fragment_words_memory_buttons_layout);
+        final TextView fail_view = (TextView) view.findViewById(R.id.fragment_words_memory_txt_fail_view);
+        final TextView fail_notview = (TextView) view.findViewById(R.id.fragment_words_memory_txt_fail_notview);
+        final TextView win = (TextView) view.findViewById(R.id.fragment_words_memory_txt_win);
+
+        gameActivity = (WordsMemoryActivity) getActivity();
+        wordsNotSeen = gameActivity.getWords();
+        Collections.shuffle(wordsNotSeen);
+        wordsSeen = new ArrayList<Word>();
+        currentWord = wordsNotSeen.get(0);
+
+        totalwords = wordsNotSeen.size();
+        txt_numberword.setText("Mot 1/" + totalwords);
+
+        String lang = Paper.book().read("language");
+
+        if(lang==null)
+            lang="en";
+
+        txt_word.setText(currentWord.getWord(lang));
+
+        buttons.setVisibility(View.VISIBLE);
+        fail_view.setVisibility(View.GONE);
+        fail_notview.setVisibility(View.GONE);
+        win.setVisibility(View.GONE);
+
+
+        btn_notview.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(!wordsNotSeen.contains(currentWord)) {
+                    buttons.setVisibility(View.GONE);
+                    fail_notview.setVisibility(View.VISIBLE);
+                }
+                else {
+                    wordsNotSeen.remove(currentWord);
+                    wordsSeen.add(currentWord);
+
+                    cpt++;
+
+                    txt_numberword.setText("Mot " + cpt + "/" + totalwords);
+                    if(wordsNotSeen.isEmpty()) {
+                        buttons.setVisibility(View.GONE);
+                        win.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        changeWord();
+                    }
+
+                    /*if(wordsNotSeen.isEmpty()) {
+                        buttons.setVisibility(View.GONE);
+                        win.setVisibility(View.VISIBLE);
+                    } else {
+
+                    }*/
+
+                }
+            }
+        });
+
+        btn_view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(!wordsSeen.contains(currentWord)) {
+                    buttons.setVisibility(View.GONE);
+                    fail_view.setVisibility(View.VISIBLE);
+                }
+                else {
+
+                    changeWord();
+
+                    /*if(wordsNotSeen.isEmpty()) {
+                        buttons.setVisibility(View.GONE);
+                        win.setVisibility(View.VISIBLE);
+                    } else {
+
+                    }*/
+
+                }
+            }
+        });
+
 
         btn_retry.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), PlayingActivity.class);
-                startActivity(i);
+                gameActivity.initialize();
+                gameActivity.setFragment(new WordsMemoryFragment());
             }
         });
 
@@ -97,6 +200,56 @@ public class WordsMemoryFragment extends Fragment {
 
         return view;
     }
+
+    private void changeWord() {
+
+        Random rand = new Random();
+
+        String lang = Paper.book().read("language");
+
+        if(lang==null)
+            lang="en";
+
+        if (rand.nextInt(5) == 0 && wordsSeen.size()!=1) {
+
+            Word newWord = wordsSeen.get(rand.nextInt(wordsSeen.size()));
+
+            while(currentWord.getWord().equals(newWord.getWord())) {
+                newWord = wordsSeen.get(rand.nextInt(wordsSeen.size()));
+            }
+            currentWord = newWord;
+            txt_word.setText(currentWord.getWord(lang));
+        }
+        else {
+            currentWord = wordsNotSeen.get(rand.nextInt(wordsNotSeen.size()));
+            txt_word.setText(currentWord.getWord(lang));
+        }
+
+
+    }
+
+    /*@Override
+    public void onResume() {
+        super.onResume();
+
+        if(getView() == null){
+            return;
+        }
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    Intent i = new Intent(getActivity(), PlayingActivity.class);
+                    startActivity(i);
+                }
+                return false;
+            }
+        });
+    }*/
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

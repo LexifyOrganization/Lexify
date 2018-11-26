@@ -41,10 +41,42 @@
             android:text="Groggy"
             android:textAppearance="@style/WordToGuessStyle"/>
 
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_fail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Perdu ! Ce mot n'avait jamais été vu !" />
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_fail_notview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Perdu ! Ce mot a déjà été vu !" />
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_win"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Gagné !" />
+
         <LinearLayout
+            android:id="@+id/fragment_words_memory_buttons_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:ignore="ExtraText"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center">
 
             <Button
@@ -72,10 +104,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="164dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginBottom="310dp"
             android:layout_weight="2"
             android:orientation="horizontal"
             android:weightSum="2">
@@ -83,18 +114,19 @@
 
             <Button
                 android:id="@+id/fragment_words_memory_btn_retry"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/retry_icon"
-                android:text="Play Menu"
+                android:text="Retry"
                 android:textColor="#FFFFFF"/>
 
             <Button
                 android:id="@+id/fragment_words_memory_btn_menu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/home_icon"

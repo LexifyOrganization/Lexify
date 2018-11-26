@@ -93,7 +93,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="3260"
                 android:textColor="@color/colorAccent"
                 android:textSize="24sp" />
 
@@ -125,14 +124,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="3356"
                 android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Words made guess"
+                android:text="Games played"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

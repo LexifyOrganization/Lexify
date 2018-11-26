@@ -16,7 +16,10 @@ import java.io.Serializable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.database.User;
+
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
 
 public class UserPage extends Activity implements Serializable{
 
@@ -38,6 +41,10 @@ public class UserPage extends Activity implements Serializable{
         TextView email = findViewById(R.id.e_mail_val);
         TextView mobile = findViewById(R.id.mobile_val);
         CircleImageView avatar = findViewById(R.id.ivProfile);
+        //tv1 is the number of words found by the user.
+        //tv2 is the number of games played
+        TextView tv1 = findViewById(R.id.tv1);
+        TextView tv2 = findViewById(R.id.tv2);
 
         LinearLayout ageLayout = findViewById(R.id.age);
         LinearLayout emailLayout = findViewById(R.id.e_mail);
@@ -50,6 +57,10 @@ public class UserPage extends Activity implements Serializable{
         email.setText(u.get_email());
         mobile.setText(u.getMobile());
         description.setText(u.getDescription());
+
+        tv1.setText(Integer.toString(currentUser.get_wordGuessed()));
+        tv2.setText(Integer.toString(currentUser.get_gamesPlayed()));
+
 
 
         if(realName.getText().toString().isEmpty()) {

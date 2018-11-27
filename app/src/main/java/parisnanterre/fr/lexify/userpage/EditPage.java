@@ -28,12 +28,12 @@ public class EditPage extends Activity {
 
         u = (User) getIntent().getSerializableExtra("user");
 
-        final EditText name = findViewById(R.id.input_name);
-        final EditText email = findViewById(R.id.input_email);
-        final EditText mobile = findViewById(R.id.input_mobile);
-        final EditText description = findViewById(R.id.input_description);
-        final EditText age = findViewById(R.id.input_age);
-        Button save = findViewById(R.id.btn_editpage_save);
+        final EditText name = findViewById(R.id.activity_edit_page_input_name);
+        final EditText email = findViewById(R.id.activity_edit_page_input_email);
+        final EditText mobile = findViewById(R.id.activity_edit_page_input_mobile);
+        final EditText description = findViewById(R.id.activity_edit_page_input_description);
+        final EditText age = findViewById(R.id.activity_edit_page_input_age);
+        Button save = findViewById(R.id.activity_edit_page_btn_editpage_save);
 
         save.setOnClickListener(new View.OnClickListener() {
 
@@ -41,12 +41,12 @@ public class EditPage extends Activity {
             public void onClick(View view) {
 
                 u.set_email(email.getText().toString());
-                u.setName(name.getText().toString());
-                u.setMobile(mobile.getText().toString());
-                u.setDescription(description.getText().toString());
+                u.set_name(name.getText().toString());
+                u.set_mobile(mobile.getText().toString());
+                u.set_description(description.getText().toString());
 
                 if(!age.getText().toString().isEmpty())
-                    u.setAge(Integer.parseInt(age.getText().toString()));
+                    u.set_age(Integer.parseInt(age.getText().toString()));
 
                 Intent i = new Intent(getApplicationContext(), UserPage.class);
                 i.putExtra("user", u);

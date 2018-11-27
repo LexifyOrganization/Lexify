@@ -98,7 +98,7 @@
     <string name="nofindaccount">"Can't find this account, please check if the informations you entered are correct"</string>
     <string name="enterpassword">"Please enter your password\n"</string>
     <string name="enterpseudo">"Please enter your pseudo\n"</string>
-    <string name="SucessConnexion">You are connected\n</string>
+    <string name="SucessConnexion">You are connected</string>
     <string name="wrongformatpseudo">Wrong pseudo format\n</string>
     <string name="wrongformatemail">Wrong email format\n</string>
     <string name="passwordsnomatch">Passwords do not match\n</string>
@@ -109,8 +109,17 @@
     <string name="mustconfirmpassword">"You must confirm password\n"</string>
     <string name="pseudoalreadyexist">"Pseudo already exist\n"</string>
     <string name="emailalreadyused">Email already used\n</string>
-    <string name="youraccount">Your account</string>
+    <string name="youraccount">"Your account "</string>
     <string name="hasbeencreated">" has been created"</string>
     <string name="SuccessDeconnexion">You are disconnected</string>
     <string name="Seeprofile">See Profile</string>
+    <string name="wordsfound">Words found</string>
+    <string name="wordsmadeguess">Words made guess</string>
+    <string name="seen">Seen</string>
+    <string name="notseen">Not seen</string>
+    <string name="alreadyseen">Lost ! This word had already been seen !</string>
+    <string name="notalreadyseen">Lost ! This word had never been seen !</string>
+    <string name="questionmeetword">Have you ever met this word ?</string>
+    <string name="wordsmemory">Words Memory</string>
+    <string name="accessgames">Access Games</string>
 </resources>

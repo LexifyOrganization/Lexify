@@ -1,0 +1,141 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context="parisnanterre.fr.lexify.wordsmemory.WordsMemoryFragment">
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_number_word"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/btnColor"
+            android:gravity="center"
+            android:text=""
+            android:textAlignment="center"
+            android:textAppearance="@style/RoundNumberStyle" />
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/questionmeetword"
+            android:textAlignment="center"
+            android:textAppearance="@style/YourTurnStyle"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textAppearance="@style/WordToGuessStyle"/>
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_fail_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/notalreadyseen" />
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_fail_notview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/alreadyseen" />
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_win"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/cg_win" />
+
+        <LinearLayout
+            android:id="@+id/fragment_words_memory_buttons_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ExtraText"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/fragment_words_memory_btn_view"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/roundedbutton_true"
+                android:drawableTop="@drawable/true_icon"
+                android:padding="16dp"
+                android:text="@string/seen" />/>
+
+            <Button
+                android:id="@+id/fragment_words_memory_btn_not_view"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="40dp"
+                android:background="@drawable/roundedbutton_pass"
+                android:drawableTop="@drawable/pass_icon"
+                android:padding="16dp"
+                android:animateLayoutChanges="true"
+                android:text="@string/notseen" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <Button
+                android:id="@+id/fragment_words_memory_btn_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/retry_icon"
+                android:text="@string/retry"
+                android:textColor="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/fragment_words_memory_btn_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/home_icon"
+                android:text="@string/Mainmenu"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

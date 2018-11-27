@@ -33,13 +33,11 @@ import java.util.List;
 import java.util.Locale;
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
-import parisnanterre.fr.lexify.computergame.ComputerGameActivity;
 import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.userpage.UserPage;
-import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
@@ -95,9 +93,8 @@ public class MainActivity extends Activity {
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
         Button btn_play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
-        Button btn_computer = (Button) findViewById(R.id.activity_main_btn_computer_game);
-        Button btn_about_game = (Button) findViewById(R.id.activity_main_btn_about_game);
         Button btn_settings = (Button) findViewById(R.id.activity_main_btn_settings);
+        Button btn_about_game= (Button) findViewById(R.id.activity_main_btn_about_game);
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
         final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
         final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
@@ -105,12 +102,12 @@ public class MainActivity extends Activity {
         //compte encore inutile, changer cette ligne plus tard
         //btn_account.setVisibility(View.GONE);
 
-       /* Bundle b = this.getIntent().getExtras();
+        /* Bundle b = this.getIntent().getExtras();
         if (b != null)
             currentUser = (User) b.getSerializable("Current user");*/
 
 
-       //Old connection method, with a single user in "user.txt"
+        //Old connection method, with a single user in "user.txt"
         /*try {
             FileInputStream fileInputStream = getApplicationContext().openFileInput("user.txt");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -190,21 +187,10 @@ public class MainActivity extends Activity {
         }
 
         btn_play_game.setOnClickListener(new View.OnClickListener() {
-
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VerbalGameActivity.class);
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PlayingActivity.class);
                 startActivity(i);
-            }
-        });
-
-        btn_computer.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ComputerGameActivity.class);
-                startActivity(i);
-
             }
         });
 
@@ -250,19 +236,6 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                /*try{
-                    FileOutputStream fileOutputStream = openFileOutput("user.json", Context.MODE_PRIVATE);
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                    userList.put(currentUser.get_id(),currentUser);
-                    objectOutputStream.writeObject(userList);
-                    objectOutputStream.flush();
-                    objectOutputStream.close();
-                    fileOutputStream.close();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
 
                 try {
                     //Updates in the Hashmap the info of the current user
@@ -358,7 +331,7 @@ public class MainActivity extends Activity {
             String mLine = "";
 
             //changer boucle for par while (bug bizarre)
-            for (int i = 0; i < 533; i++) {
+            for (int i = 0; i < 535; i++) {
                 String en = reader_en.readLine();
                 db.addWord(new Word(en, en, reader_fr.readLine(), reader_ar.readLine(), 0, 0));
             }

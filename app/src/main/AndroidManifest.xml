@@ -43,7 +43,9 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity android:name=".userpage.UserPage" />
-        <activity android:name=".userpage.EditPage"></activity>
+        <activity android:name=".userpage.EditPage" />
+        <activity android:name=".application.PlayingActivity"></activity>
+        <activity android:name=".wordsmemory.WordsMemoryActivity"></activity>
     </application>
 
 </manifest>

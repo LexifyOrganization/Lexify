@@ -31,25 +31,26 @@ public class UserPage extends Activity implements Serializable{
         u = (User) getIntent().getSerializableExtra("user");
 
         TextView name = findViewById(R.id.activity_user_page_name);
-        ImageView edit = findViewById(R.id.edit_profile);
-        TextView realName = findViewById(R.id.real_name_val);
-        TextView description = findViewById(R.id.tvDescription);
-        TextView age = findViewById(R.id.age_val);
-        TextView email = findViewById(R.id.e_mail_val);
-        TextView mobile = findViewById(R.id.mobile_val);
-        CircleImageView avatar = findViewById(R.id.ivProfile);
+        TextView wordsfound = findViewById(R.id.activity_user_page_textview_found_words);
+        TextView wordsguess = findViewById(R.id.activity_user_page_textview_words_made_guess);
+        TextView description = findViewById(R.id.activity_user_page_textview_description);
+        ImageView edit = findViewById(R.id.activity_user_page_edit_profile);
+        TextView realName = findViewById(R.id.activity_user_page_real_name_val);
+        TextView age = findViewById(R.id.activity_user_page_age_val);
+        TextView email = findViewById(R.id.activity_user_page_e_mail_val);
+        TextView mobile = findViewById(R.id.activity_user_page_mobile_val);
+        CircleImageView avatar = findViewById(R.id.activity_user_page_imageview_profile);
+        LinearLayout ageLayout = findViewById(R.id.activity_user_page_age);
+        LinearLayout emailLayout = findViewById(R.id.activity_user_page_e_mail);
+        LinearLayout mobileLayout = findViewById(R.id.activity_user_page_mobile);
+        LinearLayout realNameLayout = findViewById(R.id.activity_user_page_real_name);
 
-        LinearLayout ageLayout = findViewById(R.id.age);
-        LinearLayout emailLayout = findViewById(R.id.e_mail);
-        LinearLayout mobileLayout = findViewById(R.id.mobile);
-        LinearLayout realNameLayout = findViewById(R.id.real_name);
 
-
-        realName.setText(u.getName());
-        age.setText(Integer.toString(u.getAge()));
+        realName.setText(u.get_name());
+        age.setText(Integer.toString(u.get_age()));
         email.setText(u.get_email());
-        mobile.setText(u.getMobile());
-        description.setText(u.getDescription());
+        mobile.setText(u.get_mobile());
+        description.setText(u.get_description());
 
 
         if(realName.getText().toString().isEmpty()) {
@@ -64,7 +65,6 @@ public class UserPage extends Activity implements Serializable{
         if(mobile.getText().toString().isEmpty()) {
             mobileLayout.setVisibility(View.GONE);
         }
-
 
 
         avatar.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,6 @@ public class UserPage extends Activity implements Serializable{
 
         });
 
-
         edit.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -97,6 +96,10 @@ public class UserPage extends Activity implements Serializable{
         });
 
         name.setText(u.get_pseudo());
+        wordsfound.setText(String.valueOf(u.get_foundwords()));
+        wordsguess.setText(String.valueOf(u.get_wordsguess()));
+        description.setText(u.get_description());
+
     }
 
     @Override
@@ -111,9 +114,9 @@ public class UserPage extends Activity implements Serializable{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 // Log.d(TAG, String.valueOf(bitmap));
 
-                CircleImageView image = (CircleImageView) findViewById(R.id.ivProfile);
+                CircleImageView image = (CircleImageView) findViewById(R.id.activity_user_page_imageview_profile);
                 image.setImageBitmap(bitmap);
-                //u.setAvatar(image);
+                u.set_avatar(image);
             } catch (IOException e) {
                 e.printStackTrace();
             }

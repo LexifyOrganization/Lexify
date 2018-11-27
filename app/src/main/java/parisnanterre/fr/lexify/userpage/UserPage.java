@@ -44,7 +44,7 @@ public class UserPage extends Activity implements Serializable{
         CircleImageView avatar = findViewById(R.id.ivProfile);
         //tv1 is the number of words found by the user.
         //tv2 is the number of games played
-        //tv3 is the number of games failed/abandonned
+        //tv3 is the number of games failed/abandoned
         TextView tv1 = findViewById(R.id.tv1);
         TextView tv2 = findViewById(R.id.tv2);
         TextView tv3 = findViewById(R.id.tv3);

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import parisnanterre.fr.lexify.R;
-import parisnanterre.fr.lexify.application.MainActivity;
-import parisnanterre.fr.lexify.application.PlayingActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 

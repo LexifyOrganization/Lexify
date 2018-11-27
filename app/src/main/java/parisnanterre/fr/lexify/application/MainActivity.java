@@ -331,7 +331,7 @@ public class MainActivity extends Activity {
             String mLine = "";
 
             //changer boucle for par while (bug bizarre)
-            for (int i = 0; i < 533; i++) {
+            for (int i = 0; i < 535; i++) {
                 String en = reader_en.readLine();
                 db.addWord(new Word(en, en, reader_fr.readLine(), reader_ar.readLine(), 0, 0));
             }

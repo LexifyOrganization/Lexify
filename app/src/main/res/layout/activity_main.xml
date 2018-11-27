@@ -42,7 +42,7 @@
         android:scaleType="fitXY"/>
 
     <Button
-        android:text="Play Games"
+        android:text="@string/accessgames"
         android:id="@+id/activity_main_btn_play_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

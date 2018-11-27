@@ -64,10 +64,10 @@ thinker
 stunned
 alcohol
 desert
-Mountain
+mountain
 hill
 coast
-Mountain peak
+mountain peak
 Harbor
 passage
 glacier

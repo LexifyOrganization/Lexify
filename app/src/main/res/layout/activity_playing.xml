@@ -68,7 +68,19 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/buttonshape"
-        android:text="Words Memory"
+        android:text="@string/wordsmemory"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        />
+
+    <Button
+        android:id="@+id/activity_playing_btn_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttonshape"
+        android:text="@string/Mainmenu"
         android:textSize="18sp"
         android:textColor="#FFFFFF"
         />

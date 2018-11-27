@@ -19,7 +19,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/btnColor"
             android:gravity="center"
-            android:text="Mot 1"
+            android:text=""
             android:textAlignment="center"
             android:textAppearance="@style/RoundNumberStyle" />
 
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Avez-vous déjà rencontré ce mot ?"
+            android:text="@string/questionmeetword"
             android:textAlignment="center"
             android:textAppearance="@style/YourTurnStyle"
             android:textColor="#FFFFFF"/>
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Groggy"
+            android:text=""
             android:textAppearance="@style/WordToGuessStyle"/>
 
         <TextView
@@ -49,7 +49,7 @@
             android:visibility="gone"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Perdu ! Ce mot n'avait jamais été vu !" />
+            android:text="@string/notalreadyseen" />
 
         <TextView
             android:id="@+id/fragment_words_memory_txt_fail_notview"
@@ -59,7 +59,7 @@
             android:visibility="gone"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Perdu ! Ce mot a déjà été vu !" />
+            android:text="@string/alreadyseen" />
 
         <TextView
             android:id="@+id/fragment_words_memory_txt_win"
@@ -69,7 +69,7 @@
             android:visibility="gone"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Gagné !" />
+            android:text="@string/cg_win" />
 
         <LinearLayout
             android:id="@+id/fragment_words_memory_buttons_layout"
@@ -87,7 +87,7 @@
                 android:background="@drawable/roundedbutton_true"
                 android:drawableTop="@drawable/true_icon"
                 android:padding="16dp"
-                android:text="Vu" />/>
+                android:text="@string/seen" />/>
 
             <Button
                 android:id="@+id/fragment_words_memory_btn_not_view"
@@ -98,7 +98,7 @@
                 android:drawableTop="@drawable/pass_icon"
                 android:padding="16dp"
                 android:animateLayoutChanges="true"
-                android:text="Pas vu" />
+                android:text="@string/notseen" />
 
 
         </LinearLayout>
@@ -120,7 +120,7 @@
 
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/retry_icon"
-                android:text="Retry"
+                android:text="@string/retry"
                 android:textColor="#FFFFFF"/>
 
             <Button

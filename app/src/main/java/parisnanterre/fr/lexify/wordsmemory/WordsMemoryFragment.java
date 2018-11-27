@@ -5,15 +5,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,8 +20,6 @@ import java.util.Random;
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
-import parisnanterre.fr.lexify.application.PlayingActivity;
-import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.Word;
 
 /**
@@ -107,7 +102,7 @@ public class WordsMemoryFragment extends Fragment {
         currentWord = wordsNotSeen.get(0);
 
         totalwords = wordsNotSeen.size();
-        txt_numberword.setText("Mot 1/" + totalwords);
+        txt_numberword.setText(getResources().getString(R.string.word) + " 1/" + totalwords);
 
         String lang = Paper.book().read("language");
 
@@ -133,10 +128,9 @@ public class WordsMemoryFragment extends Fragment {
                 else {
                     wordsNotSeen.remove(currentWord);
                     wordsSeen.add(currentWord);
-
                     cpt++;
 
-                    txt_numberword.setText("Mot " + cpt + "/" + totalwords);
+                    txt_numberword.setText(getResources().getString(R.string.word) + " " + cpt + "/" + totalwords);
                     if(wordsNotSeen.isEmpty()) {
                         buttons.setVisibility(View.GONE);
                         win.setVisibility(View.VISIBLE);
@@ -144,13 +138,6 @@ public class WordsMemoryFragment extends Fragment {
                     else {
                         changeWord();
                     }
-
-                    /*if(wordsNotSeen.isEmpty()) {
-                        buttons.setVisibility(View.GONE);
-                        win.setVisibility(View.VISIBLE);
-                    } else {
-
-                    }*/
 
                 }
             }
@@ -165,16 +152,7 @@ public class WordsMemoryFragment extends Fragment {
                     fail_view.setVisibility(View.VISIBLE);
                 }
                 else {
-
                     changeWord();
-
-                    /*if(wordsNotSeen.isEmpty()) {
-                        buttons.setVisibility(View.GONE);
-                        win.setVisibility(View.VISIBLE);
-                    } else {
-
-                    }*/
-
                 }
             }
         });

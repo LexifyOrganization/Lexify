@@ -54,7 +54,7 @@
     <string name="Password">Mots Passés</string>
     <string name="NotFoundWords">Mots non trouvés</string>
     <string name="retry">Recommencer</string>
-    <string name="Mainmenu">Menu</string>
+    <string name="Mainmenu">Menu Principal</string>
     <string name="level">Difficulté</string>
     <string name="off">Sans chronomètre</string>
     <string name="easy">Facile</string>
@@ -109,10 +109,17 @@
     <string name="mustconfirmpassword">"Vous devez confirmer votre mot de passe\n"</string>
     <string name="pseudoalreadyexist">"Pseudo déjà existant\n"</string>
     <string name="emailalreadyused">Email déjà utilisé\n</string>
-    <string name="youraccount">Ton compte</string>
+    <string name="youraccount">"Ton compte "</string>
     <string name="hasbeencreated">" a été créé"</string>
     <string name="SuccessDeconnexion">Vous êtes déconnecté</string>
     <string name="Seeprofile">Voir Profil</string>
     <string name="wordsfound">Mots trouvés</string>
     <string name="wordsmadeguess">Mots devinés</string>
+    <string name="seen">Vu</string>
+    <string name="notseen">Pas vu</string>
+    <string name="alreadyseen">Perdu ! Ce mot avait déjà été vu !</string>
+    <string name="notalreadyseen">Perdu ! Ce mot n\'avait jamais été vu !</string>
+    <string name="questionmeetword">Avez-vous déjà rencontré ce mot ?</string>
+    <string name="wordsmemory">Mémoire des mots</string>
+    <string name="accessgames">Accès Jeux</string>
 </resources>

@@ -138,6 +138,37 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+
+            android:background="#A9A9A9" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activity_user_page_text_view_games_failed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Games failed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <View
@@ -262,14 +293,20 @@
 
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:id="@+id/activity_user_page_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_page_e-mail">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:clickable="true"
             android:text="Gender : "
-            android:visibility="gone"
+            android:visibility="visible"
             android:textStyle="bold"
             android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -282,12 +319,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:clickable="true"
-            android:visibility="gone"
+            android:visibility="visible"
             android:text=""
             app:layout_constraintLeft_toRightOf="@+id/activity_user_page_gender"
             app:layout_constraintTop_toBottomOf="@+id/activity_user_page_e-mail"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activity_user_page_age"
@@ -315,12 +354,14 @@
                 android:layout_margin="5dp"
                 android:clickable="true"
                 android:text=""
-                app:layout_constraintLeft_toRightOf="@+id/age"
-                app:layout_constraintTop_toBottomOf="@+id/gender"
+                app:layout_constraintLeft_toRightOf="@+id/activity_user_page_age"
+                app:layout_constraintTop_toBottomOf="@+id/activity_user_page_gender"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp" />
 
         </LinearLayout>
+
+
 
 
     </android.support.constraint.ConstraintLayout>

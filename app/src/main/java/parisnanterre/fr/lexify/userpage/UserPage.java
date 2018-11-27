@@ -16,7 +16,10 @@ import java.io.Serializable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.database.User;
+
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
 
 public class UserPage extends Activity implements Serializable{
 
@@ -33,17 +36,23 @@ public class UserPage extends Activity implements Serializable{
         TextView name = findViewById(R.id.activity_user_page_name);
         TextView wordsfound = findViewById(R.id.activity_user_page_textview_found_words);
         TextView wordsguess = findViewById(R.id.activity_user_page_textview_words_made_guess);
+        TextView gamesfailed = findViewById(R.id.activity_user_page_text_view_games_failed);
         TextView description = findViewById(R.id.activity_user_page_textview_description);
         ImageView edit = findViewById(R.id.activity_user_page_edit_profile);
         TextView realName = findViewById(R.id.activity_user_page_real_name_val);
         TextView age = findViewById(R.id.activity_user_page_age_val);
         TextView email = findViewById(R.id.activity_user_page_e_mail_val);
         TextView mobile = findViewById(R.id.activity_user_page_mobile_val);
+        TextView gender = findViewById(R.id.activity_user_page_gender_val);
         CircleImageView avatar = findViewById(R.id.activity_user_page_imageview_profile);
         LinearLayout ageLayout = findViewById(R.id.activity_user_page_age);
         LinearLayout emailLayout = findViewById(R.id.activity_user_page_e_mail);
         LinearLayout mobileLayout = findViewById(R.id.activity_user_page_mobile);
         LinearLayout realNameLayout = findViewById(R.id.activity_user_page_real_name);
+        LinearLayout genderLayout = findViewById(R.id.activity_user_page_gender);
+
+        realName.setText(u.get_name());
+        age.setText(Integer.toString(u.get_age()));
 
 
         realName.setText(u.get_name());
@@ -51,6 +60,11 @@ public class UserPage extends Activity implements Serializable{
         email.setText(u.get_email());
         mobile.setText(u.get_mobile());
         description.setText(u.get_description());
+
+        wordsfound.setText(Integer.toString(currentUser.get_wordGuessed()));
+        wordsguess.setText(Integer.toString(currentUser.get_gamesPlayed()));
+        gamesfailed.setText(Integer.toString(currentUser.get_gamesFailed()));
+
 
 
         if(realName.getText().toString().isEmpty()) {
@@ -64,6 +78,9 @@ public class UserPage extends Activity implements Serializable{
         }
         if(mobile.getText().toString().isEmpty()) {
             mobileLayout.setVisibility(View.GONE);
+        }
+        if(gender.getText().toString().isEmpty()){
+            genderLayout.setVisibility(View.GONE);
         }
 
 

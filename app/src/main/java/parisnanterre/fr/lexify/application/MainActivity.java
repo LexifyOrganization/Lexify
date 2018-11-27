@@ -52,11 +52,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (currentUser != null) {
-            Toast toast_tmp = Toast.makeText(getApplicationContext(), String.valueOf(MainActivity.currentUser.get_id()), Toast.LENGTH_SHORT);
-            toast_tmp.show();
-        }
-
         //initialize Paper
         Paper.init(this);
 
@@ -281,6 +276,7 @@ public class MainActivity extends Activity {
             }
         });
 
+        /*
         //currently test button
         Button btn_stats = (Button) findViewById(R.id.activity_main_btn_playerstats);
         btn_stats.setOnClickListener(new View.OnClickListener() {
@@ -305,6 +301,7 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        */
     }
 
     private void updateLanguage(String language) {

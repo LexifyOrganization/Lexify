@@ -1,8 +1,8 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">Lexify</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" tools:ignore="MissingTranslation">Hello blank fragment</string>
     <string name="newgame">Verbal game</string>
-    <string name="computergame">Against Computer</string>
+    <string name="computergame" tools:ignore="MissingTranslation">Against Computer</string>
     <string name="options">Settings</string>
     <string name="Languages">Language</string>
     <string name="Chronometer">Chronometer</string>
@@ -33,7 +33,7 @@
         "\n\nMail : lexifyapp@gmail.com\n\n"
         "Authors: \n\n KHATIR Nassim\nNAYET Lucas\nPIOT Nicolas \nABDULWAHAB Hani"
     </string>
-    <string name="aboutcomputergame">
+    <string name="aboutcomputergame" tools:ignore="MissingTranslation">
         "Rules of the game against the computer: guess a word.\n\n"
         "4 rounds\n4 words suggested to guess by turn.\n\n"
         "For each round, the computer selects a word and 4 synonyms.\n"
@@ -57,7 +57,7 @@
     <string name="retry">Retry</string>
     <string name="Mainmenu">Main menu</string>
     <string name="submit">Validate</string>
-    <string name="Selectlanguge">Select the language</string>
+    <string name="Selectlanguge" tools:ignore="MissingTranslation">Select the language</string>
     <string name="level">Level</string>
     <string name="off">Timer OFF</string>
     <string name="easy">Easy</string>
@@ -69,48 +69,57 @@
     <string name="cancel">Cancel</string>
     <string name="enter_names">Please enter players names</string>
     <string name="choose_words">Please choose 4 words</string>
-    <string name="computergameturn">It\'s computer turn !</string>
-    <string name="cg_win">You won !</string>
-    <string name="cg_lose">"You lost ! The word to guess was "</string>
-    <string name="word">Word</string>
-    <string name="found">Found</string>
-    <string name="computerresults">I\'ts finish ! Number of found words :</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="computerinstructions">Play against computer :\nguess a word</string>
-    <string name="computerrules">
+    <string name="computergameturn" tools:ignore="MissingTranslation">It\'s computer turn !</string>
+    <string name="cg_win" tools:ignore="MissingTranslation">You won !</string>
+    <string name="cg_lose" tools:ignore="MissingTranslation">"You lost ! The word to guess was "</string>
+    <string name="word" tools:ignore="MissingTranslation">Word</string>
+    <string name="found" tools:ignore="MissingTranslation">Found</string>
+    <string name="computerresults" tools:ignore="MissingTranslation">I\'ts finish ! Number of found words :</string>
+    <string name="yes" tools:ignore="MissingTranslation">Yes</string>
+    <string name="no" tools:ignore="MissingTranslation">No</string>
+    <string name="computerinstructions" tools:ignore="MissingTranslation">Play against computer :\nguess a word</string>
+    <string name="computerrules" tools:ignore="MissingTranslation">
         "The computer picks a word and tries to make it guess by giving a synonym for it.\n"
         "You have to enter the word you think in the dialog box.\n"
         "The computer gives up to 4 synonyms.\n"
         "After 4 false proposals, the round is lost.\n"
     </string>
-    <string name="nextround">Next round</string>
-    <string name="abandon">Abandon</string>
-    <string name="statistics">See statistics</string>
-    <string name="editprofile">Edit Profile</string>
-    <string name="signup">Sign Up</string>
-    <string name="enterinformation">Enter your informations :</string>
-    <string name="password">Password</string>
-    <string name="confirmpassword">Confirm password</string>
-    <string name="noaccount">No Account ?</string>
-    <string name="login">Login</string>
-    <string name="welcome">"Welcome "</string>
-    <string name="nofindaccount">"Can't find this account, please check if the informations you entered are correct"</string>
-    <string name="enterpassword">"Please enter your password\n"</string>
-    <string name="enterpseudo">"Please enter your pseudo\n"</string>
-    <string name="SucessConnexion">You are connected\n</string>
-    <string name="wrongformatpseudo">Wrong pseudo format\n</string>
-    <string name="wrongformatemail">Wrong email format\n</string>
-    <string name="passwordsnomatch">Passwords do not match\n</string>
-    <string name="limitspassword">"Password must have at least 4 characters and at most 36 characters\n"</string>
-    <string name="choosepseudo">"You must choose a pseudo\n"</string>
-    <string name="enteremail">"You must enter an email\n"</string>
-    <string name="mustpassword">"You must enter password\n"</string>
-    <string name="mustconfirmpassword">"You must confirm password\n"</string>
-    <string name="pseudoalreadyexist">"Pseudo already exist\n"</string>
-    <string name="emailalreadyused">Email already used\n</string>
-    <string name="youraccount">Your account</string>
-    <string name="hasbeencreated">" has been created"</string>
-    <string name="SuccessDeconnexion">You are disconnected</string>
-    <string name="Seeprofile">See Profile</string>
+    <string name="nextround" tools:ignore="MissingTranslation">Next round</string>
+    <string name="abandon" tools:ignore="MissingTranslation">Abandon</string>
+    <string name="statistics" tools:ignore="MissingTranslation">See statistics</string>
+    <string name="editprofile" tools:ignore="MissingTranslation">Edit Profile</string>
+    <string name="signup" tools:ignore="MissingTranslation">Sign Up</string>
+    <string name="enterinformation" tools:ignore="MissingTranslation">Enter your informations :</string>
+    <string name="password" tools:ignore="MissingTranslation">Password</string>
+    <string name="confirmpassword" tools:ignore="MissingTranslation">Confirm password</string>
+    <string name="noaccount" tools:ignore="MissingTranslation">No Account ?</string>
+    <string name="login" tools:ignore="MissingTranslation">Login</string>
+    <string name="welcome" tools:ignore="MissingTranslation">"Welcome "</string>
+    <string name="nofindaccount" tools:ignore="MissingTranslation">"Can't find this account, please check if the informations you entered are correct"</string>
+    <string name="enterpassword" tools:ignore="MissingTranslation">"Please enter your password\n"</string>
+    <string name="enterpseudo" tools:ignore="MissingTranslation">"Please enter your pseudo\n"</string>
+    <string name="SucessConnexion" tools:ignore="MissingTranslation">You are connected</string>
+    <string name="wrongformatpseudo" tools:ignore="MissingTranslation">Wrong pseudo format\n</string>
+    <string name="wrongformatemail" tools:ignore="MissingTranslation">Wrong email format\n</string>
+    <string name="passwordsnomatch" tools:ignore="MissingTranslation">Passwords do not match\n</string>
+    <string name="limitspassword" tools:ignore="MissingTranslation">"Password must have at least 4 characters and at most 36 characters\n"</string>
+    <string name="choosepseudo" tools:ignore="MissingTranslation">"You must choose a pseudo\n"</string>
+    <string name="enteremail" tools:ignore="MissingTranslation">"You must enter an email\n"</string>
+    <string name="mustpassword" tools:ignore="MissingTranslation">"You must enter password\n"</string>
+    <string name="mustconfirmpassword" tools:ignore="MissingTranslation">"You must confirm password\n"</string>
+    <string name="pseudoalreadyexist" tools:ignore="MissingTranslation">"Pseudo already exist\n"</string>
+    <string name="emailalreadyused" tools:ignore="MissingTranslation">Email already used\n</string>
+    <string name="youraccount" tools:ignore="MissingTranslation">"Your account "</string>
+    <string name="hasbeencreated" tools:ignore="MissingTranslation">" has been created"</string>
+    <string name="SuccessDeconnexion" tools:ignore="MissingTranslation">You are disconnected</string>
+    <string name="Seeprofile" tools:ignore="MissingTranslation">See Profile</string>
+    <string name="wordsfound" tools:ignore="MissingTranslation">Words found</string>
+    <string name="wordsmadeguess" tools:ignore="MissingTranslation">Words made guess</string>
+    <string name="seen" tools:ignore="MissingTranslation">Seen</string>
+    <string name="notseen" tools:ignore="MissingTranslation">Not seen</string>
+    <string name="alreadyseen" tools:ignore="MissingTranslation">Lost ! This word had already been seen !</string>
+    <string name="notalreadyseen" tools:ignore="MissingTranslation">Lost ! This word had never been seen !</string>
+    <string name="questionmeetword" tools:ignore="MissingTranslation">Have you ever met this word ?</string>
+    <string name="wordsmemory" tools:ignore="MissingTranslation">Words Memory</string>
+    <string name="accessgames" tools:ignore="MissingTranslation">Access Games</string>
 </resources>

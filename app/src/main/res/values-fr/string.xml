@@ -2,7 +2,7 @@
 <resources>
 
     <string name="newgame">Partie orale</string>
-    <string name="computergame">Contre l\'ordinateur</string>
+    <string name="computergame">Contre Ordinateur</string>
     <string name="options">Options</string>
     <string name="AboutGame">À propos</string>
     <string name="Header">À propos de Lexify </string>
@@ -122,4 +122,5 @@
     <string name="questionmeetword">Avez-vous déjà rencontré ce mot ?</string>
     <string name="wordsmemory">Mémoire des mots</string>
     <string name="accessgames">Accès Jeux</string>
+    <string name="quitgames">Quitter Jeux</string>
 </resources>

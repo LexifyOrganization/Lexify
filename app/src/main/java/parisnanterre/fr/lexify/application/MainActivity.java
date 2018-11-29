@@ -1,10 +1,14 @@
 package parisnanterre.fr.lexify.application;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
@@ -41,7 +45,9 @@ import parisnanterre.fr.lexify.userpage.UserPage;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity
+        implements MainFragment.OnFragmentInteractionListener,
+        PlayingFragment.OnFragmentInteractionListener {
 
     public static User currentUser;
     public static HashMap<Integer,User> userList = new HashMap<>();
@@ -92,66 +98,12 @@ public class MainActivity extends Activity {
 
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
-        Button btn_play_game = (Button) findViewById(R.id.activity_main_btn_play_game);
-        Button btn_settings = (Button) findViewById(R.id.activity_main_btn_settings);
-        Button btn_about_game= (Button) findViewById(R.id.activity_main_btn_about_game);
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
         final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
         final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
         //compte encore inutile, changer cette ligne plus tard
         //btn_account.setVisibility(View.GONE);
-
-        /* Bundle b = this.getIntent().getExtras();
-        if (b != null)
-            currentUser = (User) b.getSerializable("Current user");*/
-
-
-        //Old connection method, with a single user in "user.txt"
-        /*try {
-            FileInputStream fileInputStream = getApplicationContext().openFileInput("user.txt");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            currentUser = (User) objectInputStream.readObject();
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }*/
-
-        //New connection method, with a list of user saved in a Hashmap<String,User> in "user.json"
-        /*try{
-            FileInputStream fileInputStream = getApplicationContext().openFileInput("user.json");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            //checks if json is empty by checking the content and file size
-            //if yes, fills the userList with users from the local DB
-            //else, fills it with the json file content
-            if (objectInputStream.toString().equals("{}") || objectInputStream.available()==0){
-                final DatabaseUser db = new DatabaseUser(this);
-                List<User> tmplist = db.getAllUsers();
-                final int size = tmplist.size();
-                for (int i = 0; i < size; i++) {
-                    userList.put(tmplist.get(i).get_id(), tmplist.get(i));
-                }
-            }
-            else{
-                //userList is a Hashmap<String,User> where the key is the _id from the User object
-                userList = (HashMap<Integer,User>) objectInputStream.readObject();
-            }
-            //currentUser contains the User object identified by the _id of the last connected User
-            //currentUser = userList.get(lastUser);
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (ClassCastException e ){
-            e.printStackTrace();
-        }*/
 
         //New connexion method : saves the json file in SharedPreferences
         try {
@@ -186,14 +138,6 @@ public class MainActivity extends Activity {
             btn_profile.setVisibility(View.GONE);
         }
 
-        btn_play_game.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), PlayingActivity.class);
-                startActivity(i);
-            }
-        });
-
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,15 +163,6 @@ public class MainActivity extends Activity {
                     startActivity(i);
                 }
 
-            }
-        });
-
-
-        btn_settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
             }
         });
 
@@ -273,38 +208,16 @@ public class MainActivity extends Activity {
             }
         });
 
-        btn_about_game.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AboutGameActivity.class);
-                startActivity(i);
-            }
-        });
+        setFragment(new MainFragment());
 
-        //currently test button
-        Button btn_stats = (Button) findViewById(R.id.activity_main_btn_playerstats);
-        btn_stats.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentUser == null) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Must be logged in to display stats", Toast.LENGTH_LONG);
-                    toast.show();
-                }
-                else {
-                    String stats = "Played : " + String.valueOf(currentUser.get_gamesPlayed());
-                    Toast toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
-                    toast.show();
+    }
 
-                    stats = "Failed : " + String.valueOf(currentUser.get_gamesFailed());
-                    toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
-                    toast.show();
+    public void setFragment(Fragment f) {
 
-                    stats = "Guessed : " + String.valueOf(currentUser.get_wordGuessed());
-                    toast = Toast.makeText(getApplicationContext(), stats, Toast.LENGTH_LONG);
-                    toast.show();
-                }
-            }
-        });
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.activity_main_fragment, f);
+        transaction.commit();
     }
 
     private void updateLanguage(String language) {
@@ -359,6 +272,11 @@ public class MainActivity extends Activity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
 }

@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="parisnanterre.fr.lexify.application.PlayingFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:text="@string/quitgames"
+            android:id="@+id/fragment_playing_btn_quit_games"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonshape"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            />
+
+        <Button
+            android:text="@string/newgame"
+            android:id="@+id/fragment_playing_btn_play_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonshape"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            />
+
+        <Button
+            android:text="@string/computergame"
+            android:id="@+id/fragment_playing_btn_computer_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonshape"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            />
+
+        <Button
+            android:id="@+id/fragment_playing_btn_words_memory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonshape"
+            android:text="@string/wordsmemory"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

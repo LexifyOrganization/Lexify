@@ -19,6 +19,7 @@
         android:id="@+id/signup_txt_infos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/enterinformation" />
 
     <TextView
@@ -47,7 +48,7 @@
         android:layout_marginRight="30dp"
         android:inputType="textPersonName"
         android:hint="Email" />
-
+    <!--
     <EditText
         android:id="@+id/signup_edt_password"
         android:layout_width="match_parent"
@@ -67,7 +68,7 @@
         android:layout_marginRight="30dp"
         android:inputType="textPassword"
         android:hint="@string/confirmpassword" />
-
+    -->
     <Button
         android:id="@+id/signup_btn_signup"
         android:layout_width="match_parent"

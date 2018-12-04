@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 import parisnanterre.fr.lexify.application.MainActivity;
@@ -32,11 +33,10 @@ import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
-import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 public class SignUpActivity extends Activity {
 
-    private HashMap<Integer, User> userListToSerialize;
+    //private HashMap<Integer, User> userListToSerialize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +45,13 @@ public class SignUpActivity extends Activity {
 
         Button btn_signup = (Button) findViewById(R.id.signup_btn_signup);
         final EditText edt_pseudo = (EditText) findViewById(R.id.signup_edt_pseudo);
-        final EditText edt_pass = (EditText) findViewById(R.id.signup_edt_password);
-        final EditText edt_confirm_pass = (EditText) findViewById(R.id.signup_edt_confirmpassword);
+        //final EditText edt_pass = (EditText) findViewById(R.id.signup_edt_password);
+        //final EditText edt_confirm_pass = (EditText) findViewById(R.id.signup_edt_confirmpassword);
         final EditText edt_email = (EditText) findViewById(R.id.signup_edt_email);
 
         final TextView txt_errors = (TextView) findViewById(R.id.signup_txt_errors);
 
-        final DatabaseUser db = new DatabaseUser(this);
+        //final DatabaseUser db = new DatabaseUser(this);
 
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +61,8 @@ public class SignUpActivity extends Activity {
                 // TODO Auto-generated method stub
 
                 String pseudo = edt_pseudo.getText().toString();
-                String pass = edt_pass.getText().toString();
-                String confirm_pass = edt_confirm_pass.getText().toString();
+                //String pass = edt_pass.getText().toString();
+                //String confirm_pass = edt_confirm_pass.getText().toString();
                 String email = edt_email.getText().toString();
 
                 txt_errors.setText("");
@@ -76,7 +76,7 @@ public class SignUpActivity extends Activity {
                         && (email.length() >= 1)) {
                     txt_errors.append(getResources().getString(R.string.wrongformatemail));
                 }
-
+                /*
                 if (!pass.equals(confirm_pass) && pass.length() >= 4 && confirm_pass.length() >= 4) {
                     txt_errors.append(getResources().getString(R.string.passwordsnomatch));
                 }
@@ -84,7 +84,7 @@ public class SignUpActivity extends Activity {
                 if ((confirm_pass.length() > 36 || pass.length() > 36 || confirm_pass.length() < 4 || pass.length() < 4) && (confirm_pass.length() >= 1 && pass.length() >= 1)) {
                     txt_errors.append(getResources().getString(R.string.limitspassword));
                 }
-
+                */
                 if (pseudo.length() == 0) {
                     txt_errors.append(getResources().getString(R.string.choosepseudo));
                 }
@@ -92,7 +92,7 @@ public class SignUpActivity extends Activity {
                 if (email.length() == 0) {
                     txt_errors.append(getResources().getString(R.string.enteremail));
                 }
-
+                /*
                 if (pass.length() == 0) {
                     txt_errors.append(getResources().getString(R.string.mustpassword));
                 }
@@ -100,8 +100,9 @@ public class SignUpActivity extends Activity {
                 if (confirm_pass.length() == 0) {
                     txt_errors.append(getResources().getString(R.string.mustconfirmpassword));
                 }
+                */
 
-
+                /*
                 if (txt_errors.getText().toString().length() == 0) {
                     List<User> users = db.getAllUsers();
 
@@ -141,13 +142,41 @@ public class SignUpActivity extends Activity {
                     // Writing Contacts to log
                     Log.d("Name: ", log);
 
+                }*/
+
+                if (txt_errors.getText().toString().length() == 0) {
+                    MainActivity.currentUser = new User(edt_pseudo.getText().toString(), edt_email.getText().toString(), generateFriendCode());
+                    MainActivity.currentUser.initializeStats();
+                    SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor prefsEditor = prefs.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(MainActivity.currentUser);
+                    prefsEditor.putString("currentUser", json);
+                    prefsEditor.commit();
+
+                    User userTest;
+                    Gson gson2 = new Gson();
+                    String json2 = prefs.getString("currentUser", "");
+                    userTest = gson2.fromJson(json2, User.class);
+
+                    Toast.makeText(getApplicationContext(), userTest.get_pseudo(), Toast.LENGTH_SHORT).show();
+
+
+                    Context context = getApplicationContext();
+                    CharSequence text = getResources().getString(R.string.youraccount) + pseudo + getResources().getString(R.string.hasbeencreated);
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast.makeText(context, text, duration).show();
+
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i);
                 }
             }
         });
 
 
     }
-
+    /*
     private void insertUserInFileFromDB(String pseudo, String mail, String mdp, DatabaseUser db){
         User user = new User(pseudo, mail, mdp);
         //gets the id generated by the DB
@@ -158,13 +187,13 @@ public class SignUpActivity extends Activity {
         //Done this way because signing up signs in at the same time
         MainActivity.currentUser = user;
         try{
-            /*FileOutputStream fileOutputStream = openFileOutput("user.json", Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput("user.json", Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             userList.put(user.get_id(),user);
             objectOutputStream.writeObject(userList);
             objectOutputStream.flush();
             objectOutputStream.close();
-            fileOutputStream.close();*/
+            fileOutputStream.close();
 
             userList.put(user.get_id(),user);
             userListToSerialize = userList;
@@ -176,13 +205,24 @@ public class SignUpActivity extends Activity {
             prefsEditor.commit();
 
 
-        /*} catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();*/
+            e.printStackTrace();
         } catch (Exception e ){
             e.printStackTrace();
         }
 
+    }*/
+
+    private String[] generateFriendCode(){
+        Random random = new Random();
+        String[] res = new String[12];
+
+        for(int i = 0; i<12 ; i++){
+            res[i] = String.valueOf(random.nextInt(10));
+        }
+
+        return res;
     }
 }

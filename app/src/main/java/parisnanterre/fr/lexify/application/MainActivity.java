@@ -39,6 +39,7 @@ import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.computergame.ComputerGameActivity;
 import parisnanterre.fr.lexify.connection.SignInActivity;
+import parisnanterre.fr.lexify.connection.SignUpActivity;
 import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
@@ -52,18 +53,15 @@ public class MainActivity extends Activity
         PlayingFragment.OnFragmentInteractionListener {
 
     public static User currentUser;
-    public static HashMap<Integer,User> userList = new HashMap<>();
-
-    private HashMap<Integer, User> userListToSerialize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (currentUser != null) {
-            Toast toast_tmp = Toast.makeText(getApplicationContext(), String.valueOf(MainActivity.currentUser.get_id()), Toast.LENGTH_SHORT);
-            toast_tmp.show();
-        }
+        TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
+        final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
+        final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
+        final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
         //initialize Paper
         Paper.init(this);
@@ -96,99 +94,25 @@ public class MainActivity extends Activity
             editor.putBoolean("firstTime", true);
             editor.commit();
         }
-
-
-        TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
-        Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
-        final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
-        final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
-        final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
-
-        //compte encore inutile, changer cette ligne plus tard
-        //btn_account.setVisibility(View.GONE);
-
-       /* Bundle b = this.getIntent().getExtras();
-        if (b != null)
-            currentUser = (User) b.getSerializable("Current user");*/
-
-
-       //Old connection method, with a single user in "user.txt"
-        /*try {
-            FileInputStream fileInputStream = getApplicationContext().openFileInput("user.txt");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            currentUser = (User) objectInputStream.readObject();
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }*/
-
-        //New connection method, with a list of user saved in a Hashmap<String,User> in "user.json"
-        /*try{
-            FileInputStream fileInputStream = getApplicationContext().openFileInput("user.json");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            //checks if json is empty by checking the content and file size
-            //if yes, fills the userList with users from the local DB
-            //else, fills it with the json file content
-            if (objectInputStream.toString().equals("{}") || objectInputStream.available()==0){
-                final DatabaseUser db = new DatabaseUser(this);
-                List<User> tmplist = db.getAllUsers();
-                final int size = tmplist.size();
-                for (int i = 0; i < size; i++) {
-                    userList.put(tmplist.get(i).get_id(), tmplist.get(i));
-                }
-            }
-            else{
-                //userList is a Hashmap<String,User> where the key is the _id from the User object
-                userList = (HashMap<Integer,User>) objectInputStream.readObject();
-            }
-            //currentUser contains the User object identified by the _id of the last connected User
-            //currentUser = userList.get(lastUser);
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (ClassCastException e ){
-            e.printStackTrace();
-        }*/
-
-        //New connexion method : saves the json file in SharedPreferences
+        
         try {
-            SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
             Gson gson = new Gson();
-            String json = appSharedPrefs.getString("userList", "");
-            Type type = new TypeToken<HashMap<Integer, User>>(){}.getType();
-            //userList is a Hashmap<Integer,User> where the key is the _id from the User object
-            userList = gson.fromJson(json, type);
-            if (json.equals("") || userList.isEmpty()) {
-                final DatabaseUser db = new DatabaseUser(this);
-                List<User> tmplist = db.getAllUsers();
-                final int size = tmplist.size();
-                for (int i = 0; i < size; i++) {
-                    userList.put(tmplist.get(i).get_id(), tmplist.get(i));
-                }
-            }
-            //Toast toast_tmp = Toast.makeText(getApplicationContext(), String.valueOf(MainActivity.currentUser.get_gamesPlayed()), Toast.LENGTH_SHORT);
-            //toast_tmp.show();
-        } catch (Exception e ){
+            String json = prefs.getString("currentUser", "");
+            currentUser = gson.fromJson(json, User.class);
+        }catch(Exception e){
             e.printStackTrace();
         }
 
-
         if (currentUser != null) {
             txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
-            lil_user.setVisibility(View.VISIBLE);
+            /*lil_user.setVisibility(View.VISIBLE);
             btn_account.setVisibility(View.GONE);
-            btn_profile.setVisibility(View.VISIBLE);
+            btn_profile.setVisibility(View.VISIBLE);*/
         } else {
-            lil_user.setVisibility(View.GONE);
-            btn_profile.setVisibility(View.GONE);
+            /*lil_user.setVisibility(View.GONE);
+            btn_profile.setVisibility(View.GONE);*/
+            Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
+            startActivity(i);
         }
 
         btn_profile.setOnClickListener(new View.OnClickListener() {
@@ -212,65 +136,12 @@ public class MainActivity extends Activity
 
 
                 } else {
-                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                    //Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+                    //startActivity(i);
+                    Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
                     startActivity(i);
                 }
 
-            }
-        });
-
-
-        btn_disconnect.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                /*try{
-                    FileOutputStream fileOutputStream = openFileOutput("user.json", Context.MODE_PRIVATE);
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                    userList.put(currentUser.get_id(),currentUser);
-                    objectOutputStream.writeObject(userList);
-                    objectOutputStream.flush();
-                    objectOutputStream.close();
-                    fileOutputStream.close();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
-
-                try {
-                    //Updates in the Hashmap the info of the current user
-                    userList.put(currentUser.get_id(),currentUser);
-                    userListToSerialize = userList;
-                    SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
-                    Gson gson = new Gson();
-                    String json = gson.toJson(userListToSerialize);
-                    prefsEditor.putString("userList", json);
-                    prefsEditor.commit();
-                } catch(Exception e){
-                    e.printStackTrace();
-                }
-                currentUser = null;
-                lil_user.setVisibility(View.GONE);
-                btn_profile.setVisibility(View.GONE);
-                btn_account.setVisibility(View.VISIBLE);
-
-                PrintWriter writer = null;
-                try {
-                    writer = new PrintWriter(getApplicationContext().getFileStreamPath("user.txt"));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                writer.print("");
-                writer.close();
-
-                Context context = getApplicationContext();
-                CharSequence text = getResources().getString(R.string.SuccessDeconnexion);
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
             }
         });
 
@@ -332,6 +203,12 @@ public class MainActivity extends Activity
     }
     @Override
     public void  onBackPressed() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(MainActivity.currentUser);
+        prefsEditor.putString("currentUser", json);
+        prefsEditor.commit();
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addCategory(Intent.CATEGORY_HOME);

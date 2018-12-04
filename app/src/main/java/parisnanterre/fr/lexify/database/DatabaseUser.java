@@ -49,7 +49,7 @@ public class DatabaseUser extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
-
+    /*
     public void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -114,6 +114,6 @@ public class DatabaseUser extends SQLiteOpenHelper {
         cursor.moveToFirst();
         return Integer.parseInt(cursor.getString(0));
     }
-
+    */
 
 }

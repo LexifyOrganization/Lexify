@@ -89,7 +89,7 @@
     <string name="statistics">Voir statistiques</string>
     <string name="editprofile">Modifier Profil</string>
     <string name="signup">S\'inscrire</string>
-    <string name="enterinformation">Entrez vos informations :</string>
+    <string name="enterinformation">Bienvenue !\n Pour utiliser l\'appli, vous devez rentrer ces informations.\n Promis, ce sera la seule fois !</string>
     <string name="password">Mot de passe</string>
     <string name="confirmpassword">Confirmer mot de passe</string>
     <string name="noaccount">Pas de compte ?</string>
@@ -123,4 +123,5 @@
     <string name="wordsmemory">Mémoire des mots</string>
     <string name="accessgames">Accès Jeux</string>
     <string name="quitgames">Quitter Jeux</string>
+    <string name="friendCode">Code Ami</string>
 </resources>

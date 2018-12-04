@@ -48,8 +48,8 @@ import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameFragment;
 
+import static android.content.Context.MODE_PRIVATE;
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
-import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 public class ComputerGameFragment extends Fragment {
 
@@ -70,7 +70,8 @@ public class ComputerGameFragment extends Fragment {
     CountDownTimer countDownTimer;
     ObjectAnimator animateProgressBar;
     ComputerGameActivity computerGameActivity;
-    private HashMap<Integer, User> userListToSerialize;
+    //private HashMap<Integer, User> userListToSerialize;
+    private Context mContext;
 
     public List<List<String>> create_liste_synonymes(){
         List<List<String>> synonymes = new ArrayList<List<String>>();
@@ -434,7 +435,7 @@ public class ComputerGameFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-
+        /*
         try {
             userList.put(currentUser.get_id(), currentUser);
             userListToSerialize = userList;
@@ -443,6 +444,18 @@ public class ComputerGameFragment extends Fragment {
             Gson gson = new Gson();
             String json = gson.toJson(userListToSerialize);
             prefsEditor.putString("userList", json);
+            prefsEditor.commit();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        */
+
+        try{
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+            SharedPreferences.Editor prefsEditor = prefs.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(MainActivity.currentUser);
+            prefsEditor.putString("currentUser", json);
             prefsEditor.commit();
         } catch(Exception e){
             e.printStackTrace();

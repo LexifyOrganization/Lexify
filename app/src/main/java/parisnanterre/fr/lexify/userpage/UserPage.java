@@ -48,6 +48,7 @@ public class UserPage extends Activity implements Serializable{
         TextView tv1 = findViewById(R.id.tv1);
         TextView tv2 = findViewById(R.id.tv2);
         TextView tv3 = findViewById(R.id.tv3);
+        TextView friendCode = findViewById(R.id.friendCode);
 
         LinearLayout ageLayout = findViewById(R.id.age);
         LinearLayout emailLayout = findViewById(R.id.e_mail);
@@ -66,6 +67,7 @@ public class UserPage extends Activity implements Serializable{
         tv2.setText(Integer.toString(currentUser.get_gamesPlayed()));
         tv3.setText(Integer.toString(currentUser.get_gamesFailed()));
 
+        friendCode.setText(buildFriendCodeDisplay(currentUser.get_friendCode()));
 
 
         if(realName.getText().toString().isEmpty()) {
@@ -137,6 +139,20 @@ public class UserPage extends Activity implements Serializable{
                 e.printStackTrace();
             }
         }
+    }
+
+    private String buildFriendCodeDisplay(String[] fc){
+        StringBuilder sb = new StringBuilder();
+
+        //As a friend code is always 12 characters long, we can use hard coded values here
+        for(int i = 0; i<12; i++){
+            sb.append(fc[i]);
+            if((i+1)%4 == 0){
+                sb.append("-");
+            }
+        }
+
+        return sb.toString();
     }
 
 }

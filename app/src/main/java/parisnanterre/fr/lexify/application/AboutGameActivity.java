@@ -34,9 +34,10 @@ public class AboutGameActivity extends AppCompatActivity  {
 
     private void setViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AboutLexifyFragment(), "About Lexify");
-        adapter.addFragment(new RulesLexifyFragment(), "Verbal Game");
-        adapter.addFragment(new AboutComputerGameFragment(), "Computer Game");
+        adapter.addFragment(new AboutLexifyFragment(), getResources().getString(R.string.lexifypresentation));
+        adapter.addFragment(new RulesLexifyFragment(), getResources().getString(R.string.newgame));
+        adapter.addFragment(new AboutComputerGameFragment(), getResources().getString(R.string.computergame));
+        adapter.addFragment(new AboutWordsMemoryFragment(), getResources().getString(R.string.wordsmemory));
         viewPager.setAdapter(adapter);
     }
 
@@ -50,7 +51,7 @@ public class AboutGameActivity extends AppCompatActivity  {
         }
 
         @Override
-        public android.support.v4.app.Fragment getItem(int position) {
+        public Fragment getItem(int position) {
             return mFragmentList.get(position);
         }
 

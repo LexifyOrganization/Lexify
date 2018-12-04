@@ -25,6 +25,16 @@
             android:textAppearance="@style/RoundNumberStyle" />
 
         <TextView
+            android:id="@+id/fragment_words_memory_txt_step"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textAppearance="@style/VerbalGameSigning"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
             android:id="@+id/fragment_words_memory_txt_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="-20dp"
             android:textAppearance="@style/YourTurnStyle"
             android:text="Vie restante : 3" />

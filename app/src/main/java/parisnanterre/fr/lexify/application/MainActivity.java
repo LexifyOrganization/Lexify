@@ -54,6 +54,14 @@ public class MainActivity extends Activity
 
     private HashMap<Integer, User> userListToSerialize;
 
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        MainActivity.currentUser = currentUser;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,8 +107,6 @@ public class MainActivity extends Activity
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
         Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
         final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
-        final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
-        final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
         //compte encore inutile, changer cette ligne plus tard
         //btn_account.setVisibility(View.GONE);
@@ -131,41 +137,9 @@ public class MainActivity extends Activity
         if (currentUser != null) {
             txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
             lil_user.setVisibility(View.VISIBLE);
-            btn_account.setVisibility(View.GONE);
-            btn_profile.setVisibility(View.VISIBLE);
         } else {
             lil_user.setVisibility(View.GONE);
-            btn_profile.setVisibility(View.GONE);
         }
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), UserPage.class);
-                i.putExtra("user", currentUser);
-                startActivity(i);
-            }
-        });
-
-        btn_account.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                if (currentUser != null) {
-
-                    //lancer activité du compte du joueur ici
-
-
-                } else {
-                    Intent i = new Intent(getApplicationContext(), SignInActivity.class);
-                    startActivity(i);
-                }
-
-            }
-        });
-
 
         btn_disconnect.setOnClickListener(new View.OnClickListener() {
 
@@ -187,8 +161,6 @@ public class MainActivity extends Activity
                 }
                 currentUser = null;
                 lil_user.setVisibility(View.GONE);
-                btn_profile.setVisibility(View.GONE);
-                btn_account.setVisibility(View.VISIBLE);
 
                 PrintWriter writer = null;
                 try {

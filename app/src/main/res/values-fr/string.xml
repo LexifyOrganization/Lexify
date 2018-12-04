@@ -2,7 +2,7 @@
 <resources>
 
     <string name="newgame">Partie orale</string>
-    <string name="computergame">Contre Ordinateur</string>
+    <string name="computergame">Contre l\'Ordinateur</string>
     <string name="options">Options</string>
     <string name="AboutGame">À propos</string>
     <string name="Header">À propos de Lexify </string>
@@ -39,6 +39,15 @@
         "Ces derniers sont sélectionnés de manière aléatoire.\n"
         "L'utilisateur doit alors deviner le mot à partir des synonymes proposés.\n\n"
         "Mode jouable avec ou sans chronomètre réglable dans les options.\n\n"
+    </string>
+    <string name="aboutwordsmemory">
+        "Règles du jeu mémoire des mots :\n\n"
+        "Le but du jeu est de faire travailler sa mémoire.\n\n"
+        "A chaque mot proposé, vous devez vous souvenir s'il a été vu précédemment ou non.\n\n"
+        "Si vous vous trompez, c'est une vie de perdue ou l'arrêt du jeu s'il ne vous reste plus de vie.\n\n"
+        "Possibilité de jouer avec le mode vies (3 vies) ou non.\n\n"
+        "4 paliers sont disponibles : \n"
+        "25 mots, 50 mots, 100 mots ou sans limites (le nombre à atteindre sera donc celui de la base de données).\n"
     </string>
     <string name="Changeplayersnames">Noms des joueurs</string>
     <string name="ChooseWords">Choisir des mots</string>
@@ -123,4 +132,11 @@
     <string name="wordsmemory">Mémoire des mots</string>
     <string name="accessgames">Accès Jeux</string>
     <string name="quitgames">Quitter Jeux</string>
+    <string name="lexifypresentation">Présentation</string>
+    <string name="steps">Palier</string>
+    <string name="nosteps">Aucun Palier</string>
+    <string name="livesleft">Vie restante : x</string>
+    <string name="life">Vies</string>
+    <string name="nolife">Pas de vies</string>
+    <string name="lives">Vie</string>
 </resources>

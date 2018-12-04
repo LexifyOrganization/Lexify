@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,6 +48,7 @@ public class WordsMemoryFragment extends Fragment {
     private TextView txt_word;
     private int cpt = 1;
     private  int totalwords = 0;
+    private int LivesLeft = 3;
 
     private OnFragmentInteractionListener mListener;
 
@@ -86,7 +89,7 @@ public class WordsMemoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_words_memory, container, false);
         final TextView txt_numberword = (TextView) view.findViewById(R.id.fragment_words_memory_txt_number_word);
         txt_word = (TextView) view.findViewById(R.id.fragment_words_memory_txt_word);
-        Button btn_view = (Button) view.findViewById(R.id.fragment_words_memory_btn_view);
+        final Button btn_view = (Button) view.findViewById(R.id.fragment_words_memory_btn_view);
         Button btn_notview = (Button) view.findViewById(R.id.fragment_words_memory_btn_not_view);
         Button btn_retry = (Button) view.findViewById(R.id.fragment_words_memory_btn_retry);
         Button btn_menu = (Button) view.findViewById(R.id.fragment_words_memory_btn_menu);
@@ -94,7 +97,13 @@ public class WordsMemoryFragment extends Fragment {
         final TextView fail_view = (TextView) view.findViewById(R.id.fragment_words_memory_txt_fail_view);
         final TextView fail_notview = (TextView) view.findViewById(R.id.fragment_words_memory_txt_fail_notview);
         final TextView win = (TextView) view.findViewById(R.id.fragment_words_memory_txt_win);
+        final LottieAnimationView live1 = (LottieAnimationView) view.findViewById(R.id.fragment_words_memory_animation_1);
+        final LottieAnimationView live2 = (LottieAnimationView) view.findViewById(R.id.fragment_words_memory_animation_2);
+        final LottieAnimationView live3 = (LottieAnimationView) view.findViewById(R.id.fragment_words_memory_animation_3);
+        final TextView livesleft = (TextView) view.findViewById(R.id.fragment_words_memory_txt_livesleft);
 
+        btn_view.setVisibility(View.INVISIBLE);
+        btn_view.setClickable(false);
         gameActivity = (WordsMemoryActivity) getActivity();
         wordsNotSeen = gameActivity.getWords();
         Collections.shuffle(wordsNotSeen);
@@ -121,9 +130,28 @@ public class WordsMemoryFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
+
+                if(btn_view.getVisibility()==View.INVISIBLE) {
+                    btn_view.setVisibility(View.VISIBLE);
+                    btn_view.setClickable(true);
+                }
+
                 if(!wordsNotSeen.contains(currentWord)) {
-                    buttons.setVisibility(View.GONE);
-                    fail_notview.setVisibility(View.VISIBLE);
+                    if(LivesLeft==0) {
+                        buttons.setVisibility(View.GONE);
+                        fail_notview.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        LivesLeft--;
+
+                        switch (LivesLeft) {
+                            case 2:live1.playAnimation(); break;
+                            case 1:live2.playAnimation(); break;
+                            case 0:live3.playAnimation(); break;
+                        }
+                        livesleft.setText(livesleft.getText().subSequence(0, livesleft.getText().toString().length()-1) + Integer.toString(LivesLeft));
+                        changeWord();
+                    }
                 }
                 else {
                     wordsNotSeen.remove(currentWord);
@@ -148,8 +176,24 @@ public class WordsMemoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!wordsSeen.contains(currentWord)) {
-                    buttons.setVisibility(View.GONE);
-                    fail_view.setVisibility(View.VISIBLE);
+
+                    if(LivesLeft==0) {
+                        buttons.setVisibility(View.GONE);
+                        fail_view.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        LivesLeft--;
+
+                        switch (LivesLeft) {
+                            case 2:live1.playAnimation(); break;
+                            case 1:live2.playAnimation(); break;
+                            case 0:live3.playAnimation(); break;
+                        }
+                        livesleft.setText(livesleft.getText().subSequence(0, livesleft.getText().toString().length()-1) + Integer.toString(LivesLeft));
+                        changeWord();
+                    }
+
+
                 }
                 else {
                     changeWord();

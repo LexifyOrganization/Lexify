@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,6 +33,49 @@
             android:textAlignment="center"
             android:textAppearance="@style/YourTurnStyle"
             android:textColor="#FFFFFF"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/fragment_words_memory_animation_1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginRight="-30dp"
+                app:lottie_fileName="error_cross.json"
+                app:lottie_loop="false"
+                />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/fragment_words_memory_animation_2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="-30dp"
+                app:lottie_fileName="error_cross.json"
+                app:lottie_loop="false"
+                />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/fragment_words_memory_animation_3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:lottie_fileName="error_cross.json"
+                app:lottie_loop="false"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/fragment_words_memory_txt_livesleft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="-20dp"
+            android:textAppearance="@style/YourTurnStyle"
+            android:text="Vie restante : 3" />
 
         <TextView
             android:id="@+id/fragment_words_memory_txt_word"

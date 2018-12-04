@@ -41,6 +41,15 @@
         "The user must guess the word from the proposed synonyms.\n\n"
         "Playable mode with or without timer adjustable in options.\n\n"
     </string>
+    <string name="aboutwordsmemory">
+        "Rules of the word memory game : \n\n"
+        "The goal of the game is to make your memory work.\n"
+        "With each proposed word, you must remember whether it was seen previously or not.\n"
+        "If you're wrong, it's a lost life or stopping the game if you do not have any more life.\n\n"
+        "Ability to play with the mode lives (3 lives) or not.\n\n"
+        "4 steps are available: \n"
+        "25 words, 50 words, 100 words or no limit (so the number to reach is that of the database).\n"
+    </string>
     <string name="Changeplayersnames">Players names</string>
     <string name="ChooseWords">Choose words</string>
     <string name="yourturn">Your turn, make your partner guess this word !</string>
@@ -123,4 +132,5 @@
     <string name="wordsmemory">Words Memory</string>
     <string name="accessgames">Access Games</string>
     <string name="quitgames">Quit Games</string>
+    <string name="lexifypresentation">Lexify\'s presentation</string>
 </resources>

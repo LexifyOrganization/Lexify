@@ -206,29 +206,6 @@ public class WordsMemoryFragment extends Fragment {
 
     }
 
-    /*@Override
-    public void onResume() {
-        super.onResume();
-
-        if(getView() == null){
-            return;
-        }
-
-        getView().setFocusableInTouchMode(true);
-        getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    Intent i = new Intent(getActivity(), PlayingActivity.class);
-                    startActivity(i);
-                }
-                return false;
-            }
-        });
-    }*/
-
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

@@ -2,7 +2,7 @@
 <resources>
 
     <string name="newgame">Partie orale</string>
-    <string name="computergame">Contre l\'ordinateur</string>
+    <string name="computergame">Contre Ordinateur</string>
     <string name="options">Options</string>
     <string name="AboutGame">À propos</string>
     <string name="Header">À propos de Lexify </string>
@@ -29,7 +29,7 @@
     </string>
     <string name="aboutapplication">
          "Lexify, le jeu mobile qui Lexify votre vocabulaire.\n\n Inspiré du jeu Mot de Passe sur France 2, le but de Lexify est soit de deviner un mot, soit de faire deviner un mot.\n\n"
-         "Mail : lexifyapp@gmail.com \n\n"
+         "Mail : lexifyapp@gmail.com \n\n"
          "Auteurs: \n\nNassin Khatir \nLucas Nayet \nNicolas Piot \nHani Abdulwahab"
     </string>
     <string name="aboutcomputergame">
@@ -122,4 +122,5 @@
     <string name="questionmeetword">Avez-vous déjà rencontré ce mot ?</string>
     <string name="wordsmemory">Mémoire des mots</string>
     <string name="accessgames">Accès Jeux</string>
+    <string name="quitgames">Quitter Jeux</string>
 </resources>

@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -106,12 +104,19 @@ public class WordsMemoryFragment extends Fragment {
         final LottieAnimationView live2 = (LottieAnimationView) view.findViewById(R.id.fragment_words_memory_animation_2);
         final LottieAnimationView live3 = (LottieAnimationView) view.findViewById(R.id.fragment_words_memory_animation_3);
         final TextView livesleft = (TextView) view.findViewById(R.id.fragment_words_memory_txt_livesleft);
+
         LivesLeft = lives;
 
         txt_stepversion.setVisibility(View.GONE);
-        
-        livesleft.setText(livesleft.getText().subSequence(0, livesleft.getText().toString().length()-1) + Integer.toString(LivesLeft));
 
+        if(lives==0){
+            live1.setVisibility(View.GONE);
+            live2.setVisibility(View.GONE);
+            live3.setVisibility(View.GONE);
+            livesleft.setVisibility(View.GONE);
+        }
+
+        livesleft.setText(livesleft.getText().subSequence(0, livesleft.getText().toString().length()-1) + Integer.toString(LivesLeft));
 
         btn_view.setVisibility(View.INVISIBLE);
         btn_view.setClickable(false);

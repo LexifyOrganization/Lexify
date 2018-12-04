@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,6 +48,7 @@ public class WordsMemoryFragment extends Fragment {
     private TextView txt_word;
     private int cpt = 1;
     private  int totalwords = 0;
+    public static int step;
 
     private OnFragmentInteractionListener mListener;
 
@@ -91,6 +94,7 @@ public class WordsMemoryFragment extends Fragment {
         Button btn_retry = (Button) view.findViewById(R.id.fragment_words_memory_btn_retry);
         Button btn_menu = (Button) view.findViewById(R.id.fragment_words_memory_btn_menu);
         final LinearLayout buttons = (LinearLayout) view.findViewById(R.id.fragment_words_memory_buttons_layout);
+        final TextView txt_stepversion = (TextView) view.findViewById(R.id.fragment_words_memory_txt_step);
         final TextView fail_view = (TextView) view.findViewById(R.id.fragment_words_memory_txt_fail_view);
         final TextView fail_notview = (TextView) view.findViewById(R.id.fragment_words_memory_txt_fail_notview);
         final TextView win = (TextView) view.findViewById(R.id.fragment_words_memory_txt_win);
@@ -101,7 +105,10 @@ public class WordsMemoryFragment extends Fragment {
         wordsSeen = new ArrayList<Word>();
         currentWord = wordsNotSeen.get(0);
 
-        totalwords = wordsNotSeen.size();
+        if(step==0) totalwords = wordsNotSeen.size();
+        else totalwords = step;
+        if(step!=0) txt_stepversion.setText(getResources().getString(R.string.steps) + " : " + step);
+        else txt_stepversion.setText(getResources().getString(R.string.nosteps));
         txt_numberword.setText(getResources().getString(R.string.word) + " 1/" + totalwords);
 
         String lang = Paper.book().read("language");
@@ -131,14 +138,23 @@ public class WordsMemoryFragment extends Fragment {
                     cpt++;
 
                     txt_numberword.setText(getResources().getString(R.string.word) + " " + cpt + "/" + totalwords);
-                    if(wordsNotSeen.isEmpty()) {
-                        buttons.setVisibility(View.GONE);
-                        win.setVisibility(View.VISIBLE);
+                    if (step == 0) {
+                        if (wordsNotSeen.isEmpty()) {
+                            buttons.setVisibility(View.GONE);
+                            win.setVisibility(View.VISIBLE);
+                        } else {
+                            changeWord();
+                        }
+                    } else {
+                        if(cpt==step+1){
+                            buttons.setVisibility(View.GONE);
+                            win.setVisibility(View.VISIBLE);
+                            txt_numberword.setVisibility(View.GONE);
+                        }
+                        else {
+                            changeWord();
+                        }
                     }
-                    else {
-                        changeWord();
-                    }
-
                 }
             }
         });

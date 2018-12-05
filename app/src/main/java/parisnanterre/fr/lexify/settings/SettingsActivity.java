@@ -248,15 +248,19 @@ public class SettingsActivity extends Activity {
         SharedPreferences spinnersaving = getSharedPreferences("spinnerstate", 0);
         SharedPreferences spinnersaving2 = getSharedPreferences("spinnerstate2", 0);
         SharedPreferences spinnersaving3 = getSharedPreferences("spinnerstate3",0);
+        SharedPreferences spinnersaving4 = getSharedPreferences("spinnerstate4",0);
         SharedPreferences.Editor editor = spinnersaving.edit();
         SharedPreferences.Editor editor2 = spinnersaving2.edit();
         SharedPreferences.Editor editor3 = spinnersaving3.edit();
+        SharedPreferences.Editor editor4 = spinnersaving4.edit();
         editor.putInt("spinnerPos", spinnerPos);
         editor2.putInt("spinnerPos2", spinnerPos2);
         editor3.putInt("spinnerPos3", spinnerPos3);
+        editor4.putInt("spinnerPos4", spinnerPos4);
         editor.apply();
         editor2.apply();
         editor3.apply();
+        editor4.apply();
     }
 
 }

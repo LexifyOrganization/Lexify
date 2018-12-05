@@ -109,7 +109,7 @@ public class WordsMemoryFragment extends Fragment {
         LivesLeft = lives;
 
         txt_stepversion.setVisibility(View.GONE);
-        
+
         livesleft.setText(livesleft.getText().subSequence(0, livesleft.getText().toString().length()-1) + Integer.toString(LivesLeft));
 
 

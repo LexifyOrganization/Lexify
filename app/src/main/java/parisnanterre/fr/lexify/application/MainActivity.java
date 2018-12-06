@@ -1,9 +1,9 @@
 package parisnanterre.fr.lexify.application;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +11,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
@@ -47,7 +48,7 @@ import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
-public class MainActivity extends Activity
+public class MainActivity extends FragmentActivity
         implements MainFragment.OnFragmentInteractionListener,
         PlayingFragment.OnFragmentInteractionListener {
 
@@ -194,6 +195,8 @@ public class MainActivity extends Activity
             lil_user.setVisibility(View.GONE);
         }
 
+        setFragment(new MainFragment());
+
         btn_disconnect.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -241,21 +244,30 @@ public class MainActivity extends Activity
                 CharSequence text = getResources().getString(R.string.SuccessDeconnexion);
                 int duration = Toast.LENGTH_SHORT;
 
+                MainFragment frag = (MainFragment) getSupportFragmentManager().findFragmentByTag("main_fragment");
+                frag.switchVisibilityWhenDisconnecting(true);
+
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }
         });
 
-        setFragment(new MainFragment());
+
+
 
     }
 
     public void setFragment(Fragment f) {
 
-        FragmentManager fragmentManager = getFragmentManager();
+        /*FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.activity_main_fragment, f);
-        transaction.commit();
+        transaction.commit();*/
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_main_fragment, f, "main_fragment");
+        fragmentTransaction.commit();
     }
 
     private void updateLanguage(String language) {

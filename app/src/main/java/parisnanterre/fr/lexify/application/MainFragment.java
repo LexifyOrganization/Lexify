@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +34,12 @@ public class MainFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    Button btn_play_game;
+    Button btn_settings;
+    Button btn_about_game;
+    Button btn_profile;
+    Button btn_account;
 
     public MainFragment() {
         // Required empty public constructor
@@ -72,11 +78,11 @@ public class MainFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        Button btn_play_game = (Button) view.findViewById(R.id.fragment_main_btn_play_game);
-        Button btn_settings = (Button) view.findViewById(R.id.fragment_main_btn_settings);
-        Button btn_about_game= (Button) view.findViewById(R.id.fragment_main_btn_about_game);
-        Button btn_profile = (Button) view.findViewById(R.id.fragment_main_btn_see_profile);
-        Button btn_account = (Button) view.findViewById(R.id.fragment_main_btn_account);
+        btn_play_game = (Button) view.findViewById(R.id.fragment_main_btn_play_game);
+        btn_settings = (Button) view.findViewById(R.id.fragment_main_btn_settings);
+        btn_about_game= (Button) view.findViewById(R.id.fragment_main_btn_about_game);
+        btn_profile = (Button) view.findViewById(R.id.fragment_main_btn_see_profile);
+        btn_account = (Button) view.findViewById(R.id.fragment_main_btn_account);
         final MainActivity gameActivity = (MainActivity) getActivity();
 
         if (gameActivity.getCurrentUser() != null) {
@@ -177,5 +183,15 @@ public class MainFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void switchVisibilityWhenDisconnecting(boolean disconnection){
+        if(disconnection){
+            btn_account.setVisibility(View.VISIBLE);
+            btn_profile.setVisibility(View.GONE);
+        }else{
+            btn_account.setVisibility(View.GONE);
+            btn_profile.setVisibility(View.VISIBLE);
+        }
     }
 }

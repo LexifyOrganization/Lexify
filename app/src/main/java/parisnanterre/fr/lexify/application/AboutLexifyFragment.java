@@ -35,7 +35,6 @@ public class AboutLexifyFragment extends Fragment {
         final TextView txt_about_application = view.findViewById(R.id.fragment_about_lexify_txt);
         final ImageView image_github = view.findViewById(R.id.fragment_about_github);
         final ImageView image_website = view.findViewById(R.id.fragment_about_website);
-        final LinearLayout social_media = view.findViewById(R.id.fragment_social_media);
 
         image_github.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

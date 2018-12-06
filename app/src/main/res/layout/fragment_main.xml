@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:tag="main_fragment"
     tools:context="parisnanterre.fr.lexify.application.MainFragment">
 
     <LinearLayout
@@ -45,6 +46,27 @@
             android:textSize="18sp"
             android:textColor="#FFFFFF"
             />
+
+        <Button
+            android:id="@+id/fragment_main_btn_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonshape"
+            android:textSize="18sp"
+            android:text="@string/MyAccount" />
+
+        <Button
+            android:id="@+id/fragment_main_btn_see_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonshape"
+            android:textSize="18sp"
+            android:text="@string/Seeprofile" />
+
     </LinearLayout>
 
 </FrameLayout>

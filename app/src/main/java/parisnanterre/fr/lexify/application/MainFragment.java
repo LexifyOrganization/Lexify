@@ -4,14 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.connection.SignInActivity;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
+import parisnanterre.fr.lexify.userpage.UserPage;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +34,12 @@ public class MainFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    Button btn_play_game;
+    Button btn_settings;
+    Button btn_about_game;
+    Button btn_profile;
+    Button btn_account;
 
     public MainFragment() {
         // Required empty public constructor
@@ -70,10 +78,19 @@ public class MainFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        Button btn_play_game = (Button) view.findViewById(R.id.fragment_main_btn_play_game);
-        Button btn_settings = (Button) view.findViewById(R.id.fragment_main_btn_settings);
-        Button btn_about_game= (Button) view.findViewById(R.id.fragment_main_btn_about_game);
+        btn_play_game = (Button) view.findViewById(R.id.fragment_main_btn_play_game);
+        btn_settings = (Button) view.findViewById(R.id.fragment_main_btn_settings);
+        btn_about_game= (Button) view.findViewById(R.id.fragment_main_btn_about_game);
+        btn_profile = (Button) view.findViewById(R.id.fragment_main_btn_see_profile);
+        btn_account = (Button) view.findViewById(R.id.fragment_main_btn_account);
         final MainActivity gameActivity = (MainActivity) getActivity();
+
+        if (gameActivity.getCurrentUser() != null) {
+            btn_account.setVisibility(View.GONE);
+            btn_profile.setVisibility(View.VISIBLE);
+        } else {
+            btn_profile.setVisibility(View.GONE);
+        }
 
         btn_play_game.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +112,34 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AboutGameActivity.class);
                 startActivity(i);
+            }
+        });
+
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), UserPage.class);
+                i.putExtra("user", gameActivity.getCurrentUser());
+                startActivity(i);
+            }
+        });
+
+        btn_account.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                if (gameActivity.getCurrentUser() != null) {
+
+                    //lancer activité du compte du joueur ici
+
+
+                } else {
+                    Intent i = new Intent(getActivity(), SignInActivity.class);
+                    startActivity(i);
+                }
+
             }
         });
 
@@ -138,5 +183,15 @@ public class MainFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void switchVisibilityWhenDisconnecting(boolean disconnection){
+        if(disconnection){
+            btn_account.setVisibility(View.VISIBLE);
+            btn_profile.setVisibility(View.GONE);
+        }else{
+            btn_account.setVisibility(View.GONE);
+            btn_profile.setVisibility(View.VISIBLE);
+        }
     }
 }

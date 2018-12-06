@@ -1,9 +1,9 @@
 package parisnanterre.fr.lexify.application;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +11,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
@@ -48,11 +49,19 @@ import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
-public class MainActivity extends Activity
+public class MainActivity extends FragmentActivity
         implements MainFragment.OnFragmentInteractionListener,
         PlayingFragment.OnFragmentInteractionListener {
 
     public static User currentUser;
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        MainActivity.currentUser = currentUser;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +103,7 @@ public class MainActivity extends Activity
             editor.putBoolean("firstTime", true);
             editor.commit();
         }
-        
+
         try {
             Gson gson = new Gson();
             String json = prefs.getString("currentUser", "");
@@ -105,56 +114,31 @@ public class MainActivity extends Activity
 
         if (currentUser != null) {
             txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
-            /*lil_user.setVisibility(View.VISIBLE);
-            btn_account.setVisibility(View.GONE);
-            btn_profile.setVisibility(View.VISIBLE);*/
+            lil_user.setVisibility(View.VISIBLE);
         } else {
-            /*lil_user.setVisibility(View.GONE);
-            btn_profile.setVisibility(View.GONE);*/
+            lil_user.setVisibility(View.GONE);
             Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
             startActivity(i);
         }
 
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), UserPage.class);
-                i.putExtra("user", currentUser);
-                startActivity(i);
-            }
-        });
-
-        btn_account.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                if (currentUser != null) {
-
-                    //lancer activité du compte du joueur ici
-
-
-                } else {
-                    //Intent i = new Intent(getApplicationContext(), SignInActivity.class);
-                    //startActivity(i);
-                    Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
-                    startActivity(i);
-                }
-
-            }
-        });
-
         setFragment(new MainFragment());
+
+
+
 
     }
 
     public void setFragment(Fragment f) {
 
-        FragmentManager fragmentManager = getFragmentManager();
+        /*FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.activity_main_fragment, f);
-        transaction.commit();
+        transaction.commit();*/
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_main_fragment, f, "main_fragment");
+        fragmentTransaction.commit();
     }
 
     private void updateLanguage(String language) {

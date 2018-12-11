@@ -1,5 +1,9 @@
 package parisnanterre.fr.lexify.database;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import java.io.Serializable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -160,6 +164,47 @@ public class User implements Serializable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    // NOTE :
+    // These four setter are only to be used when loading a user from SharedPreferences
+    public void set_friendCode(String[] _friendCode) {
+        this._friendCode = _friendCode.clone();
+    }
+
+    public void set_gamesPlayed(int _gamesPlayed) {
+        this._gamesPlayed = _gamesPlayed;
+    }
+
+    public void set_gamesFailed(int _gamesFailed) {
+        this._gamesFailed = _gamesFailed;
+    }
+
+    public void set_wordGuessed(int _wordGuessed) {
+        this._wordGuessed = _wordGuessed;
+    }
+
+    public void saveUser(Context context){
+        StringBuilder sb = new StringBuilder();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putInt("user_id", _id);
+        prefsEditor.putString("user_pseudo", _pseudo);
+        prefsEditor.putString("user_email", _email);
+        prefsEditor.putString("user_description", description);
+        prefsEditor.putString("user_avatar", avatar);
+        prefsEditor.putString("user_name", name);
+        prefsEditor.putString("user_mobile", mobile);
+        prefsEditor.putString("user_gender", gender);
+        prefsEditor.putInt("user_age", age);
+        prefsEditor.putInt("user_gamesPlayed", _gamesPlayed);
+        prefsEditor.putInt("user_gamesFailed", _gamesFailed);
+        prefsEditor.putInt("user_wordGuessed", _wordGuessed);
+        for (int i = 0; i < _friendCode.length; i++) {
+            sb.append(_friendCode[i]).append(",");
+        }
+        prefsEditor.putString("user_friendCode", sb.toString());
+        prefsEditor.commit();
     }
 
 }

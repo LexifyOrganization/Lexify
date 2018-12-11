@@ -68,9 +68,9 @@ public class MainActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
 
         TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
-        final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
-        final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
-        final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
+        //final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
+        //final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
+        //final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
         //initialize Paper
         Paper.init(this);
@@ -105,27 +105,21 @@ public class MainActivity extends FragmentActivity
         }
 
         try {
-            Gson gson = new Gson();
-            String json = prefs.getString("currentUser", "");
-            currentUser = gson.fromJson(json, User.class);
+            currentUser = loadUser(this);
         }catch(Exception e){
             e.printStackTrace();
         }
 
-        if (currentUser != null) {
+        if (currentUser != null && currentUser.get_id() != 0) {
             txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
-            lil_user.setVisibility(View.VISIBLE);
+            //lil_user.setVisibility(View.VISIBLE);
         } else {
-            lil_user.setVisibility(View.GONE);
+            //lil_user.setVisibility(View.GONE);
             Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
             startActivity(i);
         }
 
         setFragment(new MainFragment());
-
-
-
-
     }
 
     public void setFragment(Fragment f) {
@@ -185,14 +179,36 @@ public class MainActivity extends FragmentActivity
         }
 
     }
+
+    public User loadUser(Context context){
+        User u = new User();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        u.set_id(prefs.getInt("user_int", 0));
+        u.set_pseudo(prefs.getString("user_pseudo", ""));
+        u.set_email(prefs.getString("user_email", ""));
+        u.setDescription(prefs.getString("user_description", ""));
+        u.setAvatar(prefs.getString("user_avatar", ""));
+        u.setName(prefs.getString("user_name", ""));
+        u.setMobile(prefs.getString("user_mobile", ""));
+        u.setGender(prefs.getString("user_gender", ""));
+        u.setAge(prefs.getInt("user_age", 0));
+        u.set_gamesPlayed(prefs.getInt("user_gamesPlayed", 0));
+        u.set_gamesFailed(prefs.getInt("user_gamesFailed", 0));
+        u.set_wordGuessed(prefs.getInt("user_wordGuessed", 0));
+        u.set_friendCode(prefs.getString("user_friendCode", "").split(","));
+
+        return u;
+    }
+
     @Override
     public void  onBackPressed() {
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        /*SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = prefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(MainActivity.currentUser);
         prefsEditor.putString("currentUser", json);
-        prefsEditor.commit();
+        prefsEditor.commit();*/
+        currentUser.saveUser(this);
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addCategory(Intent.CATEGORY_HOME);

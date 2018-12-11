@@ -48,6 +48,12 @@ public class EditPage extends Activity {
                 if(!age.getText().toString().isEmpty())
                     u.setAge(Integer.parseInt(age.getText().toString()));
 
+                try{
+                    u.saveUser(EditPage.this.getApplicationContext());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 Intent i = new Intent(getApplicationContext(), UserPage.class);
                 i.putExtra("user", u);
                 startActivity(i);

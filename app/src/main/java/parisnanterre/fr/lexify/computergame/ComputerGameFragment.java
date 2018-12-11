@@ -451,12 +451,13 @@ public class ComputerGameFragment extends Fragment {
         */
 
         try{
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+            /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
             SharedPreferences.Editor prefsEditor = prefs.edit();
             Gson gson = new Gson();
             String json = gson.toJson(MainActivity.currentUser);
             prefsEditor.putString("currentUser", json);
-            prefsEditor.commit();
+            prefsEditor.commit();*/
+            currentUser.saveUser(this.getContext());
         } catch(Exception e){
             e.printStackTrace();
         }

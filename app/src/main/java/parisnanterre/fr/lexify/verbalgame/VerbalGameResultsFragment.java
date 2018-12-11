@@ -177,12 +177,13 @@ public class VerbalGameResultsFragment extends Fragment {
                     }
                 }*/
                 try {
-                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
                     SharedPreferences.Editor prefsEditor = prefs.edit();
                     Gson gson = new Gson();
                     String json = gson.toJson(MainActivity.currentUser);
                     prefsEditor.putString("currentUser", json);
-                    prefsEditor.commit();
+                    prefsEditor.commit();*/
+                    currentUser.saveUser(VerbalGameResultsFragment.this.getContext());
                 }catch(Exception e){
                     e.printStackTrace();
                 }

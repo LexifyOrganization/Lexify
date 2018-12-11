@@ -145,24 +145,29 @@ public class SignUpActivity extends Activity {
                 }*/
 
                 if (txt_errors.getText().toString().length() == 0) {
+                    Context context = getApplicationContext();
                     MainActivity.currentUser = new User(edt_pseudo.getText().toString(), edt_email.getText().toString(), generateFriendCode());
                     MainActivity.currentUser.initializeStats();
-                    SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+                    /*SharedPreferences prefs = getPreferences(MODE_PRIVATE);
                     SharedPreferences.Editor prefsEditor = prefs.edit();
                     Gson gson = new Gson();
                     String json = gson.toJson(MainActivity.currentUser);
                     prefsEditor.putString("currentUser", json);
-                    prefsEditor.commit();
+                    prefsEditor.commit();*/
 
+                    /*
                     User userTest;
                     Gson gson2 = new Gson();
                     String json2 = prefs.getString("currentUser", "");
                     userTest = gson2.fromJson(json2, User.class);
 
-                    Toast.makeText(getApplicationContext(), userTest.get_pseudo(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), userTest.get_pseudo(), Toast.LENGTH_SHORT).show();*/
 
+                    MainActivity.currentUser.saveUser(context);
 
-                    Context context = getApplicationContext();
+                    SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+                    Toast.makeText(context, prefs.getString("user_pseudo",""),Toast.LENGTH_LONG);
+
                     CharSequence text = getResources().getString(R.string.youraccount) + pseudo + getResources().getString(R.string.hasbeencreated);
                     int duration = Toast.LENGTH_SHORT;
 

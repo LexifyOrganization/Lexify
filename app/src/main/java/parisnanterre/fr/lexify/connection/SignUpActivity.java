@@ -165,8 +165,8 @@ public class SignUpActivity extends Activity {
 
                     MainActivity.currentUser.saveUser(context);
 
-                    SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-                    Toast.makeText(context, prefs.getString("user_pseudo",""),Toast.LENGTH_LONG);
+                    /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+                    Toast.makeText(context, prefs.getString("user_pseudo","err"),Toast.LENGTH_LONG).show();*/
 
                     CharSequence text = getResources().getString(R.string.youraccount) + pseudo + getResources().getString(R.string.hasbeencreated);
                     int duration = Toast.LENGTH_SHORT;

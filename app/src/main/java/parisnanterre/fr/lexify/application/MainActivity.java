@@ -110,8 +110,10 @@ public class MainActivity extends FragmentActivity
             e.printStackTrace();
         }
 
-        if (currentUser != null && currentUser.get_id() != 0) {
-            txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
+        //Toast.makeText(this, String.valueOf(prefs.getInt("user_id", 0)), Toast.LENGTH_LONG).show();
+
+        if (currentUser != null && !currentUser.get_pseudo().equals("")) {
+            //txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
             //lil_user.setVisibility(View.VISIBLE);
         } else {
             //lil_user.setVisibility(View.GONE);

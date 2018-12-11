@@ -204,7 +204,7 @@ public class User implements Serializable {
             sb.append(_friendCode[i]).append(",");
         }
         prefsEditor.putString("user_friendCode", sb.toString());
-        prefsEditor.commit();
+        prefsEditor.apply();
     }
 
 }

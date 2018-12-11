@@ -147,7 +147,7 @@ public class UserPage extends Activity implements Serializable{
         //As a friend code is always 12 characters long, we can use hard coded values here
         for(int i = 0; i<12; i++){
             sb.append(fc[i]);
-            if((i+1)%4 == 0){
+            if((i+1)%4 == 0 && i!=11){
                 sb.append("-");
             }
         }

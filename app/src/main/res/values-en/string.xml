@@ -139,4 +139,8 @@
     <string name="life">Lives</string>
     <string name="nolife">No lives</string>
     <string name="lives">Life</string>
+    <string name="lexicalfields">Lexical Fields</string>
+    <string name="questionlexicalfield">What is the lexical field associated with these words ?</string>
+    <string name="lexical_win">Congratulations !</string>
+    <string name="lexical_fail">Lost ! The lexical field was </string>
 </resources>

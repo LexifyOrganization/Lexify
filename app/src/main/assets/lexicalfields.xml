@@ -1,0 +1,289 @@
+
+<document>
+<lexical id="1">
+
+	<word>
+		<fr>pluie</fr>
+		<en>rain</en>
+	</word>
+	<description>
+		<fr>averse, pleuvoir, crachin, bruine, déluge</fr>
+		<en>raining, drizzle, drizzle, deluge</en>
+	</description>
+
+</lexical>
+
+<lexical id="2">
+
+	<word>
+		<fr>peur</fr>
+		<en>fear</en>
+	</word>
+	<description>
+		<fr>frayeur, effroi, épouvante, apeurer, terrifier</fr>
+		<en>fright, fright, terror, scare, terrify</en>
+	</description>
+
+</lexical>
+
+<lexical id="3">
+
+	<word>
+		<fr>vêtement</fr>
+		<en>clothing</en>
+	</word>
+	<description>
+		<fr>chemise, polo, blouson, chaussettes, pantalon</fr>
+		<en>shirt, polo, jacket, socks, pants</en>
+	</description>
+
+</lexical>
+
+<lexical id="4">
+
+	<word>
+		<fr>mer</fr>
+		<en>sea</en>
+	</word>
+	<description>
+		<fr>vague, marin, marée, océan, écume, voguer</fr>
+		<en>wave, marine, tide, ocean, foam, sail</en>
+	</description>
+
+</lexical>
+
+<lexical id="5">
+
+	<word>
+		<fr>sport</fr>
+		<en>sport</en>
+	</word>
+	<description>
+		<fr>athlète, palmarès, boxe, stade, arbitre, record, hockey, baseball, tennis, football, natation, course</fr>
+		<en>athlete, winners, boxing, stadium, referee, record, hockey, baseball, tennis, football, swimming, race</en>
+	</description>
+
+</lexical>
+
+<lexical id="6">
+
+	<word>
+		<fr>voiture</fr>
+		<en>car</en>
+	</word>
+	<description>
+		<fr>Cabriolet, monospace, essuie-glace, rouler</fr>
+		<en>Cabriolet, minivan, wiper, ride</en>
+	</description>
+
+</lexical>
+
+<lexical id="7">
+
+	<word>
+		<fr>maison</fr>
+		<en>house</en>
+	</word>
+	<description>
+		<fr>habitation, villa, cottage, domestique, résidence, toit, toiture, charpente</fr>
+		<en>dwelling, villa, cottage, domestic, residence, roof, frame</en>
+	</description>
+
+</lexical>
+
+<lexical id="8">
+
+	<word>
+		<fr>cinéma</fr>
+		<en>cinema</en>
+	</word>
+	<description>
+		<fr>acteur, studio, filmer, cinéaste, court-métrage</fr>
+		<en>actor, studio, film, filmmaker, short film</en>
+	</description>
+
+</lexical>
+
+<lexical id="9">
+
+	<word>
+		<fr>informatique</fr>
+		<en>computer science</en>
+	</word>
+	<description>
+		<fr>logiciel, programmation, électronique, ordinateur, informaticien, bug, application, stockage, outil, technologie</fr>
+		<en>software, programming, information, electronic, bug, application, storage, tool, technology</en>
+	</description>
+
+</lexical>
+
+<lexical id="10">
+
+	<word>
+		<fr>instrument de musique</fr>
+		<en>music instrument</en>
+	</word>
+	<description>
+		<fr>guitare, djembe, saxophone, piano, violon</fr>
+		<en>guitar, djembe, saxophone, piano, violin</en>
+	</description>
+
+</lexical>
+
+<lexical id="11">
+
+	<word>
+		<fr>cirque</fr>
+		<en>circus</en>
+	</word>
+	<description>
+		<fr>chapiteau, clown, trapéziste, dompter</fr>
+		<en>big top, clown, trapeze artist, tamer</en>
+	</description>
+
+</lexical>
+
+<lexical id="12">
+
+	<word>
+		<fr>théâtre</fr>
+		<en>theater</en>
+	</word>
+	<description>
+		<fr>scène, drame, coulisses, rôle, décor, actrice</fr>
+		<en>scene, drama, backstage, role, scenery, actress</en>
+	</description>
+
+</lexical>
+
+<lexical id="13">
+
+	<word>
+		<fr>livre</fr>
+		<en>book</en>
+	</word>
+	<description>
+		<fr>chapitre, préface, dédicace, page, lire, auteur</fr>
+		<en>chapter, preface, dedication, page, read, author</en>
+	</description>
+
+</lexical>
+
+<lexical id="14">
+
+	<word>
+		<fr>média</fr>
+		<en>media</en>
+	</word>
+	<description>
+		<fr>journal, télévision, radio, internet, magazine, revue</fr>
+		<en>newspaper, television, radio, internet, magazine, magazine</en>
+	</description>
+
+</lexical>
+
+<lexical id="15">
+
+	<word>
+		<fr>lettre</fr>
+		<en>letter</en>
+	</word>
+	<description>
+		<fr>enveloppe, date, signature, timbre, destinataire, expéditeur</fr>
+		<en>envelope, date, signature, stamp, recipient, sender</en>
+	</description>
+
+</lexical>
+
+<lexical id="16">
+
+	<word>
+		<fr>eau</fr>
+		<en>water</en>
+	</word>
+	<description>
+		<fr>rivière, fleuve, lac, ruisseau, inondation, pluie</fr>
+		<en>river, lake, stream, flood, rain</en>
+	</description>
+
+</lexical>
+
+<lexical id="17">
+
+	<word>
+		<fr>école</fr>
+		<en>school</en>
+	</word>
+	<description>
+		<fr>classe, élève, instituteur, craie, cartable, cahier</fr>
+		<en>class, pupil, teacher, chalk, schoolbag, notebook</en>
+	</description>
+
+</lexical>
+
+<lexical id="18">
+
+	<word>
+		<fr>géographie</fr>
+		<en>geography</en>
+	</word>
+	<description>
+		<fr>continent, pays, ville, océan, mer, île</fr>
+		<en>continent, country, city, ocean, sea, island</en>
+	</description>
+
+</lexical>
+
+<lexical id="19">
+
+	<word>
+		<fr>bonheur</fr>
+		<en>happiness</en>
+	</word>
+	<description>
+		<fr>rire, chant, heureux, sourire, satisfait, danser</fr>
+		<en>laughing, singing, happy, smiling, satisfied, dancing</en>
+	</description>
+
+</lexical>
+
+<lexical id="20">
+
+	<word>
+		<fr>sens</fr>
+		<en>sense</en>
+	</word>
+	<description>
+		<fr>vue, odorat, ouïe, toucher, goût</fr>
+		<en>view, smell, hearing, touch, taste</en>
+	</description>
+
+</lexical>
+
+<lexical id="21">
+
+	<word>
+		<fr>métier</fr>
+		<en>job</en>
+	</word>
+	<description>
+		<fr>menuisier, maçon, vendeur, professeur, policier, bûcheron</fr>
+		<en>carpenter, bricklayer, salesman, teacher, policeman, lumberjack</en>
+	</description>
+
+</lexical>
+
+<lexical id="22">
+
+	<word>
+		<fr>animal</fr>
+		<en>animal</en>
+	</word>
+	<description>
+		<fr>phacochère, kangourou, chevreuil, écureuil, lièvre, hérisson</fr>
+		<en>warthog, kangaroo, deer, squirrel, hare, hedgehog</en>
+	</description>
+
+</lexical>
+
+</document>

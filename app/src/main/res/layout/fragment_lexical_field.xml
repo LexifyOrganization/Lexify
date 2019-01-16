@@ -1,0 +1,170 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context="parisnanterre.fr.lexify.wordsmemory.WordsMemoryFragment">
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/fragment_lexical_field_txt_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/questionlexicalfield"
+            android:textAlignment="center"
+            android:textAppearance="@style/YourTurnStyle"
+            android:textColor="#FFFFFF"/>
+
+        <LinearLayout
+            android:id="@+id/fragment_lexical_field_animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/fragment_lexical_field_animation_1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginRight="-30dp"
+                app:lottie_fileName="error_cross.json"
+                app:lottie_loop="false"
+                />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/fragment_lexical_field_animation_2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="-30dp"
+                app:lottie_fileName="error_cross.json"
+                app:lottie_loop="false"
+                />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/fragment_lexical_field_animation_3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:lottie_fileName="error_cross.json"
+                app:lottie_loop="false"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/fragment_lexical_field_txt_livesleft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAppearance="@style/YourTurnStyle"
+            android:text="Vie restante : 3" />
+
+        <TextView
+            android:id="@+id/fragment_lexical_field_txt_word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:textSize="25dp"
+            android:text="test"
+            android:textColor="#ffea00"/>
+
+        <TextView
+            android:id="@+id/fragment_lexical_field_txt_fail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/lexical_fail" />
+
+        <TextView
+            android:id="@+id/fragment_lexical_field_txt_win"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/lexical_win" />
+
+        <LinearLayout
+            android:id="@+id/fragment_lexical_field_buttons_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ExtraText"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center">
+
+            <EditText
+                android:id="@+id/fragment_lexical_field_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/colorPrimary"
+                android:hint=""
+                android:textColorHint="#9b9b9b"
+                android:background="#FFFFFF"
+                android:imeOptions="actionDone"
+                android:inputType="textCapSentences|textAutoCorrect|textNoSuggestions"
+                android:ems="10"
+                android:layout_marginBottom="5dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <Button
+                android:id="@+id/fragment_lexical_field_btn_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/retry_icon"
+                android:text="@string/retry"
+                android:textColor="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/fragment_lexical_field_btn_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/home_icon"
+                android:text="@string/Mainmenu"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

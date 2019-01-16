@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.computergame.ComputerGameActivity;
+import parisnanterre.fr.lexify.lexicalfields.LexicalFieldActivity;
 import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.wordsmemory.WordsMemoryActivity;
 
@@ -74,6 +75,7 @@ public class PlayingFragment extends Fragment {
         Button btn_verbal_game = (Button) view.findViewById(R.id.fragment_playing_btn_play_game);
         Button btn_computer = (Button) view.findViewById(R.id.fragment_playing_btn_computer_game);
         Button btn_words_memory = (Button) view.findViewById(R.id.fragment_playing_btn_words_memory);
+        Button btn_lexical_fields = (Button) view.findViewById(R.id.fragment_playing_btn_lexical_fields);
         final MainActivity gameActivity = (MainActivity) getActivity();
 
         btn_quit_games.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +111,15 @@ public class PlayingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), WordsMemoryActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btn_lexical_fields.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), LexicalFieldActivity.class);
                 startActivity(i);
             }
         });

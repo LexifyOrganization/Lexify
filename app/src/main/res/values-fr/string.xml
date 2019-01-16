@@ -139,4 +139,8 @@
     <string name="life">Vies</string>
     <string name="nolife">Pas de vies</string>
     <string name="lives">Vie</string>
+    <string name="lexicalfields">Champs lexicaux</string>
+    <string name="questionlexicalfield">Quel est le champ lexical associé à ces mots ?</string>
+    <string name="lexical_win">Bravo !</string>
+    <string name="lexical_fail">Perdu ! Le champ lexical était </string>
 </resources>

@@ -43,8 +43,8 @@
     </string>
     <string name="aboutwordsmemory" tools:ignore="MissingTranslation">
         "Rules of the word memory game : \n\n"
-        "The goal of the game is to make your memory work.\n"
-        "With each proposed word, you must remember whether it was seen previously or not.\n"
+        "The goal of the game is to make your memory work.\n\n"
+        "With each proposed word, you must remember whether it was seen previously or not.\n\n"
         "If you're wrong, it's a lost life or stopping the game if you do not have any more life.\n\n"
         "Ability to play with the mode lives (3 lives) or not.\n\n"
         "4 steps are available: \n"
@@ -133,5 +133,16 @@
     <string name="accessgames" tools:ignore="MissingTranslation">Access Games</string>
     <string name="quitgames" tools:ignore="MissingTranslation">Quit Games</string>
     <string name="friendCode" tools:ignore="MissingTranslation">Friend Code</string>
-    <string name="lexifypresentation" tools:ignore="MissingTranslation">Lexify\'s presentation</string>
+    <string name="lexifypresentation" tools:ignore="MissingTranslation">Presentation</string>
+    <string name="steps" tools:ignore="MissingTranslation">Step</string>
+    <string name="nosteps" tools:ignore="MissingTranslation">No Step</string>
+    <string name="livesleft" tools:ignore="MissingTranslation">Live left : x</string>
+    <string name="life" tools:ignore="MissingTranslation">Lives</string>
+    <string name="nolife" tools:ignore="MissingTranslation">No lives</string>
+    <string name="lives" tools:ignore="MissingTranslation">Life</string>
+    <string name="lexicalfields" tools:ignore="MissingTranslation">Lexical Fields</string>
+    <string name="questionlexicalfield" tools:ignore="MissingTranslation">What is the lexical field associated with these words ?</string>
+    <string name="lexical_win" tools:ignore="MissingTranslation">Congratulations !</string>
+    <string name="lexical_fail" tools:ignore="MissingTranslation">Lost ! The lexical field was </string>
+
 </resources>

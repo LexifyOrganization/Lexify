@@ -44,7 +44,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".userpage.UserPage" />
         <activity android:name=".userpage.EditPage" />
-        <activity android:name=".wordsmemory.WordsMemoryActivity"></activity>
+        <activity android:name=".wordsmemory.WordsMemoryActivity" />
+        <activity android:name=".lexicalfields.LexicalFieldActivity"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.connection.SignInActivity;
+import parisnanterre.fr.lexify.connection.SignUpActivity;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.userpage.UserPage;
 
@@ -95,32 +96,56 @@ public class MainFragment extends Fragment {
         btn_play_game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameActivity.setFragment(new PlayingFragment());
+                if (gameActivity.getCurrentUser() != null && !gameActivity.getCurrentUser().get_pseudo().equals("")) {
+                    Intent i = new Intent(getActivity(), UserPage.class);
+                    i.putExtra("user", gameActivity.getCurrentUser());
+                    startActivity(i);
+                } else {
+                    gameActivity.setFragment(new PlayingFragment());
+                }
             }
         });
 
         btn_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), SettingsActivity.class);
-                startActivity(i);
+                if (gameActivity.getCurrentUser() != null && !gameActivity.getCurrentUser().get_pseudo().equals("")) {
+                    Intent i = new Intent(getActivity(), UserPage.class);
+                    i.putExtra("user", gameActivity.getCurrentUser());
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(getActivity(), SettingsActivity.class);
+                    startActivity(i);
+                }
             }
         });
 
         btn_about_game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AboutGameActivity.class);
-                startActivity(i);
+                if (gameActivity.getCurrentUser() != null && !gameActivity.getCurrentUser().get_pseudo().equals("")) {
+                    Intent i = new Intent(getActivity(), UserPage.class);
+                    i.putExtra("user", gameActivity.getCurrentUser());
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(getActivity(), AboutGameActivity.class);
+                    startActivity(i);
+                }
             }
         });
 
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), UserPage.class);
-                i.putExtra("user", gameActivity.getCurrentUser());
-                startActivity(i);
+                if (gameActivity.getCurrentUser() != null && !gameActivity.getCurrentUser().get_pseudo().equals("")) {
+                    Intent i = new Intent(getActivity(), UserPage.class);
+                    i.putExtra("user", gameActivity.getCurrentUser());
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(getActivity(), SignUpActivity.class);
+                    startActivity(i);
+                }
+
             }
         });
 

@@ -36,6 +36,7 @@ import java.util.HashMap;
 
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.enumeration.PassingType;
 import parisnanterre.fr.lexify.exception.noCurrentPlayerException;
@@ -43,7 +44,6 @@ import parisnanterre.fr.lexify.word.Word;
 
 import static android.view.animation.Animation.RELATIVE_TO_SELF;
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
-import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,7 +74,7 @@ public class VerbalGameFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private HashMap<Integer, User> userListToSerialize;
+    //private HashMap<Integer, User> userListToSerialize;
 
     public VerbalGameFragment() {
         // Required empty public constructor
@@ -261,7 +261,7 @@ public class VerbalGameFragment extends Fragment {
             e.printStackTrace();
         }*/
 
-        if (currentUser != null) {
+        /*if (currentUser != null) {
             try {
                 userList.put(currentUser.get_id(), currentUser);
                 userListToSerialize = userList;
@@ -274,6 +274,18 @@ public class VerbalGameFragment extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }*/
+
+        try{
+            /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+            SharedPreferences.Editor prefsEditor = prefs.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(MainActivity.currentUser);
+            prefsEditor.putString("currentUser", json);
+            prefsEditor.commit();*/
+            currentUser.saveUser(this.getContext());
+        }catch (Exception e ){
+            e.printStackTrace();
         }
 
     }

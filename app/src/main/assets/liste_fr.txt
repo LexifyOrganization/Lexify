@@ -358,7 +358,7 @@ sirène
 troll
 vampire
 yéti
-zombie
+zombi
 bleu
 rouge
 vert
@@ -532,4 +532,3 @@ choisir
 chuchoter
 domino
 minuit
-groggy

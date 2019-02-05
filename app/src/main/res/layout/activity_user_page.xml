@@ -7,35 +7,35 @@
     android:background="@drawable/background_color">
 
     <RelativeLayout
-        android:id="@+id/activity_user_page_profile_layout"
+        android:id="@+id/profile_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_profile"
         android:elevation="4dp"
         android:paddingBottom="24dp">
 
+    <ImageView
+        android:id="@+id/header_cover_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="centerCrop"
+
+        android:src="@drawable/nav_menu_header_bg" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:padding="5dp"
+        android:clickable="true"
+        android:src="@drawable/default_avatar" />
+
         <ImageView
-            android:id="@+id/activity_user_page_header_cover_image"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerCrop"
-
-            android:src="@drawable/nav_menu_header_bg" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/activity_user_page_imageview_profile"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="75dp"
-            android:padding="5dp"
-            android:clickable="true"
-            android:src="@drawable/default_avatar" />
-
-        <ImageView
-            android:id="@+id/activity_user_page_edit_profile"
+            android:id="@+id/edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -46,28 +46,28 @@
 
             android:src="@android:drawable/ic_menu_edit" />
 
-        <TextView
-            android:id="@+id/activity_user_page_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/activity_user_page_imageview_profile"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:layout_marginTop="15dp"
-            android:text="User001"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/activity_user_page_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivProfile"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="User001"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/activity_user_page_textview_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/activity_user_page_name"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text=""
-            android:textSize="18sp"
-            android:textStyle="italic" />
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_user_page_name"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="This is my description"
+        android:textSize="18sp"
+        android:textStyle="italic" />
 
     </RelativeLayout>
 
@@ -75,7 +75,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_user_page_profile_layout"
+        android:layout_below="@id/profile_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
@@ -89,18 +89,17 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/activity_user_page_textview_found_words"
+                android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text=""
                 android:textColor="@color/colorAccent"
                 android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/wordsfound"
+                android:text="Found words"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -121,18 +120,48 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/activity_user_page_textview_words_made_guess"
+                android:id="@+id/tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text=""
                 android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/wordsmadeguess"
+                android:text="Games played"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+
+            android:background="#A9A9A9" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Games failed"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -141,7 +170,7 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/activity_user_page_line"
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/linearLayout"
@@ -151,10 +180,55 @@
         android:background="#A9A9A9" />
 
 
+    <LinearLayout
+        android:id="@+id/additionnalInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/friendCodeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/friendCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/friendCode"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/additionnalInfoLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="#A9A9A9" />
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/activity_user_page_line"
+        android:layout_below="@+id/line2"
         android:layout_margin="5dp"
         android:layout_marginTop="5dp"
         android:elevation="4dp"
@@ -165,165 +239,189 @@
         android:paddingLeft="5dp"
         >
 
-        <LinearLayout
-            android:id="@+id/activity_user_page_real_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+<LinearLayout
+    android:id="@+id/real_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:text="Real name : "
-                android:textStyle="bold"
-                android:layout_marginLeft="25dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:text="Real name : "
+        android:textStyle="bold"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="parent"/>
 
-            <TextView
-                android:id="@+id/activity_user_page_real_name_val"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:text=""
-                app:layout_constraintLeft_toRightOf="@+id/activity_user_page_real_name"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp" />
+    <TextView
+        android:id="@+id/real_name_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:text=""
+        app:layout_constraintLeft_toRightOf="@+id/real_name"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/activity_user_page_mobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/activity_user_page_real_name">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:text="Mobile : "
-                android:textStyle="bold"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/activity_user_page_real_name" />
-
-            <TextView
-                android:id="@+id/activity_user_page_mobile_val"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:text=""
-                app:layout_constraintLeft_toRightOf="@+id/activity_user_page_mobile"
-                app:layout_constraintTop_toBottomOf="@+id/activity_user_page_real_name"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp" />
-
-        </LinearLayout>
+</LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activity_user_page_e-mail"
+            android:id="@+id/mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/activity_user_page_mobile">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:text="E-mail : "
-                android:textStyle="bold"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/activity_user_page_e-mail_val"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:text=""
-                app:layout_constraintLeft_toRightOf="@+id/activity_user_page_e-mail"
-                app:layout_constraintTop_toBottomOf="@+id/activity_user_page_mobile"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/real_name">
 
         <TextView
-            android:id="@+id/activity_user_page_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:text="Mobile : "
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/real_name" />
+
+        <TextView
+            android:id="@+id/mobile_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:text=""
+            app:layout_constraintLeft_toRightOf="@+id/mobile"
+            app:layout_constraintTop_toBottomOf="@+id/real_name"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/e-mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/mobile">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:text="E-mail : "
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/e-mail_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:text=""
+            app:layout_constraintLeft_toRightOf="@+id/e-mail"
+            app:layout_constraintTop_toBottomOf="@+id/mobile"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/e-mail">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:clickable="true"
             android:text="Gender : "
-            android:visibility="gone"
+            android:visibility="visible"
             android:textStyle="bold"
             android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/activity_user_page_e-mail" />
+            app:layout_constraintTop_toBottomOf="@+id/e-mail" />
 
         <TextView
-            android:id="@+id/activity_user_page_gender_val"
+            android:id="@+id/gender_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:clickable="true"
-            android:visibility="gone"
+            android:visibility="visible"
             android:text=""
-            app:layout_constraintLeft_toRightOf="@+id/activity_user_page_gender"
-            app:layout_constraintTop_toBottomOf="@+id/activity_user_page_e-mail"
+            app:layout_constraintLeft_toRightOf="@+id/gender"
+            app:layout_constraintTop_toBottomOf="@+id/e-mail"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp" />
 
+        </LinearLayout>
+
         <LinearLayout
-            android:id="@+id/activity_user_page_age"
+            android:id="@+id/age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/activity_user_page_gender">
+            app:layout_constraintTop_toBottomOf="@+id/gender">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:text="Age : "
-                android:textStyle="bold"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/gender" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:text="Age : "
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
 
-            <TextView
-                android:id="@+id/activity_user_page_age_val"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:text=""
-                app:layout_constraintLeft_toRightOf="@+id/age"
-                app:layout_constraintTop_toBottomOf="@+id/gender"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp" />
+        <TextView
+            android:id="@+id/age_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:text=""
+            app:layout_constraintLeft_toRightOf="@+id/age"
+            app:layout_constraintTop_toBottomOf="@+id/gender"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp" />
 
         </LinearLayout>
 
 
+
+
     </android.support.constraint.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/btnFollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/editprofile"
+        android:background="@drawable/buttonshape"
+        android:textSize="18sp"
+        android:textColor="#ffff" />
 
 
 </RelativeLayout>

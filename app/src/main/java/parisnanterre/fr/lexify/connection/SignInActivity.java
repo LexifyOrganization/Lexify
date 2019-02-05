@@ -31,8 +31,6 @@ import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
-//import static parisnanterre.fr.lexify.application.MainActivity.lastUser;
-import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 public class SignInActivity extends Activity {
 
@@ -84,7 +82,7 @@ public class SignInActivity extends Activity {
     }
 
     public void SignIn(View v) {
-
+        /*
         String pseudo = edt_pseudo.getText().toString();
         String pass = edt_pass.getText().toString();
 
@@ -120,16 +118,13 @@ public class SignInActivity extends Activity {
                 updateUserInfo();
 
                 Intent i = new Intent();
-                /*Bundle b = new Bundle();
-                b.putSerializable("Current user", currentUser);
-                i.putExtras(b);*/
                 i.setClass(this, MainActivity.class);
                 startActivity(i);
             }
 
         }
 
-
+        */
     }
 
     public void updateUserInfo(){
@@ -166,6 +161,7 @@ public class SignInActivity extends Activity {
             e.printStackTrace();
         }*/
 
+        /*
         try {
             SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
             Gson gson = new Gson();
@@ -188,6 +184,8 @@ public class SignInActivity extends Activity {
         } catch (Exception e ){
             e.printStackTrace();
         }
+        */
     }
+
 
 }

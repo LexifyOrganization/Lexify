@@ -1,9 +1,9 @@
 package parisnanterre.fr.lexify.application;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +11,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
@@ -37,22 +38,22 @@ import java.util.List;
 import java.util.Locale;
 import io.paperdb.Paper;
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.computergame.ComputerGameActivity;
 import parisnanterre.fr.lexify.connection.SignInActivity;
+import parisnanterre.fr.lexify.connection.SignUpActivity;
 import parisnanterre.fr.lexify.database.DatabaseUser;
 import parisnanterre.fr.lexify.database.User;
 import parisnanterre.fr.lexify.settings.SettingsActivity;
 import parisnanterre.fr.lexify.userpage.UserPage;
+import parisnanterre.fr.lexify.verbalgame.VerbalGameActivity;
 import parisnanterre.fr.lexify.word.DatabaseWord;
 import parisnanterre.fr.lexify.word.Word;
 
-public class MainActivity extends Activity
+public class MainActivity extends FragmentActivity
         implements MainFragment.OnFragmentInteractionListener,
         PlayingFragment.OnFragmentInteractionListener {
 
     public static User currentUser;
-    public static HashMap<Integer,User> userList = new HashMap<>();
-
-    private HashMap<Integer, User> userListToSerialize;
 
     public static User getCurrentUser() {
         return currentUser;
@@ -66,10 +67,10 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (currentUser != null) {
-            Toast toast_tmp = Toast.makeText(getApplicationContext(), String.valueOf(MainActivity.currentUser.get_id()), Toast.LENGTH_SHORT);
-            toast_tmp.show();
-        }
+        TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
+        //final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
+        //final Button btn_profile = (Button) findViewById(R.id.activity_main_btn_see_profile);
+        //final Button btn_account = (Button) findViewById(R.id.activity_main_btn_account);
 
         //initialize Paper
         Paper.init(this);
@@ -103,93 +104,37 @@ public class MainActivity extends Activity
             editor.commit();
         }
 
-
-        TextView txt_welcome = (TextView) findViewById(R.id.activity_main_txt_welcome);
-        Button btn_disconnect = (Button) findViewById(R.id.activity_main_btn_disconnect);
-        final LinearLayout lil_user = (LinearLayout) findViewById(R.id.activity_main_lil_user);
-
-        //compte encore inutile, changer cette ligne plus tard
-        //btn_account.setVisibility(View.GONE);
-
-        //New connexion method : saves the json file in SharedPreferences
         try {
-            SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-            Gson gson = new Gson();
-            String json = appSharedPrefs.getString("userList", "");
-            Type type = new TypeToken<HashMap<Integer, User>>(){}.getType();
-            //userList is a Hashmap<Integer,User> where the key is the _id from the User object
-            userList = gson.fromJson(json, type);
-            if (json.equals("") || userList.isEmpty()) {
-                final DatabaseUser db = new DatabaseUser(this);
-                List<User> tmplist = db.getAllUsers();
-                final int size = tmplist.size();
-                for (int i = 0; i < size; i++) {
-                    userList.put(tmplist.get(i).get_id(), tmplist.get(i));
-                }
-            }
-            //Toast toast_tmp = Toast.makeText(getApplicationContext(), String.valueOf(MainActivity.currentUser.get_gamesPlayed()), Toast.LENGTH_SHORT);
-            //toast_tmp.show();
-        } catch (Exception e ){
+            currentUser = loadUser(this);
+        }catch(Exception e){
             e.printStackTrace();
         }
 
+        //Toast.makeText(this, String.valueOf(prefs.getInt("user_id", 0)), Toast.LENGTH_LONG).show();
 
-        if (currentUser != null) {
-            txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
-            lil_user.setVisibility(View.VISIBLE);
+        if (currentUser != null && !currentUser.get_pseudo().equals("")) {
+            //txt_welcome.setText(getResources().getString(R.string.welcome) + currentUser.get_pseudo() + " !");
+            //lil_user.setVisibility(View.VISIBLE);
         } else {
-            lil_user.setVisibility(View.GONE);
+            //lil_user.setVisibility(View.GONE);
+            Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
+            startActivity(i);
         }
 
-        btn_disconnect.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                try {
-                    //Updates in the Hashmap the info of the current user
-                    userList.put(currentUser.get_id(),currentUser);
-                    userListToSerialize = userList;
-                    SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
-                    Gson gson = new Gson();
-                    String json = gson.toJson(userListToSerialize);
-                    prefsEditor.putString("userList", json);
-                    prefsEditor.commit();
-                } catch(Exception e){
-                    e.printStackTrace();
-                }
-                currentUser = null;
-                lil_user.setVisibility(View.GONE);
-
-                PrintWriter writer = null;
-                try {
-                    writer = new PrintWriter(getApplicationContext().getFileStreamPath("user.txt"));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                writer.print("");
-                writer.close();
-
-                Context context = getApplicationContext();
-                CharSequence text = getResources().getString(R.string.SuccessDeconnexion);
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-        });
-
         setFragment(new MainFragment());
-
     }
 
     public void setFragment(Fragment f) {
 
-        FragmentManager fragmentManager = getFragmentManager();
+        /*FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.activity_main_fragment, f);
-        transaction.commit();
+        transaction.commit();*/
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_main_fragment, f, "main_fragment");
+        fragmentTransaction.commit();
     }
 
     private void updateLanguage(String language) {
@@ -236,8 +181,36 @@ public class MainActivity extends Activity
         }
 
     }
+
+    public User loadUser(Context context){
+        User u = new User();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        u.set_id(prefs.getInt("user_int", 0));
+        u.set_pseudo(prefs.getString("user_pseudo", ""));
+        u.set_email(prefs.getString("user_email", ""));
+        u.setDescription(prefs.getString("user_description", ""));
+        u.setAvatar(prefs.getString("user_avatar", ""));
+        u.setName(prefs.getString("user_name", ""));
+        u.setMobile(prefs.getString("user_mobile", ""));
+        u.setGender(prefs.getString("user_gender", ""));
+        u.setAge(prefs.getInt("user_age", 0));
+        u.set_gamesPlayed(prefs.getInt("user_gamesPlayed", 0));
+        u.set_gamesFailed(prefs.getInt("user_gamesFailed", 0));
+        u.set_wordGuessed(prefs.getInt("user_wordGuessed", 0));
+        u.set_friendCode(prefs.getString("user_friendCode", "").split(","));
+
+        return u;
+    }
+
     @Override
     public void  onBackPressed() {
+        /*SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(MainActivity.currentUser);
+        prefsEditor.putString("currentUser", json);
+        prefsEditor.commit();*/
+        currentUser.saveUser(this);
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addCategory(Intent.CATEGORY_HOME);

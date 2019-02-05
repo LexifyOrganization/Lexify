@@ -29,8 +29,8 @@ import parisnanterre.fr.lexify.R;
 import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.database.User;
 
+import static android.content.Context.MODE_PRIVATE;
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
-import static parisnanterre.fr.lexify.application.MainActivity.userList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -113,6 +113,7 @@ public class VerbalGameResultsFragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }*/
+                /*
                 if (currentUser != null) {
                     currentUser.update_gamesPlayed();
                     try {
@@ -127,6 +128,16 @@ public class VerbalGameResultsFragment extends Fragment {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                }*/
+                try {
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    SharedPreferences.Editor prefsEditor = prefs.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(MainActivity.currentUser);
+                    prefsEditor.putString("currentUser", json);
+                    prefsEditor.commit();
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
                 // TODO Auto-generated method stub
                 VerbalGameActivity gameActivity = (VerbalGameActivity) getActivity();
@@ -151,7 +162,7 @@ public class VerbalGameResultsFragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }*/
-                if (currentUser != null) {
+                /*if (currentUser != null) {
                     currentUser.update_gamesPlayed();
                     try {
                         userList.put(currentUser.get_id(), currentUser);
@@ -164,6 +175,17 @@ public class VerbalGameResultsFragment extends Fragment {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                }*/
+                try {
+                    /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    SharedPreferences.Editor prefsEditor = prefs.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(MainActivity.currentUser);
+                    prefsEditor.putString("currentUser", json);
+                    prefsEditor.commit();*/
+                    currentUser.saveUser(VerbalGameResultsFragment.this.getContext());
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
                 // TODO Auto-generated method stub
                 Intent i = new Intent(getActivity(), MainActivity.class);

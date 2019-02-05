@@ -137,7 +137,7 @@ public class DatabaseWord extends SQLiteOpenHelper {
         List<Word> words = getAllWords();
 
         ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i=1; i<536; i++) {
+        for (int i=1; i<533; i++) {
             list.add(new Integer(i));
         }
         Collections.shuffle(list);

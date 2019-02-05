@@ -16,7 +16,10 @@ import java.io.Serializable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import parisnanterre.fr.lexify.R;
+import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.database.User;
+
+import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
 
 public class UserPage extends Activity implements Serializable{
 
@@ -31,26 +34,40 @@ public class UserPage extends Activity implements Serializable{
         u = (User) getIntent().getSerializableExtra("user");
 
         TextView name = findViewById(R.id.activity_user_page_name);
-        TextView wordsfound = findViewById(R.id.activity_user_page_textview_found_words);
-        TextView wordsguess = findViewById(R.id.activity_user_page_textview_words_made_guess);
-        TextView description = findViewById(R.id.activity_user_page_textview_description);
-        ImageView edit = findViewById(R.id.activity_user_page_edit_profile);
-        TextView realName = findViewById(R.id.activity_user_page_real_name_val);
-        TextView age = findViewById(R.id.activity_user_page_age_val);
-        TextView email = findViewById(R.id.activity_user_page_e_mail_val);
-        TextView mobile = findViewById(R.id.activity_user_page_mobile_val);
-        CircleImageView avatar = findViewById(R.id.activity_user_page_imageview_profile);
-        LinearLayout ageLayout = findViewById(R.id.activity_user_page_age);
-        LinearLayout emailLayout = findViewById(R.id.activity_user_page_e_mail);
-        LinearLayout mobileLayout = findViewById(R.id.activity_user_page_mobile);
-        LinearLayout realNameLayout = findViewById(R.id.activity_user_page_real_name);
+        ImageView edit = findViewById(R.id.edit_profile);
+        TextView realName = findViewById(R.id.real_name_val);
+        TextView description = findViewById(R.id.tvDescription);
+        TextView age = findViewById(R.id.age_val);
+        TextView email = findViewById(R.id.e_mail_val);
+        TextView mobile = findViewById(R.id.mobile_val);
+        TextView gender = findViewById(R.id.gender_val);
+        CircleImageView avatar = findViewById(R.id.ivProfile);
+        //tv1 is the number of words found by the user.
+        //tv2 is the number of games played
+        //tv3 is the number of games failed/abandoned
+        TextView tv1 = findViewById(R.id.tv1);
+        TextView tv2 = findViewById(R.id.tv2);
+        TextView tv3 = findViewById(R.id.tv3);
+        TextView friendCode = findViewById(R.id.friendCode);
+
+        LinearLayout ageLayout = findViewById(R.id.age);
+        LinearLayout emailLayout = findViewById(R.id.e_mail);
+        LinearLayout mobileLayout = findViewById(R.id.mobile);
+        LinearLayout realNameLayout = findViewById(R.id.real_name);
+        LinearLayout genderLayout = findViewById(R.id.gender);
 
 
-        realName.setText(u.get_name());
-        age.setText(Integer.toString(u.get_age()));
+        realName.setText(u.getName());
+        age.setText(Integer.toString(u.getAge()));
         email.setText(u.get_email());
-        mobile.setText(u.get_mobile());
-        description.setText(u.get_description());
+        mobile.setText(u.getMobile());
+        description.setText(u.getDescription());
+
+        tv1.setText(Integer.toString(currentUser.get_wordGuessed()));
+        tv2.setText(Integer.toString(currentUser.get_gamesPlayed()));
+        tv3.setText(Integer.toString(currentUser.get_gamesFailed()));
+
+        friendCode.setText(buildFriendCodeDisplay(currentUser.get_friendCode()));
 
 
         if(realName.getText().toString().isEmpty()) {
@@ -65,6 +82,10 @@ public class UserPage extends Activity implements Serializable{
         if(mobile.getText().toString().isEmpty()) {
             mobileLayout.setVisibility(View.GONE);
         }
+        if(gender.getText().toString().isEmpty()){
+            genderLayout.setVisibility(View.GONE);
+        }
+
 
 
         avatar.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +103,7 @@ public class UserPage extends Activity implements Serializable{
 
         });
 
+
         edit.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -96,10 +118,6 @@ public class UserPage extends Activity implements Serializable{
         });
 
         name.setText(u.get_pseudo());
-        wordsfound.setText(String.valueOf(u.get_foundwords()));
-        wordsguess.setText(String.valueOf(u.get_wordsguess()));
-        description.setText(u.get_description());
-
     }
 
     @Override
@@ -114,13 +132,27 @@ public class UserPage extends Activity implements Serializable{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 // Log.d(TAG, String.valueOf(bitmap));
 
-                CircleImageView image = (CircleImageView) findViewById(R.id.activity_user_page_imageview_profile);
+                CircleImageView image = (CircleImageView) findViewById(R.id.ivProfile);
                 image.setImageBitmap(bitmap);
-                u.set_avatar(image);
+                //u.setAvatar(image);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private String buildFriendCodeDisplay(String[] fc){
+        StringBuilder sb = new StringBuilder();
+
+        //As a friend code is always 12 characters long, we can use hard coded values here
+        for(int i = 0; i<12; i++){
+            sb.append(fc[i]);
+            if((i+1)%4 == 0 && i!=11){
+                sb.append("-");
+            }
+        }
+
+        return sb.toString();
     }
 
 }

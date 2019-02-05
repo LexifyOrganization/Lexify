@@ -98,7 +98,7 @@
     <string name="statistics">See statistics</string>
     <string name="editprofile">Edit Profile</string>
     <string name="signup">Sign Up</string>
-    <string name="enterinformation">Enter your informations :</string>
+    <string name="enterinformation">Welcome !\n To use the app, you\'ll need to fill these infos.\n It\'s a one time thing !</string>
     <string name="password">Password</string>
     <string name="confirmpassword">Confirm password</string>
     <string name="noaccount">No Account ?</string>
@@ -132,6 +132,7 @@
     <string name="wordsmemory">Words Memory</string>
     <string name="accessgames">Access Games</string>
     <string name="quitgames">Quit Games</string>
+    <string name="friendCode">Friend Code</string>
     <string name="lexifypresentation">Presentation</string>
     <string name="steps">Step</string>
     <string name="nosteps">No Step</string>

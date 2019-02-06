@@ -139,11 +139,11 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (gameActivity.getCurrentUser() != null && !gameActivity.getCurrentUser().get_pseudo().equals("")) {
-                    Intent i = new Intent(getActivity(), SignUpActivity.class);
-                    startActivity(i);
-                } else {
                     Intent i = new Intent(getActivity(), UserPage.class);
                     i.putExtra("user", gameActivity.getCurrentUser());
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(getActivity(), SignUpActivity.class);
                     startActivity(i);
                 }
 

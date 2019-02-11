@@ -74,6 +74,6 @@ Et voila ! le projet est prêt pour utilisation.
 * **NAYET Lucas** - [Github](https://github.com/LNayet)
 * **PIOT Nicolas** - [Github](https://github.com/Yxiaa)
 * **ABDULWAHAB Hani** - [Github](https://github.com/HaniAbd)
-* **Piron William** - [Github](https://github.com/WilliamPiron)
+* **PIRON William** - [Github](https://github.com/WilliamPiron)
 
   

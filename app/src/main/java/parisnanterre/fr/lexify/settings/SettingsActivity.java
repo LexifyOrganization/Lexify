@@ -56,7 +56,7 @@ public class SettingsActivity extends Activity {
         List<String> categories = new ArrayList<>();
         categories.add("Français");
         categories.add("English");
-        categories.add("العربية");
+        //categories.add("العربية");
 
         List<String> categories2 = new ArrayList<>();
         categories2.add(getResources().getString(R.string.off));

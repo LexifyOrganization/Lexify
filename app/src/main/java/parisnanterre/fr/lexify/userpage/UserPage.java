@@ -20,11 +20,23 @@ import parisnanterre.fr.lexify.application.MainActivity;
 import parisnanterre.fr.lexify.database.User;
 
 import static parisnanterre.fr.lexify.application.MainActivity.currentUser;
+import static parisnanterre.fr.lexify.application.MainActivity.loadUser;
 
 public class UserPage extends Activity implements Serializable{
 
     User u = null;
     private int PICK_IMAGE_REQUEST = 1;
+
+    TextView realName;
+    TextView age;
+    TextView email;
+    TextView mobile;
+    TextView description;
+    LinearLayout ageLayout;
+    LinearLayout emailLayout;
+    LinearLayout mobileLayout;
+    LinearLayout realNameLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +47,11 @@ public class UserPage extends Activity implements Serializable{
 
         TextView name = findViewById(R.id.activity_user_page_name);
         ImageView edit = findViewById(R.id.edit_profile);
-        TextView realName = findViewById(R.id.real_name_val);
-        TextView description = findViewById(R.id.tvDescription);
-        TextView age = findViewById(R.id.age_val);
-        TextView email = findViewById(R.id.e_mail_val);
-        TextView mobile = findViewById(R.id.mobile_val);
+        realName = findViewById(R.id.real_name_val);
+        description = findViewById(R.id.tvDescription);
+        age = findViewById(R.id.age_val);
+        email = findViewById(R.id.e_mail_val);
+        mobile = findViewById(R.id.mobile_val);
         TextView gender = findViewById(R.id.gender_val);
         CircleImageView avatar = findViewById(R.id.ivProfile);
         //tv1 is the number of words found by the user.
@@ -50,10 +62,10 @@ public class UserPage extends Activity implements Serializable{
         TextView tv3 = findViewById(R.id.tv3);
         TextView friendCode = findViewById(R.id.friendCode);
 
-        LinearLayout ageLayout = findViewById(R.id.age);
-        LinearLayout emailLayout = findViewById(R.id.e_mail);
-        LinearLayout mobileLayout = findViewById(R.id.mobile);
-        LinearLayout realNameLayout = findViewById(R.id.real_name);
+        ageLayout = findViewById(R.id.age);
+        emailLayout = findViewById(R.id.e_mail);
+        mobileLayout = findViewById(R.id.mobile);
+        realNameLayout = findViewById(R.id.real_name);
         LinearLayout genderLayout = findViewById(R.id.gender);
 
 
@@ -155,4 +167,48 @@ public class UserPage extends Activity implements Serializable{
         return sb.toString();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        u = loadUser(this);
+
+        realName.setText(u.getName());
+        age.setText(Integer.toString(u.getAge()));
+        email.setText(u.get_email());
+        mobile.setText(u.getMobile());
+        description.setText(u.getDescription());
+
+        if(realName.getText().toString().isEmpty()) {
+            realNameLayout.setVisibility(View.GONE);
+        }
+        else {
+            realNameLayout.setVisibility(View.VISIBLE);
+        }
+
+
+        if(age.getText().toString().isEmpty() || age.getText().equals("0")) {
+            ageLayout.setVisibility(View.GONE);
+        }
+        else {
+            ageLayout.setVisibility(View.VISIBLE);
+        }
+
+
+        if(email.getText().toString().isEmpty()) {
+            emailLayout.setVisibility(View.GONE);
+        }
+        else {
+            emailLayout.setVisibility(View.VISIBLE);
+        }
+
+        if(mobile.getText().toString().isEmpty()) {
+            mobileLayout.setVisibility(View.GONE);
+        }
+        else {
+            mobileLayout.setVisibility(View.VISIBLE);
+        }
+
+
+    }
 }

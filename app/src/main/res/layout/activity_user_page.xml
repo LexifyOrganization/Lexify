@@ -6,6 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_color">
 
+
+
     <RelativeLayout
         android:id="@+id/profile_layout"
         android:layout_width="match_parent"
@@ -225,10 +227,16 @@
         android:layout_marginLeft="5dp"
         android:background="#A9A9A9" />
 
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line2">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/line2"
+        android:layout_below="@+id/scroll"
         android:layout_margin="5dp"
         android:layout_marginTop="5dp"
         android:elevation="4dp"
@@ -409,7 +417,7 @@
 
     </android.support.constraint.ConstraintLayout>
 
-
+    </ScrollView>
     <Button
         android:id="@+id/btnFollow"
         android:layout_width="wrap_content"

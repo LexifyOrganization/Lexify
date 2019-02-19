@@ -182,7 +182,7 @@ public class MainActivity extends FragmentActivity
 
     }
 
-    public User loadUser(Context context){
+    public static User loadUser(Context context){
         User u = new User();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         u.set_id(prefs.getInt("user_int", 0));

@@ -29,10 +29,16 @@ public class EditPage extends Activity {
         u = (User) getIntent().getSerializableExtra("user");
 
         final EditText name = findViewById(R.id.input_name);
+        name.setText(u.getName());
         final EditText email = findViewById(R.id.input_email);
+        email.setText(u.get_email());
         final EditText mobile = findViewById(R.id.input_mobile);
+        mobile.setText(u.getMobile());
         final EditText description = findViewById(R.id.input_description);
+        description.setText(u.getDescription());
         final EditText age = findViewById(R.id.input_age);
+        if(u.getAge()!=0)
+            age.setText(Integer.toString(u.getAge()));
         Button save = findViewById(R.id.btn_editpage_save);
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +53,8 @@ public class EditPage extends Activity {
 
                 if(!age.getText().toString().isEmpty())
                     u.setAge(Integer.parseInt(age.getText().toString()));
+                else
+                    u.setAge(0);
 
                 try{
                     u.saveUser(EditPage.this.getApplicationContext());
@@ -54,9 +62,11 @@ public class EditPage extends Activity {
                     e.printStackTrace();
                 }
 
+
                 Intent i = new Intent(getApplicationContext(), UserPage.class);
                 i.putExtra("user", u);
-                startActivity(i);
+                //startActivity(i);
+                finish();
 
             }
 
